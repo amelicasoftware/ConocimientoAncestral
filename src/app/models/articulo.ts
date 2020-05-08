@@ -4,4 +4,6 @@ export class Articulo{
     area: string; 
     institucion: string; 
     pais: string; 
+    dominio:string;
+    nombreRevista: string;
 }
