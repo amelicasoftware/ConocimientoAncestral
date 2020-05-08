@@ -19,9 +19,10 @@ export class BusquedaGeneralComponent implements OnInit {
               private articuloService: ServiosBusquedaService) { }
 
   ngOnInit(): void {
-    this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi) => {
-      this.articulos = articulosDesdeApi;
-
+    this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi:any) => {
+      console.log(articulosDesdeApi)
+      this.articulos = articulosDesdeApi.articulos.registros;
+console.log(this.articulos)
     });
   }
 
@@ -34,7 +35,7 @@ export class BusquedaGeneralComponent implements OnInit {
     console.log(palabra);
     this.articuloService.getBusquedaArticulos(palabra).subscribe((data: any) => {
       console.log(data);
-      this.articulos = data;
+      this.articulos = data.articulos.registros;
     });
   }
 }

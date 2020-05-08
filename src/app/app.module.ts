@@ -15,6 +15,10 @@ import { HomeComponent } from './components/home/home.component';
 //rutas
 import { ROUTES } from './app.routes';
 import { MapaComponent } from './components/mapa/mapa.component';
+import { BusquedarevComponent } from './components/busquedarev/busquedarev.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -24,13 +28,17 @@ import { MapaComponent } from './components/mapa/mapa.component';
     AutoresArticuloPipe,
     BusquedaGeneralComponent,
     HomeComponent,
-    MapaComponent
+    MapaComponent,
+    BusquedarevComponent,
+   
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES, { useHash: true})
+    
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

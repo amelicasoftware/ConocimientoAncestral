@@ -1,0 +1,93 @@
+
+<!-- Inicia Header  --> 
+<div class="grid-containerh">
+    <div class="item1" >
+      <div style="padding-left: 5%;" >Colección <strong>Conocimiento Ancestral</strong> </div>
+    
+    <div style="padding-left: 45%;">Acerca de AmeliCA</div>  
+    <div >Proyecto Conocimeinto Ancestral</div>
+    
+    <div ><img src="assets/img/ic-home.png" alt=""></div>
+    <div ><img src="assets/img/ic-facebook.png" alt=""></div>
+    <div ><img src="assets/img/ic-twitter.png" alt=""></div>
+      </div>
+  </div>
+  <!--  termina Header    --> 
+  
+  
+  
+  
+  <!--  Inicia menu horizontal sin grid   --> 
+  <div  style="margin: 20px; align-self: center; font-family: Barlow-Regular;">Mexico <input #palabra (keyup)="buscar(palabra.value)" style="width: 30%;"type="text"></div>
+  
+  <div class="flex-containerhz">
+    <div class="filtros" style="background-color: #4762b2; ">Filtros de Busqueda</div>
+    <div>Libros</div>
+    <div >revistas</div>  
+    <div [routerLink]="['/busquedaGeneral']">Articulos de revista</div>
+    <div>Blog</div>  
+    <div>Video</div>
+    <div>Modo de visualizar resultados</div>
+    <div>Lista</div>
+    <div>Tarjetas</div>
+  </div>
+  <!--  Terina  menu horizontal sin grid   --> 
+  
+  
+  <!--  Filtros menu  --> 
+  <div class="grid-container">
+    <div class="item2">
+      <div>Busqueda General</div>
+      
+      <div ><input type="checkbox" />Disciplina</div>  
+      <div ><input type="checkbox" />Disciplina</div>  
+      <div><input type="checkbox" />País</div>  
+      <div><input type="checkbox" />Fuente</div>
+      <br>
+      <div>Busqueda por palabras clave </div>      
+      <div>Fuente: </div>      
+      <br>
+      <div>Busqueda por pais </div>      
+      <div ><input type="checkbox" />Disciplina</div>  
+      <div ><input type="checkbox" />Disciplina</div>   
+      <div><input type="checkbox" />País</div>  
+      <div><input type="checkbox" />Fuente</div>   
+      <br>
+      
+    </div>
+  
+  <!-- Termina Filtros menu   --> 
+  
+    <div class="item3">
+      <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: </p> 
+      <div class="flex-containercont">
+  
+      <div class="articulo" id="example1" *ngFor="let articulo of articulos">
+        <p  style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; " >{{  articulo.nombreRevista }}</p>
+       
+        <p >{{  articulo.issn }}</p>   
+        <p >{{  articulo.area }}</p>   
+        <p >{{  articulo.institucion }}</p>           
+        <p >{{  articulo.pais }}</p>   
+        <p >Sourse: </p>
+       
+       
+      </div>   
+      </div>
+    </div>  
+    <div class="item4">
+      <div id="contendor-footer">
+        <div id="instituciones-footer">
+          <div><a href="#"><img src="assets/img/ic-amelica-footer.png" /></a></div>
+          <div><a href="#"><img src="assets/img/ic-unesco-footer.png" /></a></div>
+          <div><a href="#"><img src="assets/img/ic-clacso-footer.png" /></a></div>
+          <div><a href="#"><img src="assets/img/ic-redalyc-footer.png" /></a></div>
+        </div>
+        <div id="resumen-footer" style="width: 40%">Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+          printer took a galley of type and scrambled it to make a type specimen book. It has survived</div>
+  
+  
+      </div>
+    </div>
+  </div>

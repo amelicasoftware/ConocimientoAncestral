@@ -55,8 +55,8 @@ am4core.ready(function() {
 	circle.urlTarget="top";
 	circle.url="#";
 
-	// imageSeries.dataSource.url = "../assets/js/json/paises.json";//local
-	imageSeries.dataSource.url = "../ConocimientoAncestral/assets/js/json/paises.json";//produccion
+	imageSeries.dataSource.url = "../assets/js/json/paises.json";//local
+	//imageSeries.dataSource.url = "../ConocimientoAncestral/assets/js/json/paises.json";//produccion
 	imageSeries.dataSource.parser = new am4core.JSONParser();
 
 	imageSeries.heatRules.push({

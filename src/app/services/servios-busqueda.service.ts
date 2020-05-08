@@ -20,10 +20,10 @@ export class ServiosBusquedaService {
   }
 
   leerjson(): Observable<Articulo[]> {
-    return this.http.get<Articulo[]>(this.url + 'articulos/general?busqueda=' +this.datarecibed);
+    return this.http.get<Articulo[]>(this.url + 'articulos/general?p=' +this.datarecibed);
   }
 
   getBusquedaArticulos(palabra: string) {
-    return this.http.get(`${this.url}articulos/general?busqueda="${palabra}"`);
+    return this.http.get(`${this.url}articulos/general?p="${palabra}"`);
   }
 }
