@@ -6,4 +6,10 @@ export class Articulo{
     pais: string; 
     dominio:string;
     nombreRevista: string;
+    anio:number;
+    volumen: number;
+    numero:number;
+    origen:string;
+    claveArt: number;
+    claveRevista:number;
 }
