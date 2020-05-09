@@ -62,14 +62,11 @@
       <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: </p> 
       <div class="flex-containercont">
   
-      <div class="articulo" id="example1" *ngFor="let articulo of articulos">
-        <p  style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; " >{{  articulo.nombreRevista }}</p>
+      <div class="articulo" id="example1" *ngFor="let revistas of revistas">
+        <p  style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; " ></p>
        
-        <p >{{  articulo.issn }}</p>   
-        <p >{{  articulo.area }}</p>   
-        <p >{{  articulo.institucion }}</p>           
-        <p >{{  articulo.pais }}</p>   
-        <p >Sourse: {{ articulo.dominio}} </p>
+        <p >{{  revistas.nombreRevista }}</p>   
+       
        
        
       </div>   

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Revistas } from '../../models/revistas';
 import { Usuario } from '../../models/usuario';
-import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
 import { RevistasService } from '../../services/revistas.service'
 import { Router } from '@angular/router';
 
