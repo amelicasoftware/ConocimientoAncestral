@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Articulo } from '../../models/articulo';
+import { Revistas } from '../../models/revistas';
 import { Usuario } from '../../models/usuario';
 import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
+import { RevistasService } from '../../services/revistas.service'
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,17 +11,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./busquedarev.component.css']
 })
 export class BusquedarevComponent implements OnInit {
-  articulos: Array<Articulo> = new Array<Articulo>();
+  revistas: Array<Revistas> = new Array<Revistas>();
 
-  articulosResultado: [] = [];
-  constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
-    private articuloService: ServiosBusquedaService) { }
+  revistasResultado: [] = [];
 
+  constructor(private RevistasInyectado: RevistasService, private Ruta: Router,
+    private revistasService: RevistasService) { }
+
+
+    
 ngOnInit(): void {
-this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi:any) => {
-console.log(articulosDesdeApi)
-this.articulos = articulosDesdeApi.articulos.registros;
-console.log(this.articulos)
+this.RevistasInyectado.leerjson().subscribe((revistasDesdeApi:any) => {
+console.log(revistasDesdeApi)
+this.revistas = revistasDesdeApi.revistas.registros;
+console.log(this.revistas)
 });
 }
 
@@ -28,9 +32,9 @@ console.log(this.articulos)
 
 buscar(palabra: string) {
 console.log(palabra);
-this.articuloService.getBusquedaArticulos(palabra).subscribe((data: any) => {
+this.revistasService.getBusquedaRevista(palabra).subscribe((data: any) => {
 console.log(data);
-this.articulos = data.articulos.registros;
+this.revistas = data.revistas.registros;
 });
 }
 }
