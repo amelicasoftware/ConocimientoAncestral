@@ -15,7 +15,7 @@ export class RevistasService {
   public url: string = GlobalConstants.serviciosURL;
 
   // private url: string = 'http://148.215.2.20:8080/BackEndAmelic-0.0.1-SNAPSHOT/articulos/general?busqueda=';
-  public datarecibed: string = 'recientes';
+  public datarecibed: string = 'brasil';
   constructor(private http: HttpClient) {
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Revistas } from '../../models/revistas';
 import { Usuario } from '../../models/usuario';
+import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
 import { RevistasService } from '../../services/revistas.service'
 import { Router } from '@angular/router';
 
@@ -22,7 +23,7 @@ export class BusquedarevComponent implements OnInit {
 ngOnInit(): void {
 this.RevistasInyectado.leerjson().subscribe((revistasDesdeApi:any) => {
 console.log(revistasDesdeApi)
-this.revistas = revistasDesdeApi.revistas.registros;
+this.revistas = revistasDesdeApi.revistas.revistas;
 console.log(this.revistas)
 });
 }
