@@ -33,17 +33,6 @@ export class BusquedaGeneralComponent implements OnInit {
 
   ngOnInit(): void {
     this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi:any) => {
-      console.log(articulosDesdeApi);
-      this.articulos = articulosDesdeApi.articulos.articulos;
-      console.log(this.articulos);
-    });
-    this.filtrosService.cambioArticulos.subscribe(data2 => {
-      console.log('resutladosServicio', data2);
-      this.articulos = data2;
-  constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
-              private articuloService: ServiosBusquedaService,  ) { }
-  ngOnInit(): void {
-    this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi:any) => {
       console.log(articulosDesdeApi.articulos.total)
       this.articulos = articulosDesdeApi.articulos.articulos;
        this.total.total =  articulosDesdeApi.articulos.total;
@@ -54,6 +43,11 @@ export class BusquedaGeneralComponent implements OnInit {
        }
 console.log(this.articulos)
 console.log(this.total)
+    });
+
+    this.filtrosService.cambioArticulos.subscribe(data2 => {
+      console.log('resutladosServicio', data2);
+      this.articulos = data2;
     });
   }
 
