@@ -60,7 +60,7 @@
 
   <div class="item3">
     <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"> 
-      <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para:  </p>
+      <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para: {{total.palabra}}   </p>
       <br>
       <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan] = "total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p></div>
    
@@ -95,6 +95,9 @@
  
 
   <button *ngIf="getCount() > 1 "  (click)="incDCount()" class="button2">Pagina Anterior </button>
+
+  <div style="margin-left: 47%; font-family: Barlow-Regular; font-size: 10pt;" >Pag. Actual: {{total.pos}} </div>
+  
  
   <button  *ngIf="getFin() == 1 && total.final > 1 " (click)="incCount()"  class="button2">Pagina Siguiente</button>
 

@@ -31,10 +31,13 @@ ngOnInit(): void {
      }else{
       this.total.final = Math.floor(this.total.total/12)+1
      }
+     this.total.pos = this.revistasService.count
 console.log(this.revistas)
 console.log(this.total)
   });
+  this.total.palabra = this.revistasService.getpalabra()
 }
+
 
 
 buscar(palabra: string) {
@@ -42,13 +45,13 @@ buscar(palabra: string) {
   this.revistasService.total.final = 0 
   this.revistasService.count = 1
   this.revistasService.fin = 1
-  let pagina = this.revistasService.getpalabra();
-  palabra = palabra
+  this.total.palabra = palabra  
   console.log(palabra);
   this.revistasService.getBusquedaRevistas(palabra).subscribe((data: any) => {
     console.log(data);
     this.revistas = data.revistas.revistas;
-    this.revistasService.setpalabra(palabra)      
+    this.revistasService.setpalabra(palabra) 
+    console.log(palabra)       
     this.total.total =  data.revistas.total;
     if(Number.isInteger((this.total.total/12))){
        this.total.final = (this.total.total/12)
@@ -58,6 +61,11 @@ buscar(palabra: string) {
   });
 }
 
+
+public posicionActual(){
+  let posicion = this.revistasService.count 
+console.log(posicion)
+}
 
 public ultimapagina(ultimapagina:number){
   console.log(ultimapagina)
@@ -75,6 +83,7 @@ public ultimapagina(ultimapagina:number){
        this.total.final = Math.floor(this.total.total/12)+1
        this.revistasService.setcount(this.total.final)
       }  
+      this.total.pos = this.revistasService.count
       this.revistasService.setfin(0)
     });
 }
@@ -95,6 +104,7 @@ public primerPagina(){
        this.total.final = Math.floor(this.total.total/12)+1
        this.revistasService.setcount(1)
       }  
+      this.total.pos = this.revistasService.count
       this.revistasService.setfin(1)
     });
 }
@@ -103,6 +113,7 @@ public getCount() {
   return this.revistasService.count 
 }
 public getFin(){
+  this.total.pos = this.revistasService.count
   return this.revistasService.fin
 }
 
@@ -138,6 +149,7 @@ public incCount(){
     }    
   }
   console.log(pagina)
+  this.total.pos = this.revistasService.count
 }
 
 
@@ -155,5 +167,6 @@ public incDCount(){
   this.revistas = revistasDesdeApi.revistas.revistas;
 
   });
+  this.total.pos = this.revistasService.count
 }
 }
