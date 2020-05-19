@@ -268,7 +268,7 @@
     .contenedor-fichas{
       display: flex;
       flex-wrap: wrap;
-      margin-left: 15%;
+      margin-left: 5%;
     }
     .contenedor-fichas> div{
     
