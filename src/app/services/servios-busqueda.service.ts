@@ -17,7 +17,7 @@ export class ServiosBusquedaService {
   
   public count = 1;
   public fin = 1;
-  public palabra: string = "ovni";
+  public palabra: string = "ciencia";
   constructor(private http: HttpClient) {
 
 
