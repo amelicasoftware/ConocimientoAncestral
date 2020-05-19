@@ -79,6 +79,42 @@
         font-family: Barlow-Regular;
         margin: 3px;
       }
+
+      .button1{
+        background-color: white;
+        color: #4762b2; 
+        font-family: Barlow-Regular;
+        margin: 3px;
+      }
+  
+  
+  
+      .button2{
+        background-color: #4762b2; /* Green */
+        border: none;
+        font-family: Barlow-Regular;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+          }
+      
+          .button2 {
+            background-color: white ; 
+            color: black; 
+          
+          }
+          
+          .button2:hover {
+            background-color: #4762b2;
+            color: black;
+          }
+      
       
     @font-face {
       font-family: Barlow-Bold; 
@@ -181,6 +217,7 @@
      font-size: 30px;
    }
    .filtros{
+    background-color: #4762b2;
     font-size: 10pt;
     font-family: Barlow-Bold;   
     font-size: 10px; 
@@ -189,3 +226,87 @@
     center; 
    }
    
+   
+   .grid-containerh2> div {
+    display: flex;
+     text-align: center;
+     position: relative;    
+     font-size: 30px;
+   }
+
+   .item11 { 
+    grid-area: header;
+    background-color: #f1f1f1;
+    color: black;   
+    position: relative; 
+    }
+    
+    .item11> div { 
+      display: flex;
+      align-items: center;            
+      padding: 13px;
+      font-size: 10pt;
+      font-family: 'Barlow-Regular';
+      }
+
+      .card{
+        width: 260px; 
+        height: 275px;
+        background-color: #f1f1f1; 
+        margin: 20px; 
+        flex: 0 0 auto; 
+        border-radius: 10px; 
+        position: relative;
+        cursor: pointer;
+        /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+      }
+      
+    
+      .cuerpo-card div{
+          margin-bottom: 5px;
+      }
+      .contenedor-fichas{
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 15%;
+      }
+      .contenedor-fichas> div{
+      
+        
+        width: 260px; 
+    height: 275px;     
+      font-family: 'Barlow-Regular';
+      margin: 10px;
+      text-align: left;
+      line-height: 15px;
+      font-size: 10pt;
+      margin-left: 3%;
+      }
+
+      #contenedor-fichas::-webkit-scrollbar {
+        display: none;
+      }
+    
+      #contenedor-fichas-r::-webkit-scrollbar {
+        display: none;
+      }
+    
+      input[type=text] {
+        width: 60%; 
+        margin-left: 20%;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+        background-image: url(/src/assets/img/buscador.png);
+        background-position: 10px 10px; 
+        background-repeat: no-repeat;
+        padding: 2px 20px 7px 0px;
+        transition: width 0.4s ease-in-out;
+        font-family: Barlow-Regular;
+      }
+      
+      input[type=text]:focus {
+        width: 40%;
+      }   
