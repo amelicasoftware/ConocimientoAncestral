@@ -26,7 +26,7 @@ export class GlobitosComponent implements OnInit {
   borrarFiltro(globo){
     console.log('borrar', globo);
     console.log(this.filtrosService.filtrosElegidos.findIndex(filtro => filtro.clave === globo.clave));
-    if( this.filtrosService.filtrosElegidos.find( globo => globo.nombre = globo.nombre)){
+    if ( this.filtrosService.filtrosElegidos.find( globo => globo.nombre = globo.nombre)){
       let index = this.filtrosService.filtrosElegidos.findIndex(filtro => filtro.clave === globo.clave);
       this.filtrosService.filtrosElegidos.splice(index, 1);
     }
