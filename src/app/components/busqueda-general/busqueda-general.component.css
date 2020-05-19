@@ -75,6 +75,34 @@
       font-family: Barlow-Regular;
       margin: 3px;
     }
+
+
+
+    .button2{
+      background-color: #4762b2; /* Green */
+      border: none;
+      font-family: Barlow-Regular;
+      color: white;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+        }
+    
+        .button2 {
+          background-color: white ; 
+          color: black; 
+        
+        }
+        
+        .button2:hover {
+          background-color: #4762b2;
+          color: black;
+        }
     
   @font-face {
     font-family: Barlow-Bold; 
@@ -123,6 +151,22 @@
     padding: 20px;
     }
 
+
+    .item11 { 
+      grid-area: header;
+      background-color: #f1f1f1;
+      color: black;   
+      position: relative; 
+      }
+      
+      .item11> div { 
+        display: flex;
+        align-items: center;            
+        padding: 13px;
+        font-size: 10pt;
+        font-family: 'Barlow-Regular';
+        }
+
 .item2 { 
   grid-area: menu;
   border-right: 1px solid #f1f1f1;
@@ -169,6 +213,12 @@
   padding: 20px 0;
   font-size: 30px;
 }
+.grid-containerh2> div {
+  display: flex;
+   text-align: center;
+   position: relative;    
+   font-size: 30px;
+ }
 .grid-container> div {
  
    /* text-align: center; */
@@ -176,6 +226,7 @@
    font-size: 12pt;
  }
  .filtros{
+  background-color: #4762b2;
   font-size: 10pt;
   font-family: Barlow-Bold;   
   font-size: 10px; 
@@ -183,3 +234,22 @@
   color: white; text-align: 
   center; 
  }
+ input[type=text] {
+  width: 60%; 
+  margin-left: 20%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url(/src/assets/img/buscador.png);
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 2px 20px 7px 0px;
+  transition: width 0.4s ease-in-out;
+  font-family: Barlow-Regular;
+}
+
+input[type=text]:focus {
+  width: 40%;
+}   

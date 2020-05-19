@@ -1,40 +1,36 @@
-
 <!-- Inicia Header  --> 
 <div class="grid-containerh">
     <div class="item1" >
-      <div style="padding-left: 5%;" >Colección <strong>Conocimiento Ancestral</strong> </div>
-    
+    <div style="padding-left: 5%;" >Colección <strong>Conocimiento Ancestral</strong> </div>    
     <div style="padding-left: 45%;">Acerca de AmeliCA</div>  
-    <div >Proyecto Conocimeinto Ancestral</div>
-    
+    <div >Proyecto Conocimeinto Ancestral</div>    
     <div ><img src="assets/img/ic-home.png" alt=""></div>
     <div ><img src="assets/img/ic-facebook.png" alt=""></div>
     <div ><img src="assets/img/ic-twitter.png" alt=""></div>
-      </div>
+</div>
   </div>
-  <!--  termina Header    --> 
+<!--  termina Header    --> 
   
+ 
+
+<div  style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"><img src="assets/img/buscador-institucionmdpi.png" style="margin: 40px; ;">
+    Busqueda General
+   <input #palabra (keyup.enter)="buscar(palabra.value)" style="width: 30%; background-image: url(assets/img/buscador.png);  "type="text"> 
+</div>
   
-  
-  
-  <!--  Inicia menu horizontal sin grid   --> 
-  <div  style="margin: 20px; align-self: center; font-family: Barlow-Regular;">Busqueda General <input #palabra (keyup)="buscar(palabra.value)" style="width: 30%; margin-left: 30%; "type="text"></div>
-  
-  <div class="flex-containerhz">
-    <div class="filtros" style="background-color: #4762b2; ">Filtros de Busqueda</div>
-    <div>Libros</div>
-    <div >revistas</div>  
-    <div [routerLink]="['/busquedaGeneral']">Articulos de revista</div>
-    <div>Blog</div>  
-    <div>Video</div>
-    <div>Modo de visualizar resultados</div>
-    <div>Lista</div>
-    <div>Tarjetas</div>
+<div class="grid-containerh2">
+  <div class="item11" > 
+  <div class="filtros" ><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>  
+  <div style="text-align:center;" ><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>  
+  <div [routerLink]="['/busquedaGeneral']"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
+  <div style="margin-left: 40%;">Modo de visualizar resultados </div>
+  <div><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
+  <div><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
   </div>
-  <!--  Terina  menu horizontal sin grid   --> 
+</div>
+
   
-  
-  <!--  Filtros menu  --> 
+
   <div class="grid-container">
     <div class="item2">
       <app-filtros-revista></app-filtros-revista>      
@@ -49,17 +45,48 @@
         <app-globitos-revista></app-globitos-revista>
       </div>
       <div class="flex-containercont">
+
+
+
+<div class="item3">
+  <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"> 
+    <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para:  </p>
+    <br>
+    <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;"[attr.colspan] = "total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p></div>
+      <div id="contenedor-fichas" class="contenedor-fichas">
+        <div  *ngFor="let revistas of revistas" class="card">
+            <div class="titulo-card" style=" font-weight: bold; font-size: 12px; padding: 10px;">
+              <img style="height: 60px;" src="https://www.redalyc.org/redalyc/media/inc/img/revista/movil/revista/rva{{revistas.cveRevista}}.png">
+            </div>
+            <div class="cuerpo-card" style="height: 70px; font-size: 12px; padding: 0px 10px; ">
+              <div style="font-weight: bold;">  {{revistas.nombreRevista}}</div>
+              <div> Issn: {{revistas.issn}} | e-Issn: {{revistas.issnelec}}</div>
+              <div>{{revistas.nombreArea}}</div>
+              <div>{{revistas.nombreInstitucion}}</div>
+              <div>{{revistas.nombrePais}}</div>
+            </div>
+            <div class="footer-card" style="width: 100%; height: 35px; text-align: right; border-radius: 0px 0px 10px 10px; ; background-color: #ff660c; position: absolute; bottom: 0;">
+                <img class="img-footer" src="http://portal.amelica.org/resources/img/imgPortal/fbTarjetRev.png">
+                <img class="img-footer" src="http://portal.amelica.org/resources/img/imgPortal/twTarjetRev.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    
+    <button  *ngIf="getCount() > 1 " (click)="primerPagina()" class="button2">Primer Pagina </button>
+ 
+
+    <button *ngIf="getCount() > 1 "  (click)="incDCount()" class="button2">Pagina Anterior </button>
+   
+    <button  *ngIf="getFin() == 1 && total.final > 1 " (click)="incCount()"  class="button2">Pagina Siguiente</button>
   
-      <div class="articulo" id="example1" *ngFor="let revistas of revistas">
-        <p  style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; " ></p>
-       
-        <p >{{  revistas.nombreRevista }}</p>   
-       
-       
-       
-      </div>   
-      </div>
-    </div>  
+    <button *ngIf="getFin() == 1 && total.final > 1 " (click)="ultimapagina(total.final)" class="button2" >Ultima Pagina ({{total.final}})</button>
+    
+    </div> 
+
+
+
+
     <div class="item4">
       <div id="contendor-footer">
         <div id="instituciones-footer">
@@ -75,4 +102,4 @@
   
       </div>
     </div>
-  </div>
+ 
