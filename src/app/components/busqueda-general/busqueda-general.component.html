@@ -1,12 +1,12 @@
 <!-- Inicia Header  --> 
 <div class="grid-containerh">
   <div class="item1" >
-  <div style="padding-left: 5%;" >Colección <strong>Conocimiento Ancestral</strong></div>  
-  <div style="padding-left: 45%;">Acerca de AmeliCA</div>  
-  <div >Proyecto Conocimeinto Ancestral</div>  
-  <div ><img src="assets/img/ic-home.png" alt=""></div>
-  <div ><img src="assets/img/ic-facebook.png" alt=""></div>
-  <div ><img src="assets/img/ic-twitter.png" alt=""></div>
+  <div style="padding-left: 5%; margin: 5px 10px;" >Colección <strong>Conocimiento Ancestral</strong></div>  
+  <div style="padding-left: 45%; margin: 5px 10px;;">Acerca de AmeliCA</div>  
+  <div style="margin: 5px 10px;">Proyecto Conocimeinto Ancestral</div>  
+  <div style="margin: 0px 10px;" ><img src="assets/img/ic-home.png" alt=""></div>
+  <div style="margin: 0px 10px;"><img src="assets/img/ic-facebook.png" alt=""></div>
+  <div style="margin: 0px 10px;"><img src="assets/img/ic-twitter.png" alt=""></div>
     </div>
 </div>
 <!--  termina Header    --> 
@@ -20,8 +20,8 @@
 <div class="grid-containerh2">
   <div class="item11" > 
   <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>  
-  <div [routerLink]="['/busquedarev']" style="text-align:center;" ><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>  
-  <div><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
+  <div [routerLink]="['/busquedarev']" style="text-align:center;" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>  
+  <div (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
   <div style="margin-left: 40%;">Modo de visualizar resultados </div>
   <div><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
   <div><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>

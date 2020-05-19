@@ -11,6 +11,7 @@ import { ServicioHomeService } from '../../services/servicio-home.service';
 import { HttpClient } from '@angular/common/http';
 import { GlobalConstants } from '../../common/global-constants';
 import "core-js";
+import { get } from 'scriptjs';
 
 
 am4core.useTheme(am4themes_animated);
@@ -27,11 +28,20 @@ export class HomeComponent {
   articulosF: any[] = [];
 
   url: string = GlobalConstants.serviciosURL;
+  url2: string = GlobalConstants.url;
+
 
   constructor(private zone: NgZone, private service: ServicioHomeService) {
   }
 
   title = 'ConocimientoAncestral';
+
+  ngOnInit(){
+
+    get(`${this.url2}assets/js/home.js`, () => {
+
+    });
+  }
 
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
