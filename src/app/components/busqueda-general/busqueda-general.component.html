@@ -21,7 +21,7 @@
 <div  style="margin: 20px; align-self: center; font-family: Barlow-Regular;">Busqueda General <input #palabra (keyup.enter)="buscar(palabra.value)" style="width: 30%; margin-left: 30%;"type="text"></div>
 
 <div class="flex-containerhz">
-  <div class="filtros" style="background-color: #4762b2; ">Filtros de Busqueda</div>
+  <div class="filtros" style="background-color: #4762b2; border: 1px solid #4762b2;">Filtros de Busqueda</div>
   <div>Libros</div>
   <div [routerLink]="['/busquedarev']">revistas</div>  
   <div>Articulos de revista</div>
@@ -37,37 +37,22 @@
 <!--  Filtros menu  --> 
 <div class="grid-container">
   <div class="item2">
-    <div>Busqueda General</div>
-      
-  <div ><input type="checkbox" />Disciplina</div>  
-  <div ><input type="checkbox" />Disciplina</div>  
-  <div><input type="checkbox" />País</div>  
-  <div><input type="checkbox" />Fuente</div>
-  <br>
-  <div>Busqueda por palabras clave </div>      
-  <div>Fuente: </div>      
-  <br>
-  <div>Busqueda por pais </div>      
-  <div ><input type="checkbox" />Disciplina</div>  
-  <div ><input type="checkbox" />Disciplina</div>   
-  <div><input type="checkbox" />País</div>  
-  <div><input type="checkbox" />Fuente</div>   
-  <br>
-    
+    <app-filtros></app-filtros>    
   </div>
 
 <!-- Termina Filtros menu   --> 
 
   <div class="item3">
-    <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para:  </p>
+    <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para:  {{palabra}}</p>
+    <app-globitos></app-globitos>
     <div class="flex-containercont">
 
     <div class="articulo" id="example1" *ngFor="let articulo of articulos">
-      <p  style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; " (click)="irAlDetalle(articulo)">{{  articulo.tituloArt | tituloArticulo }}</p>
-      <p >{{  articulo.autores | autoresArticulo}}</p>   
+      <p  style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; " (click)="irAlDetalle(articulo)">{{  articulo.tituloArt }}</p>
+      <p >{{  articulo.autores}}</p>   
       <p >{{  articulo.nombreRevista  }}, {{  articulo.anio }}, {{ articulo.volumen }} ({{ articulo.numero }}) </p>  
       <p >Fuente: {{ articulo.dominio}} </p>
-      <p >{{  articulo.resumen  }}</p>
+      <p >{{  articulo.contenido  }}</p>
       <br>
 
       <div *ngIf="articulo.dominio === 'https://www.redalyc.org'">
@@ -88,6 +73,7 @@
 
     </div>
   </div>  
+  </div>
   <div class="item4">
     <div id="contendor-footer">
       <div id="instituciones-footer">

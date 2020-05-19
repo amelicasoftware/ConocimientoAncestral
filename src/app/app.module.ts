@@ -16,6 +16,10 @@ import { HomeComponent } from './components/home/home.component';
 import { ROUTES } from './app.routes';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { BusquedarevComponent } from './components/busquedarev/busquedarev.component';
+import { FiltrosComponent } from './components/filtros/filtros.component';
+import { GlobitosComponent } from './components/globitos/globitos.component';
+import { FiltrosRevistaComponent } from './components/filtros/filtros-revista.component';
+import { GlobitosRevistaComponent } from './components/globitos/globitos-revista.component';
 
 
 
@@ -30,6 +34,10 @@ import { BusquedarevComponent } from './components/busquedarev/busquedarev.compo
     HomeComponent,
     MapaComponent,
     BusquedarevComponent,
+    FiltrosComponent,
+    FiltrosRevistaComponent,
+    GlobitosComponent,
+    GlobitosRevistaComponent,
    
   ],
   imports: [

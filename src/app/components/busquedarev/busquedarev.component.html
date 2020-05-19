@@ -37,29 +37,17 @@
   <!--  Filtros menu  --> 
   <div class="grid-container">
     <div class="item2">
-      <div>Busqueda General</div>
-      
-      <div ><input type="checkbox" />Disciplina</div>  
-      <div ><input type="checkbox" />Disciplina</div>  
-      <div><input type="checkbox" />País</div>  
-      <div><input type="checkbox" />Fuente</div>
-      <br>
-      <div>Busqueda por palabras clave </div>      
-      <div>Fuente: </div>      
-      <br>
-      <div>Busqueda por pais </div>      
-      <div ><input type="checkbox" />Disciplina</div>  
-      <div ><input type="checkbox" />Disciplina</div>   
-      <div><input type="checkbox" />País</div>  
-      <div><input type="checkbox" />Fuente</div>   
-      <br>
-      
+      <app-filtros-revista></app-filtros-revista>      
+           
     </div>
   
   <!-- Termina Filtros menu   --> 
   
     <div class="item3">
       <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: </p> 
+      <div>
+        <app-globitos-revista></app-globitos-revista>
+      </div>
       <div class="flex-containercont">
   
       <div class="articulo" id="example1" *ngFor="let revistas of revistas">

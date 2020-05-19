@@ -125,8 +125,8 @@
 
 .item2 { 
   grid-area: menu;
-  border-right: 1px solid #a7a7a7;
-  width: 185%;
+  border-right: 1px solid #f1f1f1;
+  width: 20vw;
  }
  .item2> div { 
    
@@ -157,9 +157,9 @@
   display: grid;
   grid-template-areas:
     'header header header header header header'
-    'menu main main main main main'
+    'menu menu main main main main'
     'footer footer footer footer footer footer';
-  grid-gap: 10px;
+  grid-gap: 0px;
 
 }
 
@@ -171,15 +171,15 @@
 }
 .grid-container> div {
  
-   text-align: center;
-   padding: 20px 0;
-   font-size: 30px;
+   /* text-align: center; */
+   padding: 20px 13px;
+   font-size: 12pt;
  }
  .filtros{
   font-size: 10pt;
   font-family: Barlow-Bold;   
   font-size: 10px; 
-  width: 15%; 
+  width: 20vw; 
   color: white; text-align: 
   center; 
  }

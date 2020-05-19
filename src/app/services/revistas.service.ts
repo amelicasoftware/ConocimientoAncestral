@@ -22,12 +22,22 @@ export class RevistasService {
   }
 
   leerjson(): Observable<Revistas[]> {
-    return this.http.get<Revistas[]>(this.url + 'revistas/general?p=' +this.datarecibed);
+    return this.http.get<Revistas[]>(this.url + 'revistas/general?p=' + this.datarecibed);
   }
 
 
-  
+
   getBusquedaRevista(palabra: string) {
     return this.http.get(`${this.url}revistas/general?p="${palabra}"`);
   }
+
+  getBusquedaRevistaFiltro(palabra: string, cadenaDisciplina: string, cadenaInstitucion: string,
+                           cadenaPais: string, cadenaFuente: string) {
+    if (palabra === undefined) {
+      palabra = '';
+    }
+    console.log('servicio', `${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`);
+    return this.http.get(`${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`);
+  }
+
 }
