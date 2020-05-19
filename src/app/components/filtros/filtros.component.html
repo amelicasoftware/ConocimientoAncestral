@@ -13,7 +13,7 @@
                     for="{{ 'customCheck' + elemento.clave + filtro.nombre}}">{{elemento.nombre}} ({{elemento.total}})</label>
             </div>
         </div>
-        <div class="btn-vermas" id="bnt-vermas" (click)="mostrarElementos(filtro)">
+        <div class="btn-vermas" id="bnt-vermas" (click)="mostrarElementos(filtro)" [ngClass]="{'mostrar-boton': mostrarBoton(filtro)}">
             <span>{{boton}}</span>
         </div>
 

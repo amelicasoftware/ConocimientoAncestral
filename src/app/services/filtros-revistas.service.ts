@@ -10,6 +10,7 @@ export class FiltrosRevistasService {
   resultadoRevistas: Array<any> = [];
   filtrosGlobos: Array<any> = [];
   palabra: string = 'ciencia';
+  cadenaFitros: string;
 
   @Output() cambioFiltros: EventEmitter<any> = new EventEmitter();
   @Output() cambioRevistas: EventEmitter<any> = new EventEmitter();

@@ -29,7 +29,7 @@ export class BusquedaGeneralComponent implements OnInit {
   palabraBusqueda: string;
 
   constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
-    private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService) { }
+              private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService) { }
 
   ngOnInit(): void {
     this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
@@ -44,6 +44,7 @@ export class BusquedaGeneralComponent implements OnInit {
       this.total.pos = this.articuloService.count
       console.log(this.articulos)
       console.log(this.total)
+      this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
     });
 
     this.filtrosService.cambioArticulos.subscribe(data2 => {
@@ -79,6 +80,7 @@ export class BusquedaGeneralComponent implements OnInit {
         this.total.final = Math.floor(this.total.total / 10) + 1
       }
     });
+    this.filtrosService.palabra = palabra;
   }
 
 

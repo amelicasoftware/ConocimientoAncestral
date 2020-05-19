@@ -37,6 +37,7 @@ export class GlobitosRevistaComponent implements OnInit {
         this.filtrosRevistasService.actualizarFiltros(data.filtros);
         console.log(this.filtrosRevistasService.filtros);
         this.filtrosRevistasService.actualizarGlobos(this.filtrosRevistasService.filtrosElegidos);
+        this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
         this.filtrosRevistasService.cambioEstado();
       });
   }

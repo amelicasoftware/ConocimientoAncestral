@@ -88,7 +88,8 @@ export class FiltrosComponent implements OnInit {
     let cadenaDisciplina = this.filtrosService.construirCadena('Disciplina');
     let cadenaFuente = this.filtrosService.construirCadena('Fuente');
     let cadenaIdioma = this.filtrosService.construirCadena('Idioma');
-    let palabra = this.busquedaGeneralComponent.palabraBusqueda;
+    let palabra = this.filtrosService.palabra;
+    console.log(palabra);
     this.serviosBusquedaService.getBusquedaArtFiltro(palabra, cadenaAnio, cadenaPais, cadenaDisciplina, 
                                                       cadenaFuente, cadenaIdioma).subscribe((data: any) => {
         console.log('resultados', data);
@@ -99,6 +100,17 @@ export class FiltrosComponent implements OnInit {
         this.filtrosService.cambioEstado();
     });
 
+  }
+
+  mostrarBoton(filtro){
+    // console.log('tamaño filtro', filtro);
+    if(filtro.elementos.length > 5){
+      // console.log(true);
+      return false;
+    }else{
+      // console.log(false);
+      return true;
+    }
   }
 
 }

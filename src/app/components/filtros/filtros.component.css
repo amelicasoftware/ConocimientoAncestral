@@ -8,6 +8,9 @@
   transition-duration: 3s, 5s, 3s, 5s;
 }
 
+.mostrar-boton{
+    display: none;
+}
 .aquisiA div.otraclase{
     display: block;
 }

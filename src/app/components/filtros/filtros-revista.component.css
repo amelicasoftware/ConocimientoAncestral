@@ -5,6 +5,10 @@
     display: block;
 }
 
+.mostrar-boton{
+    display: none;
+}
+
 #filtroDisciplina>.otraclaseD{
     display: block;
 }

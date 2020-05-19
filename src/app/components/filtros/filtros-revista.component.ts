@@ -87,6 +87,12 @@ export class FiltrosRevistaComponent implements OnInit {
   }
 
   activarFiltros(elemento, nombre: string) {
+    // console.log(elemento);
+    if (this.filtrosRevistasService.filtrosElegidos.find(element => element.nombre === elemento.nombre)) {
+      return true;
+    }else{
+      return false;
+    }
 
   }
 
@@ -102,9 +108,21 @@ export class FiltrosRevistaComponent implements OnInit {
         this.filtrosRevistasService.actualizarFiltros(data.filtros);
         console.log(this.filtrosRevistasService.filtros);
         this.filtrosRevistasService.actualizarGlobos(this.filtrosRevistasService.filtrosElegidos);
+        this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
         this.filtrosRevistasService.cambioEstado();
       });
 
+  }
+
+  mostrarBoton(filtro){
+    // console.log('tamaño filtro', filtro);
+    if(filtro.elementos.length > 5){
+      // console.log(true);
+      return false;
+    }else{
+      // console.log(false);
+      return true;
+    }
   }
 
 }
