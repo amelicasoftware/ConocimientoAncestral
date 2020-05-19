@@ -38,21 +38,14 @@
     </div>
   
   <!-- Termina Filtros menu   --> 
-  
-    <div class="item3">
-      <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: </p> 
-      <div>
-        <app-globitos-revista></app-globitos-revista>
-      </div>
-      <div class="flex-containercont">
-
-
-
 <div class="item3">
   <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"> 
-    <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para:  </p>
+    <p style="text-align: start; margin-left: 20px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para:  </p>
     <br>
     <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;"[attr.colspan] = "total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p></div>
+    <div>
+      <app-globitos-revista></app-globitos-revista>
+    </div>
       <div id="contenedor-fichas" class="contenedor-fichas">
         <div  *ngFor="let revistas of revistas" class="card">
             <div class="titulo-card" style=" font-weight: bold; font-size: 12px; padding: 10px;">

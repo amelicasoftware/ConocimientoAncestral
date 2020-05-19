@@ -40,18 +40,12 @@
   </div>
 
 <!-- Termina Filtros menu   --> 
-
   <div class="item3">
-    <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para:  {{palabra}}</p>
-    <app-globitos></app-globitos>
-    <div class="flex-containercont">
-
-  <div class="item3">
-    <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"> 
-      <p style="text-align: start; margin-left: 250px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para:  </p>
+    <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center; margin-left: 10px;"> 
+      <p style="text-align: start; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para:  </p>
       <br>
       <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan] = "total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p></div>
-   
+      <app-globitos></app-globitos>
     <div class="flex-containercont" > 
     
     <div class="articulo" id="example1" *ngFor="let articulo of articulos">
@@ -93,8 +87,6 @@
 
 
     </div>
-  </div>  
-  </div>
   <div class="item4">
     <div id="contendor-footer">
       <div id="instituciones-footer">
