@@ -41,6 +41,7 @@ export class BusquedaGeneralComponent implements OnInit {
        }else{
         this.total.final = Math.floor(this.total.total/10)+1
        }
+       this.total.pos = this.articuloService.count
 console.log(this.articulos)
 console.log(this.total)
     });
@@ -49,6 +50,7 @@ console.log(this.total)
       console.log('resutladosServicio', data2);
       this.articulos = data2;
     });
+    this.total.palabra = this.articuloService.getpalabra()
   }
 
 
@@ -57,8 +59,7 @@ console.log(this.total)
     this.articuloService.total.final = 0 
     this.articuloService.count = 1
     this.articuloService.fin = 1
-    let pagina = this.articuloService.getpalabra();
-    palabra = palabra
+    this.total.palabra = palabra  
     console.log(palabra);
     this.filtrosService.palabra = palabra;
     this.articuloService.getBusquedaArticulos(palabra).subscribe((data: any) => {
@@ -77,8 +78,7 @@ console.log(this.total)
       }else{
        this.total.final = Math.floor(this.total.total/10)+1
       }  
-    });
-    this.palabraBusqueda = palabra;
+    });   
   }
 
 
@@ -98,8 +98,15 @@ public ultimapagina(ultimapagina:number){
        this.total.final = Math.floor(this.total.total/10)+1
        this.articuloService.setcount(this.total.final)
       }  
+      this.total.pos = this.articuloService.count
       this.articuloService.setfin(0)
     });
+}
+
+
+public posicionActual(){
+  let posicion = this.articuloService.count 
+console.log(posicion)
 }
 
 public primerPagina(){
@@ -118,18 +125,22 @@ public primerPagina(){
        this.total.final = Math.floor(this.total.total/10)+1
        this.articuloService.setcount(1)
       }  
+      this.total.pos = this.articuloService.count
       this.articuloService.setfin(1)
     });
+    
 }
 
 public getCount() { 
   return this.articuloService.count 
 }
 public getFin(){
+  this.total.pos = this.articuloService.count
   return this.articuloService.fin
 }
 
 public incCount(){ 
+ 
   let pagina = this.articuloService.getcount();
   let d = this.total.total; //11 
   let division = d%10; // division = 1 
@@ -161,6 +172,7 @@ public incCount(){
     }    
   }
   console.log(pagina)
+  this.total.pos = this.articuloService.count
 }
 
 
@@ -168,6 +180,7 @@ public getDCount() {
   return this.articuloService.count 
 }
 public incDCount(){ 
+
   this.articuloService.setfin(1)
   let pagina = this.articuloService.getcount();
   pagina = pagina - 1
@@ -178,5 +191,6 @@ public incDCount(){
   this.articulos = articulosDesdeApi.articulos.articulos;
 
   });
+  this.total.pos = this.articuloService.count
 }
 }
