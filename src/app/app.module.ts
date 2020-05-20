@@ -20,6 +20,7 @@ import { FiltrosComponent } from './components/filtros/filtros.component';
 import { GlobitosComponent } from './components/globitos/globitos.component';
 import { FiltrosRevistaComponent } from './components/filtros/filtros-revista.component';
 import { GlobitosRevistaComponent } from './components/globitos/globitos-revista.component';
+import { PaginadorComponent } from './components/paginador/paginador.component';
 
 
 
@@ -38,6 +39,7 @@ import { GlobitosRevistaComponent } from './components/globitos/globitos-revista
     FiltrosRevistaComponent,
     GlobitosComponent,
     GlobitosRevistaComponent,
+    PaginadorComponent,
    
   ],
   imports: [

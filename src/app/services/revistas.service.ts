@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { GlobalConstants } from '../common/global-constants';
 import { Observable, from } from 'rxjs';
 import { Total } from '../models/total';
+import { FiltrosService } from './filtros.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class RevistasService {
   public fin = 1;
   public palabra: string = 'ciencia';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private filtrosService: FiltrosService) {
+    
   }
 
 
@@ -62,7 +64,8 @@ export class RevistasService {
   }
 
   getBusquedaRevistas(palabra: string) {
-    return this.http.get(`${this.url}revistas/general?p="${palabra}"&page=${this.count}`);
+    console.log(`${this.url}revistas/general?p="${palabra}"&page=${this.count}&${this.filtrosService.cadenafiltros}`);
+    return this.http.get(`${this.url}revistas/general?p="${palabra}"&page=${this.count}&${this.filtrosService.cadenafiltros}`);
   }
 
   getPaginaFinal(palabra: string, ultima:number) {
@@ -78,6 +81,7 @@ export class RevistasService {
     if (palabra === undefined) {
       palabra = '';
     }
+    this.filtrosService.cadenafiltros = `f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`
     console.log('servicio', `${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`);
     return this.http.get(`${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`);
   }

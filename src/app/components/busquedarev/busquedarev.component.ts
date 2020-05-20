@@ -23,7 +23,9 @@ export class BusquedarevComponent implements OnInit {
   revistasResultado: [] = [];
   constructor(private RevistasInyectado: RevistasService, private Ruta: Router,
               private revistasService: RevistasService, private filtrosRevistasService: FiltrosRevistasService) { }
-  ngOnInit(): void {
+
+
+  ngOnInit(): void { //inicializa la busqueda con el primer metodo del servicio LeerJson 
     this.revistasService.leerjson().subscribe((revistasDesdeApi: any) => {
       console.log(revistasDesdeApi.revistas.total)
       this.revistas = revistasDesdeApi.revistas.revistas;
@@ -56,7 +58,7 @@ export class BusquedarevComponent implements OnInit {
     console.log(palabra);
     this.revistasService.getBusquedaRevistas(palabra).subscribe((data: any) => {
       console.log(data);
-      this.revistas = data.revistas.revistas;
+     // this.revistas = data.revistas.revistas;
       this.revistasService.setpalabra(palabra)
       console.log(palabra)
       this.total.total = data.revistas.total;
@@ -67,6 +69,7 @@ export class BusquedarevComponent implements OnInit {
       }
       this.filtrosRevistasService.actualizarFiltros(data.filtros);
       this.filtrosRevistasService.palabra = palabra;
+      this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas)
     });
   }
 
@@ -118,6 +121,7 @@ export class BusquedarevComponent implements OnInit {
     });
   }
 
+
   public getCount() {
     return this.revistasService.count
   }
@@ -140,6 +144,7 @@ export class BusquedarevComponent implements OnInit {
       this.revistasService.setcount(pagina)
       this.RevistasInyectado.leerjson().subscribe((revistasDesdeApi: any) => {
         this.revistas = revistasDesdeApi.revistas.revistas
+        this.filtrosRevistasService.actualizarRevistas(revistasDesdeApi.revistas.revistas);
       });
     } else {
       if (!(Number.isInteger(d / 12)) && (pagina <= (d / 12))) {
@@ -152,6 +157,7 @@ export class BusquedarevComponent implements OnInit {
         this.revistasService.setcount(pagina)
         this.RevistasInyectado.leerjson().subscribe((revistasDesdeApi: any) => {
           this.revistas = revistasDesdeApi.revistas.revistas
+          this.filtrosRevistasService.actualizarRevistas(revistasDesdeApi.revistas.revistas);
         });
       } else {
         this.revistasService.setfin(0)

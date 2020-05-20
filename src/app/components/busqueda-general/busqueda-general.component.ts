@@ -5,7 +5,7 @@ import { ServiosBusquedaService } from '../../services/servios-busqueda.service'
 import { Router } from '@angular/router';
 import { FiltrosComponent } from '../filtros/filtros.component';
 import { FiltrosService } from '../../services/filtros.service';
-
+import { PaginadorService } from '../../services/paginador.service'
 import { Total } from '../../models/total'
 import { from } from 'rxjs';
 import { number } from '@amcharts/amcharts4/core';
@@ -29,7 +29,7 @@ export class BusquedaGeneralComponent implements OnInit {
   palabraBusqueda: string;
 
   constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
-              private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService) { }
+              private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService, private PaginadorService: PaginadorService) { }
 
   ngOnInit(): void {
     this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
