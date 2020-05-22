@@ -3,8 +3,8 @@ import { Revistas } from '../../models/revistas';
 import { Usuario } from '../../models/usuario';
 import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
 import { FiltrosRevistasService } from '../../services/filtros-revistas.service';
-import { Total } from '../../models/total'
-import { RevistasService } from '../../services/revistas.service'
+import { Total } from '../../models/total';
+import { RevistasService } from '../../services/revistas.service';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { number } from '@amcharts/amcharts4/core';

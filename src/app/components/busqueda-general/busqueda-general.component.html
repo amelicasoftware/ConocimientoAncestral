@@ -1,129 +1,135 @@
-<!-- Inicia Header  --> 
+<!-- Inicia Header  -->
 <div class="grid-containerh">
-  <div class="item1" >
-  <div style="padding-left: 5%; margin: 5px 10px;" >Colección <strong>Conocimiento Ancestral</strong></div>  
-  <div style="padding-left: 45%; margin: 5px 10px;;">Acerca de AmeliCA</div>  
-  <div style="margin: 5px 10px;">Proyecto Conocimeinto Ancestral</div>  
-  <div style="margin: 0px 10px;" ><img src="assets/img/ic-home.png" alt=""></div>
-  <div style="margin: 0px 10px;"><img src="assets/img/ic-facebook.png" alt=""></div>
-  <div style="margin: 0px 10px;"><img src="assets/img/ic-twitter.png" alt=""></div>
+    <div class="item1">
+        <div style="padding-left: 5%; margin: 5px 10px;">Colección <strong>Conocimiento Ancestral</strong></div>
+        <div style="padding-left: 45%; margin: 5px 10px;;">Acerca de AmeliCA</div>
+        <div style="margin: 5px 10px;">Proyecto Conocimeinto Ancestral</div>
+        <div style="margin: 0px 10px;"><img src="assets/img/ic-home.png" alt=""></div>
+        <div style="margin: 0px 10px;"><img src="assets/img/ic-facebook.png" alt=""></div>
+        <div style="margin: 0px 10px;"><img src="assets/img/ic-twitter.png" alt=""></div>
     </div>
 </div>
-<!--  termina Header    --> 
+<!--  termina Header    -->
 
 
-<div  style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"><img src="assets/img/buscador-institucionmdpi.png" style="margin: 40px; ;">
-  Busqueda General
- <input #palabra (keyup.enter)="buscar(palabra.value)" style="width: 30%; background-image: url(assets/img/buscador.png);  "type="text"> 
+<div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"><img src="assets/img/buscador-institucionmdpi.png" style="margin: 40px; ;"> Busqueda General
+    <input #palabra (keyup.enter)="buscar(palabra.value)" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text">
 </div>
 
 <div class="grid-containerh2">
-  <div class="item11" > 
-  <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>  
-  <div [routerLink]="['/busquedarev']" style="text-align:center;" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>  
-  <div (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
-  <div style="margin-left: 40%;">Modo de visualizar resultados </div>
-  <div><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
-  <div><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
-  </div>
+    <div class="item11">
+        <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
+        <div [routerLink]="['/busquedarev']" style="text-align:center;" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
+        <div (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
+        <div style="margin-left: 40%;">Modo de visualizar resultados </div>
+        <div><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
+        <div><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
+    </div>
 </div>
 
 
-<!--  Inicia menu horizontal sin grid   --> 
-<!--  Terina  menu horizontal sin grid   --> 
+<!--  Inicia menu horizontal sin grid   -->
+<!--  Terina  menu horizontal sin grid   -->
 
 
-<!--  Filtros menu  --> 
+<!--  Filtros menu  -->
 <div class="grid-container">
   <div class="item2">
     <app-filtros></app-filtros>    
   </div>
 
-<!-- Termina Filtros menu   --> 
-  <div class="item3">
-    <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"> 
-      <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para: {{total.palabra}}   </p>
-      <br>
-      <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan] = "total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p></div>
-      <app-globitos></app-globitos>
-    <div class="flex-containercont" > 
-    
-    <div class="articulo" id="example1" *ngFor="let articulo of articulos">
-      <div *ngIf="articulo.origen === 'PDF'"  style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; "><a href="https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank">{{  articulo.tituloArt | tituloArticulo }}</a></div>
-      <div *ngIf="articulo.origen === 'XML'"  style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; "><a href="https://www.redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/index.html" target="_blank">{{  articulo.tituloArt | tituloArticulo }}</a></div>
-      <p >{{  articulo.autores | autoresArticulo}}</p>   
-      <p >{{  articulo.nombreRevista  }}, {{  articulo.anio }}, {{ articulo.volumen }} ({{ articulo.numero }}) </p>  
-      <p >Fuente: {{ articulo.fuente}}  </p>
-      <p [innerHTML]='articulo.contenido'>{{  articulo.contenido  }}</p>
-      <br>
-
-
-      <div *ngIf="articulo.dominio === 'https://www.redalyc.org'" >
-        <div *ngIf="articulo.origen === 'PDF'" style="display: flex;">
-          <p  style="font-size: 10pt; color: #4762b2; margin-bottom: 0px; display: flex; ">Texto Completo: 
-              <button class="button1"><a  href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}"  target="_blank">PDF</a></button>
-
-              <a style="margin-left: 500%;" href="http://www.facebook.com/sharer.php?u=https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}}" class="facebook" target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;"> <img target="_blank" src="assets/img/tar-face.png" alt=""></a>
-              <a href="https://twitter.com/intent/tweet?original_referer=https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}} &amp;text={{  articulo.tituloArt | tituloArticulo }} https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}} vía @Ameli_CA" class="twitter" target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;"><img  src="assets/img/tar-twit.png" alt=""></a>
-            </p>
+    <!-- Termina Filtros menu   -->
+    <div class="item3">
+        <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
+            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}} </p>
+            <br>
+            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
         </div>
-        
-          <div *ngIf="articulo.origen === 'XML'" style="display: flex;" >
-            <p  style="font-size: 10pt; color: #4762b2; margin-bottom: 0px; display: flex; margin-left: 10px; ">Texto Completo: 
-              <button class="button1"><a href="https://redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/html/index.html" target="_blank">HTML-R</a> </button>
-              <button class="button1"><a href="https://redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/{{articulo.claveArt}}.epub" target="_blank">ePUB-R</a></button>
-              <button class="button1"><a href="https://redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/movil/index.html" target="_blank">MÓVIL-R</a></button>
-              <button class="button1"><a href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}"  target="_blank">PDF</a></button>
-              
-               
-              <a style="margin-left: 145%;" href="href=http://www.facebook.com/sharer.php?u=https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}}" class="facebook" target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;"> <img  target="_blank" src="assets/img/tar-face.png" alt=""></a>
-              <a  href="https://twitter.com/intent/tweet?original_referer=https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}} &amp;text={{  articulo.tituloArt | tituloArticulo }} https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}} vía @Ameli_CA" class="twitter" target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;"><img  src="assets/img/tar-twit.png" alt=""></a>
+        <app-globitos></app-globitos>
+        <div class="flex-containercont">
+
+            <div class="articulo" id="example1" *ngFor="let articulo of articulos">
+                <div *ngIf="articulo.origen === 'PDF'" style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; "><a href="https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank">{{  articulo.tituloArt | tituloArticulo }}</a></div>
+                <div *ngIf="articulo.origen === 'XML'" style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; "><a href="https://www.redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/index.html" target="_blank">{{  articulo.tituloArt | tituloArticulo }}</a></div>
+                <p>{{ articulo.autores | autoresArticulo}}</p>
+                <p>{{ articulo.nombreRevista }}, {{ articulo.anio }}, {{ articulo.volumen }} ({{ articulo.numero }}) </p>
+                <p>Fuente: {{ articulo.fuente}} </p>
+                <p [innerHTML]='articulo.contenido'>{{ articulo.contenido }}</p>
+                <br>
+
+
+
+                <div *ngIf="articulo.dominio === 'https://www.redalyc.org'" >
+                    <div *ngIf="articulo.origen === 'PDF'" style="display: flex;">
+                      <p  style="font-size: 10pt; color: #4762b2; margin-bottom: 0px; display: flex; ">Texto Completo: 
+                          <button class="button1"><a  href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}"  target="_blank">PDF</a></button>
             
-         
-              
-            </div>    			
-    </div>
-    </div>
-  </div> 
-  
-  
-  <div style="margin-left: 40%; font-family: Barlow-Regular; font-size: 10pt;" >Pag. Actual: {{total.pos}} </div>
-  
-  
-  <div  style="margin-left: 20%; font-family: Barlow-Regular; font-size: 10pt;" >
-    <button  *ngIf="getCount() > 1 " (click)="primerPagina()" class="button2">Primer Pagina </button>
- 
+                          <a style="margin-left: 500%;" href="http://www.facebook.com/sharer.php?u=https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}}" class="facebook" target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;"> <img target="_blank" src="assets/img/tar-face.png" alt=""></a>
+                          <a href="https://twitter.com/intent/tweet?original_referer=https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}} &amp;text={{  articulo.tituloArt | tituloArticulo }} https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}} vía @Ameli_CA" class="twitter" target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;"><img  src="assets/img/tar-twit.png" alt=""></a>
+                        </p>
+                    </div>
+                    
+                      <div *ngIf="articulo.origen === 'XML'" style="display: flex;" >
+                        <p  style="font-size: 10pt; color: #4762b2; margin-bottom: 0px; display: flex; margin-left: 10px; ">Texto Completo: 
+                          <button class="button1"><a href="https://redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/html/index.html" target="_blank">HTML-R</a> </button>
+                          <button class="button1"><a href="https://redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/{{articulo.claveArt}}.epub" target="_blank">ePUB-R</a></button>
+                          <button class="button1"><a href="https://redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/movil/index.html" target="_blank">MÓVIL-R</a></button>
+                          <button class="button1"><a href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}"  target="_blank">PDF</a></button>
+                          <a style="margin-left: 172%;" href="href=http://www.facebook.com/sharer.php?u=https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}}" class="facebook" target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;"> <img  target="_blank" src="assets/img/tar-face.png" alt=""></a>
+                          <a  href="https://twitter.com/intent/tweet?original_referer=https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}} &amp;text={{  articulo.tituloArt | tituloArticulo }} https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}} vía @Ameli_CA" class="twitter" target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;"><img  src="assets/img/tar-twit.png" alt=""></a>
+                        </div>    			
+                </div>
 
-    <button *ngIf="getCount() > 1 "  (click)="incDCount()" class="button2">Pagina Anterior </button>
-  
-    
-    
-   
-    <button  *ngIf="getFin() == 1 && total.final > 1 " (click)="incCount()"  class="button2">Pagina Siguiente</button>
-  
-    <button *ngIf="getFin() == 1 && total.final > 1 " (click)="ultimapagina(total.final)" class="button2" >Ultima Pagina ({{total.final}})</button>
 
-  </div>
-  
-  
-  <app-paginador></app-paginador>
+
+            </div>
+        </div>
+
+        <div style="margin-left: 40%; font-family: Barlow-Regular; font-size: 10pt;">Pag. Actual: {{total.pos}} </div>
+
+
+        <div style="margin-left: 20%; font-family: Barlow-Regular; font-size: 10pt;">
+            <button *ngIf="getCount() > 1 " (click)="primerPagina()" class="button2">Primer Pagina </button>
+
+
+            <button *ngIf="getCount() > 1 " (click)="incDCount()" class="button2">Pagina Anterior </button>
+
+
+
+
+            <button *ngIf="getFin() == 1 && total.final > 1 " (click)="incCount()" class="button2">Pagina Siguiente</button>
+
+            <button *ngIf="getFin() == 1 && total.final > 1 " (click)="ultimapagina(total.final)" class="button2">Ultima Pagina ({{total.final}})</button>
+
+        </div>
+
+
+        <app-paginador></app-paginador>
+
+    </div>
+    
+
 
 </div>
-
-
-    </div>
-  <div class="item4">
+<div class="item4"> 
     <div id="contendor-footer">
-      <div id="instituciones-footer">
-        <div><a href="#"><img src="assets/img/ic-amelica-footer.png" /></a></div>
-        <div><a href="#"><img src="assets/img/ic-unesco-footer.png" /></a></div>
-        <div><a href="#"><img src="assets/img/ic-clacso-footer.png" /></a></div>
-        <div><a href="#"><img src="assets/img/ic-redalyc-footer.png" /></a></div>
-      </div>
-      <div id="resumen-footer" style="width: 40%">Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-        printer took a galley of type and scrambled it to make a type specimen book. It has survived</div>
+        <div id="instituciones-footer">
+            <div>
+                <a href="#"><img src="assets/img/ic-amelica-footer.png" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="assets/img/ic-unesco-footer.png" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="assets/img/ic-clacso-footer.png" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="assets/img/ic-redalyc-footer.png" /></a>
+            </div>
+        </div>
+        <div id="resumen-footer" style="width: 40%">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            It has survived</div>
 
 
     </div>
-  </div>
+</div>
