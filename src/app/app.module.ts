@@ -22,6 +22,8 @@ import { FiltrosRevistaComponent } from './components/filtros/filtros-revista.co
 import { GlobitosRevistaComponent } from './components/globitos/globitos-revista.component';
 import { PaginadorComponent } from './components/paginador/paginador.component';
 import { PaginadorArticulosComponent } from './components/paginador/paginador-articulos.component';
+import { VistaTablaComponent } from './components/vista-tabla/vista-tabla.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -41,12 +43,14 @@ import { PaginadorArticulosComponent } from './components/paginador/paginador-ar
     GlobitosComponent,
     GlobitosRevistaComponent,
     PaginadorComponent,
-    PaginadorArticulosComponent
+    PaginadorArticulosComponent,
+    VistaTablaComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES, { useHash: true})
+    RouterModule.forRoot(ROUTES, { useHash: true}),
+    BrowserAnimationsModule
   ],
 
   providers: [],
