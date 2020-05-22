@@ -101,7 +101,6 @@ export class BusquedarevComponent implements OnInit {
   }
 
   public primerPagina() {
-
     let palabra = this.revistasService.getpalabra();
     console.log(palabra);
     this.revistasService.getPaginaP(palabra).subscribe((data: any) => {
@@ -125,6 +124,9 @@ export class BusquedarevComponent implements OnInit {
   public getCount() {
     return this.revistasService.count
   }
+
+
+
   public getFin() {
     this.total.pos = this.revistasService.count
     return this.revistasService.fin
@@ -184,4 +186,20 @@ export class BusquedarevComponent implements OnInit {
     });
     this.total.pos = this.revistasService.count
   }
+
+  public numerosPag(pagina:number, final:number){
+    
+   if(pagina == final){
+    this.revistasService.setfin(0)
+   }else{
+    this.revistasService.setfin(1)
+   }
+    this.revistasService.setcount(pagina)
+    this.RevistasInyectado.leerjson().subscribe((revistasDesdeApi: any) => {
+      this.revistas = revistasDesdeApi.revistas.revistas;
+    });
+    this.total.pos = this.revistasService.count
+  } 
+
+  
 }

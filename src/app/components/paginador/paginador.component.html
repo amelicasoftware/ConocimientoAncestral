@@ -1,18 +1,23 @@
-     
-  <div style="margin-left: 40%; font-family: Barlow-Regular; font-size: 10pt;" >Pag. Actual: {{total.pos}} </div>
+<div style="margin-left: 40%; font-family: Barlow-Regular; font-size: 10pt;" >Pag. Actual: {{total.pos}} </div>
   
   
-  <div  style="margin-left: 20%; font-family: Barlow-Regular; font-size: 10pt;" >
-    <button  *ngIf="getCount() > 1 " (click)="primerPagina()" class="button2">Primer Pagina </button>
+<div  style="margin-left: 20%; font-family: Barlow-Regular; font-size: 10pt;" >
+
+  
+  <button  *ngIf="getCount() > 1 " (click)="primerPagina()" class="button2">Primer Pagina </button> 
+
+  <button *ngIf="getCount() > 1 "  (click)="incDCount()" class="button2">Pagina Anterior </button>  
+  
+  <button *ngIf="total.pos > 2"  (click)="numerosPag(total.pos-2, total.final)" class="button2">{{total.pos-2}}</button>
+
+  <button *ngIf="total.pos > 1"  (click)="numerosPag(total.pos-1, total.final)" class="button2">{{total.pos-1}}</button>
  
+  <button  *ngIf="total.pos <= total.final-1 " (click)="numerosPag(total.pos+1, total.final)"  class="button2">{{total.pos+1}}</button>
+ 
+  <button  *ngIf="total.pos <= total.final-2" (click)="numerosPag(total.pos+2, total.final)"  class="button2">{{total.pos+2}}</button>
+ 
+  <button  *ngIf="getFin() == 1 && total.final > 1 " (click)="incCount()"  class="button2">Pagina Siguiente</button>
 
-    <button *ngIf="getCount() > 1 "  (click)="incDCount()" class="button2">Pagina Anterior </button>
-  
-    
-    
-   
-    <button  *ngIf="getFin() == 1 && total.final > 1 " (click)="incCount()"  class="button2">Pagina Siguiente</button>
-  
-    <button *ngIf="getFin() == 1 && total.final > 1 " (click)="ultimapagina(total.final)" class="button2" >Ultima Pagina ({{total.final}})</button>
+  <button *ngIf="getFin() == 1 && total.final > 1 " (click)="ultimapagina(total.final)" class="button2" >Ultima Pagina ({{total.final}})</button>
 
-  </div>
+</div>
