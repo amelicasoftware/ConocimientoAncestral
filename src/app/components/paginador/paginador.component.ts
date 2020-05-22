@@ -44,11 +44,6 @@ export class PaginadorComponent implements OnInit {
       this.filtrosRevistasService.cambioRevistas.subscribe(data2 => {
         console.log('resutladosServicio', data2);
         this.revistas = data2;
-        this.PaginadorService.cambioTotal.subscribe(data2 =>{
-          this.total.total = data2; 
-          console.log(data2)
-          console.log(data2)
-        });
       });
     }
   
@@ -74,6 +69,7 @@ export class PaginadorComponent implements OnInit {
         }
         this.filtrosRevistasService.actualizarFiltros(data.filtros);
         this.filtrosRevistasService.palabra = palabra;
+        this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas)
       });
     }
   
@@ -105,7 +101,6 @@ export class PaginadorComponent implements OnInit {
     }
   
     public primerPagina() {
-  
       let palabra = this.revistasService.getpalabra();
       console.log(palabra);
       this.revistasService.getPaginaP(palabra).subscribe((data: any) => {
@@ -129,6 +124,9 @@ export class PaginadorComponent implements OnInit {
     public getCount() {
       return this.revistasService.count
     }
+  
+  
+  
     public getFin() {
       this.total.pos = this.revistasService.count
       return this.revistasService.fin
@@ -146,7 +144,7 @@ export class PaginadorComponent implements OnInit {
           this.revistasService.setfin(0)
         } //boton de pagina siguiente no sera mostrado llgando al final
         this.revistasService.setcount(pagina)
-        this.RevistasInyectado.getBusquedaRevistas(this.filtrosRevistasService.palabra).subscribe((revistasDesdeApi: any) => {
+        this.RevistasInyectado.leerjson().subscribe((revistasDesdeApi: any) => {
           this.revistas = revistasDesdeApi.revistas.revistas
           this.filtrosRevistasService.actualizarRevistas(revistasDesdeApi.revistas.revistas);
         });
@@ -159,7 +157,7 @@ export class PaginadorComponent implements OnInit {
             this.revistasService.setfin(0)
           }//boton de pagina siguiente no sera mostrado llgando al final
           this.revistasService.setcount(pagina)
-          this.RevistasInyectado.getBusquedaRevistas(this.filtrosRevistasService.palabra).subscribe((revistasDesdeApi: any) => {
+          this.RevistasInyectado.leerjson().subscribe((revistasDesdeApi: any) => {
             this.revistas = revistasDesdeApi.revistas.revistas
             this.filtrosRevistasService.actualizarRevistas(revistasDesdeApi.revistas.revistas);
           });
@@ -188,5 +186,21 @@ export class PaginadorComponent implements OnInit {
       });
       this.total.pos = this.revistasService.count
     }
-
-}
+  
+    public numerosPag(pagina:number, final:number){
+      
+     if(pagina == final){
+      this.revistasService.setfin(0)
+     }else{
+      this.revistasService.setfin(1)
+     }
+      this.revistasService.setcount(pagina)
+      this.RevistasInyectado.leerjson().subscribe((revistasDesdeApi: any) => {
+        this.revistas = revistasDesdeApi.revistas.revistas;
+      });
+      this.total.pos = this.revistasService.count
+    } 
+  
+    
+  }
+  
