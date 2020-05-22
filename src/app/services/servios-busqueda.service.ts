@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { GlobalConstants } from '../common/global-constants';
 import { Observable } from 'rxjs';
 import { Total } from '../models/total';
+import { FiltrosRevistasService } from './filtros-revistas.service';
+import { FiltrosService } from './filtros.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,7 @@ export class ServiosBusquedaService {
   public count = 1;
   public fin = 1;
   public palabra: string = "ciencia";
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private filtrosService: FiltrosService) {
 
 
   }
@@ -77,7 +79,13 @@ export class ServiosBusquedaService {
     if (palabra === undefined) {
       palabra = '';
     }
+    this.filtrosService.cadenafiltros = `f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`
     console.log('servicio', `${this.url}articulos/general?p="${palabra}"&f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`);
     return this.http.get(`${this.url}articulos/general?p="${palabra}"&f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`);
+  }
+
+  getBusquedaArticulosPaginador(palabra: string, pagina: number) {
+    console.log(`${this.url}articulos/general?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
+    return this.http.get(`${this.url}articulos/general?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
   }
 }

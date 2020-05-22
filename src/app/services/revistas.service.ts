@@ -13,7 +13,7 @@ import { FiltrosService } from './filtros.service';
 export class RevistasService {
   public revista: Revistas = new Revistas();
   public total: Total = new Total();
-  public url: string = GlobalConstants.serviciosURL; 
+  public url: string = GlobalConstants.serviciosURL;
 
   
   public count = 1;
@@ -64,8 +64,8 @@ export class RevistasService {
   }
 
   getBusquedaRevistas(palabra: string) {
-    console.log(`${this.url}revistas/general?p="${palabra}"&page=${this.count}&${this.filtrosService.cadenafiltros}`);
-    return this.http.get(`${this.url}revistas/general?p="${palabra}"&page=${this.count}&${this.filtrosService.cadenafiltros}`);
+    console.log(`${this.url}revistas/general?p="${palabra}"&page=1&${this.filtrosService.cadenafiltros}`);
+    return this.http.get(`${this.url}revistas/general?p="${palabra}"&page=1&${this.filtrosService.cadenafiltros}`);
   }
 
   getPaginaFinal(palabra: string, ultima:number) {
@@ -86,4 +86,8 @@ export class RevistasService {
     return this.http.get(`${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`);
   }
 
+  getBusquedaRevistasPaginador(palabra: string, pagina: number) {
+    console.log(`${this.url}revistas/general?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
+    return this.http.get(`${this.url}revistas/general?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
+  }
 }

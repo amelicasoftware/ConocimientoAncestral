@@ -24,7 +24,7 @@ export class FiltrosRevistasService {
     console.log(this.filtros);
   }
 
-  actualizarRevistas(revistas: []) {
+  actualizarRevistas(revistas: any[]) {
     this.resultadoRevistas = revistas;
     this.cambioRevistas.emit(this.resultadoRevistas);
     console.log(this.resultadoRevistas);

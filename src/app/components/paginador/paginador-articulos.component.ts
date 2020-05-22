@@ -1,32 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { Revistas } from '../../models/revistas';
-import { Usuario } from '../../models/usuario';
-import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
-import { FiltrosRevistasService } from '../../services/filtros-revistas.service';
-import { Total } from '../../models/total'
-import { RevistasService } from '../../services/revistas.service'
 import { Router } from '@angular/router';
-import { from } from 'rxjs';
-import { number } from '@amcharts/amcharts4/core';
-import { PaginadorService } from 'src/app/services/paginador.service';
+import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
+import { FiltrosService } from '../../services/filtros.service';
+import { PaginadorService } from '../../services/paginador.service';
+import { Total } from '../../models/total';
 
 @Component({
-  selector: 'app-paginador',
-  templateUrl: './paginador.component.html',
-  styleUrls: ['./paginador.component.css']
+  selector: 'app-paginador-articulos',
+  templateUrl: './paginador-articulos.component.html',
+  styleUrls: ['./paginador-articulos.component.css']
 })
+export class PaginadorArticulosComponent implements OnInit {
 
-export class PaginadorComponent implements OnInit {
-  revistas: Array<Revistas> = new Array<Revistas>();
-  totales: Array<Total> = new Array<Total>();
-  total: Total = new Total();
   final: number;
+  total: Total = new Total();
   P = this.paginadorService.posicion;
 
   revistasResultado: [] = [];
-  constructor(private RevistasInyectado: RevistasService, private Ruta: Router,
-    private revistasService: RevistasService, private filtrosRevistasService: FiltrosRevistasService,
-    private paginadorService: PaginadorService) { }
+  constructor(private Ruta: Router, private articulosService: ServiosBusquedaService,
+              private filtrosService: FiltrosService, private paginadorService: PaginadorService) { }
 
   ngOnInit(): void { //inicializa la busqueda con el primer metodo del servicio LeerJson 
     // this.revistasService.leerjson().subscribe((revistasDesdeApi: any) => {
@@ -89,9 +81,10 @@ export class PaginadorComponent implements OnInit {
     //   this.revistasService.setfin(0)
     // });
 
-    this.revistasService.getBusquedaRevistasPaginador(this.revistasService.palabra, this.paginadorService.pFinal).
+    this.articulosService.getBusquedaArticulosPaginador(this.articulosService.palabra, this.paginadorService.pFinal).
     subscribe((data: any) =>{
-      this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
+      console.log(data);
+      this.filtrosService.actualizarArticulos(data.articulos.articulos);
       this.paginadorService.actualizarPosicion(this.paginadorService.pFinal);
     });
   }
@@ -114,15 +107,15 @@ export class PaginadorComponent implements OnInit {
     //   this.total.pos = this.revistasService.count
     //   this.revistasService.setfin(1)
     // });
-    this.revistasService.getBusquedaRevistasPaginador(this.revistasService.palabra, 1).subscribe( (data: any) =>{
-      this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
+    this.articulosService.getBusquedaArticulosPaginador(this.articulosService.palabra, 1).subscribe((data: any) =>{
+      this.filtrosService.actualizarArticulos(data.articulos.articulos);
       this.paginadorService.actualizarPosicion(1);
     });
   }
 
 
   public getCount() {
-    console.log('pagina', this.paginadorService.posicion);
+    // console.log('pagina', this.paginadorService.posicion);
     return this.paginadorService.posicion;
   }
 
@@ -130,7 +123,7 @@ export class PaginadorComponent implements OnInit {
 
   public getFin() {
     // this.total.pos = this.revistasService.count
-    console.log('paginaFinal', this.paginadorService.pFinal);
+    // console.log('paginaFinal', this.paginadorService.pFinal);
     return this.paginadorService.pFinal;
   }
 
@@ -175,10 +168,10 @@ export class PaginadorComponent implements OnInit {
     // this.total.pos = this.revistasService.count
     console.log('siguiente');
     this.paginadorService.actualizarPosicion(this.paginadorService.posicion + 1);
-    this.revistasService.getBusquedaRevistasPaginador(this.revistasService.palabra, this.paginadorService.posicion).
+    this.articulosService.getBusquedaArticulosPaginador(this.articulosService.palabra, this.paginadorService.posicion).
     subscribe( (data: any) =>{
       console.log('paginador', data);
-      this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
+      this.filtrosService.actualizarArticulos(data.articulos.articulos);
     });
   }
 
@@ -200,10 +193,10 @@ export class PaginadorComponent implements OnInit {
     // this.total.pos = this.revistasService.count
     console.log('anterior');
     this.paginadorService.actualizarPosicion(this.paginadorService.posicion - 1);
-    this.revistasService.getBusquedaRevistasPaginador(this.revistasService.palabra, this.paginadorService.posicion).
+    this.articulosService.getBusquedaArticulosPaginador(this.articulosService.palabra, this.paginadorService.posicion).
     subscribe( (data: any) =>{
       console.log('paginador', data);
-      this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
+      this.filtrosService.actualizarArticulos(data.articulos.articulos);
     });
   }
 
@@ -222,11 +215,10 @@ export class PaginadorComponent implements OnInit {
   // }
 
   this.paginadorService.actualizarPosicion(pagina);
-  this.revistasService.getBusquedaRevistasPaginador(this.filtrosRevistasService.palabra, pagina).subscribe((data: any) =>{
-    this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
+  this.articulosService.getBusquedaArticulosPaginador(this.filtrosService.palabra, pagina).subscribe((data: any) =>{
+    this.filtrosService.actualizarArticulos(data.articulos.articulos);
   });
 
 }
-
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FiltrosRevistasService } from '../../services/filtros-revistas.service';
 import { RevistasService } from '../../services/revistas.service';
+import { PaginadorService } from '../../services/paginador.service';
 
 @Component({
   selector: 'app-globitos-revista',
@@ -11,7 +12,8 @@ export class GlobitosRevistaComponent implements OnInit {
 
   filtroGlobitos: [] = [];
 
-  constructor( private filtrosRevistasService: FiltrosRevistasService, private revistasService: RevistasService) { }
+  constructor( private filtrosRevistasService: FiltrosRevistasService, private revistasService: RevistasService, 
+               private paginadorService: PaginadorService) { }
 
   ngOnInit(): void {
     this.filtrosRevistasService.cambioGlobos.subscribe(data2 => {
@@ -39,6 +41,8 @@ export class GlobitosRevistaComponent implements OnInit {
         this.filtrosRevistasService.actualizarGlobos(this.filtrosRevistasService.filtrosElegidos);
         this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
         this.filtrosRevistasService.cambioEstado();
+        this.paginadorService.actualizarTotal(data.revistas.total);
+        this.paginadorService.actualizarPosicion(1);
       });
   }
 }

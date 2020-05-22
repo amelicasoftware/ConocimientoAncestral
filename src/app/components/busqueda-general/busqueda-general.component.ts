@@ -5,7 +5,7 @@ import { ServiosBusquedaService } from '../../services/servios-busqueda.service'
 import { Router } from '@angular/router';
 import { FiltrosComponent } from '../filtros/filtros.component';
 import { FiltrosService } from '../../services/filtros.service';
-import { PaginadorService } from '../../services/paginador.service'
+import { PaginadorService } from '../../services/paginador.service';
 import { Total } from '../../models/total'
 import { from } from 'rxjs';
 import { number } from '@amcharts/amcharts4/core';
@@ -27,41 +27,41 @@ export class BusquedaGeneralComponent implements OnInit {
   articulosResultado: [] = [];
 
   palabraBusqueda: string;
+  totalResultados: number;
 
   constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
-              private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService, private PaginadorService: PaginadorService) { }
+              private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
+              private paginadorService: PaginadorService) { }
 
   ngOnInit(): void {
     this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
-      console.log(articulosDesdeApi.articulos.total)
-      this.articulos = articulosDesdeApi.articulos.articulos;
-      this.total.total = articulosDesdeApi.articulos.total;
-      if (Number.isInteger((this.total.total / 10))) {
-        this.total.final = (this.total.total / 10)
-      } else {
-        this.total.final = Math.floor(this.total.total / 10) + 1
-      }
-      this.total.pos = this.articuloService.count
-      console.log(this.articulos)
-      console.log(this.total)
+      // console.log(articulosDesdeApi.articulos.total)
+      // this.articulos = articulosDesdeApi.articulos.articulos;
+      // this.total.total = articulosDesdeApi.articulos.total;
+      // if (Number.isInteger((this.total.total / 10))) {
+      //   this.total.final = (this.total.total / 10)
+      // } else {
+      //   this.total.final = Math.floor(this.total.total / 10) + 1
+      // }
+      // this.total.pos = this.articuloService.count
+      // console.log(this.articulos)
+      // console.log(this.total)
       this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
+      this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total);
+      this.paginadorService.actualizarPosicion(1);
     });
 
     this.filtrosService.cambioArticulos.subscribe(data2 => {
       console.log('resutladosServicio', data2);
       this.articulos = data2;
     });
-    this.total.palabra = this.articuloService.getpalabra()
+    // this.total.palabra = this.articuloService.getpalabra()
   }
 
 
   buscar(palabra: string) {
-    this.articuloService.total.total = 0
-    this.articuloService.total.final = 0
-    this.articuloService.count = 1
-    this.articuloService.fin = 1
-    this.total.palabra = palabra
     console.log(palabra);
+    this.total.palabra = palabra;
     this.filtrosService.palabra = palabra;
     this.articuloService.getBusquedaArticulos(palabra).subscribe((data: any) => {
       console.log(data);
@@ -70,15 +70,10 @@ export class BusquedaGeneralComponent implements OnInit {
       const globos = [];
       this.filtrosService.actualizarGlobos(globos);
       this.filtrosService.filtrosElegidos = [];
-      this.articulos = data.articulos.articulos;
-      this.articuloService.setpalabra(palabra)
-      console.log(palabra)
+      this.filtrosService.cadenafiltros = '';
+      this.paginadorService.actualizarTotal(data.articulos.total);
+      this.paginadorService.actualizarPosicion(1);
       this.total.total = data.articulos.total;
-      if (Number.isInteger((this.total.total / 10))) {
-        this.total.final = (this.total.total / 10)
-      } else {
-        this.total.final = Math.floor(this.total.total / 10) + 1
-      }
     });
     this.filtrosService.palabra = palabra;
   }

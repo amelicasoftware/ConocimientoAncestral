@@ -6,6 +6,7 @@ import { Filtro } from '../../models/Filtro';
 import { ElementoFiltro } from '../../models/ElementoFiltro';
 import { element } from 'protractor';
 import { FiltrosService } from '../../services/filtros.service';
+import { PaginadorService } from '../../services/paginador.service';
 
 @Component({
   selector: 'app-filtros',
@@ -20,7 +21,7 @@ export class FiltrosComponent implements OnInit {
   boton: string = 'Ver más';
 
   constructor(private serviosBusquedaService: ServiosBusquedaService, private busquedaGeneralComponent: BusquedaGeneralComponent,
-              private filtrosService: FiltrosService) { }
+              private filtrosService: FiltrosService, private paginadorService: PaginadorService) { }
 
   ngOnInit(): void {
     this.serviosBusquedaService.leerjson().subscribe((data: any) => {
@@ -98,6 +99,8 @@ export class FiltrosComponent implements OnInit {
         this.filtrosService.actualizarGlobos(this.filtrosService.filtrosElegidos);
         this.filtrosService.actualizarArticulos(data.articulos.articulos);
         this.filtrosService.cambioEstado();
+        this.paginadorService.actualizarTotal(data.articulos.total);
+        this.paginadorService.actualizarPosicion(1);
     });
 
   }

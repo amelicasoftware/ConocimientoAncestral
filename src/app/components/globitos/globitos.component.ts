@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
 import { FiltrosService } from '../../services/filtros.service';
 import { threadId } from 'worker_threads';
+import { PaginadorService } from '../../services/paginador.service';
 
 @Component({
   selector: 'app-globitos',
@@ -13,7 +14,8 @@ export class GlobitosComponent implements OnInit {
   filtroGlobitos: [] = [];
   mostrarFiltros: boolean;
 
-  constructor(private filtrosService: FiltrosService, private serviosBusquedaService: ServiosBusquedaService) { }
+  constructor(private filtrosService: FiltrosService, private serviosBusquedaService: ServiosBusquedaService,
+              private paginadorService: PaginadorService) { }
 
   ngOnInit(): void {
     console.log('globitos');
@@ -44,6 +46,8 @@ export class GlobitosComponent implements OnInit {
         this.filtrosService.actualizarGlobos(this.filtrosService.filtrosElegidos);
         this.filtrosService.actualizarArticulos(data.articulos.articulos);
         this.filtrosService.cambioEstado();
+        this.paginadorService.actualizarTotal(data.articulos.total);
+        this.paginadorService.actualizarPosicion(1);
       });
   }
 

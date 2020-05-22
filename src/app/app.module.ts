@@ -21,6 +21,7 @@ import { GlobitosComponent } from './components/globitos/globitos.component';
 import { FiltrosRevistaComponent } from './components/filtros/filtros-revista.component';
 import { GlobitosRevistaComponent } from './components/globitos/globitos-revista.component';
 import { PaginadorComponent } from './components/paginador/paginador.component';
+import { PaginadorArticulosComponent } from './components/paginador/paginador-articulos.component';
 
 
 
@@ -40,13 +41,12 @@ import { PaginadorComponent } from './components/paginador/paginador.component';
     GlobitosComponent,
     GlobitosRevistaComponent,
     PaginadorComponent,
-   
+    PaginadorArticulosComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES, { useHash: true})
-    
   ],
 
   providers: [],

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RevistasService } from '../../services/revistas.service';
 import { FiltrosRevistasService } from '../../services/filtros-revistas.service';
+import { PaginadorService } from '../../services/paginador.service';
 
 @Component({
   selector: 'app-filtros-revista',
@@ -14,13 +15,14 @@ export class FiltrosRevistaComponent implements OnInit {
   nombreFiltroEstilo: string = '';
   boton: string = 'Ver más';
 
-  constructor(private revistasInyectado: RevistasService, private filtrosRevistasService: FiltrosRevistasService) { }
+  constructor(private revistasInyectado: RevistasService, private filtrosRevistasService: FiltrosRevistasService,
+              private paginadorService: PaginadorService) { }
   ngOnInit(): void {
-    this.revistasInyectado.leerjson().subscribe((revistasDesdeApi: any) => {
-      console.log(revistasDesdeApi)
-      this.filtros = revistasDesdeApi.filtros;
-      console.log(this.filtros)
-    });
+    // this.revistasInyectado.leerjson().subscribe((revistasDesdeApi: any) => {
+    //   console.log(revistasDesdeApi)
+    //   this.filtros = revistasDesdeApi.filtros;
+    //   console.log(this.filtros)
+    // });
     this.filtrosRevistasService.cambioFiltros.subscribe(data2 => {
       console.log('filtrosServicio', data2);
       this.filtros = data2;
@@ -110,6 +112,8 @@ export class FiltrosRevistaComponent implements OnInit {
         this.filtrosRevistasService.actualizarGlobos(this.filtrosRevistasService.filtrosElegidos);
         this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
         this.filtrosRevistasService.cambioEstado();
+        this.paginadorService.actualizarTotal(data.revistas.total);
+        this.paginadorService.actualizarPosicion(1);
       });
 
   }
