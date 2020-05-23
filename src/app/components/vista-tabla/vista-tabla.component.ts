@@ -4,6 +4,7 @@ import { RevistasService } from '../../services/revistas.service';
 import { Revistas } from '../../models/revistas';
 import { FiltrosRevistasService } from '../../services/filtros-revistas.service';
 import { Total } from '../../models/total';
+import { any } from '@amcharts/amcharts4/.internal/core/utils/Array';
 
 @Component({
   selector: 'app-vista-tabla',
@@ -27,6 +28,16 @@ export class VistaTablaComponent implements OnInit {
       this.revistas = revistasDesdeApi.revistas.revistas;
       this.total.total = revistasDesdeApi.revistas.total;
       this.filtrosRevistasService.actualizarRevistas(revistasDesdeApi.revistas.revistas);
+      //this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total);
+    });
+    this.revistasService.leerjson().subscribe((data: any) => {
+      console.log(data.revistas.total)
+      this.revistas = data.revistas.revistas;
+      this.total.total = data.revistas.total;
+    });
+    this.filtrosRevistasService.cambioRevistas.subscribe(data2 => {
+      console.log('resutladosServicio', data2);
+      this.revistas = data2;
     });
   }
 }
