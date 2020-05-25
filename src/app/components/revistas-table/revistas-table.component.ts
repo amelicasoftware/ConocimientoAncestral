@@ -10,12 +10,13 @@ import { from } from 'rxjs';
 import { number } from '@amcharts/amcharts4/core';
 import { PaginadorService } from '../../services/paginador.service';
 
+
 @Component({
-  selector: 'app-busquedarev',
-  templateUrl: './busquedarev.component.html',
-  styleUrls: ['./busquedarev.component.css']
+  selector: 'app-revistas-table',
+  templateUrl: './revistas-table.component.html',
+  styleUrls: ['./revistas-table.component.css']
 })
-export class BusquedarevComponent implements OnInit {
+export class RevistasTableComponent implements OnInit {
   revistas: Array<Revistas> = new Array<Revistas>();
   totales: Array<Total> = new Array<Total>();
   total: Total = new Total();
@@ -44,11 +45,8 @@ export class BusquedarevComponent implements OnInit {
       console.log('Pfinal', this.paginadorService.pFinal);
       this.filtrosRevistasService.actualizarRevistas(revistasDesdeApi.revistas.revistas);
       this.filtrosRevistasService.actualizarFiltros(revistasDesdeApi.filtros);
-      this.total.total = revistasDesdeApi.revistas.total;
-      
     });
-    
-     this.total.palabra = this.revistasService.getpalabra();
+    // this.total.palabra = this.revistasService.getpalabra();
     this.filtrosRevistasService.cambioRevistas.subscribe(data2 => {
       console.log('resutladosServicio', data2);
       this.revistas = data2;

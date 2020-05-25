@@ -1,5 +1,5 @@
 export class Total{    
-    total = 10;
+    total: number;
     final:number;
     pos: number;
     palabra:string;

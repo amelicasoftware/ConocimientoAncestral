@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Articulo } from '../../models/articulo';
 import { Usuario } from '../../models/usuario';
 import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
@@ -9,13 +9,12 @@ import { PaginadorService } from '../../services/paginador.service';
 import { Total } from '../../models/total'
 import { from } from 'rxjs';
 import { number } from '@amcharts/amcharts4/core';
-
 @Component({
-  selector: 'app-busqueda-general',
-  templateUrl: './busqueda-general.component.html',
-  styleUrls: ['./busqueda-general.component.css']
+  selector: 'app-tarjeta-articulos',
+  templateUrl: './tarjeta-articulos.component.html',
+  styleUrls: ['./tarjeta-articulos.component.css']
 })
-export class BusquedaGeneralComponent implements OnInit {
+export class TarjetaArticulosComponent implements OnInit {
   articulos: Array<Articulo> = new Array<Articulo>();
   totales: Array<Total> = new Array<Total>();
   total: Total = new Total();
@@ -37,7 +36,7 @@ export class BusquedaGeneralComponent implements OnInit {
     this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
        console.log(articulosDesdeApi.articulos.total)
       // this.articulos = articulosDesdeApi.articulos.articulos;
-       this.total.total = articulosDesdeApi.articulos.total;
+      // this.total.total = articulosDesdeApi.articulos.total;
       // if (Number.isInteger((this.total.total / 10))) {
       //   this.total.final = (this.total.total / 10)
       // } else {
@@ -199,3 +198,4 @@ export class BusquedaGeneralComponent implements OnInit {
     this.filtrosService.actualizarGlobos(globos);
   }
 }
+

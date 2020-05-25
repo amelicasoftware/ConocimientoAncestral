@@ -19,7 +19,7 @@
 <div class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
-        <div [routerLink]="['/busquedarev']" style="text-align:center;" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
+        <div [routerLink]="['/busquedarev']" style="text-align:center; cursor:pointer" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
         <div (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
         <div style="margin-left: 40%;">Modo de visualizar resultados </div>
         <div><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
@@ -46,6 +46,10 @@
             <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
         </div>
         <app-globitos></app-globitos>
+
+
+<app-tarjeta-articulos></app-tarjeta-articulos>
+ <!--
         <div class="flex-containercont">
 
             <div class="articulo" id="example1" *ngFor="let articulo of articulos">
@@ -83,7 +87,7 @@
 
 
             </div>
-        </div>
+        </div>-->
 
         <!-- <div style="margin-left: 40%; font-family: Barlow-Regular; font-size: 10pt;">Pag. Actual: {{total.pos}} </div>
 
@@ -106,8 +110,7 @@
 
        <app-paginador-articulos></app-paginador-articulos>
 
-    </div>
-    
+    </div> 
 
 
 </div>
