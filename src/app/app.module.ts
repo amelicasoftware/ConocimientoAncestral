@@ -24,6 +24,8 @@ import { PaginadorComponent } from './components/paginador/paginador.component';
 import { PaginadorArticulosComponent } from './components/paginador/paginador-articulos.component';
 import { VistaTablaComponent } from './components/vista-tabla/vista-tabla.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TarjetaArticulosComponent } from './components/tarjeta-articulos/tarjeta-articulos.component';
+import { RevistasTableComponent } from './components/revistas-table/revistas-table.component';
 
 
 
@@ -44,7 +46,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GlobitosRevistaComponent,
     PaginadorComponent,
     PaginadorArticulosComponent,
-    VistaTablaComponent
+    VistaTablaComponent,
+    TarjetaArticulosComponent,
+    RevistasTableComponent
   ],
   imports: [
     BrowserModule,

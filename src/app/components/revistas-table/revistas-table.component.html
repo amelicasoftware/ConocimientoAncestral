@@ -21,10 +21,10 @@
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
         <div style="text-align:center;"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
-        <div [routerLink]="['/busquedaGeneral']"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
+        <div [routerLink]="['/busquedaGeneral']" style="cursor:pointer"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
         <div style="margin-left: 40%;">Modo de visualizar resultados </div>
-        <div [routerLink]="['/revistas-table']" style="cursor:pointer"><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
-        <div style="cursor:default"><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
+        <div  style="cursor:default"><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
+        <div [routerLink]="['/busquedarev']" style="cursor:pointer"><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
     </div>
 </div>
 
@@ -38,34 +38,14 @@
 
     <!-- Termina Filtros menu   -->
     <div class="item3">
-        
-
-        <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
-            <p style="text-align: start; margin-left: 20px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}} </p>
-            <br>
-            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
+        <div>
+            <app-vista-tabla></app-vista-tabla>
         </div>
+
         <div>
             <app-globitos-revista></app-globitos-revista>
         </div>
-        <div id="contenedor-fichas" class="contenedor-fichas">
-            <div *ngFor="let revistas of revistas" class="card">
-                <div class="titulo-card" style=" font-weight: bold; font-size: 12px; padding: 10px;">
-                    <img style="height: 60px;" src="https://www.redalyc.org/redalyc/media/inc/img/revista/movil/revista/rva{{revistas.cveRevista}}.png">
-                </div>
-                <div class="cuerpo-card" style="height: 70px; font-size: 12px; padding: 0px 10px; ">
-                    <div style="font-weight: bold;"> {{revistas.nombreRevista}}</div>
-                    <div> Issn: {{revistas.issn}} | e-Issn: {{revistas.issnelec}}</div>
-                    <div>{{revistas.nombreArea}}</div>
-                    <div>{{revistas.nombreInstitucion}}</div>
-                    <div>{{revistas.nombrePais}}</div>
-                </div>
-                <div class="footer-card" style="width: 100%; height: 35px; text-align: right; border-radius: 0px 0px 10px 10px; ; background-color: #ff660c; position: absolute; bottom: 0;">
-                    <img class="img-footer" src="http://portal.amelica.org/resources/img/imgPortal/fbTarjetRev.png">
-                    <img class="img-footer" src="http://portal.amelica.org/resources/img/imgPortal/twTarjetRev.png" alt="">
-                </div>
-            </div>
-        </div>
+      
         <!-- <div style="margin-left: 40%; font-family: Barlow-Regular; font-size: 10pt;">Pag. Actual: {{total.pos}} </div>
 
 
