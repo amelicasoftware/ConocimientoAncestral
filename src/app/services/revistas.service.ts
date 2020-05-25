@@ -19,16 +19,38 @@ export class RevistasService {
   public count = 1;
   public fin = 1;
   public palabra: string = 'ciencia';
+  public reversa: boolean = false;
+  public palabraOrdenar: string = 'nombreRevista'
 
   constructor(private http: HttpClient, private filtrosService: FiltrosService) {
     
   }
-
+  
 
   leerjson(): Observable<Revistas[]> {
     console.log(this.palabra)
-    return this.http.get<Revistas[]>(this.url + 'revistas/general?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count);
+    return this.http.get<Revistas[]>(this.url + 'revistas/general?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count+'&r='+this.reversa);
    
+  }
+
+  ordenarReversa(campo:string): Observable<Revistas[]>{    
+    return this.http.get<Revistas[]>(this.url + 'revistas/general?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count + '&r=' + this.reversa + '&palOrd=' + campo);
+  }
+  
+  setpalabraOrdenar(palabraOrdenar: string){
+      this.palabraOrdenar = palabraOrdenar;
+  }
+  
+  getpalabraOrdenar(){
+    return this.palabraOrdenar;
+  }
+
+  setreversa(reversa: boolean){
+    this.reversa = reversa;
+  }
+
+  getreversa(){
+    return this.reversa;
   }
   
   setfin(final: number){

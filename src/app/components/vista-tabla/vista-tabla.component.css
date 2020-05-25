@@ -10,6 +10,17 @@ table {
     margin: auto;
 }
 
+.issn {
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #E5DDDD;
+}
+
+Input:Focus {
+    Background-color: yellow;
+}
+
 td,
 th {
     text-align: center;

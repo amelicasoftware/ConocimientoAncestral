@@ -20,7 +20,7 @@ export class VistaTablaComponent implements OnInit {
   constructor(private RevistasInyectado: RevistasService, private revistasService: RevistasService,
               private filtrosRevistasService: FiltrosRevistasService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
     let palabra = this.revistasService.getpalabra();
     this.total.palabra = this.revistasService.getpalabra();
     this.revistasService.getBusquedaRevistas(palabra).subscribe((revistasDesdeApi: any) => {
@@ -39,5 +39,24 @@ export class VistaTablaComponent implements OnInit {
       console.log('resutladosServicio', data2);
       this.revistas = data2;
     });
+  }
+
+  public reversa(campo: string, reversa: boolean){
+    console.log(this.revistasService.getreversa());
+    console.log(this.revistasService.getpalabraOrdenar());
+    this.revistasService.setpalabraOrdenar(campo);
+    if(this.revistasService.getreversa()){
+      this.revistasService.setreversa(false);
+    }else{
+      this.revistasService.setreversa(true);
+    }
+
+    this.revistasService.ordenarReversa(campo).subscribe((data: any) => {
+     
+      this.revistas = data.revistas.revistas;
+      this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
+      console.log(this.revistas);
+    });
+
   }
 }
