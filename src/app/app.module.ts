@@ -26,6 +26,7 @@ import { VistaTablaComponent } from './components/vista-tabla/vista-tabla.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TarjetaArticulosComponent } from './components/tarjeta-articulos/tarjeta-articulos.component';
 import { RevistasTableComponent } from './components/revistas-table/revistas-table.component';
+import { BusquedaPaisComponent } from './components/busqueda-pais/busqueda-pais.component';
 
 
 
@@ -48,7 +49,8 @@ import { RevistasTableComponent } from './components/revistas-table/revistas-tab
     PaginadorArticulosComponent,
     VistaTablaComponent,
     TarjetaArticulosComponent,
-    RevistasTableComponent
+    RevistasTableComponent,
+    BusquedaPaisComponent
   ],
   imports: [
     BrowserModule,
