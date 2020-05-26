@@ -4,15 +4,19 @@
         <br>
         <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
     </div>
-    <app-globitos></app-globitos>
+
+    <div>
+        <app-globitos-revista></app-globitos-revista>
+    </div>
+
     <div class="flex-containercont">
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">ISSN</th>
                     <th scope="col">e-ISSN></th>
-                    <th scope="col">Revista <input type="button" (click)="reversa('nombreRevista',true)" class="issn" value="↕" style="float: right;"></th>
-                    <th scope="col">Institución Editora <input type="button" (click)="reversa('nombreInstitucion',true)" class="issn" value="↕" style="float: right;"></th>
+                    <th scope="col">Revista<img (click)="reversa('nombreRevista',true)" [src]="imagen" align="right" /></th>
+                    <th scope="col">Institución Editora<img (click)="reversa('nombreInstitucion',true)" [src]="imagen" align="right" /></th>
                     <th scope="col">Último Número</th>
                 </tr>
             </thead>

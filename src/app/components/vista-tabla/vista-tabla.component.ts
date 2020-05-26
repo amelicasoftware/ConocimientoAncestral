@@ -16,6 +16,7 @@ export class VistaTablaComponent implements OnInit {
 
   revistas: Array<Revistas> = new Array<Revistas>();
   total: Total = new Total();
+  imagen = 'assets/img/des.png';
 
   constructor(private RevistasInyectado: RevistasService, private revistasService: RevistasService,
               private filtrosRevistasService: FiltrosRevistasService) { }
@@ -28,13 +29,9 @@ export class VistaTablaComponent implements OnInit {
       this.revistas = revistasDesdeApi.revistas.revistas;
       this.total.total = revistasDesdeApi.revistas.total;
       this.filtrosRevistasService.actualizarRevistas(revistasDesdeApi.revistas.revistas);
-      //this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total);
+      this.filtrosRevistasService.actualizarFiltros(revistasDesdeApi.filtros);
     });
-    this.revistasService.leerjson().subscribe((data: any) => {
-      console.log(data.revistas.total)
-      this.revistas = data.revistas.revistas;
-      this.total.total = data.revistas.total;
-    });
+    
     this.filtrosRevistasService.cambioRevistas.subscribe(data2 => {
       console.log('resutladosServicio', data2);
       this.revistas = data2;
@@ -46,8 +43,10 @@ export class VistaTablaComponent implements OnInit {
     console.log(this.revistasService.getpalabraOrdenar());
     this.revistasService.setpalabraOrdenar(campo);
     if(this.revistasService.getreversa()){
+      this.imagen = "assets/img/des.png";
       this.revistasService.setreversa(false);
     }else{
+      this.imagen = "assets/img/as.png";
       this.revistasService.setreversa(true);
     }
 
@@ -55,6 +54,7 @@ export class VistaTablaComponent implements OnInit {
      
       this.revistas = data.revistas.revistas;
       this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
+      this.filtrosRevistasService.actualizarFiltros(data.filtros);
       console.log(this.revistas);
     });
 
