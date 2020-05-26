@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TarjetaArticulosComponent } from './components/tarjeta-articulos/tarjeta-articulos.component';
 import { RevistasTableComponent } from './components/revistas-table/revistas-table.component';
 import { BusquedaPaisComponent } from './components/busqueda-pais/busqueda-pais.component';
+import { VistaTablaArticulosComponent } from './components/vista-tabla-articulos/vista-tabla-articulos.component';
 
 
 
@@ -50,7 +51,8 @@ import { BusquedaPaisComponent } from './components/busqueda-pais/busqueda-pais.
     VistaTablaComponent,
     TarjetaArticulosComponent,
     RevistasTableComponent,
-    BusquedaPaisComponent
+    BusquedaPaisComponent,
+    VistaTablaArticulosComponent
   ],
   imports: [
     BrowserModule,

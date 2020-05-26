@@ -16,11 +16,12 @@ export class VistaTablaComponent implements OnInit {
 
   revistas: Array<Revistas> = new Array<Revistas>();
   total: Total = new Total();
+  imagen = 'assets/img/des.png';
 
   constructor(private RevistasInyectado: RevistasService, private revistasService: RevistasService,
               private filtrosRevistasService: FiltrosRevistasService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
     let palabra = this.revistasService.getpalabra();
     this.total.palabra = this.revistasService.getpalabra();
     this.revistasService.getBusquedaRevistas(palabra).subscribe((revistasDesdeApi: any) => {
@@ -28,16 +29,34 @@ export class VistaTablaComponent implements OnInit {
       this.revistas = revistasDesdeApi.revistas.revistas;
       this.total.total = revistasDesdeApi.revistas.total;
       this.filtrosRevistasService.actualizarRevistas(revistasDesdeApi.revistas.revistas);
-      //this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total);
+      this.filtrosRevistasService.actualizarFiltros(revistasDesdeApi.filtros);
     });
-    this.revistasService.leerjson().subscribe((data: any) => {
-      console.log(data.revistas.total)
-      this.revistas = data.revistas.revistas;
-      this.total.total = data.revistas.total;
-    });
+    
     this.filtrosRevistasService.cambioRevistas.subscribe(data2 => {
       console.log('resutladosServicio', data2);
       this.revistas = data2;
     });
+  }
+
+  public reversa(campo: string, reversa: boolean){
+    console.log(this.revistasService.getreversa());
+    console.log(this.revistasService.getpalabraOrdenar());
+    this.revistasService.setpalabraOrdenar(campo);
+    if(this.revistasService.getreversa()){
+      this.imagen = "assets/img/des.png";
+      this.revistasService.setreversa(false);
+    }else{
+      this.imagen = "assets/img/as.png";
+      this.revistasService.setreversa(true);
+    }
+
+    this.revistasService.ordenarReversa(campo).subscribe((data: any) => {
+     
+      this.revistas = data.revistas.revistas;
+      this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
+      this.filtrosRevistasService.actualizarFiltros(data.filtros);
+      console.log(this.revistas);
+    });
+
   }
 }
