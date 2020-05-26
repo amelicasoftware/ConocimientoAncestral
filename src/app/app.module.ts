@@ -28,6 +28,7 @@ import { TarjetaArticulosComponent } from './components/tarjeta-articulos/tarjet
 import { RevistasTableComponent } from './components/revistas-table/revistas-table.component';
 import { BusquedaPaisComponent } from './components/busqueda-pais/busqueda-pais.component';
 import { VistaTablaArticulosComponent } from './components/vista-tabla-articulos/vista-tabla-articulos.component';
+import { VistaArtTABComponent } from './components/vista-art-tab/vista-art-tab.component';
 
 
 
@@ -52,7 +53,8 @@ import { VistaTablaArticulosComponent } from './components/vista-tabla-articulos
     TarjetaArticulosComponent,
     RevistasTableComponent,
     BusquedaPaisComponent,
-    VistaTablaArticulosComponent
+    VistaTablaArticulosComponent,
+    VistaArtTABComponent
   ],
   imports: [
     BrowserModule,
