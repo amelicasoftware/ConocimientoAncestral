@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
-import { BusquedaGeneralComponent } from '../busqueda-general/busqueda-general.component';
+// import { BusquedaGeneralComponent } from '../busqueda-general/busqueda-general.component';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Filtro } from '../../models/Filtro';
 import { ElementoFiltro } from '../../models/ElementoFiltro';
 import { element } from 'protractor';
 import { FiltrosService } from '../../services/filtros.service';
 import { PaginadorService } from '../../services/paginador.service';
+import { VistaArtTABComponent } from '../vista-art-tab/vista-art-tab.component';
 
 @Component({
   selector: 'app-filtros',
@@ -20,8 +21,8 @@ export class FiltrosComponent implements OnInit {
   nombreFiltroEstilo: string = '';
   boton: string = 'Ver más';
 
-  constructor(private serviosBusquedaService: ServiosBusquedaService, private busquedaGeneralComponent: BusquedaGeneralComponent,
-              private filtrosService: FiltrosService, private paginadorService: PaginadorService) { }
+  constructor(private serviosBusquedaService: ServiosBusquedaService, private filtrosService: FiltrosService,
+              private paginadorService: PaginadorService) { }
 
   ngOnInit(): void {
     this.serviosBusquedaService.leerjson().subscribe((data: any) => {
