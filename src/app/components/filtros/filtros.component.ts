@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
-import { BusquedaGeneralComponent } from '../busqueda-general/busqueda-general.component';
+//import { BusquedaGeneralComponent } from '../busqueda-general/busqueda-general.component';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Filtro } from '../../models/Filtro';
 import { ElementoFiltro } from '../../models/ElementoFiltro';
@@ -20,7 +20,7 @@ export class FiltrosComponent implements OnInit {
   nombreFiltroEstilo: string = '';
   boton: string = 'Ver más';
 
-  constructor(private serviosBusquedaService: ServiosBusquedaService, private busquedaGeneralComponent: BusquedaGeneralComponent,
+  constructor(private serviosBusquedaService: ServiosBusquedaService,
               private filtrosService: FiltrosService, private paginadorService: PaginadorService) { }
 
   ngOnInit(): void {
