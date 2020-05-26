@@ -4,6 +4,8 @@ import { BusquedaGeneralComponent } from './components/busqueda-general/busqueda
 import { BusquedarevComponent } from './components/busquedarev/busquedarev.component';
 import { RevistasTableComponent } from './components/revistas-table/revistas-table.component';
 import { VistaArtTABComponent } from './components/vista-art-tab/vista-art-tab.component';
+import { BusquedaPalClavComponent } from './components/busqueda-pal-clav/busqueda-pal-clav.component';
+
 
 
 
@@ -13,6 +15,7 @@ export const ROUTES: Routes = [
     { path: 'busquedarev', component: BusquedarevComponent},
     { path: 'revistas-table', component: RevistasTableComponent},
     { path: 'vista-art-tab', component: VistaArtTABComponent},
+    { path: 'busqueda-pal-clav', component: BusquedaPalClavComponent},
     { path: '', pathMatch: 'full', redirectTo: 'home' },
-    { path: '**', pathMatch: 'full', redirectTo: 'home' }
+    { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];

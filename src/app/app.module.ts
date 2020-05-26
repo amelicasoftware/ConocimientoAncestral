@@ -29,6 +29,8 @@ import { RevistasTableComponent } from './components/revistas-table/revistas-tab
 import { BusquedaPaisComponent } from './components/busqueda-pais/busqueda-pais.component';
 import { VistaTablaArticulosComponent } from './components/vista-tabla-articulos/vista-tabla-articulos.component';
 import { VistaArtTABComponent } from './components/vista-art-tab/vista-art-tab.component';
+import { BusquedaPalClavComponent } from './components/busqueda-pal-clav/busqueda-pal-clav.component';
+
 
 
 
@@ -54,7 +56,9 @@ import { VistaArtTABComponent } from './components/vista-art-tab/vista-art-tab.c
     RevistasTableComponent,
     BusquedaPaisComponent,
     VistaTablaArticulosComponent,
-    VistaArtTABComponent
+    VistaArtTABComponent,
+    BusquedaPalClavComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -23,7 +23,7 @@
         <div (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
         <div style="margin-left: 40%;">Modo de visualizar resultados </div>
         <div><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
-        <div [routerLink]="['/busquedaGeneral']"><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
+        <div ><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
     </div>
 </div>
 
@@ -35,7 +35,7 @@
 <!--  Filtros menu  -->
 <div class="grid-container">
   <div class="item2">
-    <app-filtros></app-filtros> 
+    <app-filtros></app-filtros>    
   </div>
 
     <!-- Termina Filtros menu   -->
@@ -48,9 +48,8 @@
         <app-globitos></app-globitos>
 
 
+<app-tarjeta-articulos></app-tarjeta-articulos>
 
-
-<app-vista-tabla-articulos></app-vista-tabla-articulos>
  <!--
         <div class="flex-containercont">
 
