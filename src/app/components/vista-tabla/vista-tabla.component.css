@@ -2,6 +2,10 @@ tbody tr td {
     color: rgba(0, 0, 0, 0.8);
 }
 
+thead tr th {
+    color: #4762B2;
+}
+
 table {
     border: #e5e5e5 2px solid;
     font: 400 calc(14px * 0.83)/20px Roboto, "Helvetica Neue", sans-serif;
