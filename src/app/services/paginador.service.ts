@@ -9,6 +9,8 @@ export class PaginadorService {
   count = 1;
   pFinal = 1;
   posicion: number;
+  reversa: boolean;
+  campo: string = '';
 
   @Output() cambioTotal: EventEmitter<any> = new EventEmitter();
   @Output() cambioFinal: EventEmitter<any> = new EventEmitter();

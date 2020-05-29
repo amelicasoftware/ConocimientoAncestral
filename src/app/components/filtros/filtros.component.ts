@@ -7,6 +7,7 @@ import { ElementoFiltro } from '../../models/ElementoFiltro';
 import { element } from 'protractor';
 import { FiltrosService } from '../../services/filtros.service';
 import { PaginadorService } from '../../services/paginador.service';
+import { VistaArtTABComponent } from '../vista-art-tab/vista-art-tab.component';
 
 @Component({
   selector: 'app-filtros',

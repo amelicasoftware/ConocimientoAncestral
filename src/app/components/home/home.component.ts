@@ -86,7 +86,7 @@ export class HomeComponent {
   }
 
   buscarTexto(palabra: string) {
-    console.log(palabra);
+    console.log('seleccionaste:',palabra);
   }
 
 }

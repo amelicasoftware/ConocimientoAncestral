@@ -15,6 +15,8 @@ export class FiltrosRevistasService {
   @Output() cambioFiltros: EventEmitter<any> = new EventEmitter();
   @Output() cambioRevistas: EventEmitter<any> = new EventEmitter();
   @Output() cambioGlobos: EventEmitter<any> = new EventEmitter();
+  @Output() cambioPalabra: EventEmitter<any> = new EventEmitter();
+
 
   constructor() { }
 
@@ -34,6 +36,11 @@ export class FiltrosRevistasService {
     this.filtrosGlobos = filtrosElegidos;
     this.cambioGlobos.emit(this.filtrosGlobos);
     console.log(this.filtrosGlobos);
+  }
+
+  actualizarPalabra(palabra: string) {
+    this.palabra = palabra;
+    this.cambioPalabra.emit(this.palabra);
   }
 
 

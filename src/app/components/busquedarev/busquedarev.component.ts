@@ -31,7 +31,7 @@ export class BusquedarevComponent implements OnInit {
     this.revistasService.leerjson().subscribe((revistasDesdeApi: any) => {
       console.log(revistasDesdeApi);
       // this.revistas = revistasDesdeApi.revistas.revistas;
-      this.paginadorService.total = revistasDesdeApi.revistas.total;
+      this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total);
       // if (Number.isInteger((this.total.total / 12))) {
       //   this.total.final = (this.total.total / 12)
       // } else {

@@ -122,7 +122,7 @@ export class PaginadorComponent implements OnInit {
 
 
   public getCount() {
-    console.log('pagina', this.paginadorService.posicion);
+    // console.log('pagina', this.paginadorService.posicion);
     return this.paginadorService.posicion;
   }
 
@@ -130,7 +130,7 @@ export class PaginadorComponent implements OnInit {
 
   public getFin() {
     // this.total.pos = this.revistasService.count
-    console.log('paginaFinal', this.paginadorService.pFinal);
+    // console.log('paginaFinal', this.paginadorService.pFinal);
     return this.paginadorService.pFinal;
   }
 
@@ -222,6 +222,7 @@ export class PaginadorComponent implements OnInit {
   // }
 
   this.paginadorService.actualizarPosicion(pagina);
+  console.log(this.revistasService.palabra);
   this.revistasService.getBusquedaRevistasPaginador(this.filtrosRevistasService.palabra, pagina).subscribe((data: any) =>{
     this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
   });

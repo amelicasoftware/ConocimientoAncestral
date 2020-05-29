@@ -33,6 +33,7 @@ export class GlobitosRevistaComponent implements OnInit {
     let cadenaPais = this.filtrosRevistasService.construirCadena('País');
     let cadenaFuente = this.filtrosRevistasService.construirCadena('Fuente');
     let palabra = this.filtrosRevistasService.palabra;
+    console.log(palabra);
     this.revistasService.getBusquedaRevistaFiltro(palabra, cadenaDisciplina, cadenaInstitucion, cadenaPais,
       cadenaFuente).subscribe((data: any) => {
         console.log('resultados', data);

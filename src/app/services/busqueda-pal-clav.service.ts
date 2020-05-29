@@ -10,7 +10,7 @@ import { FiltrosService } from './filtros.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ServiosBusquedaService {
+export class BusquedaPalClavService {
   public articulo: Articulo = new Articulo();
   public total: Total = new Total();
   public url: string = GlobalConstants.serviciosURL;
@@ -23,9 +23,7 @@ export class ServiosBusquedaService {
   constructor(private http: HttpClient, private filtrosService: FiltrosService) {
   }
 
-  leerjson(): Observable<Articulo[]> {
-    return this.http.get<Articulo[]>(this.url + 'articulos/general?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count);
-  }
+
  
   leerjsonPC(): Observable<Articulo[]> {
     return this.http.get<Articulo[]>(this.url + 'articulos/palClave?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count);
@@ -65,15 +63,15 @@ export class ServiosBusquedaService {
 
 
   getBusquedaArticulos(palabra: string) {
-    return this.http.get(`${this.url}articulos/general?p="${palabra}"&page=${this.count}`);
+    return this.http.get(`${this.url}articulos/palClave?p="${palabra}"&page=${this.count}`);
   }
 
   getPaginaFinal(palabra: string, ultima:number) {
-    return this.http.get(`${this.url}articulos/general?p="${palabra}"&page=${ultima}`);
+    return this.http.get(`${this.url}articulos/palClave?p="${palabra}"&page=${ultima}`);
   }
   
   getPaginaP(palabra: string){
-    return this.http.get(`${this.url}articulos/general?p="${palabra}"&page=1`);
+    return this.http.get(`${this.url}articulos/palClave?p="${palabra}"&page=1`);
   }
 
   getBusquedaArtFiltro(palabra: string, cadenaAnio: string, cadenaPais: string,
@@ -82,19 +80,13 @@ export class ServiosBusquedaService {
       palabra = '';
     }
     this.filtrosService.cadenafiltros = `f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`
-    console.log('servicio', `${this.url}articulos/general?p="${palabra}"&f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`);
-    return this.http.get(`${this.url}articulos/general?p="${palabra}"&f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`);
+    console.log('servicio', `${this.url}articulos/palClave?p="${palabra}"&f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`);
+    return this.http.get(`${this.url}articulos/palClave?p="${palabra}"&f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`);
   }
 
   getBusquedaArticulosPaginador(palabra: string, pagina: number) {
-    console.log(`${this.url}articulos/general?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
-    return this.http.get(`${this.url}articulos/general?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
+    console.log(`${this.url}articulos/palClave?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
+    return this.http.get(`${this.url}articulos/palClave?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
   }
 
-
-
-
-
-
-  
 }
