@@ -24,8 +24,8 @@ export class RevistasTableComponent implements OnInit {
 
   revistasResultado: [] = [];
   constructor(private RevistasInyectado: RevistasService, private Ruta: Router,
-              private revistasService: RevistasService, private filtrosRevistasService: FiltrosRevistasService,
-              private paginadorService: PaginadorService,) { }
+    private revistasService: RevistasService, private filtrosRevistasService: FiltrosRevistasService,
+    private paginadorService: PaginadorService, ) { }
 
 
   ngOnInit(): void { //inicializa la busqueda con el primer metodo del servicio LeerJson 
@@ -51,39 +51,30 @@ export class RevistasTableComponent implements OnInit {
       console.log('resutladosServicio', data2);
       this.revistas = data2;
     });
+    this.total.palabra = this.filtrosRevistasService.palabra;
+    this.total.total = this.paginadorService.total;
   }
 
 
 
   buscar(palabra: string) {
-    // this.revistasService.total.total = 0
-    // this.revistasService.total.final = 0
-    // this.revistasService.count = 1
-    // this.revistasService.fin = 1
-    this.total.palabra = palabra;
-    // this.filtrosRevistasService.a
     console.log(palabra);
+    this.total.palabra = palabra;
+    this.filtrosRevistasService.palabra = palabra;
     this.revistasService.getBusquedaRevistas(palabra).subscribe((data: any) => {
       console.log(data);
-      // this.revistas = data.revistas.revistas;
-      // this.revistasService.setpalabra(palabra)
-      // console.log(palabra)
-      this.total.total = data.revistas.total;
-      // if (Number.isInteger((this.total.total / 12))) {
-      //   this.total.final = (this.total.total / 12)
-      // } else {
-      //   this.total.final = Math.floor(this.total.total / 12) + 1
-      // }
-      this.filtrosRevistasService.actualizarFiltros(data.filtros);
-      this.filtrosRevistasService.filtrosElegidos = [];
-      this.filtrosRevistasService.palabra = palabra;
       this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
+      this.filtrosRevistasService.actualizarFiltros(data.filtros);
       const globos = [];
       this.filtrosRevistasService.actualizarGlobos(globos);
+      this.filtrosRevistasService.filtrosElegidos = [];
       this.filtrosRevistasService.cadenaFitros = '';
       this.paginadorService.actualizarTotal(data.revistas.total);
       this.paginadorService.actualizarPosicion(1);
+      this.total.total = data.revistas.total;
     });
+    this.paginadorService.reversa = false;
+    this.filtrosRevistasService.actualizarPalabra(palabra);
   }
 
 
