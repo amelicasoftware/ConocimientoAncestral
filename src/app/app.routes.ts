@@ -16,6 +16,7 @@ export const ROUTES: Routes = [
     { path: 'revistas-table', component: RevistasTableComponent},
     { path: 'vista-art-tab', component: VistaArtTABComponent},   
     { path: 'busqueda-pal-clav', component: BusquedaPalClavComponent},
+    { path: 'busqueda-pal-clav/:fuente', component: BusquedaPalClavComponent },
     { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: '**', pathMatch: 'full', redirectTo: 'home' },   
 ];

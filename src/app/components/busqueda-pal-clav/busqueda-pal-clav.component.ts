@@ -2,13 +2,15 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Articulo } from '../../models/articulo';
 import { Usuario } from '../../models/usuario';
 import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FiltrosComponent } from '../filtros/filtros.component';
 import { FiltrosService } from '../../services/filtros.service';
 import { PaginadorService } from '../../services/paginador.service';
 import { Total } from '../../models/total'
 import { from } from 'rxjs';
-import { number } from '@amcharts/amcharts4/core';
+import { number, string } from '@amcharts/amcharts4/core';
+import { BusquedaPalClavService } from 'src/app/services/busqueda-pal-clav.service';
+
 
 @Component({
   selector: 'app-busqueda-pal-clav',
@@ -28,15 +30,23 @@ export class BusquedaPalClavComponent implements OnInit {
 
   palabraBusqueda: string;
   totalResultados: number;
+  fuente: string;
 
-  constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
-              private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
-              private paginadorService: PaginadorService) { }
+  constructor(private ArticuloInyectado: BusquedaPalClavService, private Ruta: Router,
+              private articuloService: BusquedaPalClavService, private filtrosService: FiltrosService,
+              private paginadorService: PaginadorService, private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
-       console.log(articulosDesdeApi.articulos.total)
+console.log('palabra recibida por url', this._route.snapshot.paramMap.get('fuente'))
+
+    this.fuente = this._route.snapshot.paramMap.get('fuente');
+
+    this.articuloService.setpalabra(this.fuente) 
+
+    this.ArticuloInyectado.leerjsonPC().subscribe((articulosDesdeApi: any) => {
+       console.log('ARTICULOS TOTALES',articulosDesdeApi.articulos.total)
       // this.articulos = articulosDesdeApi.articulos.articulos;
+     
        this.total.total = articulosDesdeApi.articulos.total;
       // if (Number.isInteger((this.total.total / 10))) {
       //   this.total.final = (this.total.total / 10)
@@ -56,8 +66,19 @@ export class BusquedaPalClavComponent implements OnInit {
       console.log('resutladosServicio', data2);
       this.articulos = data2;
     });
+
+   
+
      this.total.palabra = this.articuloService.getpalabra()
+// +this._route.snapshot.paramMap.get('fuente') ==   this.total.palabra
+      
   }
+
+
+
+
+
+
 
 
   buscar(palabra: string) {
@@ -150,7 +171,7 @@ export class BusquedaPalClavComponent implements OnInit {
         this.articuloService.setfin(0)
       } //boton de pagina siguiente no sera mostrado llgando al final
       this.articuloService.setcount(pagina)
-      this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
+      this.ArticuloInyectado.leerjsonPC().subscribe((articulosDesdeApi: any) => {
         this.articulos = articulosDesdeApi.articulos.articulos
       });
     } else {
@@ -162,7 +183,7 @@ export class BusquedaPalClavComponent implements OnInit {
           this.articuloService.setfin(0)
         }//boton de pagina siguiente no sera mostrado llgando al final
         this.articuloService.setcount(pagina)
-        this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
+        this.ArticuloInyectado.leerjsonPC().subscribe((articulosDesdeApi: any) => {
           this.articulos = articulosDesdeApi.articulos.articulos
         });
       } else {
@@ -184,7 +205,7 @@ export class BusquedaPalClavComponent implements OnInit {
     pagina = pagina - 1
 
     this.articuloService.setcount(pagina)
-    this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
+    this.ArticuloInyectado.leerjsonPC().subscribe((articulosDesdeApi: any) => {
 
       this.articulos = articulosDesdeApi.articulos.articulos;
 
