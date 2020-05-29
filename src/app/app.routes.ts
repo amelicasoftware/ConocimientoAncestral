@@ -12,11 +12,11 @@ import { BusquedaPalClavComponent } from './components/busqueda-pal-clav/busqued
 export const ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'busquedaGeneral', component: BusquedaGeneralComponent },
-    { path: 'busquedarev', component: BusquedarevComponent}, 
+    { path: 'busquedarev', component: BusquedarevComponent},
     { path: 'revistas-table', component: RevistasTableComponent},
-    { path: 'vista-art-tab', component: VistaArtTABComponent},   
+    { path: 'vista-art-tab', component: VistaArtTABComponent},
     { path: 'busqueda-pal-clav', component: BusquedaPalClavComponent},
     { path: 'busqueda-pal-clav/:fuente', component: BusquedaPalClavComponent },
     { path: '', pathMatch: 'full', redirectTo: 'home' },
-    { path: '**', pathMatch: 'full', redirectTo: 'home' },   
+    { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];

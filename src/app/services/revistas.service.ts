@@ -5,6 +5,8 @@ import { GlobalConstants } from '../common/global-constants';
 import { Observable, from } from 'rxjs';
 import { Total } from '../models/total';
 import { FiltrosService } from './filtros.service';
+import { PaginadorService } from './paginador.service';
+import { FiltrosRevistasService } from './filtros-revistas.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,8 @@ export class RevistasService {
   public reversa: boolean = false;
   public palabraOrdenar: string = 'nombreRevista'
 
-  constructor(private http: HttpClient, private filtrosService: FiltrosService) {
+  constructor(private http: HttpClient, private filtrosService: FiltrosService, private paginadorService: PaginadorService,
+              private filtrosRevistasService: FiltrosRevistasService) {
     
   }
   
@@ -33,8 +36,9 @@ export class RevistasService {
    
   }
 
-  ordenarReversa(campo:string): Observable<Revistas[]>{    
-    return this.http.get<Revistas[]>(this.url + 'revistas/general?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count + '&r=' + this.reversa + '&palOrd=' + campo);
+  ordenarReversa(campo:string, palabra:string): Observable<Revistas[]>{
+    console.log(this.url + 'revistas/general?p=' +"\""+ palabra +"\""+ '&page=' + this.paginadorService.posicion + '&r=' + this.reversa + '&palOrd=' + campo + `&${this.filtrosService.cadenafiltros}`);
+    return this.http.get<Revistas[]>(this.url + 'revistas/general?p=' +"\""+ palabra +"\""+ '&page=' + this.paginadorService.posicion + '&r=' + this.reversa + '&palOrd=' + campo + `&${this.filtrosService.cadenafiltros}`);
   }
   
   setpalabraOrdenar(palabraOrdenar: string){
@@ -103,13 +107,16 @@ export class RevistasService {
     if (palabra === undefined) {
       palabra = '';
     }
+    if(this.paginadorService.reversa === undefined){
+      this.paginadorService.reversa = false;
+    }
     this.filtrosService.cadenafiltros = `f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`
-    console.log('servicio', `${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`);
-    return this.http.get(`${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`);
+    console.log('servicio', `${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
+    return this.http.get(`${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
   }
 
   getBusquedaRevistasPaginador(palabra: string, pagina: number) {
-    console.log(`${this.url}revistas/general?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
-    return this.http.get(`${this.url}revistas/general?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
+    console.log(`${this.url}revistas/general?p="${this.filtrosRevistasService.palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
+    return this.http.get(`${this.url}revistas/general?p="${this.filtrosRevistasService.palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
   }
 }
