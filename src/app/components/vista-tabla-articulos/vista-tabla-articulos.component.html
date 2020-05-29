@@ -18,7 +18,7 @@
                 <td *ngIf="articulo.dominio === 'https://www.redalyc.org' && articulo.origen === 'XML'">
                     <div class="grid">
                         <div>
-                            <a class="resumen" href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank"><b>Resumen</b></a>
+                            <a class="resumen" href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank"><b>PDF</b></a>
                         </div>
                         <div *ngIf="articulo.origen === 'XML'">
                             <a class="resumen" href="https://redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/html/index.html" target="_blank"><b>HTML-R</b></a>
@@ -34,7 +34,7 @@
                 <td *ngIf="articulo.dominio === 'https://www.redalyc.org' && !(articulo.origen === 'XML')">
                     <div>
                         <div>
-                            <a class="resumen" href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank"><b>Resumen</b></a>
+                            <a class="resumen" href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank"><b>PDF</b></a>
                         </div>
                     </div>
                 </td>
