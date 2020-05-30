@@ -9,12 +9,13 @@ export class FiltrosService {
   filtrosElegidos: Array<any> = [];
   resultadoArticulos: Array<any> = [];
   filtrosGlobos: Array<any> = [];
-  palabra: string = 'ciencia';
+  palabra: string = '';
   cadenafiltros: string;
 
   @Output() cambioFiltros: EventEmitter<any> = new EventEmitter();
   @Output() cambioArticulos: EventEmitter<any> = new EventEmitter();
   @Output() cambioGlobos: EventEmitter<any> = new EventEmitter();
+  @Output() cambioPalabra: EventEmitter<any> = new EventEmitter();
 
 
 
@@ -50,6 +51,12 @@ export class FiltrosService {
     cadena = arregloFiltros.join('<<<');
     console.log(cadena);
     return cadena;
+  }
+
+  
+  actualizarPalabra(palabra: string) {
+    this.palabra = palabra;
+    this.cambioPalabra.emit(this.palabra);
   }
 
   cambioEstado() {

@@ -19,7 +19,7 @@ export class BusquedaPalClavService {
   
   public count = 1;
   public fin = 1;
-  public palabra: string = "ciencia";
+  public palabra: string = "";
   constructor(private http: HttpClient, private filtrosService: FiltrosService) {
   }
 

@@ -12,6 +12,7 @@ import { number, string } from '@amcharts/amcharts4/core';
 import { BusquedaPalClavService } from 'src/app/services/busqueda-pal-clav.service';
 
 
+
 @Component({
   selector: 'app-busqueda-pal-clav',
   templateUrl: './busqueda-pal-clav.component.html',
@@ -38,15 +39,11 @@ export class BusquedaPalClavComponent implements OnInit {
 
   ngOnInit(): void {
 console.log('palabra recibida por url', this._route.snapshot.paramMap.get('fuente'))
-
     this.fuente = this._route.snapshot.paramMap.get('fuente');
-
     this.articuloService.setpalabra(this.fuente) 
-
     this.ArticuloInyectado.leerjsonPC().subscribe((articulosDesdeApi: any) => {
        console.log('ARTICULOS TOTALES',articulosDesdeApi.articulos.total)
       // this.articulos = articulosDesdeApi.articulos.articulos;
-     
        this.total.total = articulosDesdeApi.articulos.total;
       // if (Number.isInteger((this.total.total / 10))) {
       //   this.total.final = (this.total.total / 10)
@@ -56,21 +53,21 @@ console.log('palabra recibida por url', this._route.snapshot.paramMap.get('fuent
       // this.total.pos = this.articuloService.count
       // console.log(this.articulos)
       // console.log(this.total)
+      console.log('no se que es esto abr',this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos))
       this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
       this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total);
       this.paginadorService.actualizarPosicion(1);
     });
-    
-
     this.filtrosService.cambioArticulos.subscribe(data2 => {
       console.log('resutladosServicio', data2);
-      this.articulos = data2;
-    });
-
+      this.articulos = data2;    });
    
-
-     this.total.palabra = this.articuloService.getpalabra()
-// +this._route.snapshot.paramMap.get('fuente') ==   this.total.palabra
+      console.log('palabra obtenida en init',this.articuloService.getpalabra())
+      console.log('palabra obtenida en init',this.articuloService.palabra)
+      this.total.palabra = this.articuloService.palabra
+      this.total.total = this.paginadorService.total
+      //this.total.palabra = this.articuloService.getpalabra()
+      // +this._route.snapshot.paramMap.get('fuente') ==   this.total.palabra
       
   }
 
@@ -98,6 +95,7 @@ console.log('palabra recibida por url', this._route.snapshot.paramMap.get('fuent
       this.total.total = data.articulos.total;
     });
     this.filtrosService.palabra = palabra;
+    this.filtrosService.actualizarPalabra(palabra)
   }
 
 
