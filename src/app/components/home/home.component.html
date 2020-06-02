@@ -53,7 +53,7 @@
         <div id="contenedor-buscador">
           <div id="titulo-buscador"><span>Buscador</span></div>
           <div id="buscador">
-            <input #palabra (keyup)="buscarTexto(palabra.value)" id="input-buscar" type="text" name="input-articulo" value="" />
+            <input #palabra (keyup.enter)="buscarTexto(palabra.value)" id="input-buscar" type="text" name="input-articulo" value="" />
             <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo"
               alt="Buscar" />
           </div>

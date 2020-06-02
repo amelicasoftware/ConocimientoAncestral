@@ -14,6 +14,7 @@ import { BusquedaPaisComponent } from './components/busqueda-pais/busqueda-pais.
 export const ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'busquedaGeneral', component: BusquedaGeneralComponent },
+    { path: 'busquedaGeneral/:palabra', component: BusquedaGeneralComponent },
     { path: 'busquedarev', component: BusquedarevComponent},
     { path: 'revistas-table', component: RevistasTableComponent},
     { path: 'vista-art-tab', component: VistaArtTABComponent},

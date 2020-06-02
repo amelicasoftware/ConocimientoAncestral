@@ -12,6 +12,8 @@ import { HttpClient } from '@angular/common/http';
 import { GlobalConstants } from '../../common/global-constants';
 import "core-js";
 import { get } from 'scriptjs';
+import { Router } from '@angular/router';
+
 
 
 am4core.useTheme(am4themes_animated);
@@ -31,7 +33,7 @@ export class HomeComponent {
   url2: string = GlobalConstants.url;
 
 
-  constructor(private zone: NgZone, private service: ServicioHomeService) {
+  constructor(private zone: NgZone, private service: ServicioHomeService, private router: Router) {
   }
 
   title = 'ConocimientoAncestral';
@@ -88,6 +90,7 @@ export class HomeComponent {
 
   buscarTexto(palabra: string) {
     console.log('seleccionaste:',palabra);
+    this.router.navigate( ['/busquedaGeneral', palabra] );
   }
 
 }
