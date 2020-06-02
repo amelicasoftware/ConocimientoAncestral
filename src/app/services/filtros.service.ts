@@ -9,14 +9,14 @@ export class FiltrosService {
   filtrosElegidos: Array<any> = [];
   resultadoArticulos: Array<any> = [];
   filtrosGlobos: Array<any> = [];
-  palabra: string = 'ciencia';
+  palabra: string = '';
   cadenafiltros: string;
 
   @Output() cambioFiltros: EventEmitter<any> = new EventEmitter();
   @Output() cambioArticulos: EventEmitter<any> = new EventEmitter();
   @Output() cambioGlobos: EventEmitter<any> = new EventEmitter();
   @Output() cambioPalabra: EventEmitter<any> = new EventEmitter();
-
+  
   constructor() { }
 
   actualizarFiltros(filtros: []) {
@@ -37,11 +37,6 @@ export class FiltrosService {
     console.log(this.filtrosGlobos);
   }
   
-  actualizarPalabra(palabra: string) {
-    this.palabra = palabra;
-    this.cambioPalabra.emit(this.palabra);
-  }
-  
   construirCadena(filtro: string): string {
     const arregloFiltros = [];
     let cadena = '';
@@ -54,6 +49,11 @@ export class FiltrosService {
     console.log(cadena);
     return cadena;
   }
+  
+  actualizarPalabra(palabra: string) {
+    this.palabra = palabra;
+    this.cambioPalabra.emit(this.palabra);
+  }
 
   cambioEstado() {
     this.filtrosGlobos.forEach(element => {
@@ -62,5 +62,6 @@ export class FiltrosService {
       console.log(element.estado);
     });
   }
+
 
 }

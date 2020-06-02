@@ -20,7 +20,9 @@ export class PaginadorArticulosComponent implements OnInit {
   constructor(private Ruta: Router, private articulosService: ServiosBusquedaService,
               private filtrosService: FiltrosService, private paginadorService: PaginadorService) { }
 
-  ngOnInit(): void { //inicializa la busqueda con el primer metodo del servicio LeerJson 
+  ngOnInit(): void { 
+  //  console.log("##########################",this.articulosService.getpalabra())
+    //inicializa la busqueda con el primer metodo del servicio LeerJson 
     // this.revistasService.leerjson().subscribe((revistasDesdeApi: any) => {
     //   console.log(revistasDesdeApi.revistas.total);
       // this.revistas = revistasDesdeApi.revistas.revistas;
@@ -90,6 +92,7 @@ export class PaginadorArticulosComponent implements OnInit {
   }
 
   public primerPagina() {
+    console.log("Palabra recibida en el boton de primer palabra",this.articulosService.getpalabra())
     // let palabra = this.revistasService.getpalabra();
     // console.log(palabra);
     // this.revistasService.getPaginaP(palabra).subscribe((data: any) => {
@@ -110,7 +113,9 @@ export class PaginadorArticulosComponent implements OnInit {
     this.articulosService.getBusquedaArticulosPaginador(this.articulosService.palabra, 1).subscribe((data: any) =>{
       this.filtrosService.actualizarArticulos(data.articulos.articulos);
       this.paginadorService.actualizarPosicion(1);
+          this.filtrosService.actualizarPalabra(this.articulosService.getpalabra());
     });
+
   }
 
 
@@ -201,7 +206,7 @@ export class PaginadorArticulosComponent implements OnInit {
   }
 
   public numerosPag(pagina: number, final: number) {
-
+   
   //   if (pagina === final) {
   //     this.revistasService.setfin(0)
   //   } else {
@@ -215,8 +220,9 @@ export class PaginadorArticulosComponent implements OnInit {
   // }
 
   this.paginadorService.actualizarPosicion(pagina);
+  this.filtrosService.actualizarPalabra(this.articulosService.getpalabra())
   this.articulosService.getBusquedaArticulosPaginador(this.filtrosService.palabra, pagina).subscribe((data: any) =>{
-    this.filtrosService.actualizarArticulos(data.articulos.articulos);
+    this.filtrosService.actualizarArticulos(data.articulos.articulos);   
   });
 
 }
