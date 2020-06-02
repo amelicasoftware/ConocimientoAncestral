@@ -63,10 +63,9 @@ export class HomeComponent {
         "dataField": "value"
       });
 
-      series.labels.template.url = `${this.url}{word}`;
-     series.labels.template.urlTarget = "_blank";
-      console.log("############"+`${this.url}{word}`)
-      series.labels.template.urlTarget = "_blank";
+      series.labels.template.url = `${this.url2}#/busqueda-pal-clav/{word}`;
+      series.labels.template.urlTarget = "_self";
+      console.log("############"+`${this.url}{word}`);
 
       let subtitle2 = chart2.titles.create();
       subtitle2.text = "";
