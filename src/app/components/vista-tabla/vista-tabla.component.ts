@@ -20,7 +20,7 @@ export class VistaTablaComponent implements OnInit {
   imagenNR = 'assets/img/des.png';
   imagenMI = 'assets/img/des.png';
 
-  constructor(private RevistasInyectado: RevistasService, private revistasService: RevistasService,
+  constructor(private revistasService: RevistasService,
               private filtrosRevistasService: FiltrosRevistasService, private paginadorService: PaginadorService) { }
 
   ngOnInit(): void {   

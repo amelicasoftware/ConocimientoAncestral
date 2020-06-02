@@ -16,55 +16,84 @@ import { number } from '@amcharts/amcharts4/core';
   styleUrls: ['./vista-tabla-articulos.component.css']
 })
 export class VistaTablaArticulosComponent implements OnInit {
-  
+
   articulos: Array<Articulo> = new Array<Articulo>();
-  totales: Array<Total> = new Array<Total>();
   total: Total = new Total();
-  imagen = 'assets/img/des.png';
+  imagenR = 'assets/img/des.png';
+  imagenN = 'assets/img/des.png';
 
-  articulosResultado: [] = [];
-
-  palabraBusqueda: string;
-  totalResultados: number;
-
-  constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
-              private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
+  // private revistasService: RevistasService,
+  // private filtrosRevistasService: FiltrosRevistasService, private paginadorService: PaginadorService
+  constructor(private articulosService: ServiosBusquedaService,
+              private filtrosArticulos: FiltrosService,
               private paginadorService: PaginadorService) { }
 
   ngOnInit(): void {
-    this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
-      console.log(articulosDesdeApi.articulos.total);
-      this.articulos = articulosDesdeApi.articulos.articulos;
-      this.total.total = articulosDesdeApi.articulos.total;
-      this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
-      this.filtrosService.actualizarFiltros(articulosDesdeApi.filtros);
-   });
-
-    this.filtrosService.cambioArticulos.subscribe(data2 => {
-     console.log('resutladosServicio', data2);
-     this.articulos = data2;
+    let palabra = this.articulosService.getpalabra();
+    // this.total.palabra = this.filtrosRevistasService.palabra;
+    console.log('aqui leo la palabra2', this.total.palabra );
+    this.articulosService.getBusquedaArticulos(palabra).subscribe((articulosApi: any) => {
+      console.log(articulosApi.articulos.total);
+      this.articulos = articulosApi.articulos.articulos;
+      // this.total.total = revistasDesdeApi.revistas.total;
+      this.filtrosArticulos.actualizarArticulos(articulosApi.articulos.articulos);
+      this.filtrosArticulos.actualizarFiltros(articulosApi.filtros);
+      this.paginadorService.actualizarTotal(articulosApi.articulos.total);
     });
-    this.total.palabra = this.articuloService.getpalabra()
+
+    this.filtrosArticulos.cambioArticulos.subscribe(data2 => {
+      console.log('resutladosServicio', data2);
+      this.articulos = data2;
+    });
+    
+    this.filtrosArticulos.cambioPalabra.subscribe(palabra => {
+      console.log('cambioPalabra', palabra);
+      this.total.palabra = palabra;
+    });
+
+    this.paginadorService.cambioTotal.subscribe( total =>{
+      this.total.total = total;
+    });
   }
 
-  public reversa(campo: string, reversa: boolean){
-    /*console.log(this.revistasService.getreversa());
-    console.log(this.revistasService.getpalabraOrdenar());
-    this.revistasService.setpalabraOrdenar(campo);
-    if(this.revistasService.getreversa()){
-      this.imagen = "assets/img/des.png";
-      this.revistasService.setreversa(false);
+  public reversa(campo: string, reversa: boolean){ 
+    console.log(this.articulosService.getreversa());
+    console.log(this.articulosService.getpalabraOrdenar());
+    console.log(this.filtrosArticulos.palabra);
+    this.paginadorService.reversa = reversa;
+    this.paginadorService.campo = campo;
+    this.articulosService.setpalabraOrdenar(campo);
+    if(this.articulosService.getreversa()){
+      // this.imagenNR = "assets/img/des.png";
+      this.articulosService.setreversa(false);
+      this.paginadorService.reversa = false;
     }else{
-      this.imagen = "assets/img/as.png";
-      this.revistasService.setreversa(true);
+      // this.imagenNR = "assets/img/as.png";
+      this.paginadorService.reversa = true;
+      this.articulosService.setreversa(true);
     }
-
-    this.revistasService.ordenarReversa(campo).subscribe((data: any) => {
-      this.revistas = data.revistas.revistas;
-      this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
-      this.filtrosRevistasService.actualizarFiltros(data.filtros);
-      console.log(this.revistas);
-    });*/
+    let palabra = this.filtrosArticulos.palabra;
+    this.articulosService.ordenarReversa(campo, palabra).subscribe((data: any) => {
+      this.articulos = data.articulos.articulos;
+      this.filtrosArticulos.actualizarArticulos(data.articulos.articulos);
+      this.filtrosArticulos.actualizarFiltros(data.filtros);
+      console.log(this.articulos);
+    });
+    this.cambioIcono(campo);
 
   }
+
+  cambioIcono(campo: string){
+    if(campo === 'nombreRevista' && this.paginadorService.reversa){
+      this.imagenR = "assets/img/as.png";
+    }else if(campo === 'nombreRevista' && this.paginadorService.reversa === false){
+      this.imagenR = "assets/img/des.png";
+    }
+    if(campo === 'anio' && this.paginadorService.reversa){
+      this.imagenN = "assets/img/as.png";
+    }else if(campo === 'anio' && this.paginadorService.reversa === false){
+      this.imagenN = "assets/img/des.png";
+    }
+  }
+
 }

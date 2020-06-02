@@ -5,7 +5,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 })
 export class FiltrosRevistasService {
 
-  filtros: Array<any> = [];
+  filtros: Array<any> = []; 
   filtrosElegidos: Array<any> = [];
   resultadoRevistas: Array<any> = [];
   filtrosGlobos: Array<any> = [];

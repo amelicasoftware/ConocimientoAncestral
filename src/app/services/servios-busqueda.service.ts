@@ -5,11 +5,13 @@ import { GlobalConstants } from '../common/global-constants';
 import { Observable } from 'rxjs';
 import { Total } from '../models/total';
 import { FiltrosRevistasService } from './filtros-revistas.service';
+import { PaginadorService } from './paginador.service';
 import { FiltrosService } from './filtros.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ServiosBusquedaService {
   public articulo: Articulo = new Articulo();
   public total: Total = new Total();
@@ -20,7 +22,10 @@ export class ServiosBusquedaService {
   public count = 1;
   public fin = 1;
   public palabra: string = "ciencia";
-  constructor(private http: HttpClient, private filtrosService: FiltrosService) {
+  public reversa: boolean = false;
+  public palabraOrdenar: string = 'nulo';
+
+  constructor(private http: HttpClient, private filtrosService: FiltrosService, private paginadorService: PaginadorService) {
   }
 
   leerjson(): Observable<Articulo[]> {
@@ -30,6 +35,26 @@ export class ServiosBusquedaService {
   leerjsonPC(): Observable<Articulo[]> {
     return this.http.get<Articulo[]>(this.url + 'articulos/palClave?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count);
   }
+
+  ordenarReversa(campo:string, palabra:string): Observable<Articulo[]>{
+    return this.http.get<Articulo[]>(this.url + 'articulos/general?p=' +"\""+ palabra +"\""+ '&page=' + this.paginadorService.posicion + '&r=' + this.reversa + '&palOrd=' + campo + `&${this.filtrosService.cadenafiltros}`);
+  }
+
+  setpalabraOrdenar(palabraOrdenar: string){
+    this.palabraOrdenar = palabraOrdenar;
+}
+
+getpalabraOrdenar(){
+  return this.palabraOrdenar;
+}
+
+setreversa(reversa: boolean){
+  this.reversa = reversa;
+}
+
+getreversa(){
+  return this.reversa;
+}
  
   setfin(final: number){
     this.fin = final
@@ -65,6 +90,7 @@ export class ServiosBusquedaService {
 
 
   getBusquedaArticulos(palabra: string) {
+    //console.log(`${this.url}revistas/general?p="${palabra}"&page=1&${this.filtrosService.cadenafiltros}`);
     return this.http.get(`${this.url}articulos/general?p="${palabra}"&page=${this.count}`);
   }
 
@@ -88,7 +114,7 @@ export class ServiosBusquedaService {
 
   getBusquedaArticulosPaginador(palabra: string, pagina: number) {
     console.log(`${this.url}articulos/general?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
-    return this.http.get(`${this.url}articulos/general?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
+    return this.http.get(`${this.url}articulos/general?p="${this.filtrosService.palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
   }
 
 
