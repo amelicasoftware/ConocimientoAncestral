@@ -22,7 +22,7 @@ export class RevistasService {
   public fin = 1;
   public palabra: string = 'ciencia';
   public reversa: boolean = false;
-  public palabraOrdenar: string = 'nombreRevista'
+  public palabraOrdenar: string = 'nombreRevista';
 
   constructor(private http: HttpClient, private filtrosService: FiltrosService, private paginadorService: PaginadorService,
               private filtrosRevistasService: FiltrosRevistasService) {

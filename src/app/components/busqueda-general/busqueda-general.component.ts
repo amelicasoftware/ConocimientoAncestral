@@ -33,6 +33,9 @@ export class BusquedaGeneralComponent implements OnInit {
               private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
               private paginadorService: PaginadorService) { }
 
+
+              
+
   ngOnInit(): void {
     this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
        console.log(articulosDesdeApi.articulos.total)
@@ -65,6 +68,8 @@ export class BusquedaGeneralComponent implements OnInit {
     console.log(palabra);
     this.total.palabra = palabra;
     this.filtrosService.palabra = palabra;
+    this.filtrosService.actualizarPalabra(palabra)
+    this.articuloService.setpalabra(palabra)
     this.articuloService.getBusquedaArticulos(palabra).subscribe((data: any) => {
       console.log(data);
       this.filtrosService.actualizarArticulos(data.articulos.articulos);
@@ -75,9 +80,10 @@ export class BusquedaGeneralComponent implements OnInit {
       this.filtrosService.cadenafiltros = '';
       this.paginadorService.actualizarTotal(data.articulos.total);
       this.paginadorService.actualizarPosicion(1);
-      this.total.total = data.articulos.total;
+      this.total.total = data.articulos.total;     
     });
     this.filtrosService.palabra = palabra;
+    this.filtrosService.actualizarPalabra(palabra)
   }
 
 

@@ -16,9 +16,7 @@ export class FiltrosService {
   @Output() cambioArticulos: EventEmitter<any> = new EventEmitter();
   @Output() cambioGlobos: EventEmitter<any> = new EventEmitter();
   @Output() cambioPalabra: EventEmitter<any> = new EventEmitter();
-
-
-
+  
   constructor() { }
 
   actualizarFiltros(filtros: []) {
@@ -38,8 +36,7 @@ export class FiltrosService {
     this.cambioGlobos.emit(this.filtrosGlobos);
     console.log(this.filtrosGlobos);
   }
-
-
+  
   construirCadena(filtro: string): string {
     const arregloFiltros = [];
     let cadena = '';
@@ -52,7 +49,6 @@ export class FiltrosService {
     console.log(cadena);
     return cadena;
   }
-
   
   actualizarPalabra(palabra: string) {
     this.palabra = palabra;
@@ -66,5 +62,6 @@ export class FiltrosService {
       console.log(element.estado);
     });
   }
+
 
 }
