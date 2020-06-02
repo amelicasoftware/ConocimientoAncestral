@@ -63,8 +63,9 @@ export class HomeComponent {
         "dataField": "value"
       });
 
-      //series.labels.template.url = `${this.url}{word}`;
-     // series.labels.template.urlTarget = "_blank";
+      series.labels.template.url = `${this.url}{word}`;
+      console.log("############"+`${this.url}{word}`)
+      series.labels.template.urlTarget = "_blank";
 
       let subtitle2 = chart2.titles.create();
       subtitle2.text = "";

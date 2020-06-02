@@ -27,8 +27,11 @@ export class ServiosBusquedaService {
     return this.http.get<Articulo[]>(this.url + 'articulos/general?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count);
   }
  
+  
   leerjsonPC(): Observable<Articulo[]> {
+    console.log(this.url + 'articulos/palClave?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count)
     return this.http.get<Articulo[]>(this.url + 'articulos/palClave?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count);
+
   }
  
   setfin(final: number){
