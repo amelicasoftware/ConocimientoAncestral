@@ -47,6 +47,7 @@ export class BusquedaGeneralComponent implements OnInit {
       // console.log(this.articulos)
       // console.log(this.total)
       this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
+      this.filtrosService.actualizarFiltros(articulosDesdeApi.filtros);
       this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total);
       this.paginadorService.actualizarPosicion(1);
     });

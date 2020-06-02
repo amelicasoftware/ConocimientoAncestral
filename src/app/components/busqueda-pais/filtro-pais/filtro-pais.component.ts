@@ -1,21 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
-//import { BusquedaGeneralComponent } from '../busqueda-general/busqueda-general.component';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Filtro } from '../../models/Filtro';
-import { ElementoFiltro } from '../../models/ElementoFiltro';
-import { element } from 'protractor';
-import { FiltrosService } from '../../services/filtros.service';
-import { PaginadorService } from '../../services/paginador.service';
-import { VistaArtTABComponent } from '../vista-art-tab/vista-art-tab.component';
+import { FiltrosService } from '../../../services/filtros.service';
+import { ServiosBusquedaService } from '../../../services/servios-busqueda.service';
+import { PaginadorService } from '../../../services/paginador.service';
 
 @Component({
-  selector: 'app-filtros',
-  templateUrl: './filtros.component.html',
-  styleUrls: ['./filtros.component.css']
+  selector: 'app-filtro-pais',
+  templateUrl: './filtro-pais.component.html',
+  styleUrls: ['./filtro-pais.component.css']
 })
-export class FiltrosComponent implements OnInit {
-
+export class FiltroPaisComponent implements OnInit {
   filtros: [] = [];
   estadoPositivo: boolean = false;
   nombreFiltroEstilo: string = '';
@@ -25,15 +18,9 @@ export class FiltrosComponent implements OnInit {
               private filtrosService: FiltrosService, private paginadorService: PaginadorService) { }
 
   ngOnInit(): void {
-    // this.serviosBusquedaService.leerjson().subscribe((data: any) => {
-    //   this.filtros = data.filtros;
-    // });
-
     this.filtrosService.cambioFiltros.subscribe(data2 => {
-      // this.isOpen = isOpen;
       console.log('filtrosServicio', data2);
       this.filtros = data2;
-      // this.activarFiltros = false;
     });
   }
 
@@ -92,8 +79,8 @@ export class FiltrosComponent implements OnInit {
     let cadenaIdioma = this.filtrosService.construirCadena('Idioma');
     let palabra = this.filtrosService.palabra;
     console.log(palabra);
-    this.serviosBusquedaService.getBusquedaArtFiltro(palabra, cadenaAnio, cadenaPais, cadenaDisciplina, 
-                                                      cadenaFuente, cadenaIdioma).subscribe((data: any) => {
+    this.serviosBusquedaService.getArticulosXPaisFiltro(palabra, cadenaAnio, cadenaPais, cadenaDisciplina, 
+                                                      cadenaFuente, cadenaIdioma, 73).subscribe((data: any) => {
         console.log('resultados', data);
         this.filtrosService.actualizarFiltros(data.filtros);
         console.log(this.filtrosService.filtros);
@@ -107,12 +94,9 @@ export class FiltrosComponent implements OnInit {
   }
 
   mostrarBoton(filtro){
-    // console.log('tamaño filtro', filtro);
     if(filtro.elementos.length > 5){
-      // console.log(true);
       return false;
     }else{
-      // console.log(false);
       return true;
     }
   }

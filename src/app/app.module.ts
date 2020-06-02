@@ -30,6 +30,8 @@ import { BusquedaPaisComponent } from './components/busqueda-pais/busqueda-pais.
 import { VistaTablaArticulosComponent } from './components/vista-tabla-articulos/vista-tabla-articulos.component';
 import { VistaArtTABComponent } from './components/vista-art-tab/vista-art-tab.component';
 import { BusquedaPalClavComponent } from './components/busqueda-pal-clav/busqueda-pal-clav.component';
+import { TarjetaArticuloComponent } from './components/busqueda-pais/tarjeta-articulo/tarjeta-articulo.component';
+import { FiltroPaisComponent } from './components/busqueda-pais/filtro-pais/filtro-pais.component';
 
 
 
@@ -58,6 +60,8 @@ import { BusquedaPalClavComponent } from './components/busqueda-pal-clav/busqued
     VistaTablaArticulosComponent,
     VistaArtTABComponent,
     BusquedaPalClavComponent,
+    TarjetaArticuloComponent,
+    FiltroPaisComponent,
 
   ],
   imports: [

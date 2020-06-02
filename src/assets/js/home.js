@@ -154,35 +154,35 @@ $(document).ready(function() {
 	
 });
 let palabras2 = [];
-$.ajax({url: "assets/js/json/palabrasAncestral.json", success: function(result){
-    console.log(result);
-    palabras2 = result;
-    $("#wordCloud").jQWCloud({
+// $.ajax({url: "assets/js/json/palabrasAncestral.json", success: function(result){
+//     console.log(result);
+//     palabras2 = result;
+//     $("#wordCloud").jQWCloud({
 
-        words: palabras2,
-        cloud_color: '#4d4d4d',		
-        minFont: 5,
-        maxFont: 40,
-        padding_left: 1,
-        fontOffset: 2,
-        word_common_classes: 'WordClass',
-        word_mouseOut :function(){
-            $(this).css("text-decoration","none");	
+//         words: palabras2,
+//         cloud_color: '#4d4d4d',		
+//         minFont: 5,
+//         maxFont: 40,
+//         padding_left: 1,
+//         fontOffset: 2,
+//         word_common_classes: 'WordClass',
+//         word_mouseOut :function(){
+//             $(this).css("text-decoration","none");	
             
-        },
-        word_mouseOver: function(){
-            $(this).css('cursor', 'pointer');
-            console.log($(this).text());
-        },
-        word_click: function(){ 			
-            alert("You have selected:" +$(this).text());
+//         },
+//         word_mouseOver: function(){
+//             $(this).css('cursor', 'pointer');
+//             console.log($(this).text());
+//         },
+//         word_click: function(){ 			
+//             alert("You have selected:" +$(this).text());
             
-        },
-        afterCloudRender: function(){
-            console.log('despues de');
-        }
-    });
-  }});
+//         },
+//         afterCloudRender: function(){
+//             console.log('despues de');
+//         }
+//     });
+//   }});
 
 // // var palabras2 = [];
 // 	$scope.nube = function () {

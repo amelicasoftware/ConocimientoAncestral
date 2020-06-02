@@ -91,10 +91,15 @@ export class ServiosBusquedaService {
     return this.http.get(`${this.url}articulos/general?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
   }
 
+  getArticulosXPais(cvePais: number, palabra: string){
+    console.log(`${this.url}articulos/pais?c=${cvePais}&p=${palabra}`);
+    return this.http.get(`${this.url}articulos/pais?c=${cvePais}&p=${palabra}`);
+  }
 
-
-
-
-
-  
+  getArticulosXPaisFiltro(palabra: string, cadenaAnio: string, cadenaPais: string,
+                          cadenaDisciplina: string, cadenaFuente: string, cadenaIdioma: string, cvePais: number){
+    this.filtrosService.cadenafiltros = `f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`;
+    console.log(`${this.url}articulos/pais?c=${cvePais}&${this.filtrosService.cadenafiltros}&p=${palabra}`);
+    return this.http.get(`${this.url}articulos/pais?c=${cvePais}&${this.filtrosService.cadenafiltros}&p=${palabra}`);
+  }
 }
