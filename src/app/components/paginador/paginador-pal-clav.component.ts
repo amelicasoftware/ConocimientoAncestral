@@ -83,7 +83,7 @@ export class PaginadorPalClavComponent implements OnInit {
                 //   this.revistasService.setfin(0)
                 // });
             
-                this.articulosService.getBusquedaArticulosPaginador(this.articulosService.palabra, this.paginadorService.pFinal).
+                this.articulosService.getBusquedaArticulosPaginadorPalClav(this.articulosService.palabra, this.paginadorService.pFinal).
                 subscribe((data: any) =>{
                   console.log(data);
                   this.filtrosService.actualizarArticulos(data.articulos.articulos);
@@ -110,7 +110,7 @@ export class PaginadorPalClavComponent implements OnInit {
                 //   this.total.pos = this.revistasService.count
                 //   this.revistasService.setfin(1)
                 // });
-                this.articulosService.getBusquedaArticulosPaginador(this.articulosService.palabra, 1).subscribe((data: any) =>{
+                this.articulosService.getBusquedaArticulosPaginadorPalClav(this.articulosService.palabra, 1).subscribe((data: any) =>{
                   this.filtrosService.actualizarArticulos(data.articulos.articulos);
                   this.paginadorService.actualizarPosicion(1);
                       this.filtrosService.actualizarPalabra(this.articulosService.getpalabra());
@@ -173,7 +173,7 @@ export class PaginadorPalClavComponent implements OnInit {
                 // this.total.pos = this.revistasService.count
                 console.log('siguiente');
                 this.paginadorService.actualizarPosicion(this.paginadorService.posicion + 1);
-                this.articulosService.getBusquedaArticulosPaginador(this.articulosService.palabra, this.paginadorService.posicion).
+                this.articulosService.getBusquedaArticulosPaginadorPalClav(this.articulosService.palabra, this.paginadorService.posicion).
                 subscribe( (data: any) =>{
                   console.log('paginador', data);
                   this.filtrosService.actualizarArticulos(data.articulos.articulos);
@@ -198,7 +198,7 @@ export class PaginadorPalClavComponent implements OnInit {
                 // this.total.pos = this.revistasService.count
                 console.log('anterior');
                 this.paginadorService.actualizarPosicion(this.paginadorService.posicion - 1);
-                this.articulosService.getBusquedaArticulosPaginador(this.articulosService.palabra, this.paginadorService.posicion).
+                this.articulosService.getBusquedaArticulosPaginadorPalClav(this.articulosService.palabra, this.paginadorService.posicion).
                 subscribe( (data: any) =>{
                   console.log('paginador', data);
                   this.filtrosService.actualizarArticulos(data.articulos.articulos);
@@ -221,7 +221,7 @@ export class PaginadorPalClavComponent implements OnInit {
             
               this.paginadorService.actualizarPosicion(pagina);
               this.filtrosService.actualizarPalabra(this.articulosService.getpalabra())
-              this.articulosService.getBusquedaArticulosPaginador(this.filtrosService.palabra, pagina).subscribe((data: any) =>{
+              this.articulosService.getBusquedaArticulosPaginadorPalClav(this.filtrosService.palabra, pagina).subscribe((data: any) =>{
                 this.filtrosService.actualizarArticulos(data.articulos.articulos);
               });
             

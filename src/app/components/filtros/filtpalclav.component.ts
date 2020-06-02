@@ -86,7 +86,7 @@ export class FiltpalclavComponent implements OnInit {
     let cadenaIdioma = this.filtrosService.construirCadena('Idioma');
     let palabra = this.filtrosService.palabra;
     console.log(palabra);
-    this.articulosService.getBusquedaArtFiltro(palabra, cadenaAnio, cadenaPais, cadenaDisciplina, 
+    this.articulosService.getBusquedaArtFiltroPalClav(palabra, cadenaAnio, cadenaPais, cadenaDisciplina, 
                                                       cadenaFuente, cadenaIdioma).subscribe((data: any) => {
         console.log('resultados', data);
         this.filtrosService.actualizarFiltros(data.filtros);

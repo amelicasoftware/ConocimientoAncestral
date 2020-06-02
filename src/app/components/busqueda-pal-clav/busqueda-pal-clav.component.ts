@@ -64,6 +64,7 @@ export class BusquedaPalClavComponent implements OnInit {
                   console.log('resutladosServicio', data2);
                   this.articulos = data2;
                 });
+                console.log("Coso Imprimiendo algo abr que es ",this.articuloService.getpalabra())
                  this.total.palabra = this.articuloService.getpalabra()
               }
             
@@ -74,7 +75,7 @@ export class BusquedaPalClavComponent implements OnInit {
                 this.filtrosService.palabra = palabra;
                 this.filtrosService.actualizarPalabra(palabra)
                 this.articuloService.setpalabra(palabra)
-                this.articuloService.getBusquedaArticulos(palabra).subscribe((data: any) => {
+                this.articuloService.getBusquedaArticulosPalClav(palabra).subscribe((data: any) => {
                   console.log(data);
                   this.filtrosService.actualizarArticulos(data.articulos.articulos);
                   this.filtrosService.actualizarFiltros(data.filtros);
@@ -95,7 +96,7 @@ export class BusquedaPalClavComponent implements OnInit {
                 console.log(ultimapagina)
                 let palabra = this.articuloService.getpalabra();
                 console.log(palabra);
-                this.articuloService.getPaginaFinal(palabra, ultimapagina).subscribe((data: any) => {
+                this.articuloService.getPaginaFinalPalClav(palabra, ultimapagina).subscribe((data: any) => {
                   console.log(data);
                   this.articulos = data.articulos.articulos;
                   this.articuloService.setpalabra(palabra)
@@ -122,7 +123,7 @@ export class BusquedaPalClavComponent implements OnInit {
             
                 let palabra = this.articuloService.getpalabra();
                 console.log(palabra);
-                this.articuloService.getPaginaP(palabra).subscribe((data: any) => {
+                this.articuloService.getPaginaPPalClav(palabra).subscribe((data: any) => {
                   console.log(data);
                   this.articulos = data.articulos.articulos;
                   this.articuloService.setpalabra(palabra)

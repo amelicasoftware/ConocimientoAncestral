@@ -32,12 +32,7 @@ export class ServiosBusquedaService {
     return this.http.get<Articulo[]>(this.url + 'articulos/general?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count);
   }
  
-  
-  leerjsonPC(): Observable<Articulo[]> {
-    console.log(this.url + 'articulos/palClave?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count)
-    return this.http.get<Articulo[]>(this.url + 'articulos/palClave?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count);
-
-  }
+ 
 
   ordenarReversa(campo:string, palabra:string): Observable<Articulo[]>{
     return this.http.get<Articulo[]>(this.url + 'articulos/general?p=' +"\""+ palabra +"\""+ '&page=' + this.paginadorService.posicion + '&r=' + this.reversa + '&palOrd=' + campo + `&${this.filtrosService.cadenafiltros}`);
@@ -131,4 +126,50 @@ getreversa(){
     console.log(`${this.url}articulos/pais?c=${cvePais}&${this.filtrosService.cadenafiltros}&p=${palabra}`);
     return this.http.get(`${this.url}articulos/pais?c=${cvePais}&${this.filtrosService.cadenafiltros}&p=${palabra}`);
   }
+
+////////////////////////////////////Servicios para busqueda por palabra clave
+  
+
+
+ 
+leerjsonPC(): Observable<Articulo[]> {
+  console.log(this.url + 'articulos/palClave?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count)
+  return this.http.get<Articulo[]>(this.url + 'articulos/palClave?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count);
+
+}
+
+ordenarReversaPalClav(campo:string, palabra:string): Observable<Articulo[]>{
+  return this.http.get<Articulo[]>(this.url + 'articulos/palClave?p=' +"\""+ palabra +"\""+ '&page=' + this.paginadorService.posicion + '&r=' + this.reversa + '&palOrd=' + campo + `&${this.filtrosService.cadenafiltros}`);
+}
+
+
+  getBusquedaArticulosPalClav(palabra: string) {
+    //console.log(`${this.url}revistas/general?p="${palabra}"&page=1&${this.filtrosService.cadenafiltros}`);
+    return this.http.get(`${this.url}articulos/palClave?p="${palabra}"&page=${this.count}`);
+  }
+
+  getPaginaFinalPalClav(palabra: string, ultima:number) {
+    return this.http.get(`${this.url}articulos/palClave?p="${palabra}"&page=${ultima}`);
+  }
+  
+  getPaginaPPalClav(palabra: string){
+    return this.http.get(`${this.url}articulos/palClave?p="${palabra}"&page=1`);
+  }
+
+  getBusquedaArtFiltroPalClav(palabra: string, cadenaAnio: string, cadenaPais: string,
+                       cadenaDisciplina: string, cadenaFuente: string, cadenaIdioma: string) {
+    if (palabra === undefined) {
+      palabra = '';
+    }
+    this.filtrosService.cadenafiltros = `f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`
+    console.log('servicio', `${this.url}articulos/palClave?p="${palabra}"&f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`);
+    return this.http.get(`${this.url}articulos/palClave?p="${palabra}"&f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`);
+  }
+
+  getBusquedaArticulosPaginadorPalClav(palabra: string, pagina: number) {
+    console.log(`${this.url}articulos/palClave?p="${palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}`);
+    return this.http.get(`${this.url}articulos/palClave?p="${this.filtrosService.palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
+  }
+
+  
 }
