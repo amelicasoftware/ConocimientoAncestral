@@ -12,18 +12,18 @@
 <!--  termina Header    -->
 
 
-<div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"><img src="assets/img/buscador-institucionmdpi.png" style="margin: 40px; ;"> Busqueda General
-    <input #palabra (keyup.enter)="buscar(palabra.value)" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text">
+<div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"><img src="assets/img/buscador-institucionmdpi.png" style="margin: 40px; ;"> Búsqueda General
+    <input #palabra (keyup.enter)="buscar(palabra.value)" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text" placeholder="Buscar palabra">
 </div>
 
 <div class="grid-containerh2">
     <div class="item11">
-        <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
-        <div [routerLink]="['/busquedarev']" style="text-align:center; cursor:pointer" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
-        <div (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
-        <div style="margin-left: 40%;">Modo de visualizar resultados </div>
-        <div><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
-        <div [routerLink]="['/busquedaGeneral']"><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
+        <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Búsqueda</div>
+        <div class="cursor" [routerLink]="['/busquedarev']" style="text-align:center;" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
+        <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Artículos de revista</div>
+        <div class="alimodo">Modo de visualizar resultados </div>
+        <div class="seleccionado"><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
+        <div class="cursor" [routerLink]="['/busquedaGeneral']"><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
     </div>
 </div>
 
@@ -34,24 +34,24 @@
 
 <!--  Filtros menu  -->
 <div class="grid-container">
-  <div class="item2">
-    <app-filtros></app-filtros> 
-  </div>
+    <div class="item2">
+        <app-filtros></app-filtros>
+    </div>
 
     <!-- Termina Filtros menu   -->
     <div class="item3">
         <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
             <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}} </p>
             <br>
-            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
+            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Búsqueda: {{ total.total}} </p>
         </div>
         <app-globitos></app-globitos>
 
 
 
 
-<app-vista-tabla-articulos></app-vista-tabla-articulos>
- <!--
+        <app-vista-tabla-articulos></app-vista-tabla-articulos>
+        <!--
         <div class="flex-containercont">
 
             <div class="articulo" id="example1" *ngFor="let articulo of articulos">
@@ -110,13 +110,13 @@
         </div> -->
 
 
-       <app-paginador-articulos></app-paginador-articulos>
+        <app-paginador-articulos></app-paginador-articulos>
 
-    </div> 
+    </div>
 
 
 </div>
-<div class="item4"> 
+<div class="item4">
     <div id="contendor-footer">
         <div id="instituciones-footer">
             <div>
