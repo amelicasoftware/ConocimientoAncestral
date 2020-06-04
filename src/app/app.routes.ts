@@ -6,6 +6,8 @@ import { RevistasTableComponent } from './components/revistas-table/revistas-tab
 import { VistaArtTABComponent } from './components/vista-art-tab/vista-art-tab.component';
 import { BusquedaPalClavComponent } from './components/busqueda-pal-clav/busqueda-pal-clav.component';
 import { BusquedaPaisComponent } from './components/busqueda-pais/busqueda-pais.component';
+import { Component } from '@angular/core';
+import { BusquedaPalclavVtabComponent } from './components/busqueda-palclav-vtab/busqueda-palclav-vtab.component';
 
 
 
@@ -21,7 +23,8 @@ export const ROUTES: Routes = [
     { path: 'busqueda-pal-clav', component: BusquedaPalClavComponent},
     { path: 'busqueda-pal-clav/:fuente', component: BusquedaPalClavComponent },
     { path: 'busquedaPais', component: BusquedaPaisComponent },
-    { path: 'busquedaPais/:cvePais', component: BusquedaPaisComponent },
+    { path: 'busquedaPais/:cvePais', component: BusquedaPaisComponent },    
+    { path: 'PalClav-table/:palabra', component: BusquedaPalclavVtabComponent },
     { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];

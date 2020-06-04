@@ -1,0 +1,124 @@
+<!-- Inicia Header  -->
+<div class="grid-containerh">
+    <div class="item1">
+        <div style="padding-left: 5%; margin: 5px 10px;">Colección <strong>Conocimiento Ancestral</strong></div>
+        <div style="padding-left: 45%; margin: 5px 10px;;">Acerca de AmeliCA</div>
+        <div style="margin: 5px 10px;">Proyecto Conocimeinto Ancestral</div>
+        <div style="margin: 0px 10px;"><img src="assets/img/ic-home.png" alt=""></div>
+        <div style="margin: 0px 10px;"><img src="assets/img/ic-facebook.png" alt=""></div>
+        <div style="margin: 0px 10px;"><img src="assets/img/ic-twitter.png" alt=""></div>
+    </div>
+</div>
+<!--  termina Header    -->
+
+
+<div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"><img src="assets/img/buscador-institucionmdpi.png" style="margin: 40px; ;"> Busqueda General
+    <input #palabra (keyup.enter)="buscar(palabra.value)" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text">
+</div>
+
+<div class="grid-containerh2">
+    <div class="item11">
+        <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
+       
+        <div (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
+        <div style="margin-left: 40%;">Modo de visualizar resultados </div>
+        <div><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
+        <div class="cursor" [routerLink]="['/busqueda-pal-clav/',total.palabra]"><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
+    </div>
+</div>
+
+
+<!--  Inicia menu horizontal sin grid   -->
+<!--  Terina  menu horizontal sin grid   -->
+
+
+<!--  Filtros menu  -->
+<div class="grid-container">
+  <div class="item2">
+    <app-filtpalclav></app-filtpalclav>    
+  </div>
+
+    <!-- Termina Filtros menu   -->
+    <div class="item3">
+        <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
+            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para: {{total.palabra}} </p>
+            <br>
+            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
+        </div>
+        <app-globitos></app-globitos>
+
+
+
+        <div class="flex-containercont">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="3">Título</th>
+                        <th scope="col" colspan="2">Autores</th>
+                        <th scope="col" colspan="2">Revista<img (click)="reversa('nombreRevista',true)" [src]="imagenR" align="right" /></th>
+                        <th scope="col">Número<img (click)="reversa('anio',true)" [src]="imagenN" align="right" /></th>
+                        <th scope="col">Texto Completo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let articulo of articulos">
+                        <td colspan="3">{{ articulo.tituloArt }}</td>
+                        <td colspan="2">{{ articulo.autores }}</td>
+                        <td colspan="2">{{ articulo.nombreRevista }}</td>
+                        <td>{{ articulo.anio }}, {{ articulo.volumen }} ({{ articulo.numero }})</td>
+                        <td *ngIf="articulo.dominio === 'https://www.redalyc.org' && articulo.origen === 'XML'">
+                            <div class="grid">
+                                <div>
+                                    <a class="resumen" href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank"><b>PDF</b></a>
+                                </div>
+                                <div *ngIf="articulo.origen === 'XML'">
+                                    <a class="resumen" href="https://redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/html/index.html" target="_blank"><b>HTML-R</b></a>
+                                </div>
+                                <div *ngIf="articulo.origen === 'XML'">
+                                    <a class="resumen" href="https://redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/{{articulo.claveArt}}.epub" target="_blank"><b>ePUB-R</b></a>
+                                </div>
+                                <div *ngIf="articulo.origen === 'XML'">
+                                    <a class="resumen" href="https://redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/movil/index.html" target="_blank"><b>MÓVIL-R</b></a>
+                                </div>
+                            </div>
+                        </td>
+                        <td *ngIf="articulo.dominio === 'https://www.redalyc.org' && !(articulo.origen === 'XML')">
+                            <div>
+                                <div>
+                                    <a class="resumen" href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank"><b>PDF</b></a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+       <app-paginador-pal-clav></app-paginador-pal-clav>
+
+    </div> 
+
+
+</div>
+<div class="item4"> 
+    <div id="contendor-footer">
+        <div id="instituciones-footer">
+            <div>
+                <a href="#"><img src="assets/img/ic-amelica-footer.png" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="assets/img/ic-unesco-footer.png" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="assets/img/ic-clacso-footer.png" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="assets/img/ic-redalyc-footer.png" /></a>
+            </div>
+        </div>
+        <div id="resumen-footer" style="width: 40%">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            It has survived</div>
+
+
+    </div>
+</div>

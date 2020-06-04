@@ -1,24 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Articulo } from '../../models/articulo';
-import { Usuario } from '../../models/usuario';
-import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FiltrosComponent } from '../filtros/filtros.component';
-import { FiltrosService } from '../../services/filtros.service';
+import { Component, OnInit } from '@angular/core';
 import { PaginadorService } from '../../services/paginador.service';
 import { Total } from '../../models/total'
-import { from } from 'rxjs';
-import { number, string } from '@amcharts/amcharts4/core';
-
-
-
-
+import { FiltrosService } from '../../services/filtros.service';
+import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Articulo } from '../../models/articulo';
 @Component({
-  selector: 'app-busqueda-pal-clav',
-  templateUrl: './busqueda-pal-clav.component.html',
-  styleUrls: ['./busqueda-pal-clav.component.css']
+  selector: 'app-busqueda-palclav-vtab',
+  templateUrl: './busqueda-palclav-vtab.component.html',
+  styleUrls: ['./busqueda-palclav-vtab.component.css']
 })
-export class BusquedaPalClavComponent implements OnInit {
+export class BusquedaPalclavVtabComponent implements OnInit {
   articulos: Array<Articulo> = new Array<Articulo>();
   totales: Array<Total> = new Array<Total>();
   total: Total = new Total();
@@ -32,16 +24,16 @@ export class BusquedaPalClavComponent implements OnInit {
 
   palabraBusqueda: string;
   totalResultados: number;
-  fuente: string;
+  palabra: string;
 
   constructor(private Ruta: Router,
               private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
               private paginadorService: PaginadorService, private _route: ActivatedRoute) {}
 
               ngOnInit(): void {
-                this.fuente = this._route.snapshot.paramMap.get('fuente');
-                this.articuloService.setpalabra(this.fuente) 
-                this.filtrosService.actualizarPalabra(this.fuente)
+                this.palabra = this._route.snapshot.paramMap.get('palabra');
+                this.articuloService.setpalabra(this.palabra) 
+                this.filtrosService.actualizarPalabra(this.palabra)
                 this.articuloService.leerjsonPC().subscribe((articulosDesdeApi: any) => {
                   console.log(articulosDesdeApi) 
                   console.log(articulosDesdeApi.articulos.total)
