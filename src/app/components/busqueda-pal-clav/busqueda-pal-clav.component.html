@@ -19,10 +19,10 @@
 <div class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
-       
+      
         <div (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
         <div style="margin-left: 40%;">Modo de visualizar resultados </div>
-        <div><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
+        <div class="cursor" [routerLink]="['/PalClav-table/',total.palabra]"><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
         <div ><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
     </div>
 </div>
