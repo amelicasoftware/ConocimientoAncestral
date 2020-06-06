@@ -1,84 +1,84 @@
 function openNav() {
-	console.log('muestro barra');
-	  document.getElementById("mySidebar").style.width = "250px";
-	  document.getElementById("main").style.marginLeft = "250px";
-	  document.getElementById("social").style.display = "none";
-	}
+    console.log('muestro barra');
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("social").style.display = "none";
+}
 
-	function closeNav() {
-		console.log('cierro barra');
-	  document.getElementById("mySidebar").style.width = "0";
-	  document.getElementById("main").style.marginLeft= "0";
-	  document.getElementById("social").style.display = "block";
-	}
-	
+function closeNav() {
+    console.log('cierro barra');
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("social").style.display = "block";
+}
 
-window.onscroll = function() {scrollFunction()};
+
+window.onscroll = function() { scrollFunction() };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    document.getElementById("header").style.paddingTop= "0px";
-  } else {
-    document.getElementById("header").style.paddingTop = "50px";
-  }
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        document.getElementById("header").style.paddingTop = "0px";
+    } else {
+        document.getElementById("header").style.paddingTop = "50px";
+    }
 }
 
 
 $(document).ready(function() {
 
-	$('#adelante').click(function(){
-		console.log($("#contenedor-fichas").scrollLeft());
-		let posicion = $("#contenedor-fichas").scrollLeft();
-		$("#contenedor-fichas").scrollLeft(posicion + 500);
-	});
-	$('#atras').click(function(){
-		console.log($("#contenedor-fichas").scrollLeft());
-		let posicion = $("#contenedor-fichas").scrollLeft();
-		$("#contenedor-fichas").scrollLeft(posicion - 500);
-	});
+    $('#adelante').click(function() {
+        console.log($("#contenedor-fichas").scrollLeft());
+        let posicion = $("#contenedor-fichas").scrollLeft();
+        $("#contenedor-fichas").scrollLeft(posicion + 500);
+    });
+    $('#atras').click(function() {
+        console.log($("#contenedor-fichas").scrollLeft());
+        let posicion = $("#contenedor-fichas").scrollLeft();
+        $("#contenedor-fichas").scrollLeft(posicion - 500);
+    });
 
-	$('#adelante-r').click(function(){
-		console.log($("#contenedor-fichas-r").scrollLeft());
-		let posicion = $("#contenedor-fichas-r").scrollLeft();
-		$("#contenedor-fichas-r").scrollLeft(posicion + 500);
-	});
-	$('#atras-r').click(function(){
-		console.log($("#contenedor-fichas-r").scrollLeft());
-		let posicion = $("#contenedor-fichas-r").scrollLeft();
-		$("#contenedor-fichas-r").scrollLeft(posicion - 500);
-	});
+    $('#adelante-r').click(function() {
+        console.log($("#contenedor-fichas-r").scrollLeft());
+        let posicion = $("#contenedor-fichas-r").scrollLeft();
+        $("#contenedor-fichas-r").scrollLeft(posicion + 500);
+    });
+    $('#atras-r').click(function() {
+        console.log($("#contenedor-fichas-r").scrollLeft());
+        let posicion = $("#contenedor-fichas-r").scrollLeft();
+        $("#contenedor-fichas-r").scrollLeft(posicion - 500);
+    });
 
-	$(window).scroll(function(){
+    $(window).scroll(function() {
 
 
-		var windowHeight = $(window).scrollTop();
-		
-		var seccionNube = $("#contenedor-nube").offset();
-		var seccionMapa = $("#contenedor-mapa").offset();
-		var seccionDocumentos = $("#contenedor-ultimos-documentos").offset();
-		var seccionFooter = $("#footer").offset();
-		var menuFlotante = $("#menu-documentos").offset();
-		var menuBuscador = $("#menu-buscador").offset();
-		var menuNube = $("#menu-nube").offset();
-		var menuPais = $("#menu-pais").offset();
-		seccionNube = seccionNube.top;
-		seccionDocumentos = seccionDocumentos.top;
-		seccionMapa = seccionMapa.top;
-		menuFlotante = menuFlotante.top;
-		seccionFooter = seccionFooter.top;
-		menuBuscador = menuBuscador.top;
-		menuNube = menuNube.top;
-		menuPais = menuPais.top;
-		//console.log(menuFlotante);
-		
-		comparaPosicion(menuFlotante, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-documentos', 'documentos');
-		comparaPosicion(menuBuscador, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-buscador', 'buscador');
-		comparaPosicion(menuNube, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-nube', 'nube');
-		comparaPosicion(menuPais, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-pais', 'pais');
-		
-		
-		
-		/*$("#wordCloud").jQWCloud({
+        var windowHeight = $(window).scrollTop();
+
+        var seccionNube = $("#contenedor-nube").offset();
+        var seccionMapa = $("#contenedor-mapa").offset();
+        var seccionDocumentos = $("#contenedor-ultimos-documentos").offset();
+        var seccionFooter = $("#footer").offset();
+        var menuFlotante = $("#menu-documentos").offset();
+        var menuBuscador = $("#menu-buscador").offset();
+        var menuNube = $("#menu-nube").offset();
+        var menuPais = $("#menu-pais").offset();
+        seccionNube = seccionNube.top;
+        seccionDocumentos = seccionDocumentos.top;
+        seccionMapa = seccionMapa.top;
+        menuFlotante = menuFlotante.top;
+        seccionFooter = seccionFooter.top;
+        menuBuscador = menuBuscador.top;
+        menuNube = menuNube.top;
+        menuPais = menuPais.top;
+        //console.log(menuFlotante);
+
+        comparaPosicion(menuFlotante, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-documentos', 'documentos');
+        comparaPosicion(menuBuscador, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-buscador', 'buscador');
+        comparaPosicion(menuNube, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-nube', 'nube');
+        comparaPosicion(menuPais, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-pais', 'pais');
+
+
+
+        /*$("#wordCloud").jQWCloud({
 			words: [],
 			cloud_color: '#4d4d4d',		
 			minFont: 10,
@@ -114,44 +114,44 @@ $(document).ready(function() {
 //					console.log("Cloud Completed in "+(date2.getTime()-date1.getTime()) +" milliseconds");
 //				}
 		});*/
-		
 
-	});
-	
-	function comparaPosicion(menuFlotante, seccion1, seccion2, seccion3, seccion4, id, img){
-		//console.log('posisciones==' + seccion1 + ", "+ seccion2 + ", "+ seccion3 + ", "+ seccion4);
-		if((menuFlotante >= seccion1 && menuFlotante<=seccion2) || (menuFlotante >= seccion3 && menuFlotante <= seccion4)){
-			//console.log('aqui cambio..');
-			$("#"+ id).css('background-image', 'url(assets/img/' + img +'-a.png)');
-		}else{
-			$("#"+ id).css('background-image', 'url(assets/img/'+img+'.png)');
-		}
-	} 
-	
-	$("#btn-buscador").click(function() {
-	 $('html, body').animate({
-	 scrollTop: $("#contenedor-banner").offset().top
-	 });
-	});
-	
-	$("#btn-nube").click(function() {
-	 $('html, body').animate({
-	 scrollTop: $("#contenedor-nube").offset().top
-	 });
-	});
-	
-	$("#btn-pais").click(function() {
-	 $('html, body').animate({
-	 scrollTop: $("#contenedor-mapa").offset().top
-	 });
-	});
-	
-	$("#btn-documentos").click(function() {
-	 $('html, body').animate({
-	 scrollTop: $("#contenedor-ultimos-documentos").offset().top
-	 });
-	});
-	
+
+    });
+
+    function comparaPosicion(menuFlotante, seccion1, seccion2, seccion3, seccion4, id, img) {
+        //console.log('posisciones==' + seccion1 + ", "+ seccion2 + ", "+ seccion3 + ", "+ seccion4);
+        if ((menuFlotante >= seccion1 && menuFlotante <= seccion2) || (menuFlotante >= seccion3 && menuFlotante <= seccion4)) {
+            //console.log('aqui cambio..');
+            $("#" + id).css('background-image', 'url(assets/img/' + img + '-a.png)');
+        } else {
+            $("#" + id).css('background-image', 'url(assets/img/' + img + '.png)');
+        }
+    }
+
+    $("#btn-buscador").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#contenedor-banner").offset().top
+        });
+    });
+
+    $("#btn-nube").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#contenedor-nube").offset().top
+        });
+    });
+
+    $("#btn-pais").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#contenedor-mapa").offset().top
+        });
+    });
+
+    $("#btn-documentos").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#contenedor-ultimos-documentos").offset().top
+        });
+    });
+
 });
 let palabras2 = [];
 // $.ajax({url: "assets/js/json/palabrasAncestral.json", success: function(result){
@@ -168,7 +168,7 @@ let palabras2 = [];
 //         word_common_classes: 'WordClass',
 //         word_mouseOut :function(){
 //             $(this).css("text-decoration","none");	
-            
+
 //         },
 //         word_mouseOver: function(){
 //             $(this).css('cursor', 'pointer');
@@ -176,7 +176,7 @@ let palabras2 = [];
 //         },
 //         word_click: function(){ 			
 //             alert("You have selected:" +$(this).text());
-            
+
 //         },
 //         afterCloudRender: function(){
 //             console.log('despues de');
@@ -220,7 +220,7 @@ let palabras2 = [];
 //     			word_common_classes: 'WordClass',
 //     			word_mouseOut :function(){
 //     				$(this).css("text-decoration","none");	
-    				
+
 //     			},
 //     			word_mouseOver: function(){
 //     				$(this).css('cursor', 'pointer');
@@ -228,7 +228,7 @@ let palabras2 = [];
 //     			},
 //     			word_click: function(){ 			
 //     				alert("You have selected:" +$(this).text());
-    				
+
 //     			},
 //     			afterCloudRender: function(){
 //     				console.log('despues de');

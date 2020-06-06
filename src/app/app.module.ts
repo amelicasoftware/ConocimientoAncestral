@@ -35,6 +35,7 @@ import { FiltroPaisComponent } from './components/busqueda-pais/filtro-pais/filt
 import { FiltpalclavComponent } from './components/filtros/filtpalclav.component';
 import { PaginadorPalClavComponent } from './components/paginador/paginador-pal-clav.component';
 import { BusquedaPalclavVtabComponent } from './components/busqueda-palclav-vtab/busqueda-palclav-vtab.component';
+import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 
 
 
@@ -66,7 +67,7 @@ import { BusquedaPalclavVtabComponent } from './components/busqueda-palclav-vtab
     TarjetaArticuloComponent,
     FiltroPaisComponent,
     BusquedaPalClavComponent,  
-    FiltpalclavComponent, PaginadorPalClavComponent, BusquedaPalclavVtabComponent,
+    FiltpalclavComponent, PaginadorPalClavComponent, BusquedaPalclavVtabComponent, AcercaDeComponent,
 
   ],
   imports: [
