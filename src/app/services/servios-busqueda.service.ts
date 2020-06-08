@@ -120,15 +120,20 @@ getreversa(){
     return this.http.get(`${this.url}articulos/general?p="${this.filtrosService.palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
   }
 
-  getArticulosXPais(cvePais: number, palabra: string){
-    console.log(`${this.url}articulos/pais?c=${cvePais}&p=${palabra}`);
-    return this.http.get(`${this.url}articulos/pais?c=${cvePais}&p=${palabra}`);
+  getArticulosXPais(cvePais: number){
+    console.log(`${this.url}articulos/pais?c=${cvePais}`);
+    return this.http.get(`${this.url}articulos/pais?c=${cvePais}`);
   }
 
   getArticulosXPaisFiltro(palabra: string, cadenaAnio: string, cadenaPais: string,
                           cadenaDisciplina: string, cadenaFuente: string, cadenaIdioma: string, cvePais: number){
     this.filtrosService.cadenafiltros = `f=${cadenaAnio},${cadenaDisciplina},${cadenaPais},${cadenaIdioma},${cadenaFuente},`;
-    console.log(`${this.url}articulos/pais?c=${cvePais}&${this.filtrosService.cadenafiltros}&p=${palabra}`);
-    return this.http.get(`${this.url}articulos/pais?c=${cvePais}&${this.filtrosService.cadenafiltros}&p=${palabra}`);
+    console.log(`${this.url}articulos/pais?c=${cvePais}&${this.filtrosService.cadenafiltros}`);
+    return this.http.get(`${this.url}articulos/pais?c=${cvePais}&${this.filtrosService.cadenafiltros}`);
+  }
+
+  getBusquedaArticulosPaginadorPais(pagina: number, cvePais: number) {
+    console.log(`${this.url}articulos/pais?c=${cvePais}&page=${pagina}&${this.filtrosService.cadenafiltros}`);
+    return this.http.get(`${this.url}articulos/pais?c=${cvePais}&page=${pagina}&${this.filtrosService.cadenafiltros}`);
   }
 }

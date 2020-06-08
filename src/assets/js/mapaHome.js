@@ -52,7 +52,7 @@ am4core.ready(function() {
 	circle.fillOpacity = 0.7;
 	circle.propertyFields.fill = "color";
 	circle.tooltipText = "{name}";
-	circle.urlTarget="_self";
+	circle.urlTarget="_blank";
 	circle.url="http://localhost:4200/#/busquedaPais/{clave}";
 
 	imageSeries.dataSource.url = "../assets/js/json/paises.json";//local

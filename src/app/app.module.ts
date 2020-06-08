@@ -34,6 +34,8 @@ import { TarjetaArticuloComponent } from './components/busqueda-pais/tarjeta-art
 import { FiltroPaisComponent } from './components/busqueda-pais/filtro-pais/filtro-pais.component';
 import { FiltpalclavComponent } from './components/filtros/filtpalclav.component';
 import { PaginadorPalClavComponent } from './components/paginador/paginador-pal-clav.component';
+import { GlobitosPaisComponent } from './components/busqueda-pais/globitos-pais/globitos-pais.component';
+import { PaginadorPaisComponent } from './components/busqueda-pais/paginador-pais/paginador-pais.component';
 
 
 
@@ -65,7 +67,7 @@ import { PaginadorPalClavComponent } from './components/paginador/paginador-pal-
     TarjetaArticuloComponent,
     FiltroPaisComponent,
     BusquedaPalClavComponent,  
-    FiltpalclavComponent, PaginadorPalClavComponent,
+    FiltpalclavComponent, PaginadorPalClavComponent, GlobitosPaisComponent, PaginadorPaisComponent,
 
   ],
   imports: [

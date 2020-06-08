@@ -13,7 +13,10 @@
 
 
 <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center; font-size: 18pt;"><img src="assets/img/pais-a.png" style="margin: 40px; ;"> {{nombrePais}}
-    <input #palabra (keyup.enter)="buscar(palabra.value, 'prueba')" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text">
+    <!-- <input #palabra (keyup.enter)="buscar(palabra.value, 'prueba')" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text"> -->
+    <select id="lista-paises" #pais (change)="llenarCombo(pais.value)">
+        <option *ngFor="let pais of Postres" value="{{pais.clave}}">{{pais.name}}</option>
+    </select>
 </div>
 
 <div class="grid-containerh2">
@@ -41,15 +44,15 @@
     <!-- Termina Filtros menu   -->
     <div class="item3">
         <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
-            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para: {{total.palabra}} </p>
+            <!-- <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para: {{total.palabra}} </p> -->
             <br>
             <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
         </div>
-        <app-globitos></app-globitos>
+        <app-globitos-pais></app-globitos-pais>
         
         <app-tarjeta-articulo></app-tarjeta-articulo>
 
-        <app-paginador-articulos></app-paginador-articulos>
+        <app-paginador-pais></app-paginador-pais>
 
     </div> 
 

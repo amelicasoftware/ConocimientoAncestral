@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Articulo } from '../../models/articulo';
 import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { FiltrosService } from '../../services/filtros.service';
 import { PaginadorService } from '../../services/paginador.service';
 import { Total } from '../../models/total';
 import { ActivatedRoute } from '@angular/router';
+import listaPaises from '../../../assets/js/json/paises.json';
 
 
 @Component({
@@ -26,6 +27,8 @@ export class BusquedaPaisComponent implements OnInit {
   // totalResultados: number;
   nombrePais: string;
 
+  Postres: any = listaPaises;
+
   constructor(private ArticuloInyectado: ServiosBusquedaService, private activatedRoute: ActivatedRoute,
               private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
               private paginadorService: PaginadorService) {
@@ -36,7 +39,7 @@ export class BusquedaPaisComponent implements OnInit {
                }
 
   ngOnInit(): void {
-    this.ArticuloInyectado.getArticulosXPais(this.cvePais, '').subscribe((articulosXPais: any) => {
+    this.ArticuloInyectado.getArticulosXPais(this.cvePais).subscribe((articulosXPais: any) => {
       console.log(articulosXPais.articulos.total);
       console.log('estos son mis datos' , articulosXPais);
       this.total.total = articulosXPais.articulos.total;
@@ -45,6 +48,7 @@ export class BusquedaPaisComponent implements OnInit {
       this.paginadorService.actualizarTotal(articulosXPais.articulos.total);
       this.paginadorService.actualizarPosicion(1);
       this.nombrePais = articulosXPais.filtros[2].elementos[0].nombre;
+      this.filtrosService.actualizarPais(this.cvePais);
     });
 
 
@@ -53,6 +57,8 @@ export class BusquedaPaisComponent implements OnInit {
       this.articulos = data2;
     });
     this.total.palabra = this.articuloService.getpalabra();
+
+    console.log( 'lista paises', this.Postres);
   }
 
 
@@ -61,7 +67,7 @@ export class BusquedaPaisComponent implements OnInit {
     console.log(nombreBusqueda);
     this.total.palabra = palabra;
     this.filtrosService.palabra = palabra;
-    this.articuloService.getArticulosXPais(this.cvePais, palabra).subscribe((data: any) => {
+    this.articuloService.getArticulosXPais(this.cvePais).subscribe((data: any) => {
       console.log(data);
       this.filtrosService.actualizarArticulos(data.articulos.articulos);
       this.filtrosService.actualizarFiltros(data.filtros);
@@ -81,5 +87,28 @@ export class BusquedaPaisComponent implements OnInit {
     this.filtrosService.filtrosElegidos = [];
     const globos = [];
     this.filtrosService.actualizarGlobos(globos);
+  }
+
+  llenarCombo(pais){
+    console.log(pais);
+    this.cvePais = pais;
+    this.articuloService.getArticulosXPais(this.cvePais).subscribe((articulosXPais: any) => {
+      console.log(articulosXPais.articulos.total);
+      console.log('estos son mis datos' , articulosXPais);
+      this.total.total = articulosXPais.articulos.total;
+      this.filtrosService.actualizarArticulos(articulosXPais.articulos.articulos);
+      this.filtrosService.actualizarFiltros(articulosXPais.filtros);
+      this.paginadorService.actualizarTotal(articulosXPais.articulos.total);
+      this.paginadorService.actualizarPosicion(1);
+      this.nombrePais = articulosXPais.filtros[2].elementos[0].nombre;
+      this.filtrosService.actualizarPais(this.cvePais);
+      const globos = [];
+      this.filtrosService.actualizarGlobos(globos);
+      this.filtrosService.filtrosElegidos = [];
+      this.filtrosService.cadenafiltros = '';
+      this.paginadorService.actualizarTotal(articulosXPais.articulos.total);
+      this.paginadorService.actualizarPosicion(1);
+      this.total.total = articulosXPais.articulos.total;
+    });
   }
 }
