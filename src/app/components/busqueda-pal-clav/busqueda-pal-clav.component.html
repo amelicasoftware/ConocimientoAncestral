@@ -1,35 +1,24 @@
-<!-- Inicia Header  -->
-<div class="grid-containerh">
-    <div class="item1">
-        <div style="padding-left: 5%; margin: 5px 10px;">Colección <strong>Conocimiento Ancestral</strong></div>
-        <div style="padding-left: 45%; margin: 5px 10px;;">Acerca de AmeliCA</div>
-        <div style="margin: 5px 10px;">Proyecto Conocimeinto Ancestral</div>
-        <div style="margin: 0px 10px;"><img src="assets/img/ic-home.png" alt=""></div>
-        <div style="margin: 0px 10px;"><img src="assets/img/ic-facebook.png" alt=""></div>
-        <div style="margin: 0px 10px;"><img src="assets/img/ic-twitter.png" alt=""></div>
-    </div>
-</div>
-<!--  termina Header    -->
+
+<app-header></app-header>
+
 
 
 <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"><img src="assets/img/buscador-institucionmdpi.png" style="margin: 40px; ;"> Busqueda General
     <input #palabra (keyup.enter)="buscar(palabra.value)" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text">
+    <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" />
 </div>
+
 
 <div class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
-       
+      
         <div (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
         <div style="margin-left: 40%;">Modo de visualizar resultados </div>
-        <div><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
+        <div class="cursor" [routerLink]="['/PalClav-table/',total.palabra]"><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
         <div ><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
     </div>
 </div>
-
-
-<!--  Inicia menu horizontal sin grid   -->
-<!--  Terina  menu horizontal sin grid   -->
 
 
 <!--  Filtros menu  -->
@@ -45,9 +34,7 @@
             <br>
             <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
         </div>
-        <app-globitos></app-globitos>
-
-
+        <app-globitos-pal-clav></app-globitos-pal-clav>
 
 
 <div class="flex-containercont">
@@ -59,7 +46,7 @@
         <p>{{ articulo.nombreRevista }}, {{ articulo.anio }}, {{ articulo.volumen }} ({{ articulo.numero }}) </p>
         <p [routerLink]="['/busqueda-pal-clav',articulo.fuente]">Fuente: {{ articulo.fuente}} </p>
         <p [innerHTML]='articulo.contenido'>{{ articulo.contenido }}</p>
-        <p>Palabra Clave:</p> <p [innerHTML]='articulo.palClave'>{{articulo.palClave}} </p> 
+        <p>Palabras clave:</p> <p [innerHTML]='articulo.palClave'>{{articulo.palClave}} </p> 
         <br>
 
 
@@ -92,50 +79,10 @@
     </div>
 </div>
 
-        <!-- <div style="margin-left: 40%; font-family: Barlow-Regular; font-size: 10pt;">Pag. Actual: {{total.pos}} </div>
-
-
-        <div style="margin-left: 20%; font-family: Barlow-Regular; font-size: 10pt;">
-            <button *ngIf="getCount() > 1 " (click)="primerPagina()" class="button2">Primer Pagina </button>
-
-
-            <button *ngIf="getCount() > 1 " (click)="incDCount()" class="button2">Pagina Anterior </button>
-
-
-
-
-            <button *ngIf="getFin() == 1 && total.final > 1 " (click)="incCount()" class="button2">Pagina Siguiente</button>
-
-            <button *ngIf="getFin() == 1 && total.final > 1 " (click)="ultimapagina(total.final)" class="button2">Ultima Pagina ({{total.final}})</button>
-
-        </div> -->
-
-
        <app-paginador-pal-clav></app-paginador-pal-clav>
 
     </div> 
 
 
 </div>
-<div class="item4"> 
-    <div id="contendor-footer">
-        <div id="instituciones-footer">
-            <div>
-                <a href="#"><img src="assets/img/ic-amelica-footer.png" /></a>
-            </div>
-            <div>
-                <a href="#"><img src="assets/img/ic-unesco-footer.png" /></a>
-            </div>
-            <div>
-                <a href="#"><img src="assets/img/ic-clacso-footer.png" /></a>
-            </div>
-            <div>
-                <a href="#"><img src="assets/img/ic-redalyc-footer.png" /></a>
-            </div>
-        </div>
-        <div id="resumen-footer" style="width: 40%">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            It has survived</div>
-
-
-    </div>
-</div>
+<app-footer></app-footer>

@@ -1,0 +1,18 @@
+.item1 {
+    grid-area: header;
+    background-color: #090a35;
+    color: white;
+}
+
+.item1>div {
+    font-family: Barlow-regular;
+    font-size: 11pt;
+    /* padding: 20px; */
+}
+
+.grid-containerh>div {
+    display: flex;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}

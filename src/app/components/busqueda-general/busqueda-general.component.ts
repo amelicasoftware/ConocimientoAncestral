@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Articulo } from '../../models/articulo';
 import { Usuario } from '../../models/usuario';
 import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FiltrosComponent } from '../filtros/filtros.component';
 import { FiltrosService } from '../../services/filtros.service';
 import { PaginadorService } from '../../services/paginador.service';
@@ -28,15 +28,19 @@ export class BusquedaGeneralComponent implements OnInit {
 
   palabraBusqueda: string;
   totalResultados: number;
-
+  palabra: string
   constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
               private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
-              private paginadorService: PaginadorService) { }
+              private paginadorService: PaginadorService, private _route: ActivatedRoute) { }
+
 
 
               
 
   ngOnInit(): void {
+    this.palabra = this._route.snapshot.paramMap.get('palabra');
+                this.articuloService.setpalabra(this.palabra) 
+                this.filtrosService.actualizarPalabra(this.palabra)
     this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
        console.log(articulosDesdeApi.articulos.total)
       // this.articulos = articulosDesdeApi.articulos.articulos;
