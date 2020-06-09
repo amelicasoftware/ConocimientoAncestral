@@ -1,16 +1,16 @@
 @font-face {
     font-family: 'barlowregular';
-    src: url(/assets/fonts/Barlow-Regular.ttf);
+    src: url(../../../assets/fonts/Barlow-Regular.ttf);
 }
 
 @font-face {
     font-family: 'barlowregularItalic';
-    src: url(/assets/fonts/Barlow-Italic.ttf);
+    src: url(../../../assets/fonts/Barlow-Italic.ttf);
 }
 
 @font-face {
     font-family: 'barlowBItalic';
-    src: url(/assets/fonts/Barlow-BoldItalic.ttf);
+    src: url(../../../assets/fonts/Barlow-BoldItalic.ttf);
 }
 
 body {
@@ -78,7 +78,7 @@ body {
 
 #contenedor-banner {
     position: relative;
-    background-image: url(/assets/img/maiz-portada.png);
+    background-image: url(../../../assets/img/maiz-portada.png);
     background-color: #cccccc;
     min-height: 100vh;
     background-position: center;
@@ -241,7 +241,7 @@ body {
 
 #footer {
     width: 100%;
-    background-image: url(/assets/img/maiz-footer.png);
+    background-image: url(../../../assets/img/maiz-footer.png);
     background-color: #f2f2f2;
     background-position: center;
     background-size: cover;
