@@ -26,7 +26,7 @@
     
     <div *ngIf="total.total >= 1" class="item2">
         <app-filtros></app-filtros> 
-        {{total.palabra}} {{total.total}}
+     
     </div>
 
 
@@ -49,11 +49,11 @@
     </div>
 
 </div>
-
+<div  *ngIf="total.total <= 0 " style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
+    <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">No se han encontrado resultados pesultados para: {{total.palabra}} </p>
+    <br>
+   
+</div>  
 
 <app-footer></app-footer>
 
-<div *ngIf="total.total <= 0 ">
-    <img src="assets/img/giphy.gif/">
-
-</div>
