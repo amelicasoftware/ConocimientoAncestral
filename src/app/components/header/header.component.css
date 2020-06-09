@@ -16,3 +16,7 @@
     padding: 20px 0;
     font-size: 30px;
 }
+
+.cursor {
+    cursor: pointer;
+}
