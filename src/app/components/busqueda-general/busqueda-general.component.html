@@ -22,18 +22,23 @@
 <!--  Terina  menu horizontal sin grid   -->
 
 <!--  Filtros menu  -->
-<div class="grid-container">
-    <div class="item2">
-        <app-filtros></app-filtros>
+<div *ngIf="total.palabra || total.total >= 1 " class="grid-container">
+    
+    <div *ngIf="total.total >= 1" class="item2">
+        <app-filtros></app-filtros> 
+        {{total.palabra}} {{total.total}}
     </div>
 
-    <!-- Termina Filtros menu   -->
-    <div class="item3">
-        <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
+
+
+        <!-- Termina Filtros menu   -->
+    <div  class="item3">
+        <div  *ngIf="total.total >= 1 " style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
             <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}} </p>
             <br>
             <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Búsqueda: {{ total.total}} </p>
-        </div>
+        </div>      
+        
         <app-globitos></app-globitos>
 
         <app-tarjeta-articulos></app-tarjeta-articulos>
@@ -47,3 +52,8 @@
 
 
 <app-footer></app-footer>
+
+<div *ngIf="total.total <= 0 ">
+    <img src="assets/img/giphy.gif/">
+
+</div>
