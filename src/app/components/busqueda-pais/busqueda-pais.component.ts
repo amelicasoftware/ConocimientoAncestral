@@ -7,7 +7,7 @@ import { FiltrosService } from '../../services/filtros.service';
 import { PaginadorService } from '../../services/paginador.service';
 import { Total } from '../../models/total';
 import { ActivatedRoute } from '@angular/router';
-import listaPaises from '../../../assets/js/json/paises.json';
+// import listaPaises from '../../../assets/js/json/paises.json';
 
 
 @Component({
@@ -27,7 +27,7 @@ export class BusquedaPaisComponent implements OnInit {
   // totalResultados: number;
   nombrePais: string;
 
-  Postres: any = listaPaises;
+  listaPaises: any;
 
   constructor(private ArticuloInyectado: ServiosBusquedaService, private activatedRoute: ActivatedRoute,
               private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
@@ -47,7 +47,7 @@ export class BusquedaPaisComponent implements OnInit {
       this.filtrosService.actualizarFiltros(articulosXPais.filtros);
       this.paginadorService.actualizarTotal(articulosXPais.articulos.total);
       this.paginadorService.actualizarPosicion(1);
-      this.nombrePais = articulosXPais.filtros[2].elementos[0].nombre;
+      this.nombrePais = articulosXPais.articulos.articulos[0].pais;
       this.filtrosService.actualizarPais(this.cvePais);
     });
 
@@ -58,7 +58,10 @@ export class BusquedaPaisComponent implements OnInit {
     });
     this.total.palabra = this.articuloService.getpalabra();
 
-    console.log( 'lista paises', this.Postres);
+    this.articuloService.getPaises().subscribe( paises => {
+      console.log('paises', paises);
+      this.listaPaises = paises;
+    });
   }
 
 
@@ -100,7 +103,7 @@ export class BusquedaPaisComponent implements OnInit {
       this.filtrosService.actualizarFiltros(articulosXPais.filtros);
       this.paginadorService.actualizarTotal(articulosXPais.articulos.total);
       this.paginadorService.actualizarPosicion(1);
-      this.nombrePais = articulosXPais.filtros[2].elementos[0].nombre;
+      this.nombrePais = articulosXPais.articulos.articulos[0].pais;
       this.filtrosService.actualizarPais(this.cvePais);
       const globos = [];
       this.filtrosService.actualizarGlobos(globos);

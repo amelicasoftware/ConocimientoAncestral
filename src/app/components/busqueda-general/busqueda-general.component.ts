@@ -42,21 +42,12 @@ export class BusquedaGeneralComponent implements OnInit {
                 this.articuloService.setpalabra(this.palabra) 
                 this.filtrosService.actualizarPalabra(this.palabra)
     this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
-       console.log(articulosDesdeApi.articulos.total)
-      // this.articulos = articulosDesdeApi.articulos.articulos;
-       this.total.total = articulosDesdeApi.articulos.total;
-      // if (Number.isInteger((this.total.total / 10))) {
-      //   this.total.final = (this.total.total / 10)
-      // } else {
-      //   this.total.final = Math.floor(this.total.total / 10) + 1
-      // }
-      // this.total.pos = this.articuloService.count
-      // console.log(this.articulos)
-      // console.log(this.total)
-      this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
-      this.filtrosService.actualizarFiltros(articulosDesdeApi.filtros);
-      this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total);
-      this.paginadorService.actualizarPosicion(1);
+         console.log(articulosDesdeApi.articulos.total);
+         this.total.total = articulosDesdeApi.articulos.total;
+         this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
+         this.filtrosService.actualizarFiltros(articulosDesdeApi.filtros);
+         this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total);
+         this.paginadorService.actualizarPosicion(1);
     });
     
 

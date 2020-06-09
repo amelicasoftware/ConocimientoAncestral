@@ -7,7 +7,7 @@ import { FiltrosService } from '../../services/filtros.service';
 import { PaginadorService } from '../../services/paginador.service';
 import { Total } from '../../models/total';
 import { ActivatedRoute } from '@angular/router';
-import listaPaises from '../../../assets/js/json/paises.json';
+// import listaPaises from '../../../assets/js/json/paises.json';
 import { RevistasService } from '../../services/revistas.service';
 import { FiltrosRevistasService } from '../../services/filtros-revistas.service';
 
@@ -27,7 +27,7 @@ export class BusquedaRevistaPaisComponent implements OnInit {
   // totalResultados: number;
   nombrePais: string;
 
-  Postres: any = listaPaises;
+  listaPaises: any;
 
   constructor(private revistasService: RevistasService, private activatedRoute: ActivatedRoute,
               private filtrosRevistasService: FiltrosRevistasService, private paginadorService: PaginadorService,
@@ -58,7 +58,10 @@ export class BusquedaRevistaPaisComponent implements OnInit {
     });
     this.total.palabra = this.revistasService.getpalabra();
 
-    console.log( 'lista paises', this.Postres);
+    this.revistasService.getPaises().subscribe( paises => {
+      console.log('paises', paises);
+      this.listaPaises = paises;
+    });
   }
 
   llenarCombo(pais){
@@ -82,6 +85,13 @@ export class BusquedaRevistaPaisComponent implements OnInit {
       this.paginadorService.actualizarPosicion(1);
       this.total.total = revistasXPais.revistas.total;
     });
+  }
+
+  limpiarDatos() {
+    console.log('voy a limpiar');
+    this.filtrosRevistasService.filtrosElegidos = [];
+    const globos = [];
+    this.filtrosRevistasService.actualizarGlobos(globos);
   }
 
 }

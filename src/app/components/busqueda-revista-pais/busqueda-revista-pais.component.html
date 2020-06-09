@@ -6,14 +6,14 @@
 <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center; font-size: 18pt;"><img src="assets/img/pais-a.png" style="margin: 40px; ;"> {{nombrePais}}
     <!-- <input #palabra (keyup.enter)="buscar(palabra.value, 'prueba')" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text"> -->
     <select id="lista-paises" #pais (change)="llenarCombo(pais.value)">
-        <option *ngFor="let pais of Postres" value="{{pais.clave}}">{{pais.name}}</option>
+        <option *ngFor="let pais of listaPaises" value="{{pais.clave}}">{{pais.name}}</option>
     </select>
 </div>
 
 <div class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
-        <div style="text-align:center; cursor:pointer" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
+        <div class="seleccionado" style="text-align:center; cursor:pointer" (click)="limpiarDatos()"><img src="assets/img/revistas-act.png" style="margin: 10px;">Revistas</div>
         <div [routerLink]="['/busquedaPais/',cvePais]" (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
         <div style="margin-left: 40%;">Modo de visualizar resultados </div>
         <div [routerLink]="['/vista-art-tab']"><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>

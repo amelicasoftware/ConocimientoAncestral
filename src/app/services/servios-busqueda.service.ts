@@ -16,6 +16,7 @@ export class ServiosBusquedaService {
   public articulo: Articulo = new Articulo();
   public total: Total = new Total();
   public url: string = GlobalConstants.serviciosURL;
+  public urlFront: string = GlobalConstants.url;
 
   // private url: string = 'http://148.215.2.20:8080/BackEndAmelic-0.0.1-SNAPSHOT/articulos/general?busqueda=';
   
@@ -176,5 +177,7 @@ ordenarReversaPalClav(campo:string, palabra:string): Observable<Articulo[]>{
     return this.http.get(`${this.url}articulos/palClave?p="${this.filtrosService.palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
   }
 
-  
+  getPaises(){
+    return this.http.get(`${this.urlFront}assets/js/json/paises.json`);
+  }
 }

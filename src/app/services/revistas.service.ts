@@ -16,6 +16,7 @@ export class RevistasService {
   public revista: Revistas = new Revistas();
   public total: Total = new Total();
   public url: string = GlobalConstants.serviciosURL;
+  public urlFront: string = GlobalConstants.url;
 
   
   public count = 1;
@@ -136,5 +137,9 @@ export class RevistasService {
   getBusquedaRevistasPaginadorPais(pagina: number, cvePais: number) {
     console.log(`${this.url}revistas/pais?c=${cvePais}&page=${pagina}&${this.filtrosRevistasService.cadenaFitros}`);
     return this.http.get(`${this.url}revistas/pais?c=${cvePais}&page=${pagina}&${this.filtrosRevistasService.cadenaFitros}`);
+  }
+
+  getPaises(){
+    return this.http.get(`${this.urlFront}assets/js/json/paises.json`);
   }
 }

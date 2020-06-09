@@ -25,15 +25,13 @@ export class FiltrosComponent implements OnInit {
               private filtrosService: FiltrosService, private paginadorService: PaginadorService) { }
 
   ngOnInit(): void {
-    // this.serviosBusquedaService.leerjson().subscribe((data: any) => {
-    //   this.filtros = data.filtros;
-    // });
+    this.serviosBusquedaService.leerjson().subscribe((data: any) => {
+      this.filtros = data.filtros;
+    });
 
     this.filtrosService.cambioFiltros.subscribe(data2 => {
-      // this.isOpen = isOpen;
       console.log('filtrosServicio', data2);
       this.filtros = data2;
-      // this.activarFiltros = false;
     });
   }
 
