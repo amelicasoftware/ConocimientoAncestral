@@ -1,0 +1,52 @@
+<!-- Inicia Header  -->
+<app-header></app-header>
+<!--  termina Header    -->
+
+
+<div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center; font-size: 18pt;"><img src="assets/img/pais-a.png" style="margin: 40px; ;"> {{nombrePais}}
+    <!-- <input #palabra (keyup.enter)="buscar(palabra.value, 'prueba')" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text"> -->
+    <select id="lista-paises" #pais (change)="llenarCombo(pais.value)">
+        <option *ngFor="let pais of Postres" value="{{pais.clave}}">{{pais.name}}</option>
+    </select>
+</div>
+
+<div class="grid-containerh2">
+    <div class="item11">
+        <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
+        <div [routerLink]="['/busquedarev']" style="text-align:center; cursor:pointer" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
+        <div (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
+        <div style="margin-left: 40%;">Modo de visualizar resultados </div>
+        <div [routerLink]="['/vista-art-tab']"><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
+        <div><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
+    </div>
+</div>
+
+
+<!--  Inicia menu horizontal sin grid   -->
+<!--  Terina  menu horizontal sin grid   -->
+
+
+<!--  Filtros menu  -->
+<div class="grid-container">
+  <div class="item2">
+    <app-filtro-revista-pais></app-filtro-revista-pais>  
+  </div>
+
+    <!-- Termina Filtros menu   -->
+    <div class="item3">
+        <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
+            <!-- <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para: {{total.palabra}} </p> -->
+            <br>
+            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
+        </div>
+        <app-globitos-revista-pais></app-globitos-revista-pais>
+        
+        <app-tarjeta-revista></app-tarjeta-revista>
+
+        <app-paginador-revista-pais></app-paginador-revista-pais>
+
+    </div> 
+
+
+</div>
+<app-footer></app-footer>

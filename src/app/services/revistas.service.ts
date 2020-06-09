@@ -110,7 +110,7 @@ export class RevistasService {
     if(this.paginadorService.reversa === undefined){
       this.paginadorService.reversa = false;
     }
-    this.filtrosService.cadenafiltros = `f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`
+    this.filtrosRevistasService.cadenaFitros = `f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`;
     console.log('servicio', `${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
     return this.http.get(`${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
   }
@@ -118,5 +118,23 @@ export class RevistasService {
   getBusquedaRevistasPaginador(palabra: string, pagina: number) {
     console.log(`${this.url}revistas/general?p="${this.filtrosRevistasService.palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
     return this.http.get(`${this.url}revistas/general?p="${this.filtrosRevistasService.palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
+  }
+
+  getRevistasXPais(cvePais: number){
+    console.log(`${this.url}revistas/pais?c=${cvePais}`);
+    return this.http.get(`${this.url}revistas/pais?c=${cvePais}`);
+  }
+
+  getRevistasXPaisFiltro(cadenaDisciplina: string, cadenaInstitucion: string,
+                        cadenaPais: string, cadenaFuente: string, cvePais: number){
+    this.filtrosRevistasService.cadenaFitros = `f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`;
+    console.log(this.filtrosRevistasService.cadenaFitros);
+    console.log(`${this.url}revistas/pais?c=${cvePais}&${this.filtrosRevistasService.cadenaFitros}`);
+    return this.http.get(`${this.url}revistas/pais?c=${cvePais}&${this.filtrosRevistasService.cadenaFitros}`);
+  }
+
+  getBusquedaRevistasPaginadorPais(pagina: number, cvePais: number) {
+    console.log(`${this.url}revistas/pais?c=${cvePais}&page=${pagina}&${this.filtrosRevistasService.cadenaFitros}`);
+    return this.http.get(`${this.url}revistas/pais?c=${cvePais}&page=${pagina}&${this.filtrosRevistasService.cadenaFitros}`);
   }
 }

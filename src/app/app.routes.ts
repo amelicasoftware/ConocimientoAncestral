@@ -9,6 +9,8 @@ import { BusquedaPaisComponent } from './components/busqueda-pais/busqueda-pais.
 import { Component } from '@angular/core';
 import { BusquedaPalclavVtabComponent } from './components/busqueda-palclav-vtab/busqueda-palclav-vtab.component';
 import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
+import { BusquedaRevistaPaisComponent } from './components/busqueda-revista-pais/busqueda-revista-pais.component';
+
 
 
 
@@ -24,7 +26,8 @@ export const ROUTES: Routes = [
     { path: 'busqueda-pal-clav', component: BusquedaPalClavComponent},
     { path: 'busqueda-pal-clav/:fuente', component: BusquedaPalClavComponent },
     { path: 'busquedaPais', component: BusquedaPaisComponent },
-    { path: 'busquedaPais/:cvePais', component: BusquedaPaisComponent },    
+    { path: 'busquedaPais/:cvePais', component: BusquedaPaisComponent },
+    { path: 'busquedaRevistaPais/:cvePais', component: BusquedaRevistaPaisComponent },
     { path: 'PalClav-table/:palabra', component: BusquedaPalclavVtabComponent },
     { path: 'acerca-de', component: AcercaDeComponent },
     { path: '', pathMatch: 'full', redirectTo: 'home' },
