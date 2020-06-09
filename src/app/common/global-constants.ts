@@ -7,4 +7,5 @@ export class GlobalConstants {
     public static serviciosURL: string = 'http://portal.amelica.org/BackEndAmelic/';
     public static url: string = 'http://amelica.org/ConocimientoAncestral/';
     public static siteTitle: string = 'Conocimineto Ancestral';
+    
 }
