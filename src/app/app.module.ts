@@ -35,13 +35,10 @@ import { FiltroPaisComponent } from './components/busqueda-pais/filtro-pais/filt
 import { FiltpalclavComponent } from './components/filtros/filtpalclav.component';
 import { PaginadorPalClavComponent } from './components/paginador/paginador-pal-clav.component';
 import { BusquedaPalclavVtabComponent } from './components/busqueda-palclav-vtab/busqueda-palclav-vtab.component';
+import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { GlobitosPalClavComponent } from './components/globitos/globitos-pal-clav.component';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -68,9 +65,14 @@ import { GlobitosPalClavComponent } from './components/globitos/globitos-pal-cla
     BusquedaPalClavComponent,
     TarjetaArticuloComponent,
     FiltroPaisComponent,
-    BusquedaPalClavComponent,  
-    FiltpalclavComponent, PaginadorPalClavComponent, BusquedaPalclavVtabComponent, HeaderComponent, FooterComponent, GlobitosPalClavComponent,
-
+    BusquedaPalClavComponent,
+    FiltpalclavComponent,
+    PaginadorPalClavComponent,
+    BusquedaPalclavVtabComponent,
+    AcercaDeComponent,
+    HeaderComponent,
+    FooterComponent,
+    GlobitosPalClavComponent,
   ],
   imports: [
     BrowserModule,
