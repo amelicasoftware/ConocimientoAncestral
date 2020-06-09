@@ -12,10 +12,13 @@ export class FiltrosService {
   palabra: string = '';
   cadenafiltros: string;
 
+  cvePais: number;
+
   @Output() cambioFiltros: EventEmitter<any> = new EventEmitter();
   @Output() cambioArticulos: EventEmitter<any> = new EventEmitter();
   @Output() cambioGlobos: EventEmitter<any> = new EventEmitter();
   @Output() cambioPalabra: EventEmitter<any> = new EventEmitter();
+  @Output() cambioPais: EventEmitter<any> = new EventEmitter();
   
   constructor() { }
 
@@ -35,6 +38,11 @@ export class FiltrosService {
     this.filtrosGlobos = filtrosElegidos;
     this.cambioGlobos.emit(this.filtrosGlobos);
     console.log(this.filtrosGlobos);
+  }
+
+  actualizarPais(cvePais: number) {
+    this.cvePais = cvePais;
+    this.cambioPais.emit(this.filtrosGlobos);
   }
   
   construirCadena(filtro: string): string {

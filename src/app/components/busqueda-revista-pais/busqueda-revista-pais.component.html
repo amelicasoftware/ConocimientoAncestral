@@ -13,8 +13,8 @@
 <div class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
-        <div [routerLink]="['/busquedaRevistaPais/',cvePais]" style="text-align:center; cursor:pointer" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
-        <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png" style="margin: 10px;">Articulos de revista</div>
+        <div class="seleccionado" style="text-align:center; cursor:pointer" (click)="limpiarDatos()"><img src="assets/img/revistas-act.png" style="margin: 10px;">Revistas</div>
+        <div [routerLink]="['/busquedaPais/',cvePais]" (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
         <div style="margin-left: 40%;">Modo de visualizar resultados </div>
         <div [routerLink]="['/vista-art-tab']"><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
         <div><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
@@ -29,7 +29,7 @@
 <!--  Filtros menu  -->
 <div class="grid-container">
   <div class="item2">
-    <app-filtro-pais></app-filtro-pais>   
+    <app-filtro-revista-pais></app-filtro-revista-pais>  
   </div>
 
     <!-- Termina Filtros menu   -->
@@ -39,11 +39,11 @@
             <br>
             <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
         </div>
-        <app-globitos-pais></app-globitos-pais>
+        <app-globitos-revista-pais></app-globitos-revista-pais>
         
-        <app-tarjeta-articulo></app-tarjeta-articulo>
+        <app-tarjeta-revista></app-tarjeta-revista>
 
-        <app-paginador-pais></app-paginador-pais>
+        <app-paginador-revista-pais></app-paginador-revista-pais>
 
     </div> 
 

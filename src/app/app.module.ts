@@ -39,6 +39,13 @@ import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { GlobitosPalClavComponent } from './components/globitos/globitos-pal-clav.component';
+import { GlobitosPaisComponent } from './components/busqueda-pais/globitos-pais/globitos-pais.component';
+import { PaginadorPaisComponent } from './components/busqueda-pais/paginador-pais/paginador-pais.component';
+import { BusquedaRevistaPaisComponent } from './components/busqueda-revista-pais/busqueda-revista-pais.component';
+import { TarjetaRevistaComponent } from './components/busqueda-revista-pais/tarjeta-revista/tarjeta-revista.component';
+import { FiltroRevistaPaisComponent } from './components/busqueda-revista-pais/filtro-revista-pais/filtro-revista-pais.component';
+import { PaginadorRevistaPaisComponent } from './components/busqueda-revista-pais/paginador-revista-pais/paginador-revista-pais.component';
+import { GlobitosRevistaPaisComponent } from './components/busqueda-revista-pais/globitos-revista-pais/globitos-revista-pais.component';
 
 @NgModule({
   declarations: [
@@ -68,11 +75,21 @@ import { GlobitosPalClavComponent } from './components/globitos/globitos-pal-cla
     BusquedaPalClavComponent,
     FiltpalclavComponent,
     PaginadorPalClavComponent,
+    GlobitosPaisComponent,
+    PaginadorPaisComponent,
+    BusquedaPalClavComponent,
+    FiltpalclavComponent,
+    PaginadorPalClavComponent,
     BusquedaPalclavVtabComponent,
     AcercaDeComponent,
     HeaderComponent,
     FooterComponent,
     GlobitosPalClavComponent,
+    BusquedaRevistaPaisComponent,
+    TarjetaRevistaComponent,
+    FiltroRevistaPaisComponent,
+    PaginadorRevistaPaisComponent,
+    GlobitosRevistaPaisComponent,
   ],
   imports: [
     BrowserModule,

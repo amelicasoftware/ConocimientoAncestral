@@ -1,5 +1,7 @@
 am4core.ready(function() {
 
+	// let url = "http://localhost:4200/";
+	let url = "http://amelica.org/ConocimientoAncestral/";
 	console.log('voy hacer la graficas44444');
 	am4core.useTheme(am4themes_animated);
 	// Themes end
@@ -42,7 +44,7 @@ am4core.ready(function() {
 	imageTemplate.propertyFields.latitude = "latitude";
 	imageTemplate.propertyFields.longitude = "longitude";
 	imageTemplate.nonScaling = true
-	imageTemplate.tooltipHTML = '<a href="http://localhost:4200/#/busquedaPais/{clave}" style="color:#000000; text-decoration:none;" target="_blank">{name}</a>';
+	// imageTemplate.tooltipHTML = '<a href="http://localhost:4200/#/busquedaPais/{clave}" style="color:#000000; text-decoration:none;" target="_blank">{name}</a>';
 	imageTemplate.fill = am4core.color("white");
 
 	imageSeries.tooltip.label.interactionsEnabled = true;
@@ -52,11 +54,11 @@ am4core.ready(function() {
 	circle.fillOpacity = 0.7;
 	circle.propertyFields.fill = "color";
 	circle.tooltipText = "{name}";
-	circle.urlTarget="_self";
-	circle.url="http://localhost:4200/#/busquedaPais/{clave}";
+	circle.urlTarget="_blank";
+	circle.url=url + "#/busquedaPais/{clave}";
 
-	imageSeries.dataSource.url = "../assets/js/json/paises.json";//local
-	// imageSeries.dataSource.url = "../ConocimientoAncestral/assets/js/json/paises.json";//produccion
+	// imageSeries.dataSource.url = "../assets/js/json/paises.json";//local
+	imageSeries.dataSource.url = "../ConocimientoAncestral/assets/js/json/paises.json";//produccion
 	imageSeries.dataSource.parser = new am4core.JSONParser();
 
 	imageSeries.heatRules.push({

@@ -80,7 +80,7 @@ export class FiltroPaisComponent implements OnInit {
     let palabra = this.filtrosService.palabra;
     console.log(palabra);
     this.serviosBusquedaService.getArticulosXPaisFiltro(palabra, cadenaAnio, cadenaPais, cadenaDisciplina, 
-                                                      cadenaFuente, cadenaIdioma, 73).subscribe((data: any) => {
+                                                      cadenaFuente, cadenaIdioma, this.filtrosService.cvePais).subscribe((data: any) => {
         console.log('resultados', data);
         this.filtrosService.actualizarFiltros(data.filtros);
         console.log(this.filtrosService.filtros);
