@@ -47,14 +47,16 @@
                 </div>
                 <div class="cuerpo-card" style="height: 70px; font-size: 12px; padding: 0px 10px; ">
                     <div style="font-weight: bold;"> {{revistas.nombreRevista}}</div>
-                    <div> Issn: {{revistas.issn}} | e-Issn: {{revistas.issnelec}}</div>
+                    <div *ngIf=" revistas.issn && revistas.issnelec "> Issn: {{revistas.issn}} | e-Issn: {{revistas.issnelec}}</div>
+                    <div *ngIf=" revistas.issn && !revistas.issnelec"> Issn: {{revistas.issn}} </div>
+                    <div *ngIf=" !revistas.issn && revistas.issnelec "> e-Issn: {{revistas.issnelec}}</div>
                     <div>{{revistas.nombreArea}}</div>
                     <div>{{revistas.nombreInstitucion}}</div>
                     <div>{{revistas.nombrePais}}</div>
                 </div>
                 <div class="footer-card" style="width: 100%; height: 35px; text-align: right; border-radius: 0px 0px 10px 10px; ; background-color: #ff660c; position: absolute; bottom: 0;">
-                    <img class="img-footer" src="http://portal.amelica.org/resources/img/imgPortal/fbTarjetRev.png">
-                    <img class="img-footer" src="http://portal.amelica.org/resources/img/imgPortal/twTarjetRev.png" alt="">
+                    <a style="" href="http://www.facebook.com/sharer.php?u=https://www.redalyc.org/revista.oa?id={{revistas.cveRevista}}" class="facebook" target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;"> <img  target="_blank" class="img-footer" src="assets/img/tar-face.png" alt=""></a>
+                    <a  href="https://twitter.com/intent/tweet?original_referer=https://www.redalyc.org/revista.oa?id={{revistas.cveRevista}} &amp;text={{revistas.nombreRevista}} https://www.redalyc.org/revista.oa?id={{revistas.cveRevista}} vía @Ameli_CA" class="twitter" target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;"><img target="_blank" class="img-footer" src="assets/img/tar-twit.png" alt=""></a>
                 </div>
             </div>
         </div>
