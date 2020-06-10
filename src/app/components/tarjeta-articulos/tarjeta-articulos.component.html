@@ -5,7 +5,7 @@
         <div *ngIf="articulo.origen === 'XML'" style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; "><a href="https://www.redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/index.html" target="_blank">{{  articulo.tituloArt | tituloArticulo }}</a></div>
         <p>{{ articulo.autores | autoresArticulo}}</p>
         <p>{{ articulo.nombreRevista }}, {{ articulo.anio }}, {{ articulo.volumen }} ({{ articulo.numero }}) </p>
-        <p [routerLink]="['/busqueda-pal-clav',articulo.fuente]">Fuente: {{ articulo.fuente}} </p>
+        <p >Fuente: {{ articulo.fuente}} </p>
         <p [innerHTML]='articulo.contenido'>{{ articulo.contenido }}</p>
         <br>
 
