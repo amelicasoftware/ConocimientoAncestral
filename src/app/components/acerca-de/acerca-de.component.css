@@ -26,17 +26,16 @@ body {
 
 #header-acerca-de {
     position: fixed;
-    top: 0;
     width: 100%;
     text-align: center;
     color: white;
     height: 90px;
     display: table;
-    z-index: 10;
     background: #090a35;
     opacity: 0.9;
-    padding-top: 50px;
+    padding-top: 40px;
     transition: 0.4s;
+    z-index: 1;
 }
 
 #menu {
