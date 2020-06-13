@@ -19,8 +19,8 @@
         <div [routerLink]="['/busquedaRevistaPais/',cvePais]" style="text-align:center; cursor:pointer" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
         <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png" style="margin: 10px;">Articulos de revista</div>
         <div style="margin-left: 40%;">Modo de visualizar resultados </div>
-        <div [routerLink]="['/vista-art-tab']"><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
-        <div><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
+        <div (click)="cambioVista(false)" [ngClass]="{'activado': !vista}" ><img [src]="imgLista" style="margin: 10px;">Lista </div>
+        <div (click)="cambioVista(true)" [ngClass]="{'activado': vista}"><img [src]="imgTabla" style="margin: 10px;">Tarjetas </div>
     </div>
 </div>
 
@@ -44,7 +44,8 @@
         </div>
         <app-globitos-pais></app-globitos-pais>
         
-        <app-tarjeta-articulo></app-tarjeta-articulo>
+        <app-tarjeta-articulo [articulos]="articulos" *ngIf="vista"></app-tarjeta-articulo>
+        <app-tabla-articulo [articulos]="articulos" *ngIf="!vista"></app-tabla-articulo>
 
         <app-paginador-pais></app-paginador-pais>
 

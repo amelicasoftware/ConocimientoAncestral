@@ -28,6 +28,11 @@ export class BusquedaRevistaPaisComponent implements OnInit {
   nombrePais: string;
 
   listaPaises: any;
+  vista = true;
+
+  imgLista = 'assets/img/lista.png';
+  // imgListaA = 'assets/img/lista-act.png';
+  imgTabla = 'assets/img/tarjetas-act.png';
 
   constructor(private revistasService: RevistasService, private activatedRoute: ActivatedRoute,
               private filtrosRevistasService: FiltrosRevistasService, private paginadorService: PaginadorService,
@@ -51,6 +56,10 @@ export class BusquedaRevistaPaisComponent implements OnInit {
       this.filtroService.actualizarPais(this.cvePais);
     });
 
+    this.filtrosRevistasService.cambioRevistas.subscribe(data2 => {
+      console.log('resutladosArticuloPais', data2);
+      this.revistas = data2;
+    });
 
     this.filtrosRevistasService.cambioPalabra.subscribe(data2 => {
       console.log('resutladosArticuloPais', data2);
@@ -92,6 +101,17 @@ export class BusquedaRevistaPaisComponent implements OnInit {
     this.filtrosRevistasService.filtrosElegidos = [];
     const globos = [];
     this.filtrosRevistasService.actualizarGlobos(globos);
+  }
+
+  cambioVista(estado: boolean){
+    this.vista = estado;
+    if(estado){
+      this.imgLista = 'assets/img/lista.png';
+      this.imgTabla = 'assets/img/tarjetas-act.png';
+    }else{
+      this.imgTabla = 'assets/img/tarjetas.png';
+      this.imgLista = 'assets/img/lista-act.png';
+    }
   }
 
 }

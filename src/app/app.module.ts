@@ -46,6 +46,8 @@ import { TarjetaRevistaComponent } from './components/busqueda-revista-pais/tarj
 import { FiltroRevistaPaisComponent } from './components/busqueda-revista-pais/filtro-revista-pais/filtro-revista-pais.component';
 import { PaginadorRevistaPaisComponent } from './components/busqueda-revista-pais/paginador-revista-pais/paginador-revista-pais.component';
 import { GlobitosRevistaPaisComponent } from './components/busqueda-revista-pais/globitos-revista-pais/globitos-revista-pais.component';
+import { TablaArticuloComponent } from './components/busqueda-pais/tabla-articulo/tabla-articulo.component';
+import { TablaRevistaComponent } from './components/busqueda-revista-pais/tabla-revista/tabla-revista.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +92,8 @@ import { GlobitosRevistaPaisComponent } from './components/busqueda-revista-pais
     FiltroRevistaPaisComponent,
     PaginadorRevistaPaisComponent,
     GlobitosRevistaPaisComponent,
+    TablaArticuloComponent,
+    TablaRevistaComponent
   ],
   imports: [
     BrowserModule,

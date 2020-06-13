@@ -292,3 +292,7 @@ input[type=text]:focus {
   color: white;
   border-radius: 5px;
 }
+
+.activado{
+  color: #4762b2;
+}
