@@ -36,15 +36,21 @@
         <div  *ngIf="total.total >= 1 " style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
             <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}} </p>
             <br>
-            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Búsqueda: {{ total.total}} </p>
+            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Búsqueda: {{ totalResultados}} </p>
         </div>      
         
         <app-globitos></app-globitos>
 
-        <app-tarjeta-articulos></app-tarjeta-articulos>
+        <div *ngIf="totalResultados < 1" class="no-resultados">
+            no hay resultados.
+        </div>
+
+        <div *ngIf="totalResultados >= 1">
+            <app-tarjeta-articulos></app-tarjeta-articulos>
 
 
-        <app-paginador-articulos></app-paginador-articulos>
+            <app-paginador-articulos></app-paginador-articulos>
+        </div>
 
     </div>
 

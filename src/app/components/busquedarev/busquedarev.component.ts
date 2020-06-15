@@ -19,6 +19,7 @@ export class BusquedarevComponent implements OnInit {
   revistas: Array<Revistas> = new Array<Revistas>();
   totales: Array<Total> = new Array<Total>();
   total: Total = new Total();
+  totalResultados: number;
 
 
   revistasResultado: [] = [];
@@ -52,6 +53,10 @@ export class BusquedarevComponent implements OnInit {
     this.filtrosRevistasService.cambioRevistas.subscribe(data2 => {
       console.log('resutladosServicio', data2);
       this.revistas = data2;
+    });
+    this.paginadorService.cambioTotal.subscribe(data => {
+      console.log('pruebababb202', data);
+      this.totalResultados = data;
     });
   }
 

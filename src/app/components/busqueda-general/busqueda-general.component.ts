@@ -48,6 +48,7 @@ export class BusquedaGeneralComponent implements OnInit {
          this.filtrosService.actualizarFiltros(articulosDesdeApi.filtros);
          this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total);
          this.paginadorService.actualizarPosicion(1);
+         this.totalResultados = this.paginadorService.total;
     });
     
 
@@ -55,7 +56,11 @@ export class BusquedaGeneralComponent implements OnInit {
       console.log('resutladosServicio', data2);
       this.articulos = data2;
     });
-     this.total.palabra = this.articuloService.getpalabra()
+    this.total.palabra = this.articuloService.getpalabra();
+    this.paginadorService.cambioTotal.subscribe(data => {
+      console.log('pruebababb202', data);
+      this.totalResultados = data;
+    });
   }
 
 

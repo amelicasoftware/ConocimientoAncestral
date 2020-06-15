@@ -33,6 +33,7 @@ export class BusquedaRevistaPaisComponent implements OnInit {
   imgLista = 'assets/img/lista.png';
   // imgListaA = 'assets/img/lista-act.png';
   imgTabla = 'assets/img/tarjetas-act.png';
+  totalResultados: number;
 
   constructor(private revistasService: RevistasService, private activatedRoute: ActivatedRoute,
               private filtrosRevistasService: FiltrosRevistasService, private paginadorService: PaginadorService,
@@ -70,6 +71,10 @@ export class BusquedaRevistaPaisComponent implements OnInit {
     this.revistasService.getPaises().subscribe( paises => {
       console.log('paises', paises);
       this.listaPaises = paises;
+    });
+    this.paginadorService.cambioTotal.subscribe(data => {
+      console.log('pruebababb202', data);
+      this.totalResultados = data;
     });
   }
 

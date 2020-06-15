@@ -35,6 +35,8 @@ export class BusquedaPaisComponent implements OnInit {
   imgTabla = 'assets/img/tarjetas-act.png';
   // imgTablaA = 'assets/img/tarjetas-act.png';
 
+  totalResultados: number;
+
   constructor(private ArticuloInyectado: ServiosBusquedaService, private activatedRoute: ActivatedRoute,
               private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
               private paginadorService: PaginadorService) {
@@ -67,6 +69,10 @@ export class BusquedaPaisComponent implements OnInit {
     this.articuloService.getPaises().subscribe( paises => {
       console.log('paises', paises);
       this.listaPaises = paises;
+    });
+    this.paginadorService.cambioTotal.subscribe(data => {
+      console.log('pruebababb202', data);
+      this.totalResultados = data;
     });
   }
 
