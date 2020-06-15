@@ -100,6 +100,7 @@ export class FiltrosComponent implements OnInit {
         this.filtrosService.cambioEstado();
         this.paginadorService.actualizarTotal(data.articulos.total);
         this.paginadorService.actualizarPosicion(1);
+        this.filtrosService.total = data.articulos.total;
     });
 
   }
