@@ -3,21 +3,24 @@
 <!--  termina Header    -->
 
 
-<div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center; font-size: 18pt;"><img src="assets/img/pais-a.png" style="margin: 40px; ;"> {{nombrePais}}
+<div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center; font-size: 18pt;">
+    <img src="assets/img/pais-a.png" style="margin: 40px; ;"> {{nombrePais}}
     <!-- <input #palabra (keyup.enter)="buscar(palabra.value, 'prueba')" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text"> -->
     <select id="lista-paises" #pais (change)="llenarCombo(pais.value)">
-        <option *ngFor="let pais of listaPaises" value="{{pais.clave}}">{{pais.name}}</option>
+        <option *ngFor="let pais of listaPaises" value="{{pais.clave}}" #pais.name>{{pais.name}}</option>
     </select>
 </div>
-
+<div>
+    
+</div>
 <div class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
         <div [routerLink]="['/busquedaRevistaPais/',cvePais]" style="text-align:center; cursor:pointer" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
         <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png" style="margin: 10px;">Articulos de revista</div>
         <div style="margin-left: 40%;">Modo de visualizar resultados </div>
-        <div [routerLink]="['/vista-art-tab']"><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
-        <div><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
+        <div (click)="cambioVista(false)" [ngClass]="{'activado': !vista}" ><img [src]="imgLista" style="margin: 10px;">Lista </div>
+        <div (click)="cambioVista(true)" [ngClass]="{'activado': vista}"><img [src]="imgTabla" style="margin: 10px;">Tarjetas </div>
     </div>
 </div>
 
@@ -37,13 +40,18 @@
         <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
             <!-- <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para: {{total.palabra}} </p> -->
             <br>
-            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
+            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ totalResultados}} </p>
         </div>
         <app-globitos-pais></app-globitos-pais>
-        
-        <app-tarjeta-articulo></app-tarjeta-articulo>
+        <div *ngIf="totalResultados < 1" class="no-resultados">
+            no hay resultados.
+        </div>
+        <div *ngIf="totalResultados >= 1">
+            <app-tarjeta-articulo [articulos]="articulos" *ngIf="vista"></app-tarjeta-articulo>
+            <app-tabla-articulo [articulos]="articulos" *ngIf="!vista"></app-tabla-articulo>
 
-        <app-paginador-pais></app-paginador-pais>
+            <app-paginador-pais></app-paginador-pais>
+        </div>        
 
     </div> 
 

@@ -54,6 +54,7 @@ export class FiltrosComponent implements OnInit {
 
   mostrarElementos(filtro) {
     console.log(filtro);
+    console.log(this.filtros);
     if (!filtro.hasOwnProperty('estado')) {
       Object.defineProperty(filtro, 'estado', {
         value: false,
@@ -70,6 +71,23 @@ export class FiltrosComponent implements OnInit {
         value: true
       });
     }
+
+    // if (!filtro.hasOwnProperty('boton')) {
+    //   Object.defineProperty(filtro, 'boton', {
+    //     value: 'Ver menos',
+    //     writable: true
+    //   });
+    // }
+    // console.log(filtro.estado);
+    // if (filtro.estado) {
+    //   Object.defineProperty(filtro, 'boton', {
+    //     value: 'Ver mas',
+    //   });
+    // } else {
+    //   Object.defineProperty(filtro, 'boton', {
+    //     value: 'Ver menos'
+    //   });
+    // }
   }
 
   activarFiltros(elemento, nombre: string) {
@@ -100,6 +118,7 @@ export class FiltrosComponent implements OnInit {
         this.filtrosService.cambioEstado();
         this.paginadorService.actualizarTotal(data.articulos.total);
         this.paginadorService.actualizarPosicion(1);
+        // this.filtrosService.total = data.articulos.total;
     });
 
   }

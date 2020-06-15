@@ -28,6 +28,14 @@ export class BusquedaPaisComponent implements OnInit {
   nombrePais: string;
 
   listaPaises: any;
+  vista = true;
+
+  imgLista = 'assets/img/lista.png';
+  // imgListaA = 'assets/img/lista-act.png';
+  imgTabla = 'assets/img/tarjetas-act.png';
+  // imgTablaA = 'assets/img/tarjetas-act.png';
+
+  totalResultados: number;
 
   constructor(private ArticuloInyectado: ServiosBusquedaService, private activatedRoute: ActivatedRoute,
               private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
@@ -61,6 +69,10 @@ export class BusquedaPaisComponent implements OnInit {
     this.articuloService.getPaises().subscribe( paises => {
       console.log('paises', paises);
       this.listaPaises = paises;
+    });
+    this.paginadorService.cambioTotal.subscribe(data => {
+      console.log('pruebababb202', data);
+      this.totalResultados = data;
     });
   }
 
@@ -113,5 +125,16 @@ export class BusquedaPaisComponent implements OnInit {
       this.paginadorService.actualizarPosicion(1);
       this.total.total = articulosXPais.articulos.total;
     });
+  }
+
+  cambioVista(estado: boolean){
+    this.vista = estado;
+    if(estado){
+      this.imgLista = 'assets/img/lista.png';
+      this.imgTabla = 'assets/img/tarjetas-act.png';
+    }else{
+      this.imgTabla = 'assets/img/tarjetas.png';
+      this.imgLista = 'assets/img/lista-act.png';
+    }
   }
 }

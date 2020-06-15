@@ -24,6 +24,7 @@ export class BusquedaPalClavComponent implements OnInit {
   total: Total = new Total();
   imagenR = 'assets/img/des.png';
   imagenN = 'assets/img/des.png';
+  loading: boolean;
 
   // filtros: FiltrosComponent = new FiltrosComponent(this.ArticuloInyectado, this);
 
@@ -36,13 +37,15 @@ export class BusquedaPalClavComponent implements OnInit {
 
   constructor(private Ruta: Router,
               private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
-              private paginadorService: PaginadorService, private _route: ActivatedRoute) {}
+              private paginadorService: PaginadorService, private _route: ActivatedRoute) {this.loading = true;}
 
               ngOnInit(): void {
+                this.loading = false 
                 this.fuente = this._route.snapshot.paramMap.get('fuente');
                 this.articuloService.setpalabra(this.fuente) 
                 this.filtrosService.actualizarPalabra(this.fuente)
                 this.articuloService.leerjsonPC().subscribe((articulosDesdeApi: any) => {
+                  this.loading = true 
                   console.log(articulosDesdeApi) 
                   console.log(articulosDesdeApi.articulos.total)
                   // this.articulos = articulosDesdeApi.articulos.articulos;
@@ -72,11 +75,13 @@ export class BusquedaPalClavComponent implements OnInit {
             
               buscar(palabra: string) {
                 console.log(palabra);
+                this.loading = false 
                 this.total.palabra = palabra;
                 this.filtrosService.palabra = palabra;
                 this.filtrosService.actualizarPalabra(palabra)
                 this.articuloService.setpalabra(palabra)
                 this.articuloService.getBusquedaArticulosPalClav(palabra).subscribe((data: any) => {
+                  this.loading = true 
                   console.log(data);
                   this.filtrosService.actualizarArticulos(data.articulos.articulos);
                   this.filtrosService.actualizarFiltros(data.filtros);
