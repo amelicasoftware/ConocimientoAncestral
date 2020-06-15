@@ -283,3 +283,16 @@ input[type=text]:focus {
   text-align: center;
   width: 15vw;
 }
+
+#lista-paises{
+  width: 30%;
+  margin: auto;
+  height: 30px;
+  background: #090a35;
+  color: white;
+  border-radius: 5px;
+}
+
+.activado{
+  color: #4762b2;
+}

@@ -4,15 +4,18 @@ import { Total } from '../../../models/total';
 import { FiltrosRevistasService } from '../../../services/filtros-revistas.service';
 
 @Component({
-  selector: 'app-tarjeta-revista',
-  templateUrl: './tarjeta-revista.component.html',
-  styleUrls: ['./tarjeta-revista.component.css']
+  selector: 'app-tabla-revista',
+  templateUrl: './tabla-revista.component.html',
+  styleUrls: ['./tabla-revista.component.css']
 })
-export class TarjetaRevistaComponent implements OnInit {
+export class TablaRevistaComponent implements OnInit {
 
   @Input() revistas: Array<Revistas> = new Array<Revistas>();
   totales: Array<Total> = new Array<Total>();
   total: Total = new Total();
+
+  imagenNR = 'assets/img/des.png';
+  imagenMI = 'assets/img/des.png';
 
   constructor(private filtrosRevistasService: FiltrosRevistasService) { }
 
@@ -21,4 +24,9 @@ export class TarjetaRevistaComponent implements OnInit {
       this.revistas = revistas;
     });
   }
+
+  reversa(nombre, estado){
+
+  }
+
 }
