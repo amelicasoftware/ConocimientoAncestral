@@ -21,9 +21,19 @@
 </div>
 
 
+
+<div *ngIf="!loading" style="width: 12%; margin-left: 50%; margin-top: 10%;">
+
+  <img   src="assets/img/giphy.gif" alt="">
+  <p>Cargando contenido...</p>
+
+</div>
+
+
+
 <!--  Filtros menu  -->
-<div class="grid-container">
-  <div class="item2">
+<div *ngIf="total.palabra && total.total >= 1 && loading " class="grid-container">
+  <div *ngIf="total.total >= 1" class="item2">
     <app-filtpalclav></app-filtpalclav>    
   </div>
 
@@ -37,7 +47,7 @@
         <app-globitos-pal-clav></app-globitos-pal-clav>
 
 
-<div class="flex-containercont">
+  <div class="flex-containercont">
 
     <div class="articulo" id="example1" *ngFor="let articulo of articulos">
         <div *ngIf="articulo.origen === 'PDF'" style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; "><a href="https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank">{{  articulo.tituloArt | tituloArticulo }}</a></div>
@@ -80,7 +90,7 @@
 
 
     </div>
-</div>
+  </div>
 
 
 
@@ -90,4 +100,9 @@
 
 
 </div>
+<div  *ngIf="total.total <= 0 " style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
+  <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">No se han encontrado resultados para: {{total.palabra}} </p>
+  <br>
+ 
+</div>  
 <app-footer></app-footer>

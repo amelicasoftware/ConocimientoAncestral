@@ -28,26 +28,33 @@ export class BusquedaGeneralComponent implements OnInit {
 
   palabraBusqueda: string;
   totalResultados: number;
-  palabra: string
+  palabra: string;
+  loading: boolean;
   constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
               private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
-              private paginadorService: PaginadorService, private _route: ActivatedRoute) { }
+              private paginadorService: PaginadorService, private _route: ActivatedRoute) { this.loading = true;}
 
 
 
               
 
   ngOnInit(): void {
+    this.loading = false 
     this.palabra = this._route.snapshot.paramMap.get('palabra');
                 this.articuloService.setpalabra(this.palabra) 
                 this.filtrosService.actualizarPalabra(this.palabra)
     this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
+    console.log('###########################################',this.loading)
+          this.loading = true 
          console.log(articulosDesdeApi.articulos.total);
          this.total.total = articulosDesdeApi.articulos.total;
          this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
          this.filtrosService.actualizarFiltros(articulosDesdeApi.filtros);
          this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total);
          this.paginadorService.actualizarPosicion(1);
+
+      
+
     });
     
 
@@ -55,12 +62,14 @@ export class BusquedaGeneralComponent implements OnInit {
       console.log('resutladosServicio', data2);
       this.articulos = data2;
     });
-     this.total.palabra = this.articuloService.getpalabra()
+    this.total.palabra = this.articuloService.getpalabra()
+   
   }
 
 
   buscar(palabra: string) {
     console.log(palabra);
+    this.loading = false 
     this.total.palabra = palabra;
     this.filtrosService.palabra = palabra;
     this.filtrosService.actualizarPalabra(palabra)
@@ -75,10 +84,12 @@ export class BusquedaGeneralComponent implements OnInit {
       this.filtrosService.cadenafiltros = '';
       this.paginadorService.actualizarTotal(data.articulos.total);
       this.paginadorService.actualizarPosicion(1);
-      this.total.total = data.articulos.total;     
+      this.total.total = data.articulos.total;   
+      this.loading = true 
     });
     this.filtrosService.palabra = palabra;
     this.filtrosService.actualizarPalabra(palabra)
+       
   }
 
 
