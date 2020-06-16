@@ -5,4 +5,5 @@ export class Revistas{
     issnelec:string;
     issn:string;
     cveRevista: number;
+    nombrePais: string;
 }
