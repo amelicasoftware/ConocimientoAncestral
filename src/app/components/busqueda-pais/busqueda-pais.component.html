@@ -40,14 +40,18 @@
         <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
             <!-- <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para: {{total.palabra}} </p> -->
             <br>
-            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
+            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ totalResultados}} </p>
         </div>
         <app-globitos-pais></app-globitos-pais>
-        
-        <app-tarjeta-articulo [articulos]="articulos" *ngIf="vista"></app-tarjeta-articulo>
-        <app-tabla-articulo [articulos]="articulos" *ngIf="!vista"></app-tabla-articulo>
+        <div *ngIf="totalResultados < 1" class="no-resultados">
+            no hay resultados.
+        </div>
+        <div *ngIf="totalResultados >= 1">
+            <app-tarjeta-articulo [articulos]="articulos" *ngIf="vista"></app-tarjeta-articulo>
+            <app-tabla-articulo [articulos]="articulos" *ngIf="!vista"></app-tabla-articulo>
 
-        <app-paginador-pais></app-paginador-pais>
+            <app-paginador-pais></app-paginador-pais>
+        </div>        
 
     </div> 
 

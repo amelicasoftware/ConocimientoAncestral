@@ -18,11 +18,11 @@ export class PaginadorService {
 
   constructor() { }
 
-  actualizarTotal(filtros: number) {
+  actualizarTotal(filtros: number, tipo: string) {
     this.total = filtros;
     this.cambioTotal.emit(this.total);
     console.log(this.total);
-    this.calculaFinal(filtros);
+    this.calculaFinal(filtros, tipo);
   }
 
   actualizarFinal() {
@@ -35,11 +35,21 @@ export class PaginadorService {
     this.cambioPosicion.emit(this.posicion);
   }
 
-  calculaFinal(total: number) {
-    if (Number.isInteger((total / 12))) {
-      this.pFinal = (total / 12);
-    } else {
-      this.pFinal = Math.floor(total / 12) + 1;
+  calculaFinal(total: number, tipo: string) {
+    if(tipo === 'revistas'){
+      if (Number.isInteger((total / 12))) {
+        this.pFinal = (total / 12);
+      } else {
+        this.pFinal = Math.floor(total / 12) + 1;
+      }
+    }
+
+    if(tipo === 'articulos'){
+      if (Number.isInteger((total / 10))) {
+        this.pFinal = (total / 10);
+      } else {
+        this.pFinal = Math.floor(total / 10) + 1;
+      }
     }
   }
 

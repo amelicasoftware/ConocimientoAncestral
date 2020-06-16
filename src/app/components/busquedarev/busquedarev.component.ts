@@ -19,6 +19,7 @@ export class BusquedarevComponent implements OnInit {
   revistas: Array<Revistas> = new Array<Revistas>();
   totales: Array<Total> = new Array<Total>();
   total: Total = new Total();
+  totalResultados: number;
 
 
   revistasResultado: [] = [];
@@ -31,13 +32,13 @@ export class BusquedarevComponent implements OnInit {
     this.revistasService.leerjson().subscribe((revistasDesdeApi: any) => {
       console.log(revistasDesdeApi);
       // this.revistas = revistasDesdeApi.revistas.revistas;
-      this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total);
+      this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total, 'revistas');
       // if (Number.isInteger((this.total.total / 12))) {
       //   this.total.final = (this.total.total / 12)
       // } else {
       //   this.total.final = Math.floor(this.total.total / 12) + 1
       // }
-      this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total);
+      this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total, 'revistas');
       this.paginadorService.actualizarPosicion(1);
       console.log('Pposiscion', this.paginadorService.posicion);
       console.log('Ptotal', this.paginadorService.total);
@@ -52,6 +53,10 @@ export class BusquedarevComponent implements OnInit {
     this.filtrosRevistasService.cambioRevistas.subscribe(data2 => {
       console.log('resutladosServicio', data2);
       this.revistas = data2;
+    });
+    this.paginadorService.cambioTotal.subscribe(data => {
+      console.log('pruebababb202', data);
+      this.totalResultados = data;
     });
   }
 
@@ -83,7 +88,7 @@ export class BusquedarevComponent implements OnInit {
       const globos = [];
       this.filtrosRevistasService.actualizarGlobos(globos);
       this.filtrosRevistasService.cadenaFitros = '';
-      this.paginadorService.actualizarTotal(data.revistas.total);
+      this.paginadorService.actualizarTotal(data.revistas.total, 'revistas');
       this.paginadorService.actualizarPosicion(1);
     });
   }

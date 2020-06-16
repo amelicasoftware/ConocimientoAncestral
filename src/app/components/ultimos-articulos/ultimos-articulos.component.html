@@ -20,7 +20,7 @@
                 <img style="height: 60px;" src="assets/img/rva4399.png">
             </div>
             <div class="cuerpo-card" style="height: 180px; font-size: 12px; padding: 0px 10px;">
-                <div style="font-weight: bold;"> {{indexOfelement}} {{articulo.nombreRevista}}</div>
+                <div style="font-weight: bold;"> {{articulo.nombreRevista}}</div>
                 <div> Issn: {{articulo.ISSN}} | e-Issn: {{articulo.ISSNElec}}</div>
                 <div>{{articulo.nombreArea}}</div>
                 <div>{{articulo.nombreInstitucion}}</div>
@@ -54,7 +54,7 @@
     <div id="contenedor-fichas" class="contenedor-fichas">
         <div *ngFor="let articulo of articulos;let indexOfelement=index;" class="card">
             <div class="titulo-card" style="height: 100px; font-weight: bold; font-size: 12px; padding: 10px;">
-                <p > {{indexOfelement}} {{articulo.tituloArt | tituloArticulo}}</p>
+                <p > {{articulo.tituloArt | tituloArticulo}}</p>
             </div>
             <div class="cuerpo-card" style="height: 70px; font-size: 12px; padding: 0px 10px; ">
                 <div>{{articulo.autores | autoresArticulo}}</div>

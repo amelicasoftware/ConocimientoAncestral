@@ -33,6 +33,7 @@ export class BusquedaRevistaPaisComponent implements OnInit {
   imgLista = 'assets/img/lista.png';
   // imgListaA = 'assets/img/lista-act.png';
   imgTabla = 'assets/img/tarjetas-act.png';
+  totalResultados: number;
 
   constructor(private revistasService: RevistasService, private activatedRoute: ActivatedRoute,
               private filtrosRevistasService: FiltrosRevistasService, private paginadorService: PaginadorService,
@@ -50,7 +51,7 @@ export class BusquedaRevistaPaisComponent implements OnInit {
       this.total.total = revistasXPais.revistas.total;
       this.filtrosRevistasService.actualizarRevistas(revistasXPais.revistas.revistas);
       this.filtrosRevistasService.actualizarFiltros(revistasXPais.filtros);
-      this.paginadorService.actualizarTotal(revistasXPais.revistas.total);
+      this.paginadorService.actualizarTotal(revistasXPais.revistas.total, 'revistas');
       this.paginadorService.actualizarPosicion(1);
       this.nombrePais = revistasXPais.revistas.revistas[0].nombrePais;
       this.filtroService.actualizarPais(this.cvePais);
@@ -71,6 +72,10 @@ export class BusquedaRevistaPaisComponent implements OnInit {
       console.log('paises', paises);
       this.listaPaises = paises;
     });
+    this.paginadorService.cambioTotal.subscribe(data => {
+      console.log('pruebababb202', data);
+      this.totalResultados = data;
+    });
   }
 
   llenarCombo(pais){
@@ -82,7 +87,7 @@ export class BusquedaRevistaPaisComponent implements OnInit {
       this.total.total = revistasXPais.revistas.total;
       this.filtrosRevistasService.actualizarRevistas(revistasXPais.revistas.revistas);
       this.filtrosRevistasService.actualizarFiltros(revistasXPais.filtros);
-      this.paginadorService.actualizarTotal(revistasXPais.revistas.total);
+      this.paginadorService.actualizarTotal(revistasXPais.revistas.total, 'revistas');
       this.paginadorService.actualizarPosicion(1);
       this.nombrePais = revistasXPais.revistas.revistas[0].nombrePais;
       this.filtroService.actualizarPais(this.cvePais);
@@ -90,7 +95,7 @@ export class BusquedaRevistaPaisComponent implements OnInit {
       this.filtrosRevistasService.actualizarGlobos(globos);
       this.filtrosRevistasService.filtrosElegidos = [];
       this.filtrosRevistasService.cadenaFitros = '';
-      this.paginadorService.actualizarTotal(revistasXPais.revistas.total);
+      this.paginadorService.actualizarTotal(revistasXPais.revistas.total, 'revistas');
       this.paginadorService.actualizarPosicion(1);
       this.total.total = revistasXPais.revistas.total;
     });

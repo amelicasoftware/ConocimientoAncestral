@@ -296,3 +296,7 @@ input[type=text]:focus {
 .activado{
   color: #4762b2;
 }
+
+.no-resultados{
+  margin: 50px;
+}

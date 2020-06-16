@@ -33,7 +33,7 @@ export class VistaTablaComponent implements OnInit {
       // this.total.total = revistasDesdeApi.revistas.total;
       this.filtrosRevistasService.actualizarRevistas(revistasDesdeApi.revistas.revistas);
       this.filtrosRevistasService.actualizarFiltros(revistasDesdeApi.filtros);
-      this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total);
+      this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total, 'revistas');
     });
     
     this.filtrosRevistasService.cambioRevistas.subscribe(data2 => {
