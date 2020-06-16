@@ -3,38 +3,35 @@
 <!--  termina Header    -->
 
 
-<div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;"><img src="assets/img/buscador-institucionmdpi.png" style="margin: 40px; ;"> Busqueda General
-    <input #palabra (keyup.enter)="buscar(palabra.value)" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text">
+<div class="buscador flex"><img src="assets/img/buscador-institucionmdpi.png"> Búsqueda por palabra clave
+    <input class="busqueda" #palabra (keyup.enter)="buscar(palabra.value)" type="text" placeholder="Introducir criterio de búsqueda">
     <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" />
 </div>
 
 <div class="grid-containerh2">
     <div class="item11">
-        <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
-       
-        <div (click)="limpiarDatos()"><img src="assets/img/articulos.png" style="margin: 10px;">Articulos de revista</div>
-        <div style="margin-left: 40%;">Modo de visualizar resultados </div>
-        <div><img src="assets/img/lista.png" style="margin: 10px;">Lista </div>
-        <div class="cursor" [routerLink]="['/busqueda-pal-clav/',total.palabra]"><img src="assets/img/tarjetas.png" style="margin: 10px;">Tarjetas </div>
+        <div class="filtros"><img src="assets/img/filtro.png">Filtros de Búsqueda</div>
+        <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png">Articulos de revista</div>
+        <div class="alimodo">Modo de visualizar resultados </div>
+        <div class="seleccionado"><img src="assets/img/lista-act.png">Lista </div>
+        <div class="cursor" [routerLink]="['/busqueda-pal-clav/',total.palabra]"><img src="assets/img/tarjetas.png">Tarjetas </div>
     </div>
 </div>
 
 <!--  Filtros menu  -->
 <div class="grid-container">
-  <div class="item2">
-    <app-filtpalclav></app-filtpalclav>    
-  </div>
+    <div class="item2">
+        <app-filtpalclav></app-filtpalclav>
+    </div>
 
     <!-- Termina Filtros menu   -->
     <div class="item3">
-        <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
-            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para: {{total.palabra}} </p>
-            <br>
-            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
+        <div>
+            <p class="texto-formato tamaño-resul-pal">Resultados para: {{total.palabra}} </p>
+            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total"> Resultados de la Busqueda: {{ total.total}} </p>
         </div>
+
         <app-globitos-pal-clav></app-globitos-pal-clav>
-
-
 
         <div class="flex-containercont">
             <table class="table table-hover">
@@ -81,10 +78,9 @@
             </table>
         </div>
 
-       <app-paginador-pal-clav></app-paginador-pal-clav>
+        <app-paginador-pal-clav></app-paginador-pal-clav>
 
-    </div> 
-
-
+    </div>
 </div>
+
 <app-footer></app-footer>
