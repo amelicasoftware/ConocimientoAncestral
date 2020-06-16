@@ -234,3 +234,10 @@ input[type=text]:focus {
 .resultados>p {
     margin-left: 10px;
 }
+
+.titulo {
+    font-size: 10pt;
+    color: #4762b2;
+    font-family: Barlow-Bold;
+    text-decoration: none;
+}
