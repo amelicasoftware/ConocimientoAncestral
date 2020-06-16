@@ -48,7 +48,7 @@ export class BusquedaPalclavVtabComponent implements OnInit {
                   // console.log(this.articulos)
                   // console.log(this.total)
                   this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
-                  this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total);
+                  this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total, 'articulos');
                   this.paginadorService.actualizarPosicion(1);
                 });
                 
@@ -58,7 +58,10 @@ export class BusquedaPalclavVtabComponent implements OnInit {
                   this.articulos = data2;
                 });
                 console.log("Coso Imprimiendo algo abr que es ",this.articuloService.getpalabra())
-                 this.total.palabra = this.articuloService.getpalabra()
+                 this.total.palabra = this.articuloService.getpalabra();
+                this.paginadorService.cambioTotal.subscribe(data2 => {
+                  this.totalResultados = data2;
+                });
               }
             
             
@@ -76,7 +79,7 @@ export class BusquedaPalclavVtabComponent implements OnInit {
                   this.filtrosService.actualizarGlobos(globos);
                   this.filtrosService.filtrosElegidos = [];
                   this.filtrosService.cadenafiltros = '';
-                  this.paginadorService.actualizarTotal(data.articulos.total);
+                  this.paginadorService.actualizarTotal(data.articulos.total, 'articulos');
                   this.paginadorService.actualizarPosicion(1);
                   this.total.total = data.articulos.total;     
                 });

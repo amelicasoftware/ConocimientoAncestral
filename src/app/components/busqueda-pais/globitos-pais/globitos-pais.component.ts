@@ -46,7 +46,7 @@ export class GlobitosPaisComponent implements OnInit {
         this.filtrosService.actualizarGlobos(this.filtrosService.filtrosElegidos);
         this.filtrosService.actualizarArticulos(data.articulos.articulos);
         this.filtrosService.cambioEstado();
-        this.paginadorService.actualizarTotal(data.articulos.total);
+        this.paginadorService.actualizarTotal(data.articulos.total, 'articulos');
         this.paginadorService.actualizarPosicion(1);
       });
   }

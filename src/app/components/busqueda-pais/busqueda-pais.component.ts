@@ -53,7 +53,7 @@ export class BusquedaPaisComponent implements OnInit {
       this.total.total = articulosXPais.articulos.total;
       this.filtrosService.actualizarArticulos(articulosXPais.articulos.articulos);
       this.filtrosService.actualizarFiltros(articulosXPais.filtros);
-      this.paginadorService.actualizarTotal(articulosXPais.articulos.total);
+      this.paginadorService.actualizarTotal(articulosXPais.articulos.total, 'articulos');
       this.paginadorService.actualizarPosicion(1);
       this.nombrePais = articulosXPais.articulos.articulos[0].pais;
       this.filtrosService.actualizarPais(this.cvePais);
@@ -90,7 +90,7 @@ export class BusquedaPaisComponent implements OnInit {
       this.filtrosService.actualizarGlobos(globos);
       this.filtrosService.filtrosElegidos = [];
       this.filtrosService.cadenafiltros = '';
-      this.paginadorService.actualizarTotal(data.articulos.total);
+      this.paginadorService.actualizarTotal(data.articulos.total, 'articulos');
       this.paginadorService.actualizarPosicion(1);
       this.total.total = data.articulos.total;
     });
@@ -113,7 +113,7 @@ export class BusquedaPaisComponent implements OnInit {
       this.total.total = articulosXPais.articulos.total;
       this.filtrosService.actualizarArticulos(articulosXPais.articulos.articulos);
       this.filtrosService.actualizarFiltros(articulosXPais.filtros);
-      this.paginadorService.actualizarTotal(articulosXPais.articulos.total);
+      this.paginadorService.actualizarTotal(articulosXPais.articulos.total, 'articulos');
       this.paginadorService.actualizarPosicion(1);
       this.nombrePais = articulosXPais.articulos.articulos[0].pais;
       this.filtrosService.actualizarPais(this.cvePais);
@@ -121,7 +121,7 @@ export class BusquedaPaisComponent implements OnInit {
       this.filtrosService.actualizarGlobos(globos);
       this.filtrosService.filtrosElegidos = [];
       this.filtrosService.cadenafiltros = '';
-      this.paginadorService.actualizarTotal(articulosXPais.articulos.total);
+      this.paginadorService.actualizarTotal(articulosXPais.articulos.total, 'articulos');
       this.paginadorService.actualizarPosicion(1);
       this.total.total = articulosXPais.articulos.total;
     });

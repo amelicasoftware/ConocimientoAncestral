@@ -77,10 +77,14 @@
                 </tbody>
             </table>
         </div>
-
-        <app-paginador-pal-clav></app-paginador-pal-clav>
-
     </div>
+
+    <app-paginador-pal-clav></app-paginador-pal-clav>
+
+</div>
+
+<div *ngIf="total.total <= 0 " class="resultados">
+    <p class="texto-formato">No se han encontrado resultados para: {{total.palabra}} </p>
 </div>
 
 <app-footer></app-footer>

@@ -46,7 +46,7 @@ export class TarjetaArticulosComponent implements OnInit {
       // console.log(this.articulos)
       // console.log(this.total)
       this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
-      this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total);
+      this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total, 'articulos');
       this.paginadorService.actualizarPosicion(1);
     });
     
@@ -71,7 +71,7 @@ export class TarjetaArticulosComponent implements OnInit {
       this.filtrosService.actualizarGlobos(globos);
       this.filtrosService.filtrosElegidos = [];
       this.filtrosService.cadenafiltros = '';
-      this.paginadorService.actualizarTotal(data.articulos.total);
+      this.paginadorService.actualizarTotal(data.articulos.total, 'articulos');
       this.paginadorService.actualizarPosicion(1);
       this.total.total = data.articulos.total;
     });
