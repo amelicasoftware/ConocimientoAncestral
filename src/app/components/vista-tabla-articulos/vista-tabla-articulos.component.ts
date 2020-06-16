@@ -38,7 +38,7 @@ export class VistaTablaArticulosComponent implements OnInit {
       // this.total.total = revistasDesdeApi.revistas.total;
       this.filtrosArticulos.actualizarArticulos(articulosApi.articulos.articulos);
       this.filtrosArticulos.actualizarFiltros(articulosApi.filtros);
-      this.paginadorService.actualizarTotal(articulosApi.articulos.total);
+      this.paginadorService.actualizarTotal(articulosApi.articulos.total, 'articulos');
     });
 
     this.filtrosArticulos.cambioArticulos.subscribe(data2 => {

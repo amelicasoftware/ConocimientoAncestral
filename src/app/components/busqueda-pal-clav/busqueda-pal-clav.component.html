@@ -38,16 +38,22 @@
   </div>
 
     <!-- Termina Filtros menu   -->
+    
     <div class="item3">
         <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
             <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para: {{total.palabra}} </p>
             <br>
-            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ total.total}} </p>
+            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ totalResultados}} </p>
         </div>
         <app-globitos-pal-clav></app-globitos-pal-clav>
 
+        <div *ngIf="totalResultados < 1" class="no-resultados">
+          no hay resultados.
+        </div>
+        <div *ngIf="totalResultados >= 1">
 
-  <div class="flex-containercont">
+
+      <div class="flex-containercont">
 
     <div class="articulo" id="example1" *ngFor="let articulo of articulos">
         <div *ngIf="articulo.origen === 'PDF'" style="font-size: 10pt; color: #4762b2; font-family: Barlow-Bold; margin-bottom: 0px; padding-top: 0px; "><a href="https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank">{{  articulo.tituloArt | tituloArticulo }}</a></div>
@@ -91,13 +97,13 @@
 
     </div>
   </div>
-
+</div>
 
 
        <app-paginador-pal-clav></app-paginador-pal-clav>
 
     </div> 
-
+    
 
 </div>
 <div  *ngIf="total.total <= 0 " style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">

@@ -50,7 +50,7 @@ export class BusquedaGeneralComponent implements OnInit {
          this.total.total = articulosDesdeApi.articulos.total;
          this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
          this.filtrosService.actualizarFiltros(articulosDesdeApi.filtros);
-         this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total);
+         this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total, 'articulos');
          this.paginadorService.actualizarPosicion(1);
          this.totalResultados = this.paginadorService.total;
     });
@@ -84,7 +84,7 @@ export class BusquedaGeneralComponent implements OnInit {
       this.filtrosService.actualizarGlobos(globos);
       this.filtrosService.filtrosElegidos = [];
       this.filtrosService.cadenafiltros = '';
-      this.paginadorService.actualizarTotal(data.articulos.total);
+      this.paginadorService.actualizarTotal(data.articulos.total, 'articulos');
       this.paginadorService.actualizarPosicion(1);
       this.total.total = data.articulos.total;   
       this.loading = true 

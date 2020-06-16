@@ -51,7 +51,7 @@ export class BusquedaRevistaPaisComponent implements OnInit {
       this.total.total = revistasXPais.revistas.total;
       this.filtrosRevistasService.actualizarRevistas(revistasXPais.revistas.revistas);
       this.filtrosRevistasService.actualizarFiltros(revistasXPais.filtros);
-      this.paginadorService.actualizarTotal(revistasXPais.revistas.total);
+      this.paginadorService.actualizarTotal(revistasXPais.revistas.total, 'revistas');
       this.paginadorService.actualizarPosicion(1);
       this.nombrePais = revistasXPais.revistas.revistas[0].nombrePais;
       this.filtroService.actualizarPais(this.cvePais);
@@ -87,7 +87,7 @@ export class BusquedaRevistaPaisComponent implements OnInit {
       this.total.total = revistasXPais.revistas.total;
       this.filtrosRevistasService.actualizarRevistas(revistasXPais.revistas.revistas);
       this.filtrosRevistasService.actualizarFiltros(revistasXPais.filtros);
-      this.paginadorService.actualizarTotal(revistasXPais.revistas.total);
+      this.paginadorService.actualizarTotal(revistasXPais.revistas.total, 'revistas');
       this.paginadorService.actualizarPosicion(1);
       this.nombrePais = revistasXPais.revistas.revistas[0].nombrePais;
       this.filtroService.actualizarPais(this.cvePais);
@@ -95,7 +95,7 @@ export class BusquedaRevistaPaisComponent implements OnInit {
       this.filtrosRevistasService.actualizarGlobos(globos);
       this.filtrosRevistasService.filtrosElegidos = [];
       this.filtrosRevistasService.cadenaFitros = '';
-      this.paginadorService.actualizarTotal(revistasXPais.revistas.total);
+      this.paginadorService.actualizarTotal(revistasXPais.revistas.total, 'revistas');
       this.paginadorService.actualizarPosicion(1);
       this.total.total = revistasXPais.revistas.total;
     });

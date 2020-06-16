@@ -38,7 +38,7 @@ export class RevistasTableComponent implements OnInit {
       // } else {
       //   this.total.final = Math.floor(this.total.total / 12) + 1
       // }
-      this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total);
+      this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total, 'revistas');
       this.paginadorService.actualizarPosicion(1);
       console.log('Pposiscion', this.paginadorService.posicion);
       console.log('Ptotal', this.paginadorService.total);
@@ -69,7 +69,7 @@ export class RevistasTableComponent implements OnInit {
       this.filtrosRevistasService.actualizarGlobos(globos);
       this.filtrosRevistasService.filtrosElegidos = [];
       this.filtrosRevistasService.cadenaFitros = '';
-      this.paginadorService.actualizarTotal(data.revistas.total);
+      this.paginadorService.actualizarTotal(data.revistas.total, 'revistas');
       this.paginadorService.actualizarPosicion(1);
       this.total.total = data.revistas.total;
     });
