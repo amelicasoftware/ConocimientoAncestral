@@ -2,25 +2,28 @@
 <app-header></app-header>
 <!--  termina Header    -->
 
-
-<div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center; font-size: 18pt;">
-    <img src="assets/img/pais-a.png" style="margin: 40px; ;"> {{nombrePais}}
+<div class="buscador flex">
+    <img class="busqueda" src="assets/img/pais-a.png"> {{nombrePais}}
     <!-- <input #palabra (keyup.enter)="buscar(palabra.value, 'prueba')" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text"> -->
     <select id="lista-paises" #pais (change)="llenarCombo(pais.value)">
         <option *ngFor="let pais of listaPaises" value="{{pais.clave}}" #pais.name>{{pais.name}}</option>
     </select>
 </div>
+
 <div>
-    
+
 </div>
+
 <div class="grid-containerh2">
     <div class="item11">
-        <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Busqueda</div>
-        <div [routerLink]="['/busquedaRevistaPais/',cvePais]" style="text-align:center; cursor:pointer" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
-        <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png" style="margin: 10px;">Articulos de revista</div>
-        <div style="margin-left: 40%;">Modo de visualizar resultados </div>
-        <div (click)="cambioVista(false)" [ngClass]="{'activado': !vista}" ><img [src]="imgLista" style="margin: 10px;">Tabla </div>
-        <div (click)="cambioVista(true)" [ngClass]="{'activado': vista}"><img [src]="imgTabla" style="margin: 10px;">Lista </div>
+
+        <div class="filtros"><img src="assets/img/filtro.png">Filtros de Búsqueda</div>
+        <div class="cursor" [routerLink]="['/busquedaRevistaPais/',cvePais]" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div>
+        <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png">Artículos de revista</div>
+        <div class="alimodo">Modo de visualizar resultados </div>
+        <div (click)="cambioVista(false)" [ngClass]="{'activado': !vista, 'seleccionado': !vista, 'cursor': vista}"><img [src]="imgLista">Lista</div>
+        <div (click)="cambioVista(true)" [ngClass]="{'activado': vista, 'seleccionado': vista, 'cursor': !vista}"><img [src]="imgTabla">Tarjetas</div>
+
     </div>
 </div>
 
@@ -31,29 +34,31 @@
 
 <!--  Filtros menu  -->
 <div class="grid-container">
-  <div class="item2">
-    <app-filtro-pais></app-filtro-pais>   
-  </div>
+    <div class="item2">
+        <app-filtro-pais></app-filtro-pais>
+    </div>
 
     <!-- Termina Filtros menu   -->
     <div class="item3">
-        <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
-            <!-- <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;" >Resultados para: {{total.palabra}} </p> -->
-            <br>
-            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Busqueda: {{ totalResultados}} </p>
+
+        <div>
+            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total"> Resultados de la Búsqueda: {{ total.total}} </p>
         </div>
+
         <app-globitos-pais></app-globitos-pais>
+
         <div *ngIf="totalResultados < 1" class="no-resultados">
             no hay resultados.
         </div>
+
         <div *ngIf="totalResultados >= 1">
             <app-tarjeta-articulo [articulos]="articulos" *ngIf="vista"></app-tarjeta-articulo>
             <app-tabla-articulo [articulos]="articulos" *ngIf="!vista"></app-tabla-articulo>
 
             <app-paginador-pais></app-paginador-pais>
-        </div>        
+        </div>
 
-    </div> 
+    </div>
 
 
 </div>

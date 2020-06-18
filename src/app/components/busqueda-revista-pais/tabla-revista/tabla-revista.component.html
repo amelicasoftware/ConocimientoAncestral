@@ -17,7 +17,7 @@
                     <th scope="col">e-ISSN</th>
                     <th scope="col">Revista<img (click)="reversa('nombreRevista',true)" [src]="imagenNR" align="right" /></th>
                     <th scope="col">Institución Editora<img (click)="reversa('nombreInstitucion',true)" [src]="imagenMI" align="right" /></th>
-                    <th scope="col">Último Número</th>
+                    <th scope="col">País</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +26,7 @@
                     <td>{{ revista.issnelec }}</td>
                     <td>{{ revista.nombreRevista }}</td>
                     <td>{{ revista.nombreInstitucion }}</td>
-                    <td>{{ revista.periodicidad }}</td>
+                    <td>{{ revista.nombrePais }}</td>
                 </tr>
             </tbody>
         </table>

@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Barlow-Regular;
+    src: url('../../../assets/fonts/Barlow-Regular.ttf');
+}
+
 .filtroOculto,
 .filtroOcultoD,
 .filtroOcultoP {
