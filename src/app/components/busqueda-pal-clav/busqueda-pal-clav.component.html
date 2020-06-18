@@ -11,8 +11,8 @@
         <div class="filtros"><img src="assets/img/filtro.png">Filtros de Búsqueda</div>
         <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png">Articulos de revista</div>
         <div class="alimodo">Modo de visualizar resultados </div>
-        <div class="cursor" [routerLink]="['/PalClav-table/',total.palabra]"><img src="assets/img/lista.png">Lista</div>
-        <div class="seleccionado"><img src="assets/img/tarjetas-act.png">Tarjetas</div>
+        <div class="cursor" [routerLink]="['/PalClav-table/',total.palabra]"><img src="assets/img/lista.png">Tabla</div>
+        <div class="seleccionado"><img src="assets/img/tarjetas-act.png">Lista</div>
     </div>
 </div>
 
@@ -33,7 +33,7 @@
 
         <div>
             <p class="texto-formato tamaño-resul-pal">Resultados para: {{total.palabra}} </p>
-            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total"> Resultados de la Busqueda: {{ total.total}} </p>
+            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total"> Resultados de la Busqueda: {{ total.total}} {{totalResultados}}</p>
         </div>
 
         <app-globitos-pal-clav></app-globitos-pal-clav>
