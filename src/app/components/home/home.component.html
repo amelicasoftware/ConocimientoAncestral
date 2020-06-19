@@ -87,26 +87,61 @@
             </div>
         </div>
     </div>
-    <section id="contenedor-nube" ng-init="nube()">
-        <div style="display:flex; flex-wrap: wrap;">
-            <div id="titulo-nube">Artículos por palabra clave</div>
-            <div id="nube">
-                <!-- <div id="wordCloud"></div> -->
-                <div id="wordCloud" charset="utf-8"></div>
+    <section id="red-conceptos">
+        <div id="menu-secciones">
+            <div class="op-menu-secciones">
+                <img src="assets/img/revista.png"><span>REPRESENTACIÓN DEL CONOCIMIENTO</span>
             </div>
-
+            <div class="op-menu-secciones">
+                <img src="assets/img/revista.png"><span>ARTÍCULOS POR TEMA</span>
+            </div>
+            <div class="op-menu-secciones">
+                <img src="assets/img/revista.png"><span>ARTÍCULOS POR PAÍS</span>
+            </div>
+            <div class="op-menu-secciones">
+                <img src="assets/img/revista.png"><span>MÁS RECIENTES</span>
+            </div>
+            <div class="op-menu-secciones">
+                <img src="assets/img/revista.png"><span>BLOG</span>
+            </div>
+            <div class="op-menu-secciones">
+                <img src="assets/img/revista.png"><span>BASE DEL CONOCIMIENTO EN SPARQL</span>
+            </div>
+        </div>
+        <div class="contenedor-red" style="display: flex;">
+            <div style="width: 70%; border: solid red 1px;">
+            <div id = "mynetwork"></div>           
+            <div id="loadingBar">
+                <div class="outerBorder">
+                    <div id="text">0%</div>
+                    <div id="border">
+                        <div id="bar"></div>
+                    </div>
+                </div>
+            </div></div>
+            <div style="width: 30%; border: solid blue 1px;">
+                <div id="contenedorArticulos" style="display:none;">
+                    <div id="datosArticulo"></div>
+                </div>
+            </div>
         </div>
     </section>
-    <section id="contenedor-mapa">
-        <div style="width: 100%; height: 99%; display:flex; flex-wrap:wrap;">
+    <section id="nube-palabras" ng-init="nube()">
+        <div id="contenedor-nube">
+            <div id="titulo-nube">Artículos por palabra clave</div>
+            <div id="nube">
+                <div id="wordCloud" charset="utf-8"></div>
+            </div>
+        </div>
+    </section>
+    <section id="mapa-paises">
+        <div id="contenedor-mapa">
             <div id="titulo-pais">Búsqueda por país</div>
-            <!-- <div id="chartdiv" style="width:80%; margin: 0 auto; height: 70%;"></div> -->
-            <!-- <div id="chartdiv" style="width: 100%; height: 500px"></div> -->
-            <app-mapa style="width: 100%; height: 100%;"></app-mapa>
+            <app-mapa id="mapa"></app-mapa>
         </div>
     </section>
     <section id="contenedor-ultimos-documentos">
-        <div>
+        <div id="contenedor-ultimos-documentos2">
             <div>
                 <app-ultimos-articulos></app-ultimos-articulos>
             </div>
@@ -114,16 +149,8 @@
 
     </section>
     <section id="footer" style="color:white">
-        <div>
-            <!-- <div id="contenedor-logos">
-          <div><a href="#"><img src="img/ic-amelica-footer.png"></a></div>
-          <div><a href="#"><img src="img/ic-unesco-footer.png"></a></div>
-          <div><a href="#"><img src="img/ic-clacso-footer.png"></a></div>
-          <div><a href="#"><img src="img/ic-redalyc-footer.png"></a></div>
-        </div>  -->
-
-            <div id="contendor-footer">
-                <div id="instituciones-footer">
+            <div id="contendor-footer" style="width: 100%; display: flex; flex-wrap: wrap;">
+                <div id="instituciones-footer" style="width: 90%;">
                     <div>
                         <a href="#"><img src="assets/img/ic-amelica-footer.png" /></a>
                     </div>
@@ -137,12 +164,13 @@
                         <a href="#"><img src="assets/img/ic-redalyc-footer.png" /></a>
                     </div>
                 </div>
-                <div id="resumen-footer" style="width: 40%">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                    book. It has survived</div>
-
-
+                <div id="resumen-footer" style="width: 100%; padding-top: 40px;">
+                    <p>Acceso Abierto sin fines de lucro propiedad de la academia</p>
+                    <p>Colección de Conocimiento Ancestral 2020 | Versión 1.0</p> 
+                    <p>Tecnología Redalyc</p>
+                </div>
             </div>
-        </div>
+            
     </section>
 
 </main>

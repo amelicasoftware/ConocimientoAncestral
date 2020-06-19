@@ -55,7 +55,7 @@ $(document).ready(function() {
 
         var seccionNube = $("#contenedor-nube").offset();
         var seccionMapa = $("#contenedor-mapa").offset();
-        var seccionDocumentos = $("#contenedor-ultimos-documentos").offset();
+        var seccionDocumentos = $("#contenedor-ultimos-documentos2").offset();
         var seccionFooter = $("#footer").offset();
         var menuFlotante = $("#menu-documentos").offset();
         var menuBuscador = $("#menu-buscador").offset();

@@ -82,14 +82,14 @@ body{
 	#nube{
 		width: 100%;
 	    height: 100%;
-	    margin-top: 50px;
+	    /* margin-top: 50px; */
 	}
 	#wordCloud{
 		height: 500px;
 	    width: 60%;
 	    margin: 0 auto;
 	}
-	#contenedor-mapa{
+	#mapa-paises{
 		width: 100%;
 		height: 100vh;
 		background-color: #090a35;
@@ -127,19 +127,20 @@ body{
 	    justify-content: center;
 	}
 	#instituciones-footer{
-		width: 50%;
+		width: 80%;
 		display: flex;
     	justify-content: center;
-    	align-items: baseline;
+    	align-items: center;
     	align-content: stretch;
     	margin: auto;
 	}
 	#instituciones-footer div{
 		width: 20%;
 		margin: 30px;		
+		text-align: center;
 	}
 	#instituciones-footer div img{
-		height: 50px;
+		/* height: 50px; */
 	}
 	#resumen-footer{
 		width: 50%;
@@ -236,16 +237,18 @@ body{
 	    width: 60%;
 	    display: flex;
 	    justify-content: center;
-	    /*align-items: baseline;*/
+	    align-items: center;
 	    margin: 0 auto;
-	    flex-wrap: wrap;
+		flex-wrap: wrap;
+		padding-top: 40px;
+		padding-bottom: 20px;
 	}
 	#contenedor-logos div{
 		width: 25%;
 		margin-top: 30px;
 	}
 	#contenedor-logos div img{
-		height: 35px;
+		/* height: 35px; */
 	}
 	#menu-buscador{
 		background-image: url(assets/img/buscador.png);
@@ -512,7 +515,7 @@ body{
 		height: 100vh;
 		background-color: #f2f2f2;
 	}
-	#contenedor-mapa{
+	#mapa-paises{
 		width: 100%;
 		height: 100vh;
 		background-color: #090a35;
@@ -540,19 +543,20 @@ body{
 	    justify-content: center;
 	}
 	#instituciones-footer{
-		width: 50%;
+		width: 80%;
 		display: flex;
     	justify-content: center;
-    	align-items: baseline;
+    	align-items: center;
     	align-content: stretch;
     	margin: auto;
 	}
 	#instituciones-footer div{
 		width: 20%;
-		margin: 30px;		
+		margin: 30px;	
+		text-align: center;	
 	}
 	#instituciones-footer div img{
-		height: 50px;
+		/* height: 50px; */
 	}
 	#resumen-footer{
 		width: 50%;
@@ -651,14 +655,17 @@ body{
 	    justify-content: center;
 	    /*align-items: baseline;*/
 	    margin: 0 auto;
-	    flex-wrap: wrap;
+		flex-wrap: wrap;
+		padding-top: 20px;
+		padding-bottom: 10px;
+
 	}
 	#contenedor-logos div{
 		width: 25%;
 		margin-top: 30px;
 	}
 	#contenedor-logos div img{
-		height: 35px;
+		/* height: 35px; */
 	}
 	#menu-buscador{
 		background-image: url(assets/img/buscador.png);

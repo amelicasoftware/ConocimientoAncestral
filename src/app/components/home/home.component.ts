@@ -41,7 +41,8 @@ export class HomeComponent {
   ngOnInit(){
 
     get(`${this.url2}assets/js/home.js`, () => {
-
+    });
+    get(`${this.url2}assets/js/red.js`, () => {
     });
   }
 
