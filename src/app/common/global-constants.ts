@@ -1,13 +1,16 @@
 export class GlobalConstants {
 
-    //public static serviciosURL: string = 'http://localhost:8080/';
-    public static serviciosURL: string = 'http://localhost:8080/BackEndAmelic-0.0.1-SNAPSHOT/';
+    public static serviciosURL: string = 'http://localhost:8080/';
+    // public static serviciosURL: string = 'http://localhost:8080/BackEndAmelic-0.0.1-SNAPSHOT/';
     // public static serviciosURL: string = 'http://localhost:8080/';
     public static url: string = 'http://localhost:4200/';
     //produccion
     //public static serviciosURL: string = 'http://portal.amelica.org/BackEndAmelic/';
     //public static url: string = 'http://amelica.org/ConocimientoAncestral/';
+
+    //pruebas redalyc
+    // public static serviciosURL: string = 'http://148.215.2.10:9093/cancestral/';
+    // public static url: string = 'http://148.215.2.10:9093/cancestral/';
+    
     public static siteTitle: string = 'Conocimineto Ancestral';
 }
-
-//13,308.
