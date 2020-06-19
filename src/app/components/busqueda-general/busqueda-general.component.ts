@@ -25,11 +25,12 @@ export class BusquedaGeneralComponent implements OnInit {
 
 
   articulosResultado: [] = [];
-
   palabraBusqueda: string;
   totalResultados: number;
   palabra: string;
   loading: boolean;
+  pagAct: number;
+  pagFinal: number;
   constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
               private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
               private paginadorService: PaginadorService, private _route: ActivatedRoute) { this.loading = true;}
@@ -43,8 +44,7 @@ export class BusquedaGeneralComponent implements OnInit {
     this.palabra = this._route.snapshot.paramMap.get('palabra');
                 this.articuloService.setpalabra(this.palabra) 
                 this.filtrosService.actualizarPalabra(this.palabra)
-    this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
-    console.log('###########################################',this.loading)
+    this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => { 
           this.loading = true 
          console.log(articulosDesdeApi.articulos.total);
          this.total.total = articulosDesdeApi.articulos.total;
@@ -65,7 +65,14 @@ export class BusquedaGeneralComponent implements OnInit {
       this.totalResultados = data;
     });
     this.total.palabra = this.articuloService.getpalabra()
-   
+    this.paginadorService.cambioPosicion.subscribe(data2 => {
+      console.log('RESULTADO CAMBIO POS PAG ACT', data2);
+      this.pagAct = data2;
+    });
+    this.paginadorService.cambioFinal.subscribe(data2 => {
+      console.log('RESULTADO CAMBIO POS pagFinal', data2);
+      this.pagFinal = data2;
+    });
   }
 
 
@@ -94,6 +101,8 @@ export class BusquedaGeneralComponent implements OnInit {
        
   }
 
+/////////////////////////////////////////////////////////////////////////////////////
+
 
   public ultimapagina(ultimapagina: number) {
     console.log(ultimapagina)
@@ -116,97 +125,23 @@ export class BusquedaGeneralComponent implements OnInit {
     });
   }
 
+  posicion(){
+    return this.paginadorService.posicion;
+  }
 
   public posicionActual() {
     let posicion = this.articuloService.count
     console.log(posicion)
   }
 
-  public primerPagina() {
 
-    let palabra = this.articuloService.getpalabra();
-    console.log(palabra);
-    this.articuloService.getPaginaP(palabra).subscribe((data: any) => {
-      console.log(data);
-      this.articulos = data.articulos.articulos;
-      this.articuloService.setpalabra(palabra)
-      this.total.total = data.articulos.total;
-      if (Number.isInteger((this.total.total / 10))) {
-        this.total.final = (this.total.total / 10)
-        this.articuloService.setcount(1)
-      } else {
-        this.total.final = Math.floor(this.total.total / 10) + 1
-        this.articuloService.setcount(1)
-      }
-      this.total.pos = this.articuloService.count
-      this.articuloService.setfin(1)
-    });
-
-  }
-
-  public getCount() {
-    return this.articuloService.count
-  }
   public getFin() {
-    this.total.pos = this.articuloService.count
-    return this.articuloService.fin
+    // this.total.pos = this.revistasService.count
+    // console.log('paginaFinal', this.paginadorService.pFinal);
+    return this.paginadorService.pFinal;
   }
 
-  public incCount() {
-
-    let pagina = this.articuloService.getcount();
-    let d = this.total.total; //11 
-    let division = d % 10; // division = 1 
-    if (division == 0 && pagina <= (d / 10)) {
-      pagina = pagina + 1
-      if (pagina <= (d / 10)) { //boton de pagina siguiente no sera mostrado llgando al final
-        this.articuloService.setfin(1)
-      } else {
-        this.articuloService.setfin(0)
-      } //boton de pagina siguiente no sera mostrado llgando al final
-      this.articuloService.setcount(pagina)
-      this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
-        this.articulos = articulosDesdeApi.articulos.articulos
-      });
-    } else {
-      if (!(Number.isInteger(d / 10)) && (pagina <= (d / 10))) {
-        pagina = pagina + 1
-        if (pagina <= (d / 10)) { //boton de pagina siguiente no sera mostrado llgando al final
-          this.articuloService.setfin(1)
-        } else {
-          this.articuloService.setfin(0)
-        }//boton de pagina siguiente no sera mostrado llgando al final
-        this.articuloService.setcount(pagina)
-        this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
-          this.articulos = articulosDesdeApi.articulos.articulos
-        });
-      } else {
-        this.articuloService.setfin(0)
-      }
-    }
-    console.log(pagina)
-    this.total.pos = this.articuloService.count
-  }
-
-
-  public getDCount() {
-    return this.articuloService.count
-  }
-  public incDCount() {
-
-    this.articuloService.setfin(1)
-    let pagina = this.articuloService.getcount();
-    pagina = pagina - 1
-
-    this.articuloService.setcount(pagina)
-    this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
-
-      this.articulos = articulosDesdeApi.articulos.articulos;
-
-    });
-    this.total.pos = this.articuloService.count
-  }
-
+  
   limpiarDatos(){
     console.log('voy a limpiar');
     this.filtrosService.filtrosElegidos = [];

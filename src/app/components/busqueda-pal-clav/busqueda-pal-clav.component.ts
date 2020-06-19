@@ -61,6 +61,7 @@ export class BusquedaPalClavComponent implements OnInit {
                   this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
                   this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total, 'articulos');
                   this.paginadorService.actualizarPosicion(1);
+                  this.totalResultados = this.paginadorService.total;
                 });
                 
             
@@ -68,12 +69,12 @@ export class BusquedaPalClavComponent implements OnInit {
                   console.log('resutladosServicio', data2);
                   this.articulos = data2;
                 });
-                console.log("Coso Imprimiendo algo abr que es ",this.articuloService.getpalabra())
+                
                  this.total.palabra = this.articuloService.getpalabra()
-
-                 this.paginadorService.cambioTotal.subscribe(data2 => {
-                  this.totalResultados = data2;
+                 this.paginadorService.cambioTotal.subscribe(data => {
+                  this.totalResultados = data;
                 });
+                this.total.palabra = this.articuloService.getpalabra()
               }
             
             

@@ -41,7 +41,7 @@ export class PaginadorService {
         this.pFinal = (total / 12);
       } else {
         this.pFinal = Math.floor(total / 12) + 1;
-      }
+      }   
     }
 
     if(tipo === 'articulos'){
@@ -49,11 +49,9 @@ export class PaginadorService {
         this.pFinal = (total / 10);
       } else {
         this.pFinal = Math.floor(total / 10) + 1;
-      }
+      }     
     }
+    this.cambioFinal.emit(this.pFinal);
   }
-
-
-
 }
 
