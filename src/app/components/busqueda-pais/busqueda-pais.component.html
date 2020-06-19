@@ -25,8 +25,8 @@
         <div class="cursor" [routerLink]="['/busquedaRevistaPais/',cvePais]" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div>
         <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png">Artículos de revista</div>
         <div class="alimodo">Modo de visualizar resultados </div>
-        <div (click)="cambioVista(false)" [ngClass]="{'activado': !vista, 'seleccionado': !vista, 'cursor': vista}"><img [src]="imgLista">Lista</div>
-        <div (click)="cambioVista(true)" [ngClass]="{'activado': vista, 'seleccionado': vista, 'cursor': !vista}"><img [src]="imgTabla">Tarjetas</div>
+        <div (click)="cambioVista(false)" [ngClass]="{'activado': !vista, 'seleccionado': !vista, 'cursor': vista}"><img [src]="imgLista">Tabla</div>
+        <div (click)="cambioVista(true)" [ngClass]="{'activado': vista, 'seleccionado': vista, 'cursor': !vista}"><img [src]="imgTabla">Lista</div>
 
     </div>
 </div>
