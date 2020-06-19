@@ -19,7 +19,7 @@ import { FiltrosRevistasService } from '../../services/filtros-revistas.service'
 export class BusquedaRevistaPaisComponent implements OnInit {
   revistas: Array<Revistas> = new Array<Revistas>();
   totales: Array<Total> = new Array<Total>();
-  total: Total = new Total();
+  total: Total = new Total(); 
   cvePais: number;
     nombrePais: string;
 

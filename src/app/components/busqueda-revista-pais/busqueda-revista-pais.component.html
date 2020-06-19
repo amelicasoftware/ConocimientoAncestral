@@ -36,7 +36,8 @@
     <!-- Termina Filtros menu   -->
     <div class="item3">
 
-        <div>
+        <div class="resultados-paises">
+            <p class="texto-formato tamaño-resul-pal"> Artículos publicados en: {{nombrePais}}</p>
             <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total"> Resultados de la Búsqueda: {{ total.total}} </p>
         </div>
 
@@ -46,7 +47,7 @@
         </div>
         <div *ngIf="totalResultados >= 1">
             <app-tarjeta-revista [revistas]="revistas" *ngIf="vista"></app-tarjeta-revista>
-            <app-tabla-revista [revistas]="revistas" *ngIf="!vista"></app-tabla-revista>
+            <app-tabla-revista [cvePais]="cvePais" [revistas]="revistas" *ngIf="!vista"></app-tabla-revista>
 
             <app-paginador-revista-pais></app-paginador-revista-pais>
         </div>

@@ -39,7 +39,8 @@ export class PaginadorPaisComponent implements OnInit {
     console.log(posicion);
   }
 
-  public ultimapagina(ultimapagina: number) {
+  public ultimapagina(ultimapagina: number) {    
+
     this.articulosService.getBusquedaArticulosPaginadorPais(this.paginadorService.pFinal, this.filtrosService.cvePais).
       subscribe((data: any) => {
         console.log(data);

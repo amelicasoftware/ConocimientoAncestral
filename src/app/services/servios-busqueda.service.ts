@@ -130,7 +130,13 @@ getreversa(){
 
   getBusquedaArticulosPaginadorPais(pagina: number, cvePais: number) {
     console.log(`${this.url}articulos/pais?c=${cvePais}&page=${pagina}&${this.filtrosService.cadenafiltros}`);
-    return this.http.get(`${this.url}articulos/pais?c=${cvePais}&page=${pagina}&${this.filtrosService.cadenafiltros}`);
+    return this.http.get(`${this.url}articulos/pais?c=${cvePais}&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
+  } 
+
+  getArticulosXOrdenacion(campo:string, cvePais:number): Observable<Articulo[]>{
+    console.log(`${this.url}articulos/pais?c=${cvePais}&page=${this.paginadorService.posicion}&r=${this.reversa}&palOrd=${campo}&${this.filtrosService.cadenafiltros}`);
+    return this.http.get<Articulo[]>(`${this.url}articulos/pais?c=${cvePais}&page=${this.paginadorService.posicion}&r=${this.reversa}&palOrd=${campo}&${this.filtrosService.cadenafiltros}`);
+    //this.url + 'articulos/pais?c=' +"\""+ clave +"\""+ '&page=' + this.paginadorService.posicion + '&r=' + this.reversa + '&palOrd=' + campo + `&${this.filtrosService.cadenafiltros}`
   }
 
 ////////////////////////////////////Servicios para busqueda por palabra clave

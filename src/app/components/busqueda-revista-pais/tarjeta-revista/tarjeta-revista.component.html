@@ -1,18 +1,18 @@
-<div id="contenedor-fichas" class="contenedor-fichas">
+<div class="contenedor-fichas">
     <div *ngFor="let revistas of revistas" class="card">
-        <div class="titulo-card" style=" font-weight: bold; font-size: 12px; padding: 10px;">
-            <img style="height: 60px;" src="https://www.redalyc.org/redalyc/media/inc/img/revista/movil/revista/rva{{revistas.cveRevista}}.png">
+        <div class="titulo-card">
+            <img src="https://www.redalyc.org/redalyc/media/inc/img/revista/movil/revista/rva{{revistas.cveRevista}}.png">
         </div>
-        <div class="cuerpo-card" style="height: 70px; font-size: 12px; padding: 0px 10px; ">
-            <div style="font-weight: bold;"> {{revistas.nombreRevista}}</div>
+        <div class="cuerpo-card">
+            <div> {{revistas.nombreRevista}}</div>
             <div> Issn: {{revistas.issn}} | e-Issn: {{revistas.issnelec}}</div>
             <div>{{revistas.nombreArea}}</div>
             <div>{{revistas.nombreInstitucion}}</div>
             <div>{{revistas.nombrePais}}</div>
         </div>
-        <div class="footer-card" style="width: 100%; height: 35px; text-align: right; border-radius: 0px 0px 10px 10px; ; background-color: #ff660c; position: absolute; bottom: 0;">
-            <img class="img-footer" src="http://portal.amelica.org/resources/img/imgPortal/fbTarjetRev.png">
-            <img class="img-footer" src="http://portal.amelica.org/resources/img/imgPortal/twTarjetRev.png" alt="">
+        <div class="footer-card">
+            <img src="http://portal.amelica.org/resources/img/imgPortal/fbTarjetRev.png">
+            <img src="http://portal.amelica.org/resources/img/imgPortal/twTarjetRev.png" alt="">
         </div>
     </div>
 </div>

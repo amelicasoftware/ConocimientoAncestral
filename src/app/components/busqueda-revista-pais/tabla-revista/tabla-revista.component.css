@@ -1,3 +1,12 @@
+table {
+    table-layout: fixed;
+}
+
+th,
+td {
+    width: 100px;
+}
+
 tbody tr td {
     color: rgba(0, 0, 0, 0.8);
 }
