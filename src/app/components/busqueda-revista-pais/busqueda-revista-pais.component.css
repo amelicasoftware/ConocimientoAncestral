@@ -156,6 +156,10 @@
     padding-top: 9px;
 }
 
+.resultados-paises {
+    margin-bottom: 11px;
+}
+
 input[type=text] {
     width: 30%;
     margin-left: 16%;
@@ -189,11 +193,13 @@ input[type=text]:focus {
 }
 
 .tamaño-resul-pal {
-    margin-left: 10px;
+    margin-left: 21px;
+    display: inline;
 }
 
 .tamaño-resul-busqueda {
-    margin-left: 73%;
+    margin-left: 51%;
+    display: inline;
 }
 
 .redes-pdf {
@@ -223,7 +229,7 @@ input[type=text]:focus {
 
 #lista-paises {
     width: 30%;
-    margin: auto;
+    margin: auto auto auto 5px;
     height: 30px;
     background: #090a35;
     color: white;
@@ -251,4 +257,17 @@ input[type=text]:focus {
 
 .no-resultados {
     margin: 50px;
+}
+
+.sel-pais {
+    margin: 0px;
+    padding: 0px;
+    font-size: 12pt;
+    font-family: 'Barlow-Regular';
+}
+
+.img-pais {
+    display: flex;
+    align-items: center;
+    width: 32%;
 }

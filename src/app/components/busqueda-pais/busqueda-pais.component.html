@@ -3,8 +3,12 @@
 <!--  termina Header    -->
 
 <div class="buscador flex">
-    <img class="busqueda" src="assets/img/pais-a.png"> {{nombrePais}}
+    <div class="img-pais">
+        <img class="busqueda" src="assets/img/pais-a.png"> {{nombrePais}}
+    </div>
+
     <!-- <input #palabra (keyup.enter)="buscar(palabra.value, 'prueba')" style="width: 30%; background-image: url(assets/img/buscador.png);  " type="text"> -->
+    <p class="sel-pais">Seleccionar el país:</p>
     <select id="lista-paises" #pais (change)="llenarCombo(pais.value)">
         <option *ngFor="let pais of listaPaises" value="{{pais.clave}}" #pais.name>{{pais.name}}</option>
     </select>
@@ -21,8 +25,8 @@
         <div class="cursor" [routerLink]="['/busquedaRevistaPais/',cvePais]" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div>
         <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png">Artículos de revista</div>
         <div class="alimodo">Modo de visualizar resultados </div>
-        <div (click)="cambioVista(false)" [ngClass]="{'activado': !vista, 'seleccionado': !vista, 'cursor': vista}"><img [src]="imgLista">Lista</div>
-        <div (click)="cambioVista(true)" [ngClass]="{'activado': vista, 'seleccionado': vista, 'cursor': !vista}"><img [src]="imgTabla">Tarjetas</div>
+        <div (click)="cambioVista(false)" [ngClass]="{'activado': !vista, 'seleccionado': !vista, 'cursor': vista}"><img [src]="imgLista">Tabla</div>
+        <div (click)="cambioVista(true)" [ngClass]="{'activado': vista, 'seleccionado': vista, 'cursor': !vista}"><img [src]="imgTabla">Lista</div>
 
     </div>
 </div>
@@ -41,7 +45,8 @@
     <!-- Termina Filtros menu   -->
     <div class="item3">
 
-        <div>
+        <div class="resultados-paises">
+            <p class="texto-formato tamaño-resul-pal"> Artículos publicados en: {{nombrePais}}</p>
             <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total"> Resultados de la Búsqueda: {{ total.total}} </p>
         </div>
 
@@ -52,10 +57,12 @@
         </div>
 
         <div *ngIf="totalResultados >= 1">
+
             <app-tarjeta-articulo [articulos]="articulos" *ngIf="vista"></app-tarjeta-articulo>
-            <app-tabla-articulo [articulos]="articulos" *ngIf="!vista"></app-tabla-articulo>
+            <app-tabla-articulo [cvePais]="cvePais" [articulos]="articulos" *ngIf="!vista"></app-tabla-articulo>
 
             <app-paginador-pais></app-paginador-pais>
+
         </div>
 
     </div>

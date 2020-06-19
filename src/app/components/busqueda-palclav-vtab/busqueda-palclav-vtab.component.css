@@ -81,7 +81,7 @@
 }
 
 .grid-container>div {
-  /*  / text-align: center; /*/
+    /*  / text-align: center; /*/
     padding: 20px 13px;
     font-size: 12pt;
 }
@@ -106,7 +106,7 @@
 }
 
 .alimodo {
-    margin-left: 15%;
+    margin-left: 24%;
     text-align: center;
     width: 15vw;
 }
@@ -179,11 +179,13 @@ input[type=text]:focus {
 }
 
 .tamaño-resul-pal {
-    margin-left: 10px;
+    margin-left: 21px;
+    margin-bottom: 15px;
 }
 
 .tamaño-resul-busqueda {
     margin-left: 60%;
+    margin-bottom: 15px;
 }
 
 .resultados {
@@ -258,6 +260,6 @@ img {
     border: 1px solid #e5e5e5;
 }
 
-.no-resultados{
-  margin: 50px;
+.no-resultados {
+    margin: 50px;
 }

@@ -1,4 +1,4 @@
-.button2{      
+.button2 {
     border: none;
     font-family: Barlow-Regular;
     color: white;
@@ -10,17 +10,23 @@
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-    
-      }
-  
-      .button2 {
-        background-color: white ; 
-        color: black; 
-      
-      }
-      
-      .button2:hover {
-        background-color: #4762b2;
-        color: black;
-      }
-  
+}
+
+.button2 {
+    background-color: white;
+    color: black;
+}
+
+.button2:hover {
+    background-color: #4762b2;
+    color: black;
+}
+
+.paginador {
+    font-family: Barlow-Regular;
+    font-size: 10pt;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin-top: 20px;
+}

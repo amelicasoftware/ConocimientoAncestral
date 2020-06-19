@@ -19,19 +19,15 @@ import { FiltrosRevistasService } from '../../services/filtros-revistas.service'
 export class BusquedaRevistaPaisComponent implements OnInit {
   revistas: Array<Revistas> = new Array<Revistas>();
   totales: Array<Total> = new Array<Total>();
-  total: Total = new Total();
+  total: Total = new Total(); 
   cvePais: number;
-  // articulosResultado: [] = [];
-
-  // palabraBusqueda: string;
-  // totalResultados: number;
-  nombrePais: string;
+    nombrePais: string;
 
   listaPaises: any;
   vista = true;
 
   imgLista = 'assets/img/lista.png';
-  // imgListaA = 'assets/img/lista-act.png';
+
   imgTabla = 'assets/img/tarjetas-act.png';
   totalResultados: number;
 

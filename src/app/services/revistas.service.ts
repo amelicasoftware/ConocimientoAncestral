@@ -42,7 +42,7 @@ export class RevistasService {
     return this.http.get<Revistas[]>(this.url + 'revistas/general?p=' +"\""+ palabra +"\""+ '&page=' + this.paginadorService.posicion + '&r=' + this.reversa + '&palOrd=' + campo + `&${this.filtrosService.cadenafiltros}`);
   }
   
-  setpalabraOrdenar(palabraOrdenar: string){
+  setpalabraOrdenar(palabraOrdenar: string){ 
       this.palabraOrdenar = palabraOrdenar;
   }
   
@@ -136,7 +136,12 @@ export class RevistasService {
 
   getBusquedaRevistasPaginadorPais(pagina: number, cvePais: number) {
     console.log(`${this.url}revistas/pais?c=${cvePais}&page=${pagina}&${this.filtrosRevistasService.cadenaFitros}`);
-    return this.http.get(`${this.url}revistas/pais?c=${cvePais}&page=${pagina}&${this.filtrosRevistasService.cadenaFitros}`);
+    return this.http.get(`${this.url}revistas/pais?c=${cvePais}&page=${pagina}&${this.filtrosRevistasService.cadenaFitros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
+  }
+
+  getRevistasXOrdenacion(campo:string, cvePais:number): Observable<Revistas[]>{
+    console.log(`${this.url}revistas/pais?c=${cvePais}&page=${this.paginadorService.posicion}&r=${this.reversa}&palOrd=${campo}&${this.filtrosService.cadenafiltros}`);
+    return this.http.get<Revistas[]>(`${this.url}revistas/pais?c=${cvePais}&page=${this.paginadorService.posicion}&r=${this.reversa}&palOrd=${campo}&${this.filtrosService.cadenafiltros}`);
   }
 
   getPaises(){
