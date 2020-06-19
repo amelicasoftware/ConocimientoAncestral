@@ -29,7 +29,8 @@ export class BusquedaPaisComponent implements OnInit {
 
   listaPaises: any;
   vista = true;
-
+  pagAct: number;
+  pagFinal: number;
   imgLista = 'assets/img/lista.png';
   // imgListaA = 'assets/img/lista-act.png';
   imgTabla = 'assets/img/tarjetas-act.png';
@@ -74,6 +75,14 @@ export class BusquedaPaisComponent implements OnInit {
       console.log('pruebababb202', data);
       this.totalResultados = data;
     });
+    this.paginadorService.cambioPosicion.subscribe(data2 => {
+      console.log('RESULTADO CAMBIO POS PAG ACT', data2);
+      this.pagAct = data2;
+    });
+    this.paginadorService.cambioFinal.subscribe(data2 => {
+      console.log('RESULTADO CAMBIO POS pagFinal', data2);
+      this.pagFinal = data2;
+    });
   }
 
 
@@ -96,6 +105,12 @@ export class BusquedaPaisComponent implements OnInit {
     });
     this.filtrosService.palabra = palabra;
   }
+
+  
+  posicion() {
+    return this.paginadorService.posicion;
+  }
+
 
   limpiarDatos() {
     console.log('voy a limpiar');
