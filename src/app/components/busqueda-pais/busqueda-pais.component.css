@@ -246,4 +246,12 @@ input[type=text]:focus {
 .sel-pais {
     margin: 0px;
     padding: 0px;
+    font-size: 12pt;
+    font-family: 'Barlow-Regular';
+}
+
+.img-pais {
+    display: flex;
+    align-items: center;
+    width: 32%;
 }

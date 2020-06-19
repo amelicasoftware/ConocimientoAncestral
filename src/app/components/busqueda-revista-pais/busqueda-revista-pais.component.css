@@ -229,7 +229,7 @@ input[type=text]:focus {
 
 #lista-paises {
     width: 30%;
-    margin: auto;
+    margin: auto auto auto 5px;
     height: 30px;
     background: #090a35;
     color: white;
@@ -257,4 +257,17 @@ input[type=text]:focus {
 
 .no-resultados {
     margin: 50px;
+}
+
+.sel-pais {
+    margin: 0px;
+    padding: 0px;
+    font-size: 12pt;
+    font-family: 'Barlow-Regular';
+}
+
+.img-pais {
+    display: flex;
+    align-items: center;
+    width: 32%;
 }
