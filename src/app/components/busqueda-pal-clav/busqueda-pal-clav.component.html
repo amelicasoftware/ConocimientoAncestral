@@ -31,25 +31,23 @@
 
     <div class="item3">
 
-        <div  *ngIf=" pagAct != pagFinal " style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
-            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}}  </p>
-            <br>
-            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> {{posicion() * 10 - 9}} a {{posicion() * 10}} de {{totalResultados}} artículos </p>
-        </div>     
- 
-        <div  *ngIf="pagAct == pagFinal" style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
-            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}}  </p>
-            <br>
-            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> {{posicion() * 10 - 9}} a {{totalResultados}} de {{totalResultados}} artículos </p>
-        </div>  
+        <div *ngIf=" pagAct != pagFinal" class="texto-resultados">
+            <p class="texto-formato tamaño-resul-pal">Resultados para: {{total.palabra}} </p>
+            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total"> {{posicion() * 10 - 9}} a {{posicion() * 10}} de {{totalResultados}} artículos </p>
+        </div>
+
+        <div *ngIf="pagAct == pagFinal" class="texto-resultados">
+            <p class="texto-formato tamaño-resul-pal">Resultados para: {{total.palabra}} </p>
+            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total"> {{posicion() * 10 - 9}} a {{totalResultados}} de {{totalResultados}} artículos </p>
+        </div>
 
         <app-globitos-pal-clav></app-globitos-pal-clav>
 
         <div class="flex-containercont">
 
             <div class="articulo" *ngFor="let articulo of articulos">
-                <div *ngIf="articulo.origen === 'PDF'" ><a class="titulo" href="https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank">{{  articulo.tituloArt | tituloArticulo }}</a></div>
-                <div *ngIf="articulo.origen === 'XML'" ><a class="titulo" href="https://www.redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/index.html" target="_blank">{{  articulo.tituloArt | tituloArticulo }}</a></div>
+                <div *ngIf="articulo.origen === 'PDF'"><a class="titulo" href="https://www.redalyc.org/articulo.oa?id={{articulo.claveArt}}" target="_blank">{{  articulo.tituloArt | tituloArticulo }}</a></div>
+                <div *ngIf="articulo.origen === 'XML'"><a class="titulo" href="https://www.redalyc.org/jatsRepo/{{articulo.claveRevista}}/{{articulo.claveArt}}/index.html" target="_blank">{{  articulo.tituloArt | tituloArticulo }}</a></div>
                 <p>{{ articulo.autores | autoresArticulo}}</p>
                 <p>{{ articulo.nombreRevista }}, {{ articulo.anio }}, {{ articulo.volumen }} ({{ articulo.numero }}) </p>
                 <p>Fuente: {{ articulo.fuente}} </p>

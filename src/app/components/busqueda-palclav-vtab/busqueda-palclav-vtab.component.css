@@ -106,7 +106,7 @@
 }
 
 .alimodo {
-    margin-left: 15%;
+    margin-left: 24%;
     text-align: center;
     width: 15vw;
 }
@@ -180,10 +180,12 @@ input[type=text]:focus {
 
 .tamaño-resul-pal {
     margin-left: 21px;
+    margin-bottom: 15px;
 }
 
 .tamaño-resul-busqueda {
     margin-left: 60%;
+    margin-bottom: 15px;
 }
 
 .resultados {

@@ -106,7 +106,7 @@
 }
 
 .alimodo {
-    margin-left: 15%;
+    margin-left: 24%;
     text-align: center;
     width: 15vw;
 }
@@ -205,12 +205,21 @@ input[type=text]:focus {
     font-size: 10pt;
 }
 
+.texto-resultados {
+    align-self: center;
+    font-family: Barlow-Regular;
+    display: flex;
+    align-items: center;
+}
+
 .tamaño-resul-pal {
     margin-left: 21px;
+    margin-bottom: 15px;
 }
 
 .tamaño-resul-busqueda {
     margin-left: 60%;
+    margin-bottom: 15px;
 }
 
 .redes-pdf {
