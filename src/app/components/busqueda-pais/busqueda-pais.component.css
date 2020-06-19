@@ -109,22 +109,6 @@
     width: 15vw;
 }
 
-.flex-containercont {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.flex-containercont>div {
-    width: 90%;
-    height: auto;
-    font-family: 'Barlow-Regular';
-    margin: 10px;
-    text-align: left;
-    line-height: 15px;
-    font-size: 10pt;
-    /* margin-left: 185px; */
-}
-
 .button1 {
     background-color: white;
     color: #4762b2;
@@ -189,11 +173,17 @@ input[type=text]:focus {
 }
 
 .tamaño-resul-pal {
-    margin-left: 10px;
+    margin-left: 21px;
+    display: inline;
 }
 
 .tamaño-resul-busqueda {
-    margin-left: 73%;
+    margin-left: 51%;
+    display: inline;
+}
+
+.resultados-paises {
+    margin-bottom: 11px;
 }
 
 .redes-pdf {

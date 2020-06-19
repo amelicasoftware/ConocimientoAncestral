@@ -18,7 +18,7 @@ export class VistaTablaComponent implements OnInit {
   revistas: Array<Revistas> = new Array<Revistas>();
   total: Total = new Total();
   imagenNR = 'assets/img/des.png';
-  imagenMI = 'assets/img/des.png';
+  imagenMI = 'assets/img/des.png'; 
 
   constructor(private revistasService: RevistasService,
               private filtrosRevistasService: FiltrosRevistasService, private paginadorService: PaginadorService) { }

@@ -156,6 +156,10 @@
     padding-top: 9px;
 }
 
+.resultados-paises {
+    margin-bottom: 11px;
+}
+
 input[type=text] {
     width: 30%;
     margin-left: 16%;
@@ -189,11 +193,13 @@ input[type=text]:focus {
 }
 
 .tamaño-resul-pal {
-    margin-left: 10px;
+    margin-left: 21px;
+    display: inline;
 }
 
 .tamaño-resul-busqueda {
-    margin-left: 73%;
+    margin-left: 51%;
+    display: inline;
 }
 
 .redes-pdf {

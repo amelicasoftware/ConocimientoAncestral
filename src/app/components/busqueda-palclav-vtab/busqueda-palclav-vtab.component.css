@@ -81,7 +81,7 @@
 }
 
 .grid-container>div {
-  /*  / text-align: center; /*/
+    /*  / text-align: center; /*/
     padding: 20px 13px;
     font-size: 12pt;
 }
@@ -179,7 +179,7 @@ input[type=text]:focus {
 }
 
 .tamaño-resul-pal {
-    margin-left: 10px;
+    margin-left: 21px;
 }
 
 .tamaño-resul-busqueda {
@@ -258,6 +258,6 @@ img {
     border: 1px solid #e5e5e5;
 }
 
-.no-resultados{
-  margin: 50px;
+.no-resultados {
+    margin: 50px;
 }
