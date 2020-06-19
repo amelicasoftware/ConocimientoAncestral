@@ -22,8 +22,6 @@ export class VistaTablaArticulosComponent implements OnInit {
   imagenR = 'assets/img/des.png';
   imagenN = 'assets/img/des.png';
 
-  // private revistasService: RevistasService,
-  // private filtrosRevistasService: FiltrosRevistasService, private paginadorService: PaginadorService
   constructor(private articulosService: ServiosBusquedaService,
               private filtrosArticulos: FiltrosService,
               private paginadorService: PaginadorService) { }

@@ -21,12 +21,12 @@ export class VistaTablaComponent implements OnInit {
   imagenMI = 'assets/img/des.png'; 
 
   constructor(private revistasService: RevistasService,
-              private filtrosRevistasService: FiltrosRevistasService, private paginadorService: PaginadorService) { }
+    private filtrosRevistasService: FiltrosRevistasService, private paginadorService: PaginadorService) { }
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
     let palabra = this.revistasService.getpalabra();
     // this.total.palabra = this.filtrosRevistasService.palabra;
-    console.log('aqui leo la palabra2', this.total.palabra );
+    console.log('aqui leo la palabra2', this.total.palabra);
     this.revistasService.getBusquedaRevistas(palabra).subscribe((revistasDesdeApi: any) => {
       console.log(revistasDesdeApi.revistas.total);
       this.revistas = revistasDesdeApi.revistas.revistas;
@@ -35,34 +35,34 @@ export class VistaTablaComponent implements OnInit {
       this.filtrosRevistasService.actualizarFiltros(revistasDesdeApi.filtros);
       this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total, 'revistas');
     });
-    
+
     this.filtrosRevistasService.cambioRevistas.subscribe(data2 => {
       console.log('resutladosServicio', data2);
       this.revistas = data2;
     });
-    
+
     this.filtrosRevistasService.cambioPalabra.subscribe(palabra => {
       console.log('cambioPalabra', palabra);
       this.total.palabra = palabra;
     });
 
-    this.paginadorService.cambioTotal.subscribe( total =>{
+    this.paginadorService.cambioTotal.subscribe(total => {
       this.total.total = total;
     });
   }
 
-  public reversa(campo: string, reversa: boolean){
+  public reversa(campo: string, reversa: boolean) {
     console.log(this.revistasService.getreversa());
     console.log(this.revistasService.getpalabraOrdenar());
     console.log(this.filtrosRevistasService.palabra);
     this.paginadorService.reversa = reversa;
     this.paginadorService.campo = campo;
     this.revistasService.setpalabraOrdenar(campo);
-    if(this.revistasService.getreversa()){
+    if (this.revistasService.getreversa()) {
       // this.imagenNR = "assets/img/des.png";
       this.revistasService.setreversa(false);
       this.paginadorService.reversa = false;
-    }else{
+    } else {
       // this.imagenNR = "assets/img/as.png";
       this.paginadorService.reversa = true;
       this.revistasService.setreversa(true);
@@ -77,15 +77,15 @@ export class VistaTablaComponent implements OnInit {
     this.cambioIcono(campo);
   }
 
-  cambioIcono(campo: string){
-    if(campo === 'nombreRevista' && this.paginadorService.reversa){
+  cambioIcono(campo: string) {
+    if (campo === 'nombreRevista' && this.paginadorService.reversa) {
       this.imagenNR = "assets/img/as.png";
-    }else if(campo === 'nombreRevista' && this.paginadorService.reversa === false){
+    } else if (campo === 'nombreRevista' && this.paginadorService.reversa === false) {
       this.imagenNR = "assets/img/des.png";
     }
-    if(campo === 'nombreInstitucion' && this.paginadorService.reversa){
+    if (campo === 'nombreInstitucion' && this.paginadorService.reversa) {
       this.imagenMI = "assets/img/as.png";
-    }else if(campo === 'nombreInstitucion' && this.paginadorService.reversa === false){
+    } else if (campo === 'nombreInstitucion' && this.paginadorService.reversa === false) {
       this.imagenMI = "assets/img/des.png";
     }
   }

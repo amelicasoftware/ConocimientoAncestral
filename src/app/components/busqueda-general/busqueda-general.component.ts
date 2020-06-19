@@ -32,29 +32,29 @@ export class BusquedaGeneralComponent implements OnInit {
   pagAct: number;
   pagFinal: number;
   constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
-              private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
-              private paginadorService: PaginadorService, private _route: ActivatedRoute) { this.loading = true;}
+    private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
+    private paginadorService: PaginadorService, private _route: ActivatedRoute) { this.loading = true; }
 
 
 
-              
+
 
   ngOnInit(): void {
-    this.loading = false 
+    this.loading = false
     this.palabra = this._route.snapshot.paramMap.get('palabra');
-                this.articuloService.setpalabra(this.palabra) 
-                this.filtrosService.actualizarPalabra(this.palabra)
-    this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => { 
-          this.loading = true 
-         console.log(articulosDesdeApi.articulos.total);
-         this.total.total = articulosDesdeApi.articulos.total;
-         this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
-         this.filtrosService.actualizarFiltros(articulosDesdeApi.filtros);
-         this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total, 'articulos');
-         this.paginadorService.actualizarPosicion(1);
-         this.totalResultados = this.paginadorService.total;
+    this.articuloService.setpalabra(this.palabra)
+    this.filtrosService.actualizarPalabra(this.palabra)
+    this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
+      this.loading = true
+      console.log(articulosDesdeApi.articulos.total);
+      this.total.total = articulosDesdeApi.articulos.total;
+      this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
+      this.filtrosService.actualizarFiltros(articulosDesdeApi.filtros);
+      this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total, 'articulos');
+      this.paginadorService.actualizarPosicion(1);
+      this.totalResultados = this.paginadorService.total;
     });
-    
+
 
     this.filtrosService.cambioArticulos.subscribe(data2 => {
       console.log('resutladosServicio', data2);
@@ -78,7 +78,7 @@ export class BusquedaGeneralComponent implements OnInit {
 
   buscar(palabra: string) {
     console.log(palabra);
-    this.loading = false 
+    this.loading = false
     this.total.palabra = palabra;
     this.filtrosService.palabra = palabra;
     this.filtrosService.actualizarPalabra(palabra)
@@ -93,56 +93,22 @@ export class BusquedaGeneralComponent implements OnInit {
       this.filtrosService.cadenafiltros = '';
       this.paginadorService.actualizarTotal(data.articulos.total, 'articulos');
       this.paginadorService.actualizarPosicion(1);
-      this.total.total = data.articulos.total;   
-      this.loading = true 
+      this.total.total = data.articulos.total;
+      this.loading = true
     });
     this.filtrosService.palabra = palabra;
     this.filtrosService.actualizarPalabra(palabra)
-       
+
   }
 
-/////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////
 
-
-  public ultimapagina(ultimapagina: number) {
-    console.log(ultimapagina)
-    let palabra = this.articuloService.getpalabra();
-    console.log(palabra);
-    this.articuloService.getPaginaFinal(palabra, ultimapagina).subscribe((data: any) => {
-      console.log(data);
-      this.articulos = data.articulos.articulos;
-      this.articuloService.setpalabra(palabra)
-      this.total.total = data.articulos.total;
-      if (Number.isInteger((this.total.total / 10))) {
-        this.total.final = (this.total.total / 10)
-        this.articuloService.setcount(this.total.final)
-      } else {
-        this.total.final = Math.floor(this.total.total / 10) + 1
-        this.articuloService.setcount(this.total.final)
-      }
-      this.total.pos = this.articuloService.count
-      this.articuloService.setfin(0)
-    });
-  }
-
-  posicion(){
+  posicion() {
     return this.paginadorService.posicion;
   }
 
-  public posicionActual() {
-    let posicion = this.articuloService.count
-    console.log(posicion)
-  }
 
-
-  public getFin() {
-    // this.total.pos = this.revistasService.count
-    // console.log('paginaFinal', this.paginadorService.pFinal);
-    return this.paginadorService.pFinal;
-  }
-
-  
-  limpiarDatos(){
+  limpiarDatos() {
     console.log('voy a limpiar');
     this.filtrosService.filtrosElegidos = [];
     const globos = [];
