@@ -8,5 +8,3 @@ export class GlobalConstants {
     public static url: string = 'http://amelica.org/ConocimientoAncestral/';
     public static siteTitle: string = 'Conocimineto Ancestral';
 }
-
-//13,308.
