@@ -44,27 +44,6 @@
     color: white;
 }
 
-.flex-containercont {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 250px;
-}
-
-.flex-containercont>div {
-    background-color: #f1f1f1;
-    width: 15%;
-    height: 220px;
-    margin: 36px;
-    text-align: center;
-    line-height: 10px;
-    font-size: 7pt;
-    text-align: start;
-    border-bottom: 30px solid #ff660c;
-    border-radius: 15px 15px 15px 15px;
-    -moz-border-radius: 15px 15px 15px 15px;
-    -webkit-border-radius: 15px 15px 15px 15px;
-}
-
 #example1 {
     padding: 10px;
     box-shadow: 0px 1px 2px 1px #bfbfbf;
@@ -283,7 +262,7 @@
 }
 
 input[type=text] {
-    width: 60%;
+    width: 31%;
     margin-left: 20%;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -390,6 +369,7 @@ input[type=text]:focus {
     text-align: center;
     width: 15vw;
 }
+
 table {
     table-layout: fixed;
 }
@@ -422,10 +402,6 @@ table {
     border: 1px solid #E5DDDD;
 }
 
-Input:Focus {
-    Background-color: yellow;
-}
-
 td,
 th {
     text-align: center;
@@ -452,15 +428,29 @@ img {
     height: 17px;
 }
 
-.loading{
-    width: 12%; 
+.loading {
+    width: 12%;
     height: 12%;
-    margin-left: 50%; 
+    margin-left: 50%;
     margin-top: 10%;
 }
 
-.loadingtxt{
-    width: 12%;     
-    margin-left: 50%; 
+.loadingtxt {
+    width: 12%;
+    margin-left: 50%;
     margin-top: 10%;
+}
+
+.buscador {
+    align-self: center;
+    font-family: Barlow-Regular;
+    align-items: center;
+}
+
+.buscador img {
+    margin: 40px;
+}
+
+.flex {
+    display: flex;
 }
