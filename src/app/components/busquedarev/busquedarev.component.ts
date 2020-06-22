@@ -75,8 +75,10 @@ export class BusquedarevComponent implements OnInit {
     this.loading = false
     this.total.palabra = palabra;
     console.log(palabra);
-    this.revistasService.getBusquedaRevistas(palabra).subscribe((data: any) => {
-      console.log(data);
+    this.filtrosRevistasService.palabra = palabra;
+    this.filtrosRevistasService.actualizarPalabra(palabra)
+    this.revistasService.setpalabra(palabra)
+    this.revistasService.getBusquedaRevistas(palabra).subscribe((data: any) => {      
       this.total.total = data.revistas.total;
       this.filtrosRevistasService.actualizarFiltros(data.filtros);
       this.filtrosRevistasService.filtrosElegidos = [];
@@ -86,10 +88,13 @@ export class BusquedarevComponent implements OnInit {
       this.filtrosRevistasService.actualizarGlobos(globos);
       this.filtrosRevistasService.cadenaFitros = '';
       this.paginadorService.actualizarTotal(data.revistas.total, 'revistas');
-      this.paginadorService.actualizarPosicion(1);
-      console.log(palabra)
+      this.paginadorService.actualizarPosicion(1);  
       this.loading = true
     });
+    this.filtrosRevistasService.palabra = palabra;
+    this.filtrosRevistasService.actualizarPalabra(palabra)
+
+    
   }
   posicion() {
     return this.paginadorService.posicion;
