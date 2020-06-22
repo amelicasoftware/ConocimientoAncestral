@@ -21,7 +21,7 @@ export class RevistasService {
   
   public count = 1;
   public fin = 1;
-  public palabra: string = 'ciencia';
+  public palabra: string ;
   public reversa: boolean = false;
   public palabraOrdenar: string = 'nombreRevista';
 

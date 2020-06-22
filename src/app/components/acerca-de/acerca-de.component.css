@@ -33,7 +33,7 @@ body {
     display: table;
     background: #090a35;
     opacity: 0.9;
-    padding-top: 40px;
+    padding-top: 30px;
     transition: 0.4s;
     z-index: 1;
 }
@@ -96,7 +96,7 @@ body {
 }
 
 #contenedor-secundario-banner {
-    width: 40%;
+    width: 650px;
     margin-top: 5%;
     margin-right: auto;
     margin-bottom: 0px;
@@ -121,6 +121,7 @@ body {
 }
 
 .texto-banner {
+    width: 600px;
     color: white;
     /*word-break: break-all;*/
     flex-wrap: wrap;

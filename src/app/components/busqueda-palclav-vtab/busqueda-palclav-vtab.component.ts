@@ -25,22 +25,27 @@ export class BusquedaPalclavVtabComponent implements OnInit {
   palabraBusqueda: string;
   totalResultados: number;
   palabra: string;
-
+  pagAct: number;
+  pagFinal: number;
+  loading: boolean;
   constructor(private Ruta: Router,
     private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
-    private paginadorService: PaginadorService, private _route: ActivatedRoute) { }
+    private paginadorService: PaginadorService, private _route: ActivatedRoute) { this.loading = true;}
 
   ngOnInit(): void {
+    this.loading = false
     this.palabra = this._route.snapshot.paramMap.get('palabra');
     this.articuloService.setpalabra(this.palabra)
     this.filtrosService.actualizarPalabra(this.palabra)
     this.articuloService.leerjsonPC().subscribe((articulosDesdeApi: any) => {
+      this.loading = true
       console.log(articulosDesdeApi)
       console.log(articulosDesdeApi.articulos.total)     
       this.total.total = articulosDesdeApi.articulos.total;    
       this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
       this.paginadorService.actualizarTotal(articulosDesdeApi.articulos.total, 'articulos');
       this.paginadorService.actualizarPosicion(1);
+      this.totalResultados = this.paginadorService.total;
     });
 
 
@@ -52,6 +57,14 @@ export class BusquedaPalclavVtabComponent implements OnInit {
     this.total.palabra = this.articuloService.getpalabra();
     this.paginadorService.cambioTotal.subscribe(data2 => {
       this.totalResultados = data2;
+    });
+    this.paginadorService.cambioPosicion.subscribe(data2 => {
+      console.log('RESULTADO CAMBIO POS PAG ACT', data2);
+      this.pagAct = data2;
+    });
+    this.paginadorService.cambioFinal.subscribe(data2 => {
+      console.log('RESULTADO CAMBIO POS pagFinal', data2);
+      this.pagFinal = data2;
     });
   }
 
@@ -76,6 +89,10 @@ export class BusquedaPalclavVtabComponent implements OnInit {
     });
     this.filtrosService.palabra = palabra;
     this.filtrosService.actualizarPalabra(palabra)
+  }
+
+  posicion() {
+    return this.paginadorService.posicion;
   }
 
   limpiarDatos() {

@@ -10,7 +10,7 @@
 <div class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Búsqueda</div>
-        <div class="cursor" [routerLink]="['/busquedarev']" style="text-align:center;" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
+        <div class="cursor" [routerLink]="['/busquedarev/',total.palabra ]" style="text-align:center;" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
         <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png" style="margin: 10px;">Artículos de revista</div>
         <div class="alimodo">Modo de visualizar resultados </div>
         <div class="cursor" [routerLink]="['/vista-art-tab']"><img src="assets/img/lista.png" style="margin: 10px;">Tabla</div>
@@ -29,7 +29,7 @@
 
 
 
-<!--  Terina  menu horizontal sin grid   -->
+
 
 <!--  Filtros menu  -->
 <div *ngIf="total.palabra && total.total >= 1 && loading " class="grid-container">
