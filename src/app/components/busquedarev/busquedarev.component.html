@@ -58,9 +58,7 @@
             <app-globitos-revista></app-globitos-revista>
         
 
-        <div *ngIf="totalResultados < 1" class="no-resultados">
-            no hay resultados.
-        </div>
+ 
 
         <div id="contenedor-fichas" class="contenedor-fichas" *ngIf="totalResultados >= 1">
             <div *ngFor="let revistas of revistas" class="card">
@@ -88,7 +86,26 @@
 
     </div>
 
+</div>
+    <div  *ngIf="totalResultados <= 0 " 
 
+    style="
+      text-align: center;
+    margin: 16px;
+    padding: 16px; 
+    padding-top: 10%;
+    align-self: center; 
+    font-family: Barlow-Regular;
+    align-items: center; 
+    width: 100%; 
+    height: 50%;">
+    
+        <p >No se han encontrado resultados para: {{total.palabra}} </p>
+        <p >Realice una nueva busqueda.</p>
+        <br>
+       
+    </div>  
+    
 
 
     <div class="item4">

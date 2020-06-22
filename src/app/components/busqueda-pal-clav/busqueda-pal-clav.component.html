@@ -102,8 +102,23 @@
     </div>
 </div>
 
-<div *ngIf="total.total <= 0 " class="resultados">
-    <p class="texto-formato">No se han encontrado resultados para: {{total.palabra}} </p>
-</div>
+<div  *ngIf="total.total <= 0 " 
+
+style="
+  text-align: center;
+margin: 16px;
+padding: 16px; 
+padding-top: 10%;
+align-self: center; 
+font-family: Barlow-Regular;
+align-items: center; 
+width: 100%; 
+height: 50%;">
+
+    <p >No se han encontrado resultados para: {{total.palabra}} </p>
+    <p >Realice una nueva busqueda.</p>
+    <br>
+   
+</div>  
 
 <app-footer></app-footer>

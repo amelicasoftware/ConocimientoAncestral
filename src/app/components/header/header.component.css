@@ -1,3 +1,10 @@
+.grid-containerh>div {
+    display: flex;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}
+
 .item1 {
     grid-area: header;
     background-color: #090a35;
@@ -10,13 +17,27 @@
     /* padding: 20px; */
 }
 
-.grid-containerh>div {
-    display: flex;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 30px;
-}
-
 .cursor {
     cursor: pointer;
+}
+
+.titulo-header {
+    padding-left: 5%;
+}
+
+.sub-header {
+    padding-left: 45%;
+}
+
+.margen-header {
+    margin: 5px 10px;
+}
+
+.acerca-amelica {
+    text-decoration: none;
+    color: white;
+}
+
+.titulo {
+    width: 800px;
 }

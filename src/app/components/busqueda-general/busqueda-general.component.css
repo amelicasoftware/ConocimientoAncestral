@@ -1,5 +1,3 @@
-
-
 .flex-container {
     display: flex;
     flex-direction: column;
@@ -98,7 +96,6 @@
     src: url('../../../assets/fonts/Roboto-Black.ttf');
 }
 
-
 .item11 {
     grid-area: header;
     background-color: #f1f1f1;
@@ -112,6 +109,10 @@
     padding: 13px;
     font-size: 10pt;
     font-family: 'Barlow-Regular';
+}
+
+.item11 img {
+    margin: 10px;
 }
 
 .item2 {
@@ -132,13 +133,11 @@
     grid-area: main;
 }
 
-
 .grid-container {
     display: grid;
     grid-template-areas: 'header header header header header header' 'menu menu main main main main' 'footer footer footer footer footer footer';
     grid-gap: 0px;
 }
-
 
 .grid-containerh2>div {
     display: flex;
@@ -164,7 +163,7 @@
 }
 
 input[type=text] {
-    width: 60%;
+    width: 30%;
     margin-left: 20%;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -180,7 +179,7 @@ input[type=text] {
 }
 
 input[type=text]:focus {
-    width: 40%;
+    width: 35%;
 }
 
 .menu {
@@ -284,6 +283,59 @@ input[type=text]:focus {
     width: 15vw;
 }
 
-.no-resultados{
+.no-resultados {
     margin: 50px;
+}
+
+.buscador {
+    align-self: center;
+    font-family: Barlow-Regular;
+    align-items: center;
+}
+
+.buscador img {
+    margin: 40px;
+}
+
+.flex {
+    display: flex;
+}
+
+.texto-formato {
+    text-align: start;
+    font-family: Barlow-Regular;
+    font-size: 10pt;
+}
+
+.texto-resultados {
+    align-self: center;
+    font-family: Barlow-Regular;
+    display: flex;
+    align-items: center;
+}
+
+.tamaño-resul-pal {
+    margin-left: 21px;
+    margin-bottom: 15px;
+}
+
+.tamaño-resul-busqueda {
+    margin-left: 60%;
+    margin-bottom: 15px;
+}
+
+.resultados {
+    text-align: center;
+    margin: 16px;
+    padding: 16px;
+    padding-top: 10%;
+    align-self: center;
+    font-family: Barlow-Regular;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+.resultados>p {
+    margin-left: 10px;
 }

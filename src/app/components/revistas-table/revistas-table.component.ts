@@ -83,7 +83,9 @@ export class RevistasTableComponent implements OnInit {
     this.loading = false
     console.log(palabra);
     this.total.palabra = palabra;
-    this.filtrosRevistasService.palabra = palabra;
+    this.filtrosRevistasService.palabra = palabra;  
+    this.filtrosRevistasService.actualizarPalabra(palabra)
+    this.revistasService.setpalabra(palabra)
     this.revistasService.getBusquedaRevistas(palabra).subscribe((data: any) => {
       console.log(data);
       this.filtrosRevistasService.actualizarRevistas(data.revistas.revistas);
