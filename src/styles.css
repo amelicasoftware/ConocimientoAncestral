@@ -18,12 +18,12 @@ body{
 		width: 100%;
 		text-align: center;
 		color: white;
-		height: 90px;
+		height: 50px;
 		display: table;
 		z-index: 10;
 		background: #090a35;
 		opacity: 0.9;
-		padding-top: 50px;
+		padding-top: 5px;
 		transition: 0.4s;
 	}
 	#menu{
@@ -82,14 +82,14 @@ body{
 	#nube{
 		width: 100%;
 	    height: 100%;
-	    margin-top: 50px;
+	    /* margin-top: 50px; */
 	}
 	#wordCloud{
 		height: 500px;
 	    width: 60%;
 	    margin: 0 auto;
 	}
-	#contenedor-mapa{
+	#mapa-paises{
 		width: 100%;
 		height: 100vh;
 		background-color: #090a35;
@@ -127,19 +127,20 @@ body{
 	    justify-content: center;
 	}
 	#instituciones-footer{
-		width: 50%;
+		width: 80%;
 		display: flex;
     	justify-content: center;
-    	align-items: baseline;
+    	align-items: center;
     	align-content: stretch;
     	margin: auto;
 	}
 	#instituciones-footer div{
 		width: 20%;
 		margin: 30px;		
+		text-align: center;
 	}
 	#instituciones-footer div img{
-		height: 50px;
+		/* height: 50px; */
 	}
 	#resumen-footer{
 		width: 50%;
@@ -236,16 +237,18 @@ body{
 	    width: 60%;
 	    display: flex;
 	    justify-content: center;
-	    /*align-items: baseline;*/
+	    align-items: center;
 	    margin: 0 auto;
-	    flex-wrap: wrap;
+		flex-wrap: wrap;
+		padding-top: 40px;
+		padding-bottom: 20px;
 	}
 	#contenedor-logos div{
 		width: 25%;
 		margin-top: 30px;
 	}
 	#contenedor-logos div img{
-		height: 35px;
+		/* height: 35px; */
 	}
 	#menu-buscador{
 		background-image: url(assets/img/buscador.png);
@@ -461,12 +464,12 @@ body{
 		width: 100%;
 		text-align: center;
 		color: white;
-		height: 90px;
+		height: 50px;
 		display: table;
 		z-index: 10;
 		background: #090a35;
 		opacity: 0.9;
-		padding-top: 50px;
+		padding-top: 5px;
 		transition: 0.4s;
 	}
 	#menu{
@@ -512,7 +515,7 @@ body{
 		height: 100vh;
 		background-color: #f2f2f2;
 	}
-	#contenedor-mapa{
+	#mapa-paises{
 		width: 100%;
 		height: 100vh;
 		background-color: #090a35;
@@ -540,19 +543,20 @@ body{
 	    justify-content: center;
 	}
 	#instituciones-footer{
-		width: 50%;
+		width: 80%;
 		display: flex;
     	justify-content: center;
-    	align-items: baseline;
+    	align-items: center;
     	align-content: stretch;
     	margin: auto;
 	}
 	#instituciones-footer div{
 		width: 20%;
-		margin: 30px;		
+		margin: 30px;	
+		text-align: center;	
 	}
 	#instituciones-footer div img{
-		height: 50px;
+		/* height: 50px; */
 	}
 	#resumen-footer{
 		width: 50%;
@@ -651,14 +655,17 @@ body{
 	    justify-content: center;
 	    /*align-items: baseline;*/
 	    margin: 0 auto;
-	    flex-wrap: wrap;
+		flex-wrap: wrap;
+		padding-top: 20px;
+		padding-bottom: 10px;
+
 	}
 	#contenedor-logos div{
 		width: 25%;
 		margin-top: 30px;
 	}
 	#contenedor-logos div img{
-		height: 35px;
+		/* height: 35px; */
 	}
 	#menu-buscador{
 		background-image: url(assets/img/buscador.png);
@@ -699,3 +706,73 @@ body{
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/*articulos-red*/
+#contenedorArticulos {
+    width: 100%;
+    height: 82vh;
+    position: relative;
+    float: left;
+    /* border: 1px solid lightgray; */
+    margin-left: 10px;
+    background: gainsboro;
+}
+
+#datosArticulo {
+    width: 100%;
+    height: 90%;
+    position: relative;
+    float: left;
+    /* margin: 0px 20px; */
+    overflow-y: auto;
+}
+
+#tituloArticulos {
+    margin: 5px 20px;
+    color: #004d98;
+    font-family: 'Barlow-Bold';
+    font-size: 15pt;
+    position: relative;
+    left: 47px;
+    line-height: normal;
+}
+
+.tituloArt {
+    width: 95%;
+    /*height: 100px;*/
+    text-align: center;
+    background: #ffffff;
+    margin: 20px auto;
+    border-radius: 2px; 
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    color: black;
+}
+
+.tituloArt:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.65);
+}
+
+.tituloArt span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    font-size: 12pt;
+    /* font-weight: bold; */
+    font-family: 'Barlow-Light' !important;
+    text-align: left;
+    margin: 5px;
+}
+
+.text-link {
+    font-size: 12pt;
+    color: black;
+    text-decoration: none;
+    padding: 5px 0px;
+}
+
+.text-revista {
+    font-weight: bold;
+}

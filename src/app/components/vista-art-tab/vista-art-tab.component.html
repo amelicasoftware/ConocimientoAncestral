@@ -11,32 +11,49 @@
 <div class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Búsqueda</div>
-        <div class="cursor" [routerLink]="['/busquedarev']" style="text-align:center;" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
+        <div class="cursor" [routerLink]="['/busquedarev',total.palabra]" style="text-align:center;" (click)="limpiarDatos()"><img src="assets/img/revista.png" style="margin: 10px;">Revistas</div>
         <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png" style="margin: 10px;">Artículos de revista</div>
         <div class="alimodo">Modo de visualizar resultados </div>
         <div class="seleccionado"><img src="assets/img/lista-act.png" style="margin: 10px;">Tabla </div>
-        <div class="cursor" [routerLink]="['/busquedaGeneral']"><img src="assets/img/tarjetas.png" style="margin: 10px;">Lista </div>
+        <div class="cursor" [routerLink]="['/busquedaGeneral',total.palabra]"><img src="assets/img/tarjetas.png" style="margin: 10px;">Lista </div>
     </div>
 </div>
 
 
-<!--  Inicia menu horizontal sin grid   -->
-<!--  Terina  menu horizontal sin grid   -->
+<div *ngIf="!loading" style="width: 12%; margin-left: 50%; margin-top: 10%;">
+
+    <img   src="assets/img/giphy.gif" alt="">
+    <p>Cargando contenido...</p>
+
+</div>
+
 
 
 <!--  Filtros menu  -->
-<div class="grid-container">
-    <div class="item2">
-        <app-filtros></app-filtros>
+<div *ngIf="total.palabra && total.total >= 1 && loading " class="grid-container">
+    
+    <div *ngIf="total.total >= 1" class="item2">
+        <app-filtros></app-filtros>      
     </div>
 
-    <!-- Termina Filtros menu   -->
-    <div class="item3">
-        <div style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
-            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}} </p>
+
+
+        <!-- Termina Filtros menu   -->
+    <div  class="item3">
+       
+        <div  *ngIf=" pagAct != pagFinal " style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
+            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}}  </p>
             <br>
-            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> Resultados de la Búsqueda: {{ total.total}} </p>
-        </div>
+            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> {{posicion() * 10 - 9}} a {{posicion() * 10}} de {{totalResultados}} artículos </p>
+        </div>     
+ 
+        <div  *ngIf="pagAct == pagFinal" style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
+            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}}  </p>
+            <br>
+            <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> {{posicion() * 10 - 9}} a {{totalResultados}} de {{totalResultados}} artículos </p>
+        </div>   
+        
+
 
 
         <app-globitos></app-globitos>
@@ -54,6 +71,25 @@
 
 
 </div>
+
+<div  *ngIf="totalResultados <= 0 " 
+
+style="
+  text-align: center;
+margin: 16px;
+padding: 16px; 
+padding-top: 10%;
+align-self: center; 
+font-family: Barlow-Regular;
+align-items: center; 
+width: 100%; 
+height: 50%;">
+
+    <p >No se han encontrado resultados para: {{total.palabra}} </p>
+    <p >Realice una nueva busqueda.</p>
+    <br>
+   
+</div>  
 
 
 <app-footer></app-footer>

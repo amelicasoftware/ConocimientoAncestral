@@ -29,7 +29,7 @@
 
 
 
-<!--  Terina  menu horizontal sin grid   -->
+
 
 <!--  Filtros menu  -->
 <div *ngIf="total.palabra && total.total >= 1 && loading " class="grid-container">
@@ -72,6 +72,7 @@
 
 <div *ngIf="total.total <= 0 " class="resultados">
     <p class="texto-formato">No se han encontrado resultados para: {{total.palabra}} </p>
+    <p>Realice una nueva busqueda.</p>
 </div>
 
 <app-footer></app-footer>

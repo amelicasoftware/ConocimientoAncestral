@@ -35,10 +35,6 @@ export class BusquedaGeneralComponent implements OnInit {
     private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
     private paginadorService: PaginadorService, private _route: ActivatedRoute) { this.loading = true; }
 
-
-
-
-
   ngOnInit(): void {
     this.loading = false
     this.palabra = this._route.snapshot.paramMap.get('palabra');
@@ -54,7 +50,6 @@ export class BusquedaGeneralComponent implements OnInit {
       this.paginadorService.actualizarPosicion(1);
       this.totalResultados = this.paginadorService.total;
     });
-
 
     this.filtrosService.cambioArticulos.subscribe(data2 => {
       console.log('resutladosServicio', data2);

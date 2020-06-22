@@ -16,15 +16,41 @@ function closeNav() {
 window.onscroll = function() { scrollFunction() };
 
 function scrollFunction() {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        document.getElementById("header").style.paddingTop = "0px";
-    } else {
-        document.getElementById("header").style.paddingTop = "50px";
-    }
+    // if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    //     document.getElementById("header").style.paddingTop = "0px";
+    // } else {
+    //     document.getElementById("header").style.paddingTop = "50px";
+    // }
+
+    console.log(document.documentElement.scrollTop);
+
+    
 }
 
 
+$(function() {
+    $(window).scroll(function() {
+        console.log($("#menu1").offset());
+  if ($(window).scrollTop() + 60 >= $("#menu1").offset().top) {
+    // $("#caja-flotante").fadeIn();//.fadeOut();
+    $("#menu2").css('display','block');
+    $("#header").css('opacity', 1);
+    console.log('aqui toy');
+  } else {
+    // $("#caja-flotante").fadeOut();//.fadeIn();
+    $("#menu2").css('display','none');
+    $("#header").css('opacity', 0.9);
+    console.log('aqui no toy');
+
+  }
+    });
+  });
+
+
 $(document).ready(function() {
+
+
+
 
     $('#adelante').click(function() {
         console.log($("#contenedor-fichas").scrollLeft());
@@ -55,7 +81,7 @@ $(document).ready(function() {
 
         var seccionNube = $("#contenedor-nube").offset();
         var seccionMapa = $("#contenedor-mapa").offset();
-        var seccionDocumentos = $("#contenedor-ultimos-documentos").offset();
+        var seccionDocumentos = $("#contenedor-ultimos-documentos2").offset();
         var seccionFooter = $("#footer").offset();
         var menuFlotante = $("#menu-documentos").offset();
         var menuBuscador = $("#menu-buscador").offset();
@@ -75,47 +101,6 @@ $(document).ready(function() {
         comparaPosicion(menuBuscador, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-buscador', 'buscador');
         comparaPosicion(menuNube, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-nube', 'nube');
         comparaPosicion(menuPais, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-pais', 'pais');
-
-
-
-        /*$("#wordCloud").jQWCloud({
-			words: [],
-			cloud_color: '#4d4d4d',		
-			minFont: 10,
-			maxFont: 100,
-			//fontOffset: 5,
-			//cloud_font_family: 'Owned',
-			//verticalEnabled: false,
-			padding_left: 1,
-			//showSpaceDIV: true,
-			//spaceDIVColor: 'red',
-			word_common_classes: 'WordClass',		
-//			word_mouseEnter :function(){
-//				$(this).css("text-decoration","underline");
-//				
-//			},
-			word_mouseOut :function(){
-				$(this).css("text-decoration","none");	
-				
-			},
-			word_mouseOver: function(){
-				$(this).css('cursor', 'pointer');
-				console.log($(this).text());
-			},
-			word_click: function(){ 			
-				alert("You have selected:" +$(this).text());
-				
-			},		              
-//			beforeCloudRender: function(){
-//			       date1=new Date();
-//		 	},
-//		 	afterCloudRender: function(){
-//					var date2=new Date();
-//					console.log("Cloud Completed in "+(date2.getTime()-date1.getTime()) +" milliseconds");
-//				}
-		});*/
-
-
     });
 
     function comparaPosicion(menuFlotante, seccion1, seccion2, seccion3, seccion4, id, img) {
@@ -153,86 +138,3 @@ $(document).ready(function() {
     });
 
 });
-let palabras2 = [];
-// $.ajax({url: "assets/js/json/palabrasAncestral.json", success: function(result){
-//     console.log(result);
-//     palabras2 = result;
-//     $("#wordCloud").jQWCloud({
-
-//         words: palabras2,
-//         cloud_color: '#4d4d4d',		
-//         minFont: 5,
-//         maxFont: 40,
-//         padding_left: 1,
-//         fontOffset: 2,
-//         word_common_classes: 'WordClass',
-//         word_mouseOut :function(){
-//             $(this).css("text-decoration","none");	
-
-//         },
-//         word_mouseOver: function(){
-//             $(this).css('cursor', 'pointer');
-//             console.log($(this).text());
-//         },
-//         word_click: function(){ 			
-//             alert("You have selected:" +$(this).text());
-
-//         },
-//         afterCloudRender: function(){
-//             console.log('despues de');
-//         }
-//     });
-//   }});
-
-// // var palabras2 = [];
-// 	$scope.nube = function () {
-//         console.log('obtener datos nube');
-//         $http({
-//             method: 'Get',
-//             url: 'assets/js/json/palabrasAncestral.json',
-//             withCredentials: true,
-//             headers: {
-//                 'X-Requested-With': 'XMLHttpRequest'
-//             }		
-//         }).then(function (response) {
-//         	console.log(response.data);
-//         	palabras2 = response.data;
-// //        	console.log($scope.palabras);
-// //        	for(i = 0; i < palabras.length; i++){
-// //        		console.log(palabras[i]);
-// //        		var nombre = Object.keys(palabras[i]).toString();
-// //        		console.log(nombre);
-// //        		console.log(palabras[i][nombre]);
-// //        		var peso= palabras[i][nombre];
-// //        		var prueba = {word: nombre, weight: peso};
-// //        		palabras2.push(prueba);
-// //        		console.log("final palabras");
-// //        		console.log(prueba);
-// //        	}
-//         	console.log(palabras2);
-//         	$("#wordCloud").jQWCloud({
-//     			words: palabras2,
-//     			cloud_color: '#4d4d4d',		
-//     			minFont: 10,
-//     			maxFont: 40,
-//     			padding_left: 1,
-//     			fontOffset: 2,
-//     			word_common_classes: 'WordClass',
-//     			word_mouseOut :function(){
-//     				$(this).css("text-decoration","none");	
-
-//     			},
-//     			word_mouseOver: function(){
-//     				$(this).css('cursor', 'pointer');
-//     				console.log($(this).text());
-//     			},
-//     			word_click: function(){ 			
-//     				alert("You have selected:" +$(this).text());
-
-//     			},
-//     			afterCloudRender: function(){
-//     				console.log('despues de');
-//     			}
-//     		});
-//         });
-//     }

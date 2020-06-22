@@ -1,7 +1,8 @@
 am4core.ready(function() {
 
-	// let url = "http://localhost:4200/";
-	let url = "http://amelica.org/ConocimientoAncestral/";
+	let url = "http://localhost:4200/";
+	// let url = "http://localhost:8080/";
+	//let url = "http://amelica.org/ConocimientoAncestral/";
 	console.log('voy hacer la graficas44444');
 	am4core.useTheme(am4themes_animated);
 	// Themes end
@@ -58,7 +59,7 @@ am4core.ready(function() {
 	circle.url=url + "#/busquedaPais/{clave}";
 
 	// imageSeries.dataSource.url = "../assets/js/json/paises.json";//local
-	imageSeries.dataSource.url = "../ConocimientoAncestral/assets/js/json/paises.json";//produccion
+	imageSeries.dataSource.url = "../assets/js/json/paises.json";//produccion
 	imageSeries.dataSource.parser = new am4core.JSONParser();
 
 	imageSeries.heatRules.push({
