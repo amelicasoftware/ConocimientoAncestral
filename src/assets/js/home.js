@@ -121,20 +121,54 @@ $(document).ready(function() {
 
     $("#btn-nube").click(function() {
         $('html, body').animate({
-            scrollTop: $("#contenedor-nube").offset().top
+            scrollTop: $("#nube-palabras").offset().top
         });
     });
 
     $("#btn-pais").click(function() {
         $('html, body').animate({
-            scrollTop: $("#contenedor-mapa").offset().top
+            scrollTop: $("#mapa-paises").offset().top
         });
     });
 
     $("#btn-documentos").click(function() {
         $('html, body').animate({
+            scrollTop: $("#contenedor-ultimos-documento").offset().top
+        });
+    });
+
+
+    //menu2
+    $(".btn-representacion").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#red-conceptos").offset().top
+        });
+    });
+
+    $(".btn-tema").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#contenedor-nube").offset().top
+        });
+    });
+
+    $(".btn-pais").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#contenedor-mapa").offset().top
+        });
+    });
+
+    $(".btn-recientes").click(function() {
+        $('html, body').animate({
             scrollTop: $("#contenedor-ultimos-documentos").offset().top
         });
     });
+
+    $(".btn-sparql").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#sparql").offset().top
+        });
+    });
+
+    
 
 });
