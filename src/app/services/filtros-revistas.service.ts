@@ -9,7 +9,7 @@ export class FiltrosRevistasService {
   filtrosElegidos: Array<any> = [];
   resultadoRevistas: Array<any> = [];
   filtrosGlobos: Array<any> = [];
-  palabra: string = 'ciencia';
+  palabra: string = '';
   cadenaFitros: string;
 
   @Output() cambioFiltros: EventEmitter<any> = new EventEmitter();

@@ -25,16 +25,20 @@ export class VistaArtTABComponent implements OnInit {
 
 
   articulosResultado: [] = [];
-
+  loading: boolean;
   palabraBusqueda: string;
   totalResultados: number;
+  pagAct: number;
+  pagFinal: number;
 
   constructor(private ArticuloInyectado: ServiosBusquedaService, private Ruta: Router,
     private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
-    private paginadorService: PaginadorService) { }
+    private paginadorService: PaginadorService) { this.loading = true; }
 
   ngOnInit(): void {
+    this.loading = false
     this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
+      this.loading = true
       console.log(articulosDesdeApi.articulos.total)
       this.total.total = articulosDesdeApi.articulos.total;
       this.filtrosService.actualizarArticulos(articulosDesdeApi.articulos.articulos);
@@ -48,10 +52,23 @@ export class VistaArtTABComponent implements OnInit {
       this.articulos = data2;
     });
     this.total.palabra = this.articuloService.getpalabra()
+    this.paginadorService.cambioTotal.subscribe(data2 => {
+      this.totalResultados = data2;
+    });
+    
+  this.paginadorService.cambioPosicion.subscribe(data2 => {
+    console.log('RESULTADO CAMBIO POS PAG ACT', data2);
+    this.pagAct = data2;
+  });
+  this.paginadorService.cambioFinal.subscribe(data2 => {
+    console.log('RESULTADO CAMBIO POS pagFinal', data2);
+    this.pagFinal = data2;
+  });
   }
 
 
   buscar(palabra: string) {
+    this.loading = false
     console.log(palabra);
     this.total.palabra = palabra;
     this.filtrosService.palabra = palabra;
@@ -66,6 +83,7 @@ export class VistaArtTABComponent implements OnInit {
       this.paginadorService.actualizarTotal(data.articulos.total, 'articulos');
       this.paginadorService.actualizarPosicion(1);
       this.total.total = data.articulos.total;
+      this.loading = true
     });
     this.filtrosService.palabra = palabra;
   }
@@ -76,4 +94,8 @@ export class VistaArtTABComponent implements OnInit {
     const globos = [];
     this.filtrosService.actualizarGlobos(globos);
   }
+  posicion() {
+    return this.paginadorService.posicion;
+  }
+
 }

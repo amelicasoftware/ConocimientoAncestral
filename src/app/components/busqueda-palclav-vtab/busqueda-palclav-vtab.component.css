@@ -240,6 +240,14 @@ img {
     height: 17px;
 }
 
+
+
+.loading{
+    width: 12%; 
+    height: 17%;
+    margin-left: 50%; 
+    margin-top: 10%;
+}
 .grid {
     display: grid;
     grid-template-columns: 100px 100px;

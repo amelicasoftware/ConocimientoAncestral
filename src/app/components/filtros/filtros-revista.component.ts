@@ -18,11 +18,11 @@ export class FiltrosRevistaComponent implements OnInit {
   constructor(private revistasInyectado: RevistasService, private filtrosRevistasService: FiltrosRevistasService,
               private paginadorService: PaginadorService) { }
   ngOnInit(): void {
-    // this.revistasInyectado.leerjson().subscribe((revistasDesdeApi: any) => {
-    //   console.log(revistasDesdeApi)
-    //   this.filtros = revistasDesdeApi.filtros;
-    //   console.log(this.filtros)
-    // });
+   this.revistasInyectado.leerjson().subscribe((revistasDesdeApi: any) => {
+       console.log(revistasDesdeApi)
+       this.filtros = revistasDesdeApi.filtros;
+       console.log(this.filtros)
+    });
     this.filtrosRevistasService.cambioFiltros.subscribe(data2 => {
       console.log('filtrosServicio', data2);
       this.filtros = data2;
