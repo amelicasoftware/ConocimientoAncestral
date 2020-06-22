@@ -100,21 +100,27 @@
           params.event = "[original event]";
           console.log(params.nodes)
           document.getElementById("datosArticulo").innerHTML = "Articulos para " + params.nodes;
-        //   var articulosConcepto = articulos[params.nodes];
-        //   console.log(articulosConcepto);
-        //   console.log(Object.keys(articulosConcepto).length);
-        //   tamano = Object.keys(articulosConcepto).length;
-        //   for (let index = 0; index < tamano; index++) {
-        //       const element = articulosConcepto[index];
-        //       console.log(index);
-        //       console.log(element.CVE);
-        //       console.log(element);
-        //       console.log(element.Titulo);
-        //       var item = document.createElement('a');
-        //       item.setAttribute("href", element.Link);
-        //       item.setAttribute("target", "_blank");
-        //       item.innerHTML = '<div class="tituloArt"><span class="text-link">' + element.Titulo + '</span><br><span class="text-revista">' + element.Revista + ', ' + element.Año + ',' + element.Numero + '(' + element.Volumen + ')</span></div>';
-        //       document.getElementById('datosArticulo').appendChild(item);
-        //   }
-        //   document.getElementById('tituloArticulos').innerText = 'ARTICLES RELATED TO ' + params.nodes;
+          $.ajax({
+              url: `http://portal.amelica.org/BackEndAmelic/articulos/palClave?p="${params.nodes}"&page=1`, 
+              success: function(result){
+                console.log('datos de articulos home', result);
+                var articulosConcepto = result.articulos.articulos;
+                console.log(articulosConcepto);
+                console.log(Object.keys(articulosConcepto).length);
+                tamano = Object.keys(articulosConcepto).length;
+                for (let index = 0; index < tamano; index++) {
+                    const element = articulosConcepto[index];
+                    // console.log(index);
+                    // console.log(element.id);
+                    // console.log(element.contenido);
+                    // console.log(element.tituloArt);
+                    var item = document.createElement('a');
+                    item.setAttribute("href", 'https://redalyc.org/articulo.oa?id=' + element.claveArt);
+                    item.setAttribute("target", "_blank");
+                    item.innerHTML = '<div class="tituloArt"><span class="text-link">' + element.tituloArt + '</span><br><span class="text-revista">' + element.nombreRevista + ', ' + element.anio + ',' + element.numero + '(' + element.volumen + ')</span></div>';
+                    document.getElementById('datosArticulo').appendChild(item);
+                }
+                // document.getElementById('tituloArticulos').innerText = 'ARTICLES RELATED TO ' + params.nodes;
+          }});
+        
       });
