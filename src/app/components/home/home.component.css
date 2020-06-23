@@ -20,8 +20,8 @@
     flex-wrap: wrap;
 }
 #titulo-nube{
-    margin-top: 5em;
-    margin-bottom: 2em;
+    margin-top: 7em;
+    margin-bottom: 1em;
 }
 
 #contenedor-mapa{
@@ -31,8 +31,8 @@
     flex-wrap:wrap;
 }
 #titulo-pais{
-    margin-top: 5em;
-    margin-bottom: 2em;
+    margin-top: 7em;
+    margin-bottom: 1em;
 }
 
 #mapa{
