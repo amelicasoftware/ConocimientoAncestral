@@ -10,7 +10,7 @@
 <div class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png">Filtros de Búsqueda</div>
-        <div class="cursor" [routerLink]="['/busquedarev']" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div>
+        <div class="cursor" [routerLink]="['/busquedarev',total.palabra]" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div>
         <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png">Articulos de revista</div>
         <div class="alimodo">Modo de visualizar resultados </div>
         <div class="cursor" [routerLink]="['/vista-art-tab']"><img src="assets/img/lista.png">Tabla</div>
