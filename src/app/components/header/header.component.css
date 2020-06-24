@@ -17,27 +17,83 @@
     /* padding: 20px; */
 }
 
-.cursor {
-    cursor: pointer;
-}
-
-.titulo-header {
-    padding-left: 5%;
-}
-
-.sub-header {
-    padding-left: 45%;
-}
-
-.margen-header {
-    margin: 5px 10px;
-}
-
-.acerca-amelica {
-    text-decoration: none;
+.header{    
+    top: 0;
+    width: 100%;
+    text-align: center;
     color: white;
+    height: 50px;
+    display: table;
+    z-index: 10;
+    background: #090a35;
+    opacity: 0.9;
+    padding-top: 5px;
+    transition: 0.4s;
 }
 
-.titulo {
-    width: 800px;
-}
+
+
+
+@media only screen and (max-width: 600px) {
+    .example {background: red;}
+  }
+  
+ 
+  @media only screen and (min-width: 600px) {
+    .example {background: green;}
+  }
+  
+
+  @media only screen and (min-width: 768px) {
+    .header{    
+        top: 0;
+        width: 100%;
+        text-align: center;
+        color: white;
+        height: 50px;
+        display: table;
+        z-index: 10;
+        background: #090a35;
+        opacity: 0.9;
+        padding-top: 5px;
+        transition: 0.4s;
+    }
+  } 
+  
+
+  @media only screen and (min-width: 992px) {
+    .header{    
+        top: 0;
+        width: 100%;
+        text-align: center;
+        color: white;
+        height: 50px;
+        display: table;
+        z-index: 10;
+        background: #090a35;
+        opacity: 0.9;
+        padding-top: 5px;
+        transition: 0.4s;
+    }
+  } 
+  
+  
+  @media only screen and (min-width: 1200px) {
+    .header{    
+        top: 0;
+        width: 100%;
+        text-align: center;
+        color: white;
+        height: 50px;
+        display: table;
+        z-index: 10;
+        background: #090a35;
+        opacity: 0.9;
+        padding-top: 5px;
+        transition: 0.4s;
+    }
+    .logo-CA img{
+		width: 220px;
+    	padding: 10px;
+	}
+  }
