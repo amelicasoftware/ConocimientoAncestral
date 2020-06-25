@@ -350,6 +350,7 @@ div.outerBorder {
     display: flex;
     justify-content: center;
     margin: 50px;
+    font-size: 15pt;
   }
   
   #contenedor-numeralias div {
@@ -362,7 +363,7 @@ div.outerBorder {
   #contenedor-resumen {
     color: white;
     width: 50%;
-    font-size: 12pt;
+    font-size: 14pt;
     margin: 0 auto;
   }
   #contenedor-logos {
