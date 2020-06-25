@@ -107,8 +107,8 @@ $(document).ready(function() {
         comparaPosicion(menuBuscador, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-buscador', 'buscador');
         comparaPosicion(menuNube, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-nube', 'nube');
         comparaPosicion(menuPais, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-pais', 'pais');
-        comparaPosicion(menuPais, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-conocimiento', 'conocimiento');
-        comparaPosicion(menuPais, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-sparql', 'sparql');
+        comparaPosicion(menuPais, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-red', 'red');
+        comparaPosicion(menuPais, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-sql', 'sql');
     });
 
     function comparaPosicion(menuFlotante, seccion1, seccion2, seccion3, seccion4, id, img) {
@@ -141,7 +141,19 @@ $(document).ready(function() {
 
     $("#btn-documentos").click(function() {
         $('html, body').animate({
-            scrollTop: $("#contenedor-ultimos-documento").offset().top
+            scrollTop: $("#contenedor-ultimos-documentos").offset().top
+        });
+    });
+
+    $("#btn-red").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#red-conceptos").offset().top
+        });
+    });
+
+    $("#btn-sql").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#sparql").offset().top
         });
     });
 

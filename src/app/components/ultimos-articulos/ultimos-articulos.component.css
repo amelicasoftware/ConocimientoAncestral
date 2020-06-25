@@ -11,7 +11,6 @@
   margin: 0px auto 50px auto;
   color: #090a35;
   font-size: 15pt;
-  margin-top: 7em;
   margin-bottom: 2em;
 }
 
@@ -76,8 +75,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .titulo-seccion-listado{
-    margin-top: 0em;
-  margin-bottom: 2em;
-  }
+  /* .titulo-seccion-listado{
+    margin-bottom: 2em;
+  } */
 }

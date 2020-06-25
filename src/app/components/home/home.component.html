@@ -11,20 +11,20 @@
         <div id="menu-buscador" class="btn-menu">
             <a ng-href="#contenedor-banner" id="btn-buscador" class="fab" title="Buscador"></a>
         </div>
-        <div id="menu-buscador" class="btn-menu">
-            <a ng-href="#contenedor-banner" id="btn-conocimiento" class="fab" title="Buscador"></a>
+        <div id="menu-red" class="btn-menu">
+            <a ng-href="#red-conceptos" id="btn-red" class="fab" title="Representación del conocimiento"></a>
         </div>
         <div id="menu-nube" class="btn-menu">
-            <a ng-href="#contenedor-nube" id="btn-nube" class="fab" title="Buscador"></a>
+            <a ng-href="#contenedor-nube" id="btn-nube" class="fab" title="Artículos por tema"></a>
         </div>
         <div id="menu-pais" class="btn-menu">
-            <a ng-href="#contenedor-mapa" id="btn-pais" class="fab" title="Buscador"></a>
+            <a ng-href="#contenedor-mapa" id="btn-pais" class="fab" title="Artículos por país"></a>
         </div>
         <div id="menu-documentos" class="btn-menu">
-            <a ng-href="#contenedor-ultimos-documentos" id="btn-documentos" class="fab" title="Buscador"></a>
+            <a ng-href="#contenedor-ultimos-documentos" id="btn-documentos" class="fab" title="Más recientes"></a>
         </div>
-        <div id="menu-documentos" class="btn-menu">
-            <a ng-href="#contenedor-ultimos-documentos" id="btn-sparql" class="fab" title="Buscador"></a>
+        <div id="menu-sql" class="btn-menu">
+            <a ng-href="#sparql" id="btn-sql" class="fab" title="Base del conocimiento"></a>
         </div>
     </div>
 </div>
@@ -64,9 +64,8 @@
             </div>
             <div id="menu">
                 <div id="contenedor-menu">
-                    <a href="http://amelica.org/index.php/que-es-ameli/" class="option-menu">Acerca de Amelica</a>
-                    <a href="http://148.215.2.20:8080/CAncestral-0.0.1-SNAPSHOT/AcercaCA" class="option-menu">Proyecto
-            Conocimiento Ancestral</a>
+                    <a href="http://amelica.org/index.php/que-es-ameli/" target="_blank" class="option-menu">Acerca de Amelica</a>
+                    <a [routerLink]="['/acerca-de']" class="option-menu">Proyecto Conocimiento Ancestral</a>
                 </div>
                 <div id="logos" style="width: 25%;">
                     <a href="#"><img src="assets/img/ic-home.png" alt=""> </a>
@@ -124,16 +123,16 @@
                 </div>
                 <div id="contenedor-logos">
                     <div>
-                        <a href="#"><img src="assets/img/ic-amelica-footer.png" /></a>
+                        <a href="http://amelica.org/"><img src="assets/img/ic-amelica-footer.png" /></a>
                     </div>
                     <div>
-                        <a href="#"><img src="assets/img/ic-unesco-footer.png" /></a>
+                        <a href="https://es.unesco.org/"><img src="assets/img/ic-unesco-footer.png" /></a>
                     </div>
                     <div>
-                        <a href="#"><img src="assets/img/ic-clacso-footer.png" /></a>
+                        <a href="https://www.clacso.org/"><img src="assets/img/ic-clacso-footer.png" /></a>
                     </div>
                     <div>
-                        <a href="#"><img src="assets/img/ic-redalyc-footer.png" /></a>
+                        <a href="https://www.redalyc.org/"><img src="assets/img/ic-redalyc-footer.png" /></a>
                     </div>
                 </div>
             </div>
@@ -243,21 +242,21 @@
     </section>
     <section id="footer" style="color:white;" >
             <div id="contendor-footer" style="width: 100%; display: flex; flex-wrap: wrap;">
-                <div id="instituciones-footer" style="width: 90%;">
+                <div id="instituciones-footer" style="width: 90%; padding-top: 20px;">
                     <div>
-                        <a href="#"><img src="assets/img/ic-amelica-footer.png" /></a>
+                        <a href="http://amelica.org/"><img src="assets/img/ic-amelica-footer.png" /></a>
                     </div>
                     <div>
-                        <a href="#"><img src="assets/img/ic-unesco-footer.png" /></a>
+                        <a href="https://es.unesco.org/"><img src="assets/img/ic-unesco-footer.png" /></a>
                     </div>
                     <div>
-                        <a href="#"><img src="assets/img/ic-clacso-footer.png" /></a>
+                        <a href="https://www.clacso.org/"><img src="assets/img/ic-clacso-footer.png" /></a>
                     </div>
                     <div>
-                        <a href="#"><img src="assets/img/ic-redalyc-footer.png" /></a>
+                        <a href="https://www.redalyc.org/"><img src="assets/img/ic-redalyc-footer.png" /></a>
                     </div>
                     <div>
-                        <a href="#"><img src="assets/img/escudo-uaem.png" /></a>
+                        <a href="https://www.uaemex.mx/"><img src="assets/img/escudo-uaem.png" /></a>
                     </div>
                 </div>
                 <div id="resumen-footer" style="width: 100%; padding-top: 40px;">
