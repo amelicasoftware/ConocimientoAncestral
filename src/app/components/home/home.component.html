@@ -6,6 +6,28 @@
     <a href="#" class="ico-sidebar"><img class="ico-sidebar" src="assets/img/ic-facebook.png" alt=""></a>
     <a href="#" class="ico-sidebar"><img class="ico-sidebar" src="assets/img/ic-twitter.png" alt=""></a>
 </div>
+<div class="social" id="social">
+    <div>
+        <div id="menu-buscador" class="btn-menu">
+            <a ng-href="#contenedor-banner" id="btn-buscador" class="fab" title="Buscador"></a>
+        </div>
+        <div id="menu-buscador" class="btn-menu">
+            <a ng-href="#contenedor-banner" id="btn-conocimiento" class="fab" title="Buscador"></a>
+        </div>
+        <div id="menu-nube" class="btn-menu">
+            <a ng-href="#contenedor-nube" id="btn-nube" class="fab" title="Buscador"></a>
+        </div>
+        <div id="menu-pais" class="btn-menu">
+            <a ng-href="#contenedor-mapa" id="btn-pais" class="fab" title="Buscador"></a>
+        </div>
+        <div id="menu-documentos" class="btn-menu">
+            <a ng-href="#contenedor-ultimos-documentos" id="btn-documentos" class="fab" title="Buscador"></a>
+        </div>
+        <div id="menu-documentos" class="btn-menu">
+            <a ng-href="#contenedor-ultimos-documentos" id="btn-sparql" class="fab" title="Buscador"></a>
+        </div>
+    </div>
+</div>
 <main id="main" style="-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin: 0px; padding: 0px;">
     <!-- <section id="header" style="top: 0px; position: fixed; width: 100%; z-index: 1;">
         <div style="color: #fff !important; display: flex; ">
@@ -33,59 +55,57 @@
             </div>
         </div>
     </section> -->
-    <section id="prueba" style="width: 100%; height: 100vh;">
-        <div id="header" style="top: 0px; position: fixed; width: 100%; z-index: 1;">
-            <div style="color: #fff !important; display: flex; ">
-                <div id="logo-CA" style="width: 50%;">
-                    <a href="#"><img src="assets/img/conocimiento-ancestral.png" alt=""></a>
-                    <a href="http://amelica.org/"><img src="assets/img/ameliCA.png" alt=""></a>
-                    <a href="https://www.redalyc.org/"><img src="assets/img/redalyc.png" alt=""></a>
+    <div id="header" style="top: 0px; position: fixed; width: 100%; z-index: 1;">
+        <div style="color: #fff !important; display: flex; ">
+            <div id="logo-CA" style="width: 50%;">
+                <a href="#"><img src="assets/img/conocimiento-ancestral.png" alt=""></a>
+                <a id="logo-amelica" href="http://amelica.org/"><img src="assets/img/ameliCA.png" alt=""></a>
+                <a id="logo-redalyc" href="https://www.redalyc.org/"><img src="assets/img/redalyc.png" alt=""></a>
+            </div>
+            <div id="menu">
+                <div id="contenedor-menu">
+                    <a href="http://amelica.org/index.php/que-es-ameli/" class="option-menu">Acerca de Amelica</a>
+                    <a href="http://148.215.2.20:8080/CAncestral-0.0.1-SNAPSHOT/AcercaCA" class="option-menu">Proyecto
+            Conocimiento Ancestral</a>
                 </div>
-                <div id="menu" style="">
-                    <div id="contenedor-menu" style="">
-                        <a href="http://amelica.org/index.php/que-es-ameli/" class="option-menu">Acerca de Amelica</a>
-                        <a href="http://148.215.2.20:8080/CAncestral-0.0.1-SNAPSHOT/AcercaCA" class="option-menu">Proyecto
-                Conocimiento Ancestral</a>
+                <div id="logos" style="width: 25%;">
+                    <a href="#"><img src="assets/img/ic-home.png" alt=""> </a>
+                    <a href="#"><img src="assets/img/ic-facebook.png" alt=""></a>
+                    <a href="#"><img src="assets/img/ic-twitter.png" alt=""></a>
+                </div>
+                <a onclick="openNav()">
+                    <div id="menu-colap">
+                        <i class="fa fa-bars"></i>
                     </div>
-                    <div id="logos" style="width: 25%;">
-                        <a href="#"><img src="assets/img/ic-home.png" alt=""> </a>
-                        <a href="#"><img src="assets/img/ic-facebook.png" alt=""></a>
-                        <a href="#"><img src="assets/img/ic-twitter.png" alt=""></a>
-                    </div>
-                    <a onclick="openNav()">
-                        <div id="menu-colap">
-                            <i class="fa fa-bars"></i>
-                        </div>
-                    </a>
+                </a>
+            </div>
+        </div>
+        <div style="background: white; display: none;" id="menu2">
+            <div class="menu-secciones">
+                <div class="op-menu-secciones btn-representacion" id="btn-representacion">
+                    <img src="assets/img/tab/nodos-des.png"><span>REPRESENTACIÓN DEL CONOCIMIENTO</span>
+                </div>
+                <div class="op-menu-secciones btn-tema" id="btn-tema">
+                    <img src="assets/img/tab/nube-des.png"><span>ARTÍCULOS POR TEMA</span>
+                </div>
+                <div class="op-menu-secciones btn-pais" id="btn-pais">
+                    <img src="assets/img/tab/pais-des.png"><span>ARTÍCULOS POR PAÍS</span>
+                </div>
+                <div class="op-menu-secciones btn-recientes" id="btn-recientes">
+                    <img src="assets/img/tab/recientes-des.png"><span>MÁS RECIENTES</span>
+                </div>
+                <!-- <div class="op-menu-secciones btn-blog" id="btn-blog">
+                    <img src="assets/img/tab/blog-des.png"><span>BLOG</span>
+                </div> -->
+                <div class="op-menu-secciones btn-sparql" id="btn-sparql">
+                    <img src="assets/img/tab/SPARQL-des.png"><span>BASE DEL CONOCIMIENTO EN SPARQL</span>
                 </div>
             </div>
-            <div style="background: white; display: none;" id="menu2">
-                <div class="menu-secciones">
-                    <div class="op-menu-secciones btn-representacion" id="btn-representacion">
-                        <img src="assets/img/tab/nodos-des.png"><span>REPRESENTACIÓN DEL CONOCIMIENTO</span>
-                    </div>
-                    <div class="op-menu-secciones btn-tema" id="btn-tema">
-                        <img src="assets/img/tab/nube-des.png"><span>ARTÍCULOS POR TEMA</span>
-                    </div>
-                    <div class="op-menu-secciones btn-pais" id="btn-pais">
-                        <img src="assets/img/tab/pais-des.png"><span>ARTÍCULOS POR PAÍS</span>
-                    </div>
-                    <div class="op-menu-secciones btn-recientes" id="btn-recientes">
-                        <img src="assets/img/tab/recientes-des.png"><span>MÁS RECIENTES</span>
-                    </div>
-                    <div class="op-menu-secciones btn-blog" id="btn-blog">
-                        <img src="assets/img/tab/blog-des.png"><span>BLOG</span>
-                    </div>
-                    <div class="op-menu-secciones btn-sparql" id="btn-sparql">
-                        <img src="assets/img/tab/SPARQL-des.png"><span>BASE DEL CONOCIMIENTO EN SPARQL</span>
-                    </div>
-                </div>
-            </div>
-            
         </div>
         
-
-        <div id="banner" style="">
+    </div>
+    <section id="contenedor-banner">
+        <div id="banner">
             <div style="width: 100%;">
                 <div id="contenedor-buscador">
                     <div id="titulo-buscador"><span>Buscador</span></div>
@@ -99,7 +119,7 @@
                     <div class="linea-num">{{numerosHome[1].Revistas}} revistas</div>
                     <div>{{numerosHome[0].Paises}} países</div>
                 </div>
-                <div id="contenedor-resumen" style="font-size: 15pt;">
+                <div id="contenedor-resumen">
                     Por un modelo de publicación sin fines de lucro para conservar la naturaleza académica y abierta de la comunicación cientifíca.
                 </div>
                 <div id="contenedor-logos">
@@ -132,36 +152,14 @@
             <div class="op-menu-secciones btn-recientes" id="btn-recientes">
                 <img src="assets/img/tab/recientes-des.png"><span>MÁS RECIENTES</span>
             </div>
-            <div class="op-menu-secciones btn-blog" id="btn-blog">
+            <!-- <div class="op-menu-secciones btn-blog" id="btn-blog">
                 <img src="assets/img/tab/blog-des.png"><span>BLOG</span>
-            </div>
+            </div> -->
             <div class="op-menu-secciones btn-sparql" id="btn-sparql">
                 <img src="assets/img/tab/SPARQL-des.png"><span>BASE DEL CONOCIMIENTO EN SPARQL</span>
             </div>
         </div>
     </section>
-    <div class="social" id="social">
-        <div>
-            <div id="menu-buscador" class="btn-menu">
-                <a ng-href="#contenedor-banner" id="btn-buscador" class="fab" title="Buscador"></a>
-            </div>
-            <div id="menu-nube" class="btn-menu">
-                <a ng-href="#contenedor-nube" id="btn-nube" class="fab" title="Buscador"></a>
-            </div>
-            <div id="menu-pais" class="btn-menu">
-                <a ng-href="#contenedor-mapa" id="btn-pais" class="fab" title="Buscador"></a>
-            </div>
-            <div id="menu-documentos" class="btn-menu">
-                <a ng-href="#contenedor-ultimos-documentos" id="btn-documentos" class="fab" title="Buscador"></a>
-            </div>
-        </div>
-        <!-- <ul>
-          <li id="menu-buscador"> <a href="#contenedor-banner"  class="fab" title="Buscador"></a></li>
-          <li id="menu-nube"> <a href="http://localhost:8080/CAncestralWeb/#contenedor-nube"  class="fab" title="Articulos por palabra clave"></a></li>
-          <li id="menu-pais"> <a href="#contenedor-mapa" class="fab" title="Busqueda por pais"></a></li>
-          <li id="menu-documentos"> <a href="#contenedor-ultimos-documentos" class="fab" title="Listado de publicaciones"></a></li>
-        </ul> -->
-    </div>
     <!-- <div id="contenedor-banner" style="text-align: center; position: relative;">
         <div style="width: 100%;">
             <div id="contenedor-buscador">

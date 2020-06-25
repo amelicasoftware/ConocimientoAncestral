@@ -22,7 +22,7 @@ function scrollFunction() {
     //     document.getElementById("header").style.paddingTop = "50px";
     // }
 
-    console.log(document.documentElement.scrollTop);
+    // console.log(document.documentElement.scrollTop);
 
     
 }
@@ -30,17 +30,17 @@ function scrollFunction() {
 
 $(function() {
     $(window).scroll(function() {
-        console.log($("#menu1").offset());
+        // console.log($("#menu1").offset());
   if ($(window).scrollTop() + 60 >= $("#menu1").offset().top) {
     // $("#caja-flotante").fadeIn();//.fadeOut();
     $("#menu2").css('display','block');
     $("#header").css('opacity', 1);
-    console.log('aqui toy');
+    // console.log('aqui toy');
   } else {
     // $("#caja-flotante").fadeOut();//.fadeIn();
     $("#menu2").css('display','none');
     $("#header").css('opacity', 0.9);
-    console.log('aqui no toy');
+    // console.log('aqui no toy');
 
   }
     });
@@ -49,8 +49,9 @@ $(function() {
 
 $(document).ready(function() {
 
-
-
+    var banderaRed = false;
+    
+    
 
     $('#adelante').click(function() {
         console.log($("#contenedor-fichas").scrollLeft());
@@ -76,6 +77,11 @@ $(document).ready(function() {
 
     $(window).scroll(function() {
 
+        if(!banderaRed){
+            console.log('cargo red');
+            cargarRed();
+            banderaRed = true;
+        }        
 
         var windowHeight = $(window).scrollTop();
 
@@ -101,6 +107,8 @@ $(document).ready(function() {
         comparaPosicion(menuBuscador, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-buscador', 'buscador');
         comparaPosicion(menuNube, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-nube', 'nube');
         comparaPosicion(menuPais, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-pais', 'pais');
+        comparaPosicion(menuPais, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-conocimiento', 'conocimiento');
+        comparaPosicion(menuPais, seccionNube, seccionMapa, seccionDocumentos, seccionFooter, 'menu-sparql', 'sparql');
     });
 
     function comparaPosicion(menuFlotante, seccion1, seccion2, seccion3, seccion4, id, img) {
