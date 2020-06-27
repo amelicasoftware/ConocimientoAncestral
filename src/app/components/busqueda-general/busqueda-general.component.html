@@ -3,11 +3,11 @@
 <!--  termina Header    -->
 
 <div class="buscador flex"><img src="assets/img/buscador-institucionmdpi.png">Búsqueda General
-    <input class="busqueda" #palabra (keyup.enter)="buscar(palabra.value)" type="text" placeholder="Introducir criterio de búsqueda">
-    <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" />
+    <input class="busqueda" #palabra (keyup.enter)="buscar(palabra.value)" type="text" placeholder="Introducir criterio de búsqueda" required>
+    <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" required>
 </div>
 
-<div class="grid-containerh2">
+<div *ngIf="total.palabra" class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png">Filtros de Búsqueda</div>
         <div class="cursor" [routerLink]="['/busquedarev',total.palabra]" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div>
@@ -71,7 +71,12 @@
 </div>
 
 <div *ngIf="total.total <= 0 " class="resultados">
-    <p class="texto-formato">No se han encontrado resultados para: {{total.palabra}} </p>
+    <p >No se han encontrado resultados </p>
+    <p>Realice una nueva busqueda.</p>
+</div>
+
+<div *ngIf="!total.palabra" class="resultados">
+    
     <p>Realice una nueva busqueda.</p>
 </div>
 
