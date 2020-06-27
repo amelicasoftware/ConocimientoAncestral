@@ -3,8 +3,8 @@
 <!--  termina Header    -->
 
 <div class="buscador flex"><img src="assets/img/buscador-institucionmdpi.png">Búsqueda General
-    <input class="busqueda" #palabra (keyup.enter)="buscar(palabra.value)" type="text" placeholder="Introducir criterio de búsqueda" required>
-    <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" required>
+    <input class="busqueda" #palabra (keyup.enter)="buscar(palabra.value)" type="text" placeholder="Introducir criterio de búsqueda" required />
+    <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" required />
 </div>
 
 <div *ngIf="total.palabra" class="grid-containerh2">
@@ -13,7 +13,7 @@
         <div class="cursor" [routerLink]="['/busquedarev',total.palabra]" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div>
         <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png">Articulos de revista</div>
         <div class="alimodo">Modo de visualizar resultados </div>
-        <div class="cursor" [routerLink]="['/vista-art-tab']"><img src="assets/img/lista.png">Tabla</div>
+        <div class="cursor" [routerLink]="['/vista-art-tab',total.palabra]"><img src="assets/img/lista.png">Tabla</div>
         <div class="seleccionado"><img src="assets/img/tarjetas-act.png">Lista</div>
     </div>
 </div>
@@ -70,12 +70,12 @@
 
 </div>
 
-<div *ngIf="total.total <= 0 " class="resultados">
+<div *ngIf="total.total <= 0 && total.palabra " class="resultados">
     <p >No se han encontrado resultados </p>
     <p>Realice una nueva busqueda.</p>
 </div>
 
-<div *ngIf="!total.palabra" class="resultados">
+<div *ngIf="!total.palabra && total.total <= 0" class="resultados">
     
     <p>Realice una nueva busqueda.</p>
 </div>
