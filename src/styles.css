@@ -829,3 +829,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .text-revista {
     font-weight: bold;
 }
+
+
+/*estilos iframe*/
+.bg-dark{
+	display: none;
+}
+
+iframe{
+    border:0;
+}
+
+#btn-mas-articulos{
+	background: #090a35;
+  color: white;
+  border-radius: 5px;
+  height: 50px;
+  line-height: ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }

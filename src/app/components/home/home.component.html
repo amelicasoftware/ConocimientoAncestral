@@ -29,32 +29,6 @@
     </div>
 </div>
 <main id="main" style="-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin: 0px; padding: 0px;">
-    <!-- <section id="header" style="top: 0px; position: fixed; width: 100%; z-index: 1;">
-        <div style="color: #fff !important; display: flex; ">
-            <div id="logo-CA" style="width: 50%;">
-                <a href="#"><img src="assets/img/conocimiento-ancestral.png" alt=""></a>
-                <a href="http://amelica.org/"><img src="assets/img/ameliCA.png" alt=""></a>
-                <a href="https://www.redalyc.org/"><img src="assets/img/redalyc.png" alt=""></a>
-            </div>
-            <div id="menu" style="">
-                <div id="contenedor-menu" style="">
-                    <a href="http://amelica.org/index.php/que-es-ameli/" class="option-menu">Acerca de Amelica</a>
-                    <a href="http://148.215.2.20:8080/CAncestral-0.0.1-SNAPSHOT/AcercaCA" class="option-menu">Proyecto
-              Conocimiento Ancestral</a>
-                </div>
-                <div id="logos" style="width: 25%;">
-                    <a href="#"><img src="assets/img/ic-home.png" alt=""> </a>
-                    <a href="#"><img src="assets/img/ic-facebook.png" alt=""></a>
-                    <a href="#"><img src="assets/img/ic-twitter.png" alt=""></a>
-                </div>
-                <a onclick="openNav()">
-                    <div id="menu-colap">
-                        <i class="fa fa-bars"></i>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section> -->
     <div id="header" style="top: 0px; position: fixed; width: 100%; z-index: 1;">
         <div style="color: #fff !important; display: flex; ">
             <div id="logo-CA" style="width: 50%;">
@@ -68,9 +42,9 @@
                     <a [routerLink]="['/acerca-de']" class="option-menu">Proyecto Conocimiento Ancestral</a>
                 </div>
                 <div id="logos" style="width: 25%;">
-                    <a href="#"><img src="assets/img/ic-home.png" alt=""> </a>
-                    <a href="#"><img src="assets/img/ic-facebook.png" alt=""></a>
-                    <a href="#"><img src="assets/img/ic-twitter.png" alt=""></a>
+                    <a href="http://amelica.org/ConocimientoAncestral"><img src="assets/img/ic-home.png" alt=""> </a>
+                    <a href="https://twitter.com/Ameli_CA"><img src="assets/img/ic-facebook.png" alt=""></a>
+                    <a href="https://www.facebook.com/ameli.conocimientoabierto/"><img src="assets/img/ic-twitter.png" alt=""></a>
                 </div>
                 <a onclick="openNav()">
                     <div id="menu-colap">
@@ -159,45 +133,12 @@
             </div>
         </div>
     </section>
-    <!-- <div id="contenedor-banner" style="text-align: center; position: relative;">
-        <div style="width: 100%;">
-            <div id="contenedor-buscador">
-                <div id="titulo-buscador"><span>Buscador</span></div>
-                <div id="buscador">
-                    <input #palabra (keyup.enter)="buscarTexto(palabra.value)" id="input-buscar" type="text" name="input-articulo" value="" placeholder="Buscar palabra" />
-                    <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" />
-                </div>
-            </div>
-            <div id="contenedor-numeralias">
-                <div class="linea-num">{{numerosHome[2].Articulos}} artículos</div>
-                <div class="linea-num">{{numerosHome[1].Revistas}} revistas</div>
-                <div>{{numerosHome[0].Paises}} países</div>
-            </div>
-            <div id="contenedor-resumen">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                survived
-            </div>
-            <div id="contenedor-logos">
-                <div>
-                    <a href="#"><img src="assets/img/ic-amelica-footer.png" /></a>
-                </div>
-                <div>
-                    <a href="#"><img src="assets/img/ic-unesco-footer.png" /></a>
-                </div>
-                <div>
-                    <a href="#"><img src="assets/img/ic-clacso-footer.png" /></a>
-                </div>
-                <div>
-                    <a href="#"><img src="assets/img/ic-redalyc-footer.png" /></a>
-                </div>
-            </div>
-        </div>
-        
-    </div> -->
     <section id="red-conceptos" style="min-height: 82vh;">
         <div class="contenedor-red" style="display: flex;">
             <div style="width: 70%;">
-                <div id = "mynetwork"></div>           
+                <div id="titulo-red">Representación del conocimiento</div>
+                <div id = "mynetwork">
+                </div>           
                 <div id="loadingBar">
                     <div class="outerBorder">
                         <div id="text">0%</div>
@@ -237,8 +178,17 @@
         </div>
 
     </section>
-    <section id="sparql" style="width: 100%; height: 100vh;">
-        <iframe src="http://sparql.amelica.org/knowledgebase/ancestral/datastore" width="100%" height="100%"></iframe>
+    <section id="sparql">
+        <div id="contenedor-sparql">
+            <div id="descripcion-sparql">
+                <p id="titulo-sparql">Base de Conocimiento en SPARQL</p>
+                <br>
+                <p>Punto de acceso SPARQL con los datos disponibles para acceder a los resultados para mayores análisis: <a style="color: #4762b2;" href="http://sparql.amelica.org/knowledgebase/ancestral/datastore">http://sparql.amelica.org/</a></p>
+            </div>
+            <div id="contenedor-iframe"> 
+                <iframe src="http://sparql.amelica.org/knowledgebase/ancestral/datastore" width="100%" height="100%"></iframe>
+            </div>
+        </div>
     </section>
     <section id="footer" style="color:white;" >
             <div id="contendor-footer" style="width: 100%; display: flex; flex-wrap: wrap;">

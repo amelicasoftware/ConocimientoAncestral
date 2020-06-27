@@ -100,7 +100,7 @@
           document.getElementById("contenedorArticulos").style.display = "block";
           params.event = "[original event]";
           console.log(params.nodes)
-          document.getElementById("datosArticulo").innerHTML = "Articulos para " + params.nodes;
+          document.getElementById("datosArticulo").innerHTML = "Artículos para " + params.nodes;
           $.ajax({
               url: `http://portal.amelica.org/BackEndAmelic/articulos/palClave?p="${params.nodes}"&page=1`, 
               success: function(result){
@@ -118,10 +118,12 @@
                     var item = document.createElement('a');
                     item.setAttribute("href", 'https://redalyc.org/articulo.oa?id=' + element.claveArt);
                     item.setAttribute("target", "_blank");
-                    item.innerHTML = '<div class="tituloArt"><span class="text-link">' + element.tituloArt + '</span><br><span class="text-revista">' + element.nombreRevista + ', ' + element.anio + ',' + element.numero + '(' + element.volumen + ')</span></div>';
+                    item.innerHTML = '<div class="tituloArt"><span class="text-link">' + element.tituloArt + '</span><br><span class="text-revista">' + element.nombreRevista + ', ' + element.anio + ', ' + element.numero + '(' + element.volumen + ')</span></div>';
                     document.getElementById('datosArticulo').appendChild(item);
                 }
-                // document.getElementById('tituloArticulos').innerText = 'ARTICLES RELATED TO ' + params.nodes;
+                var itemBoton = document.createElement('div');
+                itemBoton.innerHTML = `<a href="http://amelica.org/ConocimientoAncestral/#/busqueda-pal-clav/${params.nodes}"> <div id="btn-mas-articulos">Más artículos</div></a>`;
+                document.getElementById('datosArticulo').appendChild(itemBoton);
           }});
         
       });
