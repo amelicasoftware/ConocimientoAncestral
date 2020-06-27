@@ -33,7 +33,7 @@ export class RevistasService {
 
   leerjson(): Observable<Revistas[]> {
     console.log(this.palabra)
-    return this.http.get<Revistas[]>(this.url + 'revistas/general?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count+'&r='+this.reversa);
+    return this.http.get<Revistas[]>(this.url + 'revistas/general?p=' +"\""+ this.palabra +"\""+ '&page=' + this.count+'&r='+this.reversa+'&allRev='+this.filtrosRevistasService.allRevistas);
    
   }
 
@@ -113,12 +113,12 @@ export class RevistasService {
     }
     this.filtrosRevistasService.cadenaFitros = `f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},`;
     console.log('servicio', `${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
-    return this.http.get(`${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
+    return this.http.get(`${this.url}revistas/general?p="${palabra}"&f=${cadenaDisciplina},${cadenaInstitucion},${cadenaPais},${cadenaFuente},&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}&allRev=${this.filtrosRevistasService.allRevistas}`);
   }
 
   getBusquedaRevistasPaginador(palabra: string, pagina: number) {
     console.log(`${this.url}revistas/general?p="${this.filtrosRevistasService.palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
-    return this.http.get(`${this.url}revistas/general?p="${this.filtrosRevistasService.palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}`);
+    return this.http.get(`${this.url}revistas/general?p="${this.filtrosRevistasService.palabra}"&page=${pagina}&${this.filtrosService.cadenafiltros}&r=${this.paginadorService.reversa}&palOrd=${this.paginadorService.campo}&allRev=${this.filtrosRevistasService.allRevistas}`);
   }
 
   getRevistasXPais(cvePais: number){

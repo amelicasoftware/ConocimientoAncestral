@@ -11,6 +11,7 @@ export class FiltrosRevistasService {
   filtrosGlobos: Array<any> = [];
   palabra: string = '';
   cadenaFitros: string;
+  allRevistas: boolean;
 
   @Output() cambioFiltros: EventEmitter<any> = new EventEmitter();
   @Output() cambioRevistas: EventEmitter<any> = new EventEmitter();

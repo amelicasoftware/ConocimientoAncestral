@@ -24,6 +24,7 @@ export class BusquedarevComponent implements OnInit {
   pagFinal: number;
   loading: boolean;
   palabra: string;
+  todoRevitas: boolean;
   revistasResultado: [] = [];
   constructor(private RevistasInyectado: RevistasService, private Ruta: Router,
     private revistasService: RevistasService, private filtrosRevistasService: FiltrosRevistasService,
@@ -33,6 +34,9 @@ export class BusquedarevComponent implements OnInit {
   ngOnInit(): void {
     this.loading = false
     this.palabra = this._route.snapshot.paramMap.get('palabra');
+    if(this.palabra === 'allRev'){
+      this.filtrosRevistasService.allRevistas = true;
+    }
     this.revistasService.setpalabra(this.palabra)
     this.filtrosRevistasService.actualizarPalabra(this.palabra)
     this.revistasService.leerjson().subscribe((revistasDesdeApi: any) => {
@@ -100,6 +104,8 @@ export class BusquedarevComponent implements OnInit {
     return this.paginadorService.posicion;
   }
 
-
+  allRevistas(){
+    
+  }
 
 }

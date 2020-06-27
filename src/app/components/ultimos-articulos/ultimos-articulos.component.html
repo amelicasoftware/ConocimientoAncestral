@@ -18,13 +18,13 @@
         <div *ngFor="let articulo of revistas;let indexOfelement=index;" class="card">
             <a href="https://www.redalyc.org/revista.oa?id={{articulo.claveRevista}}" target="_blank" style="text-decoration: none;">
             <div class="titulo-card" style="height: 60px; font-weight: bold; font-size: 12px; padding: 10px;">
-                <img style="height: 60px;" src="https://www.redalyc.org/redalyc/media/inc/img/revista/movil/revista/rva{{articulo.claveRevista}}.png">
+                <img style="height: 60px;" src="https://www.redalyc.org/redalyc/media/inc/img/revista/movil/revista/rva{{articulo.cveRevista}}.png">
             </div>
             <div class="cuerpo-card" style="height: 180px; font-size: 12px; padding: 0px 10px; font-family: 'Barlow-Regular'; color: black;">
                 <div style="font-weight: bold;"> {{articulo.nombreRevista}}</div>
-                <div> Issn: {{articulo.issn}} | e-Issn: {{articulo.issne}}</div>
-                <div>{{articulo.area}}</div>
-                <div>{{articulo.institucion}}</div>
+                <div> Issn: {{articulo.ISSN}} | e-Issn: {{articulo.ISSNElec}}</div>
+                <div>{{articulo.nombreArea}}</div>
+                <div>{{articulo.nombreInstitucion}}</div>
                 <div><img style="height: 20px; vertical-align: middle; padding: 2px;" src="https://www.redalyc.org/redalyc/media/img/banderas/nac{{articulo.cvePais}}.png">{{articulo.pais}}</div>
             </div>
             </a>
@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="contenedor-boton-mas">
-        <div class="boton-ver-mas" [routerLink]="['/busquedarev']" >Ver más revistas</div>
+        <div class="boton-ver-mas" [routerLink]="['/busquedarev/allRev']" >Ver más revistas</div>
     </div>
 </div>
 <div style="width: 100%; margin: auto;">
