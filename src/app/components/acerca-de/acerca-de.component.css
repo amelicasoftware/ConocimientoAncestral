@@ -79,7 +79,7 @@ body {
     position: relative;
     background-image: url(../../../assets/img/maiz-portada.png);
     background-color: #cccccc;
-    min-height: 100vh;
+    min-height: 80vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -97,7 +97,7 @@ body {
 
 #contenedor-secundario-banner {
     width: 650px;
-    margin-top: 5%;
+    margin-top: 1%;
     margin-right: auto;
     margin-bottom: 0px;
     margin-left: 14%;
