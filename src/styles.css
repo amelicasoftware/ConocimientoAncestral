@@ -850,3 +850,14 @@ iframe{
   justify-content: center;
   align-items: center;
   }
+  .nothing{
+	text-align: center;
+    margin: 16px;
+    padding: 16px; 
+    padding-top: 10%;
+    align-self: center; 
+    font-family: Barlow-Regular;
+    align-items: center; 
+    width: 100%; 
+    height: 50%;
+  }

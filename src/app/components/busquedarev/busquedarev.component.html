@@ -9,7 +9,7 @@
     <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" />
 </div>
 
-<div class="grid-containerh2">
+<div *ngIf="total.palabra" class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Búsqueda</div>
         <div class="seleccionado" style="text-align:center;"><img src="assets/img/revistas-act.png" style="margin: 10px;">Revistas</div>
@@ -87,25 +87,16 @@
     </div>
 
 </div>
-    <div  *ngIf="totalResultados <= 0 " 
-
-    style="
-      text-align: center;
-    margin: 16px;
-    padding: 16px; 
-    padding-top: 10%;
-    align-self: center; 
-    font-family: Barlow-Regular;
-    align-items: center; 
-    width: 100%; 
-    height: 50%;">
-    
+   
+    <div class="nothing" *ngIf="totalResultados <= 0 && total.palabra " >
         <p >No se han encontrado resultados para: {{total.palabra}} </p>
         <p >Realice una nueva busqueda.</p>
-        <br>
-       
+        <br>       
+    </div>     
+    <div class="nothing" *ngIf="!total.palabra" >       
+        <p ></p>
+        <br>       
     </div>  
-    
 
 
     <app-footer></app-footer>

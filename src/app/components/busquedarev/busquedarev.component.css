@@ -18,7 +18,17 @@
     line-height: 15px;
     font-size: 10px;
 }
-
+.nothing{
+    text-align: center;
+    margin: 16px;
+    padding: 16px; 
+    padding-top: 10%;
+    align-self: center; 
+    font-family: Barlow-Regular;
+    align-items: center; 
+    width: 100%; 
+    height: 50%;
+}
 .flex-containerhz {
     display: flex;
     background-color: #f1f1f1;

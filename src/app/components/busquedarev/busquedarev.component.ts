@@ -76,6 +76,11 @@ export class BusquedarevComponent implements OnInit {
 
 
   buscar(palabra: string) {
+    if(this.palabra === 'allRev'){
+      this.filtrosRevistasService.allRevistas = true;
+    }else{
+      this.filtrosRevistasService.allRevistas = false;
+    }
     this.loading = false
     this.total.palabra = palabra;
     console.log(palabra);
