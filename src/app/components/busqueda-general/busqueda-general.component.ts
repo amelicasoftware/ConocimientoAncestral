@@ -36,9 +36,9 @@ export class BusquedaGeneralComponent implements OnInit {
     private paginadorService: PaginadorService, private _route: ActivatedRoute) { this.loading = true; }
 
   ngOnInit(): void {
-    this.loading = false
-    this.palabra = this._route.snapshot.paramMap.get('palabra');
-    this.articuloService.setpalabra(this.palabra)
+    this.loading = false    
+    this.palabra = this._route.snapshot.paramMap.get('palabra');   
+    this.articuloService.setpalabra(this.palabra)   
     this.filtrosService.actualizarPalabra(this.palabra)
     this.ArticuloInyectado.leerjson().subscribe((articulosDesdeApi: any) => {
       this.loading = true
