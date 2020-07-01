@@ -5,8 +5,8 @@ body {
 }
 body {
   margin: 0;
-  font-family: "Barlow", Roboto, "Helvetica Neue", sans-serif;
-  font: 400 14px/20px  "Barlow", Roboto, "Helvetica Neue", sans-serif!important;
+  font-family: "Barlow-Regular", "Roboto";
+  font: 400 14px/20px  "Barlow-Regular", "Roboto"!important;
 }
 html {
   scroll-behavior: smooth;
@@ -14,7 +14,7 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  font-family: "Barlow", sans-serif;
+  font-family: "Barlow-Regular", sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
