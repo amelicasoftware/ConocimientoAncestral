@@ -4,8 +4,12 @@
             <tr>
                 <th scope="col" colspan="3">Título</th>
                 <th scope="col" colspan="2">Autores</th>
-                <th scope="col" colspan="2">Revista<img (click)="reversa('nombreRevista',true)" [src]="imagenR" align="right" /></th>
-                <th scope="col">Número<img (click)="reversa('anio',true)" [src]="imagenN" align="right" /></th>
+                <th scope="col" colspan="2">Revista<img class="img" (click)="reversa('nombreRevista',true)" [src]="imagenR" align="right" />
+                    <span class="tooltiptext revista">Ordenar resultados por revista</span>
+                </th>
+                <th scope="col">Número<img class="img" (click)="reversa('anio',true)" [src]="imagenN" align="right" />
+                    <span class="tooltiptext numero">Ordenar resultados por número</span>
+                </th>
                 <th scope="col">Texto Completo</th>
             </tr>
         </thead>
