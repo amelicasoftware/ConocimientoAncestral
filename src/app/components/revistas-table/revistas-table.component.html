@@ -14,7 +14,7 @@
     <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" />
 </div>
 
-<div  *ngIf="total.palabra" class="grid-containerh2">
+<div *ngIf="total.palabra" class="grid-containerh2">
     <div class="item11">
         <div class="filtros"><img src="assets/img/filtro.png" style="margin: 10px;">Filtros de Búsqueda</div>
         <div class="seleccionado" style="text-align:center;"><img src="assets/img/revistas-act.png" style="margin: 10px;">Revistas</div>
@@ -73,8 +73,11 @@
                     <tr>
                         <th scope="col">ISSN</th>
                         <th scope="col">e-ISSN</th>
-                        <th scope="col">Revista<img (click)="reversa('nombreRevista',true)" [src]="imagenNR" align="right" /></th>
-                        <th scope="col">Institución Editora<img (click)="reversa('nombreInstitucion',true)" [src]="imagenMI" align="right" /></th>
+                        <th scope="col">Revista<img class="img" (click)="reversa('nombreRevista',true)" [src]="imagenNR" align="right" />
+                            <span class="tooltiptext revista">Ordenar resultados por revista</span></th>
+                        <th scope="col">Institución Editora<img class="img" (click)="reversa('nombreInstitucion',true)" [src]="imagenMI" align="right" />
+                            <span class="tooltiptext numero">Ordenar resultados por Institución</span>
+                        </th>
                         <th scope="col">País</th>
                     </tr>
                 </thead>
@@ -100,23 +103,23 @@
 
 
 
-<div class="nothing" *ngIf="totalResultados <= 0 && total.palabra " >
+<div class="nothing" *ngIf="totalResultados <= 0 && total.palabra ">
 
     <p >No se han encontrado resultados para: {{total.palabra}} </p>
     <p >Realice una nueva búsqueda.</p>
     <br>
-   
-</div>  
+
+</div>
 
 
 
-<div class="nothing" *ngIf="!total.palabra" >
+<div class="nothing" *ngIf="!total.palabra">
 
-    
-    <p ></p>
+
+    <p></p>
     <br>
-   
-</div>  
+
+</div>
 
 
 

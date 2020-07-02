@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<div *ngIf="!loading"   >
+<div *ngIf="!loading">
 
     <img class="loading" src="assets/img/giphy.gif" alt="">
     <p class="loading">Cargando contenido...</p>
@@ -27,9 +27,9 @@
 
 
 <!--  Filtros menu  -->
-<div *ngIf="total.palabra && total.total >= 1 && loading " class="grid-container">    
+<div *ngIf="total.palabra && total.total >= 1 && loading " class="grid-container">
     <div *ngIf="total.total >= 1" class="item2">
-        <app-filtpalclav></app-filtpalclav>   
+        <app-filtpalclav></app-filtpalclav>
     </div>
 
 
@@ -38,18 +38,18 @@
 
     <!-- Termina Filtros menu   -->
     <div class="item3">
-         
-        <div  *ngIf=" pagAct != pagFinal " style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
-            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}}  </p>
+
+        <div *ngIf=" pagAct != pagFinal " style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
+            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}} </p>
             <br>
             <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> {{posicion() * 10 - 9}} a {{posicion() * 10}} de {{totalResultados}} artículos </p>
-        </div>     
- 
-        <div  *ngIf="pagAct == pagFinal" style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
-            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}}  </p>
+        </div>
+
+        <div *ngIf="pagAct == pagFinal" style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
+            <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Resultados para: {{total.palabra}} </p>
             <br>
             <p style="text-align: start; margin-left: 60%; font-family: Barlow-Regular; font-size: 10pt;" [attr.colspan]="total.total" class="font-family: Barlow-Regular;"> {{posicion() * 10 - 9}} a {{totalResultados}} de {{totalResultados}} artículos </p>
-        </div>   
+        </div>
 
         <app-globitos-pal-clav></app-globitos-pal-clav>
 
@@ -59,8 +59,12 @@
                     <tr>
                         <th scope="col" colspan="3">Título</th>
                         <th scope="col" colspan="2">Autores</th>
-                        <th scope="col" colspan="2">Revista<img (click)="reversa('nombreRevista',true)" [src]="imagenR" align="right" /></th>
-                        <th scope="col">Número<img (click)="reversa('anio',true)" [src]="imagenN" align="right" /></th>
+                        <th scope="col" colspan="2">Revista<img class="img" (click)="reversa('nombreRevista',true)" [src]="imagenR" align="right" />
+                            <span class="tooltiptext revista">Ordenar resultados por revista</span>
+                        </th>
+                        <th scope="col">Número
+                            <img class="img" (click)="reversa('anio',true)" [src]="imagenN" align="right" />
+                            <span class="tooltiptext numero">Ordenar resultados por número</span></th>
                         <th scope="col">Texto Completo</th>
                     </tr>
                 </thead>
