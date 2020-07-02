@@ -240,14 +240,13 @@ img {
     height: 17px;
 }
 
-
-
-.loading{
-    width: 12%; 
+.loading {
+    width: 12%;
     height: 17%;
-    margin-left: 50%; 
+    margin-left: 50%;
     margin-top: 10%;
 }
+
 .grid {
     display: grid;
     grid-template-columns: 100px 100px;
@@ -270,4 +269,30 @@ img {
 
 .no-resultados {
     margin: 50px;
+}
+
+.img+.tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: rgb(241, 241, 241, 0.5);
+    color: #4762B2;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    margin-left: 40px;
+    margin-top: -42px;
+}
+
+.revista {
+    left: 55%;
+}
+
+.numero {
+    left: 67%;
+}
+
+.img:hover+.tooltiptext {
+    visibility: visible;
 }
