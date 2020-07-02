@@ -246,3 +246,7 @@ input[type=text]:focus {
     font-family: Barlow-Bold;
     text-decoration: none;
 }
+
+.color-idioma{
+    color: #4762b2;
+}

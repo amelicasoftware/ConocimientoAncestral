@@ -906,7 +906,6 @@ iframe {
     color: white;
     border-radius: 5px;
     height: 50px;
-    line-height: ;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -922,4 +921,8 @@ iframe {
     align-items: center;
     width: 100%;
     height: 50%;
+}
+
+.color-idioma {
+    color: #4762b2;
 }

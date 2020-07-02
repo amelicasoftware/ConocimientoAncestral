@@ -107,15 +107,15 @@
     </div>
 </div>
 
-<div class="nothing" *ngIf="totalResultados <= 0 && total.palabra ">
-    <p>No se han encontrado resultados para: {{total.palabra}} </p>
-    <p>Realice una nueva busqueda.</p>
-    <br>
-</div>
-<div class="nothing" *ngIf="!total.palabra">
-    <p></p>
-    <br>
-</div>
+<div class="nothing" *ngIf="totalResultados <= 0 && total.palabra " >
+    <p >No se han encontrado resultados para: {{total.palabra}} </p>
+    <p >Realice una nueva búsqueda.</p>
+    <br>       
+</div>     
+<div class="nothing" *ngIf="!total.palabra" >       
+    <p ></p>
+    <br>       
+</div>  
 
 
 <app-footer></app-footer>
