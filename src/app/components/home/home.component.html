@@ -84,7 +84,7 @@
                     <div id="titulo-buscador"><span>Buscador</span></div>
                     <div id="buscador">
                         <input #palabra (keyup.enter)="buscarTexto(palabra.value)" id="input-buscar" type="text" name="input-articulo" value="" placeholder="Buscar palabra" />
-                        <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" />
+                        <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" (click)="buscarTexto(palabra.value)" name="boton-buscar-articulo" alt="Buscar" />
                     </div>
                 </div>
                 <div id="contenedor-numeralias">
