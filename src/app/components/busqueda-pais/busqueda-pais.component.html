@@ -22,7 +22,7 @@
     <div class="item11">
 
         <div class="filtros"><img src="assets/img/filtro.png">Filtros de Búsqueda</div>
-        <div class="cursor" [routerLink]="['/busquedaRevistaPais/',cvePais]" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div>
+      <!--       <div class="cursor" [routerLink]="['/busquedaRevistaPais/',cvePais]" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div> -->
         <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png">Artículos de revista</div>
         <div class="alimodo">Modo de visualizar resultados </div>
         <div (click)="cambioVista(false)" [ngClass]="{'activado': !vista, 'seleccionado': !vista, 'cursor': vista}"><img [src]="imgLista">Tabla</div>
