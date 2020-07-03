@@ -3,7 +3,7 @@
 
 <div class="buscador flex"><img src="assets/img/buscador-institucionmdpi.png"> Búsqueda por palabra clave
     <input class="busqueda" #palabra (keyup.enter)="buscar(palabra.value)" type="text" placeholder="Introducir criterio de búsqueda">
-    <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" />
+    <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" (click)="buscar(palabra.value)" name="boton-buscar-articulo" alt="Buscar" />
 </div>
 
 <div  *ngIf="total.palabra" class="grid-containerh2">

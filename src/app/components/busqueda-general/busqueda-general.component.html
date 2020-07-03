@@ -4,7 +4,7 @@
 
 <div class="buscador flex"><img src="assets/img/buscador-institucionmdpi.png">Búsqueda General
     <input class="busqueda" #palabra (keyup.enter)="buscar(palabra.value)" type="text" placeholder="Introducir criterio de búsqueda" required />
-    <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" name="boton-buscar-articulo" alt="Buscar" required />
+    <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" (click)="buscar(palabra.value)" name="boton-buscar-articulo" alt="Buscar" required />
 </div>
 
 <div *ngIf="total.palabra && total.palabra != 'allArt' " class="grid-containerh2">
