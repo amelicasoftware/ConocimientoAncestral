@@ -1,7 +1,7 @@
 am4core.ready(function() {
 
-	let url = "http://localhost:4200/";
-	// let url = "http://semantic.redalyc.org/";
+	// let url = "http://localhost:4200/";
+	let url = "http://semantic.redalyc.org/";
 	// let url = "http://amelica.org/ConocimientoAncestral/";
 	console.log('voy hacer la graficas44444');
 	am4core.useTheme(am4themes_animated);
