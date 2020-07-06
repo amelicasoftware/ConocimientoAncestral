@@ -31,6 +31,7 @@ export class BusquedaPaisComponent implements OnInit {
   vista = true;
   pagAct: number;
   pagFinal: number;
+  loading: boolean;
   imgLista = 'assets/img/lista.png';
   // imgListaA = 'assets/img/lista-act.png';
   imgTabla = 'assets/img/tarjetas-act.png';
@@ -41,6 +42,7 @@ export class BusquedaPaisComponent implements OnInit {
   constructor(private ArticuloInyectado: ServiosBusquedaService, private activatedRoute: ActivatedRoute,
               private articuloService: ServiosBusquedaService, private filtrosService: FiltrosService,
               private paginadorService: PaginadorService) {
+                this.loading = true;
                 this.activatedRoute.params.subscribe( params =>{
                   this.cvePais = params['cvePais'];
                   console.log(this.cvePais);
@@ -48,9 +50,11 @@ export class BusquedaPaisComponent implements OnInit {
                }
 
   ngOnInit(): void {
+    this.loading = false;
     this.ArticuloInyectado.getArticulosXPais(this.cvePais).subscribe((articulosXPais: any) => {
       console.log(articulosXPais.articulos.total);
       console.log('estos son mis datos' , articulosXPais);
+      this.loading = true;
       this.total.total = articulosXPais.articulos.total;
       this.filtrosService.actualizarArticulos(articulosXPais.articulos.articulos);
       this.filtrosService.actualizarFiltros(articulosXPais.filtros);
@@ -85,28 +89,6 @@ export class BusquedaPaisComponent implements OnInit {
     });
   }
 
-
-  buscar(palabra: string, nombreBusqueda: string) {
-    console.log(palabra);
-    console.log(nombreBusqueda);
-    this.total.palabra = palabra;
-    this.filtrosService.palabra = palabra;
-    this.articuloService.getArticulosXPais(this.cvePais).subscribe((data: any) => {
-      console.log(data);
-      this.filtrosService.actualizarArticulos(data.articulos.articulos);
-      this.filtrosService.actualizarFiltros(data.filtros);
-      const globos = [];
-      this.filtrosService.actualizarGlobos(globos);
-      this.filtrosService.filtrosElegidos = [];
-      this.filtrosService.cadenafiltros = '';
-      this.paginadorService.actualizarTotal(data.articulos.total, 'articulos');
-      this.paginadorService.actualizarPosicion(1);
-      this.total.total = data.articulos.total;
-    });
-    this.filtrosService.palabra = palabra;
-  }
-
-  
   posicion() {
     return this.paginadorService.posicion;
   }
