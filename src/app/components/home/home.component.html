@@ -83,14 +83,12 @@
                 <div id="contenedor-buscador">
                     <div id="titulo-buscador"><span>Buscador</span></div>
                     <div id="buscador">
-                        <input #palabra (keyup.enter)="buscarTexto(palabra.value)" id="input-buscar" type="text" name="input-articulo" value="" placeholder="Buscar palabra" />
+                        <input #palabra (keyup.enter)="buscarTexto(palabra.value)" id="input-buscar" type="text" name="input-articulo" value="" placeholder="Buscar" />
                         <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" (click)="buscarTexto(palabra.value)" name="boton-buscar-articulo" alt="Buscar" />
                     </div>
                 </div>
                 <div id="contenedor-numeralias">
-                    <div class="linea-num">{{numerosHome[2].Articulos}} artículos</div>
-                    <div class="linea-num">{{numerosHome[1].Revistas}} revistas</div>
-                    <div>{{numerosHome[0].Paises}} países</div>
+                    <div><p>Más de <span>{{numerosHome[2].Articulos}} artículos</span> extraidos de <span>{{numerosHome[1].Revistas}} revistas</span> en <span>{{numerosHome[0].Paises}} países</span></p></div>
                 </div>
                 <div id="contenedor-resumen">
                     Por un modelo de publicación sin fines de lucro para conservar la naturaleza académica y abierta de la comunicación cientifíca.

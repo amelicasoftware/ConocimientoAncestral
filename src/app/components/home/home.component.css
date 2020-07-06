@@ -374,7 +374,11 @@ div.outerBorder {
 }
 
 #contenedor-numeralias div {
-  width: 15%;
+  width: 100%;
+}
+
+#contenedor-numeralias div p span{
+  font-weight: bold;
 }
 
 .linea-num {
@@ -597,7 +601,7 @@ align-items: center;
     width: 70%;
   }
   #contenedor-numeralias div {
-    width: 35%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -702,7 +706,7 @@ iframe{
     margin-top: 30px;
   }
   #contenedor-numeralias div {
-    width: 30%;
+    width: 100%;
   }
   #contenedor-ultimos-documentos {
     width: 100%;
