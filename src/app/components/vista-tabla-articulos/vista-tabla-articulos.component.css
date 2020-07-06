@@ -86,3 +86,7 @@ img {
 .img:hover+.tooltiptext {
     visibility: visible;
 }
+
+.titulo-art {
+    text-decoration: none;
+}

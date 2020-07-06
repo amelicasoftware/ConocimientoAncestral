@@ -218,7 +218,7 @@ input[type=text]:focus {
 }
 
 .tamaño-resul-busqueda {
-    margin-left: 60%;
+    margin-left: 46%;
     margin-bottom: 15px;
 }
 
@@ -247,6 +247,6 @@ input[type=text]:focus {
     text-decoration: none;
 }
 
-.color-idioma{
+.color-idioma {
     color: #4762b2;
 }
