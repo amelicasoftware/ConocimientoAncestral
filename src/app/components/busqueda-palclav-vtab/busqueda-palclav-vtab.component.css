@@ -184,7 +184,7 @@ input[type=text]:focus {
 }
 
 .tamaño-resul-busqueda {
-    margin-left: 60%;
+    margin-left: 46%;
     margin-bottom: 15px;
 }
 
@@ -296,4 +296,8 @@ img {
 
 .img:hover+.tooltiptext {
     visibility: visible;
+}
+
+.titulo-art {
+    text-decoration: none;
 }
