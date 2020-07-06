@@ -12,3 +12,35 @@
     text-align: start;
     padding-left: 10%;
 }
+
+
+#rectangulo-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#instituciones-rect {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+    margin: auto;
+}
+
+#instituciones-rect>div {
+    width: 20%;
+    margin: 30px;
+    text-align: center;
+}
+
+#instituciones-footer div img {
+    /* height: 50px; */
+}
+
+#resumen-footerec {
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+}

@@ -23,7 +23,7 @@
 
         <div class="filtros"><img src="assets/img/filtro.png">Filtros de Búsqueda</div>
         <!--       <div class="cursor" [routerLink]="['/busquedaRevistaPais/',cvePais]" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div> -->
-        <div class="seleccionado alinear" (click)="limpiarDatos()"><img src="assets/img/articulos-act.png">Artículos de revista</div>
+        <div class="seleccionado alinear" ><img src="assets/img/articulos-act.png">Artículos de revista</div>
         <div class="alimodo">Modo de visualizar resultados </div>
         <div (click)="cambioVista(false)" [ngClass]="{'activado': !vista, 'seleccionado': !vista, 'cursor': vista}"><img [src]="imgLista">Tabla</div>
         <div (click)="cambioVista(true)" [ngClass]="{'activado': vista, 'seleccionado': vista, 'cursor': !vista}"><img [src]="imgTabla">Lista</div>
@@ -35,15 +35,21 @@
 <!--  Inicia menu horizontal sin grid   -->
 <!--  Terina  menu horizontal sin grid   -->
 
+<div *ngIf="!loading" style="width: 12%; margin-left: 50%; margin-top: 10%;">
+    <img src="assets/img/giphy.gif" alt="">
+    <p>Cargando contenido...</p>
+
+</div>
+
 
 <!--  Filtros menu  -->
-<div class="grid-container">
-    <div class="item2">
+<div *ngIf="total.palabra && total.total >= 1 && loading "  class="grid-container">
+    <div  *ngIf="total.total >= 1" class="item2">
         <app-filtro-pais></app-filtro-pais>
     </div>
 
     <!-- Termina Filtros menu   -->
-    <div class="item3">
+    <div  class="item3">
 
         <div *ngIf=" pagAct != pagFinal " style="align-self: center; font-family: Barlow-Regular; display: flex; align-items: center;">
             <p style="text-align: start; margin-left: 10px; font-family: Barlow-Regular; font-size: 10pt;">Artículos publicados en revistas de: {{nombrePais}}</p>
