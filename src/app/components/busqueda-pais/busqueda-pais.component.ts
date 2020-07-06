@@ -102,6 +102,7 @@ export class BusquedaPaisComponent implements OnInit {
   }
 
   llenarCombo(pais){
+    this.loading = false
     console.log(pais);
     this.cvePais = pais;
     this.articuloService.getArticulosXPais(this.cvePais).subscribe((articulosXPais: any) => {
@@ -121,6 +122,7 @@ export class BusquedaPaisComponent implements OnInit {
       this.paginadorService.actualizarTotal(articulosXPais.articulos.total, 'articulos');
       this.paginadorService.actualizarPosicion(1);
       this.total.total = articulosXPais.articulos.total;
+        this.loading = true
     });
   }
 
