@@ -72,7 +72,7 @@
 #mynetwork {
   width: 100%;
   height: 82vh;
-  background-color: #090a35;
+  background-color: white;
   position: relative;
   float: left;
 }
@@ -176,9 +176,9 @@ div.outerBorder {
   font-family: "Barlow-Regular";
 }
 #titulo-red {
-  background: #090a35;
+  background: white;
   font-size: 16pt;
-  color: white;
+  color: #090a35;
   padding: 1em 7em;
 }
 
