@@ -122,7 +122,7 @@
                     document.getElementById('datosArticulo').appendChild(item);
                 }
                 var itemBoton = document.createElement('div');
-                itemBoton.innerHTML = `<a href="http://amelica.org/ConocimientoAncestral/#/busqueda-pal-clav/${params.nodes}"> <div id="btn-mas-articulos">Más artículos</div></a>`;
+                itemBoton.innerHTML = `<a href="http://semantic.redalyc.org/#/busqueda-pal-clav/${params.nodes}"> <div id="btn-mas-articulos">Más artículos</div></a>`;
                 document.getElementById('datosArticulo').appendChild(itemBoton);
           }});
         
