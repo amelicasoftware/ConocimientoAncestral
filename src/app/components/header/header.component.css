@@ -5,6 +5,10 @@
     font-size: 30px;
 }
 
+.logos{
+  padding: 0px 5px;
+}
+
 .item1 {
     grid-area: header;
     background-color: #090a35;
@@ -93,7 +97,7 @@
         transition: 0.4s;
     }
     .logo-CA img{
-		width: 220px;
+		  width: 220px;
     	padding: 10px;
 	}
   }

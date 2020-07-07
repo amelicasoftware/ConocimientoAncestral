@@ -3,7 +3,7 @@
     grid-area: footer;
     width: 100%;
     color: white;
-    background-image: url(/assets/img/maiz-footer.png);
+    background-image: url(../../../assets/img/maiz-footer.png);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
