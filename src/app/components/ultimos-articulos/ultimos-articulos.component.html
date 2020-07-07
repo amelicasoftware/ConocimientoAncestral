@@ -1,5 +1,5 @@
 <div class="titulo-seccion-listado" >Publicaciones recientes</div>
-<div style="width: 100%; margin: auto; font-family: 'Barlow';">
+<!-- <div style="width: 100%; margin: auto; font-family: 'Barlow';">
     <div style="width: 80%; margin: auto; border-bottom: solid 1px #fd9322; display: flex; justify-content: space-between;">
         <div style="color: #fd9322; font-size: 15pt;">
             Revistas +
@@ -22,8 +22,8 @@
             </div>
             <div class="cuerpo-card" style="height: 180px; font-size: 12px; padding: 0px 10px; font-family: 'Barlow-Regular'; color: black;">
                 <div style="font-weight: bold;"> {{articulo.nombreRevista}}</div>
-                <!-- <div> Issn: {{articulo.ISSN}} | e-Issn: {{articulo.ISSNElec}}</div> -->
-                <div *ngIf=" articulo.ISSN && articulo.ISSNElec "> Issn: {{articulo.ISSN}} | e-Issn: {{articulo.ISSNElec}}</div>
+                 <div> Issn: {{articulo.ISSN}} | e-Issn: {{articulo.ISSNElec}}</div> -->
+                <!-- <div *ngIf=" articulo.ISSN && articulo.ISSNElec "> Issn: {{articulo.ISSN}} | e-Issn: {{articulo.ISSNElec}}</div>
                 <div *ngIf=" articulo.ISSN && !articulo.ISSNElec"> Issn: {{articulo.ISSN}} </div>
                 <div *ngIf=" !articulo.ISSN && articulo.ISSNElec "> e-Issn: {{articulo.ISSNElec}}</div>
                 <div>{{articulo.nombreArea}}</div>
@@ -40,7 +40,7 @@
     <div class="contenedor-boton-mas">
         <div class="boton-ver-mas" [routerLink]="['/busquedarev/allRev']" >Ver más revistas</div>
     </div>
-</div>
+</div> --> 
 <div style="width: 100%; margin: auto;">
     <div style="width: 80%; margin: auto; border-bottom: solid 1px #ff660c; display: flex; justify-content: space-between;">
         <div style="color: #ff660c; font-size: 15pt;">
@@ -67,7 +67,7 @@
                         <div>{{articulo.autores | autoresArticulo}}</div>
                     </div>
                     <div style="height: auto; font-size: 12px;">
-                        <div>{{articulo.nombreRevista}}, {{articulo.anio}}, {{articulo.volumne}}({{articulo.numero}}) </div>
+                        <div>{{articulo.nombreRevista}}, {{articulo.anio}} {{articulo.volumne}}({{articulo.numero}}) </div>
                     </div>
                     <div style="height: auto; font-size: 12px;">
                        <a href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}" style="text-decoration: none;"> <div style="color: #ff660c;">Texto completo</div></a>

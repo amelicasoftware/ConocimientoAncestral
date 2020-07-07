@@ -33,7 +33,7 @@
         <div style="color: #fff !important; display: flex; ">
             <div id="logo-CA" style="width: 50%;">
                 <a href="#"><img src="assets/img/conocimiento-ancestral.png" alt=""></a>
-                <a id="logo-amelica" href="http://amelica.org/"><img src="assets/img/ameliCA.png" alt=""></a>
+                <!-- <a id="logo-amelica" href="http://amelica.org/"><img src="assets/img/ameliCA.png" alt=""></a> -->
                 <a id="logo-redalyc" href="https://www.redalyc.org/"><img src="assets/img/redalyc.png" alt=""></a>
             </div>
             <div id="menu">
@@ -42,9 +42,9 @@
                     <a [routerLink]="['/acerca-de']" class="option-menu">Proyecto Conocimiento Ancestral</a>
                 </div>
                 <div id="logos" style="width: 25%;">
-                    <a href="http://amelica.org/ConocimientoAncestral"><img src="assets/img/ic-home.png" alt=""> </a>
-                    <a href="https://twitter.com/Ameli_CA"><img src="assets/img/ic-facebook.png" alt=""></a>
-                    <a href="https://www.facebook.com/ameli.conocimientoabierto/"><img src="assets/img/ic-twitter.png" alt=""></a>
+                    <a [routerLink]="['/home']"><img src="assets/img/ic-home.png" alt=""> </a>
+                    <a href="https://www.facebook.com/Redalyc/"><img src="assets/img/ic-facebook.png" alt=""></a>
+                    <a href="https://www.redalyc.org/img/twitter-24.png"><img src="assets/img/ic-twitter.png" alt=""></a>
                 </div>
                 <a onclick="openNav()">
                     <div id="menu-colap">
@@ -83,20 +83,18 @@
                 <div id="contenedor-buscador">
                     <div id="titulo-buscador"><span>Buscador</span></div>
                     <div id="buscador">
-                        <input #palabra (keyup.enter)="buscarTexto(palabra.value)" id="input-buscar" type="text" name="input-articulo" value="" placeholder="Buscar palabra" />
+                        <input #palabra (keyup.enter)="buscarTexto(palabra.value)" id="input-buscar" type="text" name="input-articulo" value="" placeholder="Buscar" />
                         <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" (click)="buscarTexto(palabra.value)" name="boton-buscar-articulo" alt="Buscar" />
                     </div>
                 </div>
                 <div id="contenedor-numeralias">
-                    <div class="linea-num">{{numerosHome[2].Articulos}} artículos</div>
-                    <div class="linea-num">{{numerosHome[1].Revistas}} revistas</div>
-                    <div>{{numerosHome[0].Paises}} países</div>
+                    <div><p>Más de <span>{{numerosHome[2].Articulos}} artículos</span> extraidos de <span>{{numerosHome[1].Revistas}} revistas</span> en <span>{{numerosHome[0].Paises}} países</span></p></div>
                 </div>
                 <div id="contenedor-resumen">
                     Por un modelo de publicación sin fines de lucro para conservar la naturaleza académica y abierta de la comunicación cientifíca.
                 </div>
                 <div id="contenedor-logos">
-                    <div>
+                    <!--<div>
                         <a href="http://amelica.org/"><img src="assets/img/ic-amelica-footer.png" /></a>
                     </div>
                     <div>
@@ -104,7 +102,7 @@
                     </div>
                     <div>
                         <a href="https://www.clacso.org/"><img src="assets/img/ic-clacso-footer.png" /></a>
-                    </div>
+                    </div>-->
                     <div>
                         <a href="https://www.redalyc.org/"><img src="assets/img/ic-redalyc-footer.png" /></a>
                     </div>
@@ -133,6 +131,15 @@
             </div>
         </div>
     </section>
+    
+    <section id="nube-palabras" ng-init="nube()">
+        <div id="contenedor-nube">
+            <div id="titulo-nube">Artículos por palabra clave</div>
+            <div id="nube">
+                <div id="wordCloud" charset="utf-8"></div>
+            </div>
+        </div>
+    </section>
     <section id="red-conceptos" style="min-height: 82vh;">
         <div class="contenedor-red" style="display: flex;">
             <div style="width: 70%;">
@@ -148,19 +155,11 @@
                     </div>
                 </div>
             </div>
-            <div style="width: 30%; background: gainsboro;">
+            <div style="width: 30%;">
                 <div id="tituloArticulos" ></div>
                         <div id="contenedorArticulos" style="display:none;">
                             <div id="datosArticulo"></div>
                         </div>
-            </div>
-        </div>
-    </section>
-    <section id="nube-palabras" ng-init="nube()">
-        <div id="contenedor-nube">
-            <div id="titulo-nube">Artículos por palabra clave</div>
-            <div id="nube">
-                <div id="wordCloud" charset="utf-8"></div>
             </div>
         </div>
     </section>

@@ -44,7 +44,7 @@ export class BusquedarevComponent implements OnInit {
       console.log(revistasDesdeApi);
       this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total, 'revistas');
       //this.paginadorService.actualizarTotal(revistasDesdeApi.revistas.total, 'revistas');
-      this.paginadorService.actualizarPosicion(1);    
+      this.paginadorService.actualizarPosicion(1);
       this.filtrosRevistasService.actualizarRevistas(revistasDesdeApi.revistas.revistas);
       this.filtrosRevistasService.actualizarFiltros(revistasDesdeApi.filtros);
       this.total.total = revistasDesdeApi.revistas.total;
