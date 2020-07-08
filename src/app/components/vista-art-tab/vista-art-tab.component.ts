@@ -76,6 +76,8 @@ export class VistaArtTABComponent implements OnInit {
     console.log(palabra);
     this.total.palabra = palabra;
     this.filtrosService.palabra = palabra;
+    this.filtrosService.actualizarPalabra(palabra)
+    this.articuloService.setpalabra(palabra)
     this.articuloService.getBusquedaArticulos(palabra).subscribe((data: any) => {
       console.log(data);
       this.filtrosService.actualizarArticulos(data.articulos.articulos);
@@ -90,6 +92,7 @@ export class VistaArtTABComponent implements OnInit {
       this.loading = true
     });
     this.filtrosService.palabra = palabra;
+    this.filtrosService.actualizarPalabra(palabra)
   }
 
    limpiarDatos() {

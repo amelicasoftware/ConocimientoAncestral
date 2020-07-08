@@ -1,5 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: Barlow-Bold;
+    src: url('http://semantic.redalyc.org/conocimientoancestral/assets/fonts/Barlow-Bold.ttf');
+    /* src: url('fonts/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
+         url('fonts/OpenSans-Regular.woff') format('woff'),
+         url('fonts/OpenSans-Regular.ttf') format('truetype');*/
+}
 
+@font-face {
+    font-family: Barlow-Regular;
+    src: url('http://semantic.redalyc.org/conocimientoancestral/assets/fonts/Barlow-Regular.ttf');
+}
+
+@font-face {
+    font-family: Barlow-Light;
+    src: url('http://semantic.redalyc.org/conocimientoancestral/assets/fonts/Barlow-Light.ttf');
+}
+
+@font-face {
+    font-family: Roboto-Light;
+    src: url('http://semantic.redalyc.org/conocimientoancestral/assets/fonts/Roboto-Light.ttf');
+}
+
+@font-face {
+    font-family: Roboto-Regular;
+    src: url('http://semantic.redalyc.org/conocimientoancestral/assets/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: Roboto-Black;
+    src: url('http://semantic.redalyc.org/conocimientoancestral/assets/fonts/Roboto-Black.ttf');
+}
 html,
 body {
     height: 100%;
@@ -193,52 +224,6 @@ body {
     height: 100vh;
     background-color: #f2f2f2;
 }
-
-#footer {
-    width: 100%;
-    height: 50vh;
-    background-image: url(assets/img/maiz-footer.png);
-    background-color: #f2f2f2;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#contenedor-footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-#instituciones-footer {
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: stretch;
-    margin: auto;
-}
-
-#instituciones-footer div {
-    width: 20%;
-    margin: 30px;
-    text-align: center;
-}
-
-#instituciones-footer div img {
-    /* height: 50px; */
-}
-
-#resumen-footer {
-    width: 50%;
-    text-align: center;
-    margin: 0 auto;
-}
-
-
 /*barra iconos*/
 
 .fab {
@@ -630,44 +615,7 @@ main {
         height: 150vh;
         background-color: white;
     }
-    #footer {
-        width: 100%;
-        height: 50vh;
-        background-image: url(assets/img/maiz-footer.png);
-        background-color: #f2f2f2;
-        background-position: center;
-        background-size: cover;
-        background-attachment: fixed;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #contenedor-footer {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    #instituciones-footer {
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-content: stretch;
-        margin: auto;
-    }
-    #instituciones-footer div {
-        width: 20%;
-        margin: 30px;
-        text-align: center;
-    }
-    #instituciones-footer div img {
-        /* height: 50px; */
-    }
-    #resumen-footer {
-        width: 50%;
-        text-align: center;
-        margin: 0 auto;
-    }
+    
     /*barra iconos*/
     .fab {
         width: 15px;
