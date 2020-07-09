@@ -8,7 +8,8 @@
   position: relative;
   width: 100%;
   min-height: 92vh;
-  background-image: url(../../../assets/img/piramide-CA.jpg);
+  /* background-image: url(../../../assets/img/piramide-CA.jpg); */
+  background-image: url(../../../assets/img/piramide.webp);
   color: white;
   font-family: "Barlow-Regular";
   background-position: center;
@@ -263,7 +264,8 @@ div.outerBorder {
 }
 #footer {
   width: 100%;
-  background-image: url(../../../assets/img/maiz-footer.png);
+  /* background-image: url(../../../assets/img/maiz-footer.png); */
+  background-image: url(../../../assets/img/maiz-footer.webp);
   background-color: #f2f2f2;
   background-position: center;
   background-size: cover;

@@ -11,11 +11,11 @@
         <div id="menu-buscador" class="btn-menu">
             <a ng-href="#contenedor-banner" id="btn-buscador" class="fab" title="Buscador"></a>
         </div>
-        <div id="menu-red" class="btn-menu">
-            <a ng-href="#red-conceptos" id="btn-red" class="fab" title="Representación del conocimiento"></a>
-        </div>
         <div id="menu-nube" class="btn-menu">
             <a ng-href="#contenedor-nube" id="btn-nube" class="fab" title="Artículos por tema"></a>
+        </div>
+        <div id="menu-red" class="btn-menu">
+            <a ng-href="#red-conceptos" id="btn-red" class="fab" title="Representación del conocimiento"></a>
         </div>
         <div id="menu-pais" class="btn-menu">
             <a ng-href="#contenedor-mapa" id="btn-pais" class="fab" title="Artículos por país"></a>
@@ -55,11 +55,11 @@
         </div>
         <div style="background: white; display: none;" id="menu2">
             <div class="menu-secciones">
-                <div class="op-menu-secciones btn-representacion" id="btn-representacion">
-                    <img src="assets/img/tab/nodos-des.png"><span>REPRESENTACIÓN DEL CONOCIMIENTO</span>
-                </div>
                 <div class="op-menu-secciones btn-tema" id="btn-tema">
                     <img src="assets/img/tab/nube-des.png"><span>ARTÍCULOS POR PALABRA CLAVE</span>
+                </div>
+                <div class="op-menu-secciones btn-representacion" id="btn-representacion">
+                    <img src="assets/img/tab/nodos-des.png"><span>REPRESENTACIÓN DEL CONOCIMIENTO</span>
                 </div>
                 <div class="op-menu-secciones btn-pais" id="btn-pais">
                     <img src="assets/img/tab/pais-des.png"><span>ARTÍCULOS POR PAÍS</span>
@@ -111,11 +111,11 @@
         </div>
 
         <div class="menu-secciones" id="menu1">
-            <div class="op-menu-secciones btn-representacion" id="btn-representacion">
-                <img src="assets/img/tab/nodos-des.png"><span>REPRESENTACIÓN DEL CONOCIMIENTO</span>
-            </div>
             <div class="op-menu-secciones btn-tema" id="btn-tema">
                 <img src="assets/img/tab/nube-des.png"><span>ARTÍCULOS POR PALABRA CLAVE</span>
+            </div>
+            <div class="op-menu-secciones btn-representacion" id="btn-representacion">
+                <img src="assets/img/tab/nodos-des.png"><span>REPRESENTACIÓN DEL CONOCIMIENTO</span>
             </div>
             <div class="op-menu-secciones btn-pais" id="btn-pais">
                 <img src="assets/img/tab/pais-des.png"><span>ARTÍCULOS POR PAÍS</span>
@@ -155,11 +155,15 @@
                     </div>
                 </div>
             </div>
-            <div style="width: 30%;">
+            <div style="width: 30%; display: flex;">
                 <div id="tituloArticulos" ></div>
-                        <div id="contenedorArticulos" style="display:none;">
-                            <div id="datosArticulo"></div>
-                        </div>
+                    <div id="cargador" style="margin: auto auto; display: none;">
+                        <img src="assets/img/giphy.gif" alt="">
+                        <p>Cargando Artículos...</p>
+                    </div>
+                    <div id="contenedorArticulos" style="display:none;">
+                        <div id="datosArticulo"></div>
+                    </div>
             </div>
         </div>
     </section>

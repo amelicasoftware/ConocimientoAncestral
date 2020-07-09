@@ -95,9 +95,11 @@
   drawGraph();
 
   network.on("click", function (params) {
+          var cargando = document.getElementById('cargador');
+          cargando.style.display = "block";
           console.log('prueba');
           document.getElementById("datosArticulo").innerHTML = "";
-          document.getElementById("contenedorArticulos").style.display = "block";
+          document.getElementById("contenedorArticulos").style.display = "none";
           params.event = "[original event]";
           console.log(params.nodes)
           document.getElementById("datosArticulo").innerHTML = "Artículos para " + params.nodes;
@@ -118,9 +120,11 @@
                     var item = document.createElement('a');
                     item.setAttribute("href", 'https://redalyc.org/articulo.oa?id=' + element.claveArt);
                     item.setAttribute("target", "_blank");
-                    item.innerHTML = '<div class="tituloArt"><span class="text-link">' + element.tituloArt + '</span><br><span class="text-revista">' + element.nombreRevista + ', ' + element.anio + ', ' + element.numero + '(' + element.volumen + ')</span></div>';
+                    item.innerHTML = '<div class="tituloArt"><span class="text-link">' + element.tituloArt + '</span><br><span class="text-revista">' + element.nombreRevista + ', ' + element.anio + ' ' + element.numero + '(' + element.volumen + ')</span></div>';
                     document.getElementById('datosArticulo').appendChild(item);
                 }
+                cargando.style.display = "none";
+                document.getElementById("contenedorArticulos").style.display = "block";
                 var itemBoton = document.createElement('div');
                 itemBoton.innerHTML = `<a href="http://semantic.redalyc.org/conocimientoancestral/#/busqueda-pal-clav/${params.nodes}"> <div id="btn-mas-articulos">Más artículos</div></a>`;
                 document.getElementById('datosArticulo').appendChild(itemBoton);

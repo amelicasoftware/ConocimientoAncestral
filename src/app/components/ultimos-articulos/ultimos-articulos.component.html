@@ -44,7 +44,7 @@
 <div style="width: 100%; margin: auto;">
     <div style="width: 80%; margin: auto; border-bottom: solid 1px #ff660c; display: flex; justify-content: space-between;">
         <div style="color: #ff660c; font-size: 15pt;">
-            Articulos de revista +
+            Artículos de revista +
         </div>
         <div style="display: flex;">
             <div id="atras" class="boton-scroll"> 
@@ -67,7 +67,7 @@
                         <div>{{articulo.autores | autoresArticulo}}</div>
                     </div>
                     <div style="height: auto; font-size: 12px;">
-                        <div>{{articulo.nombreRevista}}, {{articulo.anio}} {{articulo.volumne}}({{articulo.numero}}) </div>
+                        <div>{{articulo.nombreRevista}}, {{articulo.anio}} {{articulo.volumen}}<span *ngIf="articulo.numero != ' '">({{articulo.numero}})</span> </div>
                     </div>
                     <div style="height: auto; font-size: 12px;">
                        <a href="https://redalyc.org/articulo.oa?id={{articulo.claveArt}}" style="text-decoration: none;"> <div style="color: #ff660c;">Texto completo</div></a>

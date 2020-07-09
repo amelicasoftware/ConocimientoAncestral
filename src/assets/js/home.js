@@ -13,34 +13,29 @@ function closeNav() {
 }
 
 
-window.onscroll = function() { scrollFunction() };
+// window.onscroll = function() { scrollFunction() };
 
-function scrollFunction() {
-    // if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    //     document.getElementById("header").style.paddingTop = "0px";
-    // } else {
-    //     document.getElementById("header").style.paddingTop = "50px";
-    // }
+// function scrollFunction() {
+//     // if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+//     //     document.getElementById("header").style.paddingTop = "0px";
+//     // } else {
+//     //     document.getElementById("header").style.paddingTop = "50px";
+//     // }
 
-    // console.log(document.documentElement.scrollTop);
+//     // console.log(document.documentElement.scrollTop);
 
     
-}
+// }
 
 
 $(function() {
     $(window).scroll(function() {
-        // console.log($("#menu1").offset());
   if ($(window).scrollTop() + 60 >= $("#menu1").offset().top) {
-    // $("#caja-flotante").fadeIn();//.fadeOut();
     $("#menu2").css('display','block');
     $("#header").css('opacity', 1);
-    // console.log('aqui toy');
   } else {
-    // $("#caja-flotante").fadeOut();//.fadeIn();
     $("#menu2").css('display','none');
     $("#header").css('opacity', 0.9);
-    // console.log('aqui no toy');
 
   }
     });
@@ -54,23 +49,19 @@ $(document).ready(function() {
     
 
     $('#adelante').click(function() {
-        console.log($("#contenedor-fichas").scrollLeft());
         let posicion = $("#contenedor-fichas").scrollLeft();
         $("#contenedor-fichas").scrollLeft(posicion + 500);
     });
     $('#atras').click(function() {
-        console.log($("#contenedor-fichas").scrollLeft());
         let posicion = $("#contenedor-fichas").scrollLeft();
         $("#contenedor-fichas").scrollLeft(posicion - 500);
     });
 
     $('#adelante-r').click(function() {
-        console.log($("#contenedor-fichas-r").scrollLeft());
         let posicion = $("#contenedor-fichas-r").scrollLeft();
         $("#contenedor-fichas-r").scrollLeft(posicion + 500);
     });
     $('#atras-r').click(function() {
-        console.log($("#contenedor-fichas-r").scrollLeft());
         let posicion = $("#contenedor-fichas-r").scrollLeft();
         $("#contenedor-fichas-r").scrollLeft(posicion - 500);
     });
@@ -112,9 +103,7 @@ $(document).ready(function() {
     });
 
     function comparaPosicion(menuFlotante, seccion1, seccion2, seccion3, seccion4, id, img) {
-        //console.log('posisciones==' + seccion1 + ", "+ seccion2 + ", "+ seccion3 + ", "+ seccion4);
         if ((menuFlotante >= seccion1 && menuFlotante <= seccion2) || (menuFlotante >= seccion3 && menuFlotante <= seccion4)) {
-            //console.log('aqui cambio..');
             $("#" + id).css('background-image', 'url(assets/img/' + img + '-a.png)');
         } else {
             $("#" + id).css('background-image', 'url(assets/img/' + img + '.png)');
