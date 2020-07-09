@@ -60,7 +60,9 @@
         </div>
 
         <div *ngIf="totalResultados >= 1">
-            <app-tarjeta-articulos></app-tarjeta-articulos>
+            
+            
+            <app-tarjeta-articulos [articulos]="articulos" ></app-tarjeta-articulos>
 
 
             <app-paginador-articulos></app-paginador-articulos>

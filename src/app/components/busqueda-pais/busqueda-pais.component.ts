@@ -63,7 +63,10 @@ export class BusquedaPaisComponent implements OnInit {
       this.nombrePais = articulosXPais.articulos.articulos[0].pais;
       this.filtrosService.actualizarPais(this.cvePais);
     });
-
+    this.paginadorService.cambioEstado.subscribe(estado => {
+      console.log('ESTADO DEL LOADING *********************', estado);
+      this.loading = estado
+        });
 
     this.filtrosService.cambioArticulos.subscribe(data2 => {
       console.log('resutladosArticuloPais', data2);

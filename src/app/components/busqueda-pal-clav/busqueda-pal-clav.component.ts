@@ -1,14 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Articulo } from '../../models/articulo';
-import { Usuario } from '../../models/usuario';
 import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FiltrosComponent } from '../filtros/filtros.component';
 import { FiltrosService } from '../../services/filtros.service';
 import { PaginadorService } from '../../services/paginador.service';
 import { Total } from '../../models/total'
-import { from } from 'rxjs';
-import { number, string } from '@amcharts/amcharts4/core';
+
 
 
 
@@ -56,7 +53,10 @@ export class BusquedaPalClavComponent implements OnInit {
       this.paginadorService.actualizarPosicion(1);
       this.totalResultados = this.paginadorService.total;
     });
-
+    this.paginadorService.cambioEstado.subscribe(estado => {
+      console.log('ESTADO DEL LOADING *********************', estado);
+      this.loading = estado
+    });
 
     this.filtrosService.cambioArticulos.subscribe(data2 => {
       console.log('resutladosServicio', data2);
@@ -106,7 +106,6 @@ export class BusquedaPalClavComponent implements OnInit {
   posicion() {
     return this.paginadorService.posicion;
   }
-
 
 
 

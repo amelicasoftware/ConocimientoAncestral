@@ -50,7 +50,10 @@ export class VistaArtTABComponent implements OnInit {
       this.paginadorService.actualizarPosicion(1);
     });
 
-
+    this.paginadorService.cambioEstado.subscribe(estado => {
+      console.log('ESTADO DEL LOADING *********************', estado);
+      this.loading = estado
+    });
     this.filtrosService.cambioArticulos.subscribe(data2 => {
       console.log('resutladosServicio', data2);
       this.articulos = data2;
