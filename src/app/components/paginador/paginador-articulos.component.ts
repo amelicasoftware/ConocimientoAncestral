@@ -21,30 +21,6 @@ export class PaginadorArticulosComponent implements OnInit {
     private filtrosService: FiltrosService, private paginadorService: PaginadorService) { }
 
   ngOnInit(): void {
-    //  console.log("##########################",this.articulosService.getpalabra())
-    //inicializa la busqueda con el primer metodo del servicio LeerJson 
-    // this.revistasService.leerjson().subscribe((revistasDesdeApi: any) => {
-    //   console.log(revistasDesdeApi.revistas.total);
-    // this.revistas = revistasDesdeApi.revistas.revistas;
-    // this.total.total = revistasDesdeApi.revistas.total;
-    // this.paginadorService.total = revistasDesdeApi.revistas.total;
-    // console.log('total', this.total.total);
-    // if (Number.isInteger((this.total.total / 12))) {
-    //   this.total.final = (this.total.total / 12)
-    // } else {
-    //   this.total.final = Math.floor(this.total.total / 12) + 1
-    // // }
-    // this.paginadorService.calculaFinal(revistasDesdeApi.revistas.total);
-    // this.paginadorService.posicion = 1;
-    // console.log(this.revistas)
-    // console.log(this.total)
-    // this.filtrosRevistasService.actualizarRevistas(revistasDesdeApi.revistas.revistas);
-    // });
-    // this.total.palabra = this.revistasService.getpalabra();
-    // this.filtrosRevistasService.cambioRevistas.subscribe(data2 => {
-    //   console.log('resutladosServicio', data2);
-    //   this.revistas = data2;
-    // });
 
     this.paginadorService.cambioFinal.subscribe(data2 => {
       console.log('filtrosServicio', data2);

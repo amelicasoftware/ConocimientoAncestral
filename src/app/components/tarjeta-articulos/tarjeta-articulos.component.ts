@@ -47,32 +47,6 @@ export class TarjetaArticulosComponent implements OnInit {
     });
      this.total.palabra = this.articuloService.getpalabra()
   }
-
-
-  buscar(palabra: string) {
-    console.log(palabra);
-    this.total.palabra = palabra;
-    this.filtrosService.palabra = palabra;
-    this.articuloService.getBusquedaArticulos(palabra).subscribe((data: any) => {
-      console.log(data);
-      this.filtrosService.actualizarArticulos(data.articulos.articulos);
-      this.filtrosService.actualizarFiltros(data.filtros);
-      const globos = [];
-      this.filtrosService.actualizarGlobos(globos);
-      this.filtrosService.filtrosElegidos = [];
-      this.filtrosService.cadenafiltros = '';
-      this.paginadorService.actualizarTotal(data.articulos.total, 'articulos');
-      this.paginadorService.actualizarPosicion(1);
-      this.total.total = data.articulos.total;
-    });
-    this.filtrosService.palabra = palabra;
-  }
- 
-  limpiarDatos(){
-    console.log('voy a limpiar');
-    this.filtrosService.filtrosElegidos = [];
-    const globos = [];
-    this.filtrosService.actualizarGlobos(globos);
-  }
+  
 }
 
