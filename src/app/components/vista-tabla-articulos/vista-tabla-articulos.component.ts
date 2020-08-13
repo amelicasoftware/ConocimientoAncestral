@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Articulo } from '../../models/articulo';
 import { Usuario } from '../../models/usuario';
 import { ServiosBusquedaService } from '../../services/servios-busqueda.service';
@@ -17,7 +17,8 @@ import { number } from '@amcharts/amcharts4/core';
 })
 export class VistaTablaArticulosComponent implements OnInit {
 
-  articulos: Array<Articulo> = new Array<Articulo>();
+  @Input() articulos: Array<Articulo> = new Array<Articulo>();
+ // articulos: Array<Articulo> = new Array<Articulo>();
   total: Total = new Total();
   imagenR = 'assets/img/des.png';
   imagenN = 'assets/img/des.png';
@@ -29,15 +30,15 @@ export class VistaTablaArticulosComponent implements OnInit {
   ngOnInit(): void {
     let palabra = this.articulosService.getpalabra();
     // this.total.palabra = this.filtrosRevistasService.palabra;
-    console.log('aqui leo la palabra2', this.total.palabra );
-    this.articulosService.getBusquedaArticulos(palabra).subscribe((articulosApi: any) => {
-      console.log(articulosApi.articulos.total);
-      this.articulos = articulosApi.articulos.articulos;
-      // this.total.total = revistasDesdeApi.revistas.total;
-      this.filtrosArticulos.actualizarArticulos(articulosApi.articulos.articulos);
-      this.filtrosArticulos.actualizarFiltros(articulosApi.filtros);
-      this.paginadorService.actualizarTotal(articulosApi.articulos.total, 'articulos');
-    });
+    console.log('aqui leo la palabra2', palabra );
+    // this.articulosService.getBusquedaArticulos(palabra).subscribe((articulosApi: any) => {
+    //   console.log(articulosApi.articulos.total);
+    //   this.articulos = articulosApi.articulos.articulos;
+     
+    //   this.filtrosArticulos.actualizarArticulos(articulosApi.articulos.articulos);
+    //   this.filtrosArticulos.actualizarFiltros(articulosApi.filtros);
+    //   this.paginadorService.actualizarTotal(articulosApi.articulos.total, 'articulos');
+    // });
 
     this.filtrosArticulos.cambioArticulos.subscribe(data2 => {
       console.log('resutladosServicio', data2);
