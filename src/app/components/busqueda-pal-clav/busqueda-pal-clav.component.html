@@ -46,8 +46,8 @@
         <div class="flex-containercont">
 
             <div class="articulo" *ngFor="let articulo of articulos">
-                <div *ngIf="articulo.origen === 'PDF'"><a class="titulo" href="https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}}" target="_blank">{{  articulo.titulo }}</a></div>
-                <div *ngIf="articulo.origen === 'XML'"><a class="titulo" href="https://www.redalyc.org/jatsRepo/{{articulo.cveRevista}}/{{articulo.cveArticulo}}/index.html" target="_blank">{{  articulo.titulo }}</a></div>
+                <div *ngIf="articulo.origen === 'PDF'"><a class="titulo" href="https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}}" target="_blank">{{ articulo.tituloArticulo }}</a></div>
+                <div *ngIf="articulo.origen === 'XML'"><a class="titulo" href="https://www.redalyc.org/jatsRepo/{{articulo.cveRevista}}/{{articulo.cveArticulo}}/index.html" target="_blank">{{ articulo.tituloArticulo }}</a></div>
                 <p>{{ articulo.autores | autoresArticulo}}</p>
                 <p>{{ articulo.nombreRevista }}, {{ articulo.anio }}, {{ articulo.volumen }} ({{ articulo.numero }}) </p>
                 <p>Fuente: {{ articulo.fuente}} </p>
@@ -69,7 +69,7 @@
                             <img target="_blank" src="assets/img/tar-face.png" alt="">
                         </a>
 
-                        <a href="https://twitter.com/intent/tweet?original_referer=https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}} &amp;text={{  articulo.titulo }} https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}} vía @Redalyc" class="twitter"
+                        <a href="https://twitter.com/intent/tweet?original_referer=https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}} &amp;text={{ articulo.tituloArticulo }} https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}} vía @Redalyc" class="twitter"
                             target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;">
                             <img src="assets/img/tar-twit.png" alt="">
                         </a>
@@ -87,7 +87,7 @@
                             <img target="_blank" class="img-footer" src="assets/img/tar-face.png" alt="">
                         </a>
 
-                        <a href="https://twitter.com/intent/tweet?original_referer=https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}} &amp;text={{  articulo.titulo }} https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}} vía @Redalyc" class="twitter"
+                        <a href="https://twitter.com/intent/tweet?original_referer=https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}} &amp;text={{ articulo.tituloArticulo }} https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}} vía @Redalyc" class="twitter"
                             target="_blank" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false;">
                             <img target="_blank" class="img-footer" src="assets/img/tar-twit.png" alt="">
                         </a>

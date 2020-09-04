@@ -1,5 +1,5 @@
 export class Articulo{
-    titulo: string; 
+    tituloArticulo: string; 
     issn: number;
     area: string; 
     institucion: string; 
