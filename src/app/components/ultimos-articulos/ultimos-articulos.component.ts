@@ -19,12 +19,12 @@ export class UltimosArticulosComponent implements OnInit {
       this.articulos = data;
     });
 
-    this.homeService.getRevistas().subscribe( revistas => {
-      console.log(revistas);
-      this.revistas = revistas;
-    });
+  //   this.homeService.getRevistas().subscribe( revistas => {
+  //     console.log(revistas);
+  //     this.revistas = revistas;
+  //   });
 
-  }
+   }
 
   ngOnInit(): void { }
 
