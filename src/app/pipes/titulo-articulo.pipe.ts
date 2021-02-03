@@ -8,17 +8,19 @@ export class TituloArticuloPipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): string {
     // console.log(value);
-    let datos = value.split('<<<');
+    const datos = value.split('<<<');
 
-    for(let i=0; i < datos.length; i++){
+    for (let i = 0; i < datos.length; i++){
       if (datos[i] === 'es') {
-          let titulo = datos[i + 1];
+          const titulo = datos[i + 1];
           return titulo;
-      }if (datos[i] === 'en') {
-          let titulo = datos[i + 1];
+      }
+      if (datos[i] === 'en') {
+          const titulo = datos[i + 1];
           return titulo;
-      }if (datos[i] === 'pt') {
-          let titulo = datos[i + 1];
+      }
+      if (datos[i] === 'pt') {
+          const titulo = datos[i + 1];
           return titulo;
       }else{
         return datos[0];
@@ -41,7 +43,7 @@ export class TituloArticuloPipe implements PipeTransform {
     // } else {
     //   return datos[0];
     // }
-    //console.log(datos);
+    // console.log(datos);
     // return datos[1];
   }
 

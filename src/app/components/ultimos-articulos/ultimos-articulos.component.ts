@@ -1,7 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServicioHomeService } from '../../services/servicio-home.service';
-
-
 
 @Component({
   selector: 'app-ultimos-articulos',
@@ -24,7 +22,7 @@ export class UltimosArticulosComponent implements OnInit {
   //     this.revistas = revistas;
   //   });
 
-   }
+  }
 
   ngOnInit(): void { }
 

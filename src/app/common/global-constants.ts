@@ -1,11 +1,12 @@
 export class GlobalConstants {
+    public static siteTitle = 'Conocimineto Ancestral';
 
-    //public static url: string = 'http://localhost:8080/';
-    //public static serviciosURL: string = 'http://localhost:8080/';
-    //public static url: string = 'http://localhost:4200/';
-    //produccion
-    public static serviciosURL: string = 'http://portal.amelica.org/BackEndAmelic/';
-    //public static url: string = 'http://amelica.org/ConocimientoAncestral/';
-    public static url: string = 'http://semantic.redalyc.org/conocimientoancestral/';
-    public static siteTitle: string = 'Conocimineto Ancestral';
+    // local
+    public static url = 'http://localhost:4200/';
+    public static serviciosURL = 'http://localhost:8080/';
+
+    // produccion
+    // public static serviciosURL = 'http://portal.amelica.org/BackEndAmelic/';
+    // public static url = 'http://semantic.redalyc.org/conocimientoancestral/';
+    // public static url: string = 'http://amelica.org/ConocimientoAncestral/';
 }

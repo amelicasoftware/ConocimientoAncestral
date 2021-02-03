@@ -10,7 +10,7 @@ export class AutoresArticuloPipe implements PipeTransform {
     let autores2;
     for (let i = 0 ; i < autores.length; i++) {
     //  console.log(autores[i]);
-     if(i === 0){
+     if (i === 0){
       autores2 = autores[i];
      }else if (i === (autores.length - 1)){
       autores2 = autores2 + autores[i] + '.';

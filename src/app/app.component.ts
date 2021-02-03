@@ -1,4 +1,4 @@
-import { Component, NgZone, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,4 @@ import { Component, NgZone, NgModule } from '@angular/core';
 export class AppComponent {
 
   constructor(){}
-  
 }
