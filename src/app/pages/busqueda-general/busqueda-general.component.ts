@@ -172,14 +172,13 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
 
   }
 
-  public searchArticles(search: string){
-    this.filterService.filtersSelected = [];
+  public searchArticles(search: string): void {
     this.all = false;
-    this.filterService.filtersSelected$.emit([]);
+    this.filterService.cleanFiltersSelected();
     this.articleService.changeSearch(search);
   }
 
-  public changeView(state: boolean){
+  public changeView(state: boolean): void {
     this.view = state;
     if (state) {
       this.imgList = 'assets/img/lista.png';

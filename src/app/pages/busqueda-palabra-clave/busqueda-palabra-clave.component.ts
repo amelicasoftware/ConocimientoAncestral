@@ -16,12 +16,13 @@ import { FiledSort } from '../../models/filedSort';
   styleUrls: ['./busqueda-palabra-clave.component.css']
 })
 export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
-  positionSubscription: Subscription;
-  finalPositionSubscription: Subscription;
-  filtersSubscription: Subscription;
-  filtersChainSubscription: Subscription;
-  searchSubscription: Subscription;
-  fieldSortSubscription: Subscription;
+  private positionSubscription$: Subscription;
+  private finalPositionSubscription$: Subscription;
+  private filtersSubscription$: Subscription;
+  private filtersChainSubscription$: Subscription;
+  private searchSubscription$: Subscription;
+  private fieldSortSubscription$: Subscription;
+  private subscriptionArray$: Array<Subscription> = [];
 
   total: Total = new Total();
   loading: boolean;
@@ -49,12 +50,7 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.positionSubscription.unsubscribe();
-    this.finalPositionSubscription.unsubscribe();
-    this.filtersSubscription.unsubscribe();
-    this.filtersChainSubscription.unsubscribe();
-    this.searchSubscription.unsubscribe();
-    this.fieldSortSubscription.unsubscribe();
+    this.subscriptionArray$.forEach( (subscription: Subscription) => subscription.unsubscribe() );
   }
 
   ngOnInit(): void {
@@ -62,15 +58,15 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
     this.search = this.route.snapshot.paramMap.get('keyword');
     this.total.palabra = this.search;
 
-    this.filtersSubscription = this.filterService.filters$.subscribe(
+    this.filtersSubscription$ = this.filterService.filters$.subscribe(
       (filters: Array<Filtro>) => this.filters = filters
     );
 
-    this.finalPositionSubscription = this.paginationService.finalPosition$.subscribe(
+    this.finalPositionSubscription$ = this.paginationService.finalPosition$.subscribe(
       (finalPosition: number) => this.finalPositionPage = finalPosition
     );
 
-    this.positionSubscription = this.paginationService.position$.subscribe(
+    this.positionSubscription$ = this.paginationService.position$.subscribe(
       (position: number) => {
         this.positionPage = position;
         this.loading = false;
@@ -86,7 +82,7 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.filtersChainSubscription = this.filterService.filtersChain$.subscribe(
+    this.filtersChainSubscription$ = this.filterService.filtersChain$.subscribe(
       (filtersChain: FilterChain) => {
         this.loading = false;
         this.filtersChain = filtersChain;
@@ -111,7 +107,7 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.searchSubscription = this.articleService.search$.subscribe(
+    this.searchSubscription$ = this.articleService.search$.subscribe(
       (search: string) => {
         this.loading = false;
         this.positionPage = 1;
@@ -133,7 +129,7 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.fieldSortSubscription = this.articleService.filedSort$.subscribe(
+    this.fieldSortSubscription$ = this.articleService.filedSort$.subscribe(
       (fieldSort: FiledSort) => {
         this.loading = false;
         this.field = fieldSort.field;
@@ -164,15 +160,21 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
         this.totalResults = articles.articulos.total;
         this.loading = true;
     });
+
+    this.subscriptionArray$.push(this.positionSubscription$);
+    this.subscriptionArray$.push(this.finalPositionSubscription$);
+    this.subscriptionArray$.push(this.filtersSubscription$);
+    this.subscriptionArray$.push(this.filtersChainSubscription$);
+    this.subscriptionArray$.push(this.searchSubscription$);
+    this.subscriptionArray$.push(this.fieldSortSubscription$);
   }
 
-  public searchArticles(search: string){
-    this.filterService.filtersSelected = [];
-    this.filterService.filtersSelected$.emit([]);
+  public searchArticles(search: string): void {
+    this.filterService.cleanFiltersSelected();
     this.articleService.changeSearch(search);
   }
 
-  public changeView(state: boolean){
+  public changeView(state: boolean): void {
     this.view = state;
     if (state) {
       this.imgList = 'assets/img/lista.png';

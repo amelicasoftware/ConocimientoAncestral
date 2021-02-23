@@ -174,13 +174,12 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
     });
   }
 
-  public searchArticlesByCountry(search: string){
-    this.filterService.filtersSelected = [];
-    this.filterService.filtersSelected$.emit([]);
+  public searchArticlesByCountry(search: string): void {
+    this.filterService.cleanFiltersSelected();
     this.articleService.changeSearch(search);
   }
 
-  public changeView(state: boolean){
+  public changeView(state: boolean): void {
     this.view = state;
     if (state) {
       this.imgList = 'assets/img/lista.png';

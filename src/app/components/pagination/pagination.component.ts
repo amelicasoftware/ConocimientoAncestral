@@ -8,8 +8,8 @@ import { PaginationService } from '../../services/pagination.service';
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnInit, OnDestroy {
-  finalPageSubscription: Subscription;
-  initialPageSubscription: Subscription;
+  private finalPageSubscription$: Subscription;
+  private initialPageSubscription$: Subscription;
 
   @Input() totalResult: number;
   final: number;
@@ -19,11 +19,11 @@ export class PaginationComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.initialPageSubscription = this.paginationService.initialPosition$.subscribe(
+    this.initialPageSubscription$ = this.paginationService.initialPosition$.subscribe(
       (initialPage: number) => this.actualPage = initialPage
     );
 
-    this.finalPageSubscription = this.paginationService.finalPosition$.subscribe(
+    this.finalPageSubscription$ = this.paginationService.finalPosition$.subscribe(
       (finalPage: number) => this.final = finalPage
     );
 
@@ -32,7 +32,8 @@ export class PaginationComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     console.log('Destroy component New Pagination');
-    this.finalPageSubscription.unsubscribe();
+    this.finalPageSubscription$.unsubscribe();
+    this.initialPageSubscription$.unsubscribe();
   }
 
   public initialPage(){

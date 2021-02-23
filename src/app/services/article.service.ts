@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Article } from '../models/article';
 import { FilterChain } from '../models/FilterChain';
 import { GlobalConstants } from '../common/global-constants';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { FiledSort } from '../models/filedSort';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
-  search$: EventEmitter<string> = new EventEmitter<string>();
-  filedSort$: EventEmitter<FiledSort> = new EventEmitter<FiledSort>();
+  private _search$: Subject<string> = new Subject<string>();
+  private _filedSort$: Subject<FiledSort> = new Subject<FiledSort>();
 
   url: string = GlobalConstants.serviciosURL;
   urlFront: string = GlobalConstants.url;
@@ -20,12 +20,20 @@ export class ArticleService {
     private http: HttpClient
   ) { }
 
-  changeSearch(search: string){
-    this.search$.emit(search);
+  get search$(): Observable<string> {
+    return this._search$;
   }
 
-  changeFiledSort(fieldSort: FiledSort){
-    this.filedSort$.emit(fieldSort);
+  get filedSort$(): Observable<FiledSort> {
+    return this._filedSort$;
+  }
+
+  changeSearch(search: string){
+    this._search$.next(search);
+  }
+
+  changeFiledSort(fieldSort: FiledSort) {
+    this._filedSort$.next(fieldSort);
   }
 
   getArticles(
