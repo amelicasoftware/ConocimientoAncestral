@@ -1,14 +1,14 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Total } from '../../models/total';
+import { Subscription } from 'rxjs';
 import { Article } from '../../models/article';
+import { ArticleService } from '../../services/article.service';
+import { FiledSort } from '../../models/filedSort';
 import { Filtro } from '../../models/Filtro';
 import { FilterChain } from '../../models/FilterChain';
-import { Subscription } from 'rxjs';
-import { ArticleService } from '../../services/article.service';
 import { FilterService } from '../../services/filter.service';
 import { PaginationService } from '../../services/pagination.service';
-import { ActivatedRoute } from '@angular/router';
-import { FiledSort } from '../../models/filedSort';
+import { Total } from '../../models/total';
 
 @Component({
   selector: 'app-busqueda-general',
@@ -25,7 +25,6 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
   fieldSortSubscription: Subscription;
 
   total: Total = new Total();
-  loading: boolean;
 
   articles: Array<Article> = new Array<Article>();
   filters: Array<Filtro> = new Array<Filtro>();
@@ -46,9 +45,7 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
     private filterService: FilterService,
     private paginationService: PaginationService,
     private route: ActivatedRoute
-  ) {
-    this.loading = true;
-  }
+  ) { }
 
   ngOnDestroy(): void {
     this.positionSubscription.unsubscribe();
@@ -60,7 +57,6 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.loading = false;
     this.search = this.route.snapshot.paramMap.get('palabra');
     this.all = this.articleService.allArticles(this.route.snapshot.paramMap.get('palabra'));
     console.log(this.all);
@@ -68,7 +64,6 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
 
     this.searchSubscription = this.articleService.search$.subscribe(
       (search: string) => {
-        this.loading = false;
         this.positionPage = 1;
         this.search = search;
         this.total.palabra = search;
@@ -82,7 +77,6 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
             this.paginationService.changeInitialPosition();
             this.paginationService.changeFinalPosition(articles.articulos.total, 'articles');
             this.totalResults = articles.articulos.total;
-            this.loading = true;
           }
         );
       }
@@ -91,14 +85,12 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
     this.positionSubscription = this.paginationService.position$.subscribe(
       (position: number) => {
         this.positionPage = position;
-        this.loading = false;
 
         this.articleService.getArticles(this.search, position, this.reverse, this.field, this.filtersChain, this.all).subscribe(
           (articles: any) => {
             this.articles = articles.articulos.articulos;
             this.total.total = articles.articulos.total;
             this.totalResults = articles.articulos.total;
-            this.loading = true;
           }
         );
       }
@@ -115,7 +107,6 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
     this.filtersChainSubscription = this.filterService.filtersChain$.subscribe(
       (filtersChain: FilterChain) => {
         this.filtersChain = filtersChain;
-        this.loading = false;
         this.articleService.getArticles(
           this.search,
           1,
@@ -132,7 +123,6 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
             this.paginationService.changeInitialPosition();
             this.paginationService.changeFinalPosition(articles.articulos.total, 'articles');
             this.totalResults = articles.articulos.total;
-            this.loading = true;
           }
         );
       }
@@ -142,7 +132,6 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
       (fieldSort: FiledSort) => {
         this.field = fieldSort.field;
         this.reverse = fieldSort.reverse;
-        this.loading = false;
 
         this.articleService.getArticles(
           this.search,
@@ -154,7 +143,6 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
         ).subscribe(
           (articles: any) => {
             this.articles = articles.articulos.articulos;
-            this.loading = true;
           }
         );
       }
@@ -167,7 +155,6 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
         this.total.total = articles.articulos.total;
         this.filterService.changeFilters(articles.filtros);
         this.totalResults = articles.articulos.total;
-        this.loading = true;
     });
 
   }

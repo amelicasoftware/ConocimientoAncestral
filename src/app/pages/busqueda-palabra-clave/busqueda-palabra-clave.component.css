@@ -355,3 +355,8 @@ input[type=text]:focus {
 .cursor {
     cursor: pointer;
 }
+
+.loading {
+    color: white;
+    padding-top: 50px;
+}

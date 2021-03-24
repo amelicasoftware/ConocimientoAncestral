@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Filtro } from '../../models/Filtro';
 import { FilterElement } from '../../models/FilterElement';
 import { FilterService } from '../../services/filter.service';
-import { Filtro } from '../../models/Filtro';
 
 @Component({
   selector: 'app-filters',

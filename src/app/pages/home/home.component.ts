@@ -1,12 +1,12 @@
 import { Component, OnInit, NgZone, OnDestroy, AfterViewInit } from '@angular/core';
-import { GlobalConstants } from '../../common/global-constants';
-import { ServicioHomeService } from '../../services/servicio-home.service';
 import { Router } from '@angular/router';
 import { get } from 'scriptjs';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4plugins_wordCloud from '@amcharts/amcharts4/plugins/wordCloud';
+import { GlobalConstants } from '../../common/global-constants';
+import { ServicioHomeService } from '../../services/servicio-home.service';
 import 'core-js';
 
 am4core.useTheme(am4themes_animated);

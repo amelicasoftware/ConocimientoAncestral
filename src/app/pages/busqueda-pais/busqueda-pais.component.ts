@@ -1,15 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ArticleService } from '../../services/article.service';
-import { FilterService } from '../../services/filter.service';
-import { PaginationService } from '../../services/pagination.service';
 import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { finalize } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { Total } from '../../models/total';
 import { Article } from '../../models/article';
-import { Filtro } from '../../models/Filtro';
-import { FilterChain } from '../../models/FilterChain';
+import { ArticleService } from '../../services/article.service';
 import { Country } from 'src/app/models/country';
 import { FiledSort } from '../../models/filedSort';
+import { Filtro } from '../../models/Filtro';
+import { FilterChain } from '../../models/FilterChain';
+import { FilterService } from '../../services/filter.service';
+import { PaginationService } from '../../services/pagination.service';
+import { Total } from '../../models/total';
 
 @Component({
   selector: 'app-busqueda-pais',
@@ -25,7 +26,6 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
   fieldSortSubscription: Subscription;
 
   total: Total = new Total();
-  loading: boolean;
 
   articles: Array<Article> = new Array<Article>();
   filters: Array<Filtro> = new Array<Filtro>();
@@ -48,7 +48,6 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {
     const key = 'cvePais';
-    this.loading = true;
     this.route.params.subscribe((params) => {
       this.search = params[key];
       this.total.palabra = params[key];
@@ -65,11 +64,6 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.loading = false;
-
-    this.articleService.getCountries().subscribe(
-      (countries: Array<Country>) => this.listCountries = countries
-    );
 
     this.filtersSubscription = this.filterService.filters$.subscribe(
       (filters: Array<Filtro>) => this.filters = filters
@@ -81,7 +75,6 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
 
     this.positionSubscription = this.paginationService.position$.subscribe(
       (position: number) => {
-        this.loading = false;
         this.positionPage = position;
 
         this.articleService.getArticlesByCountry(this.search, position, this.reverse, this.field, this.filtersChain).subscribe(
@@ -89,7 +82,6 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
             this.articles = articles.articulos.articulos;
             this.total.total = articles.articulos.total;
             this.totalResults = articles.articulos.total;
-            this.loading = true;
           }
         );
       }
@@ -97,7 +89,6 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
 
     this.filtersChainSubscription = this.filterService.filtersChain$.subscribe(
       (filtersChain: FilterChain) => {
-        this.loading = false;
         this.filtersChain = filtersChain;
         this.articleService.getArticlesByCountry(
           this.search,
@@ -114,7 +105,6 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
             this.paginationService.changeInitialPosition();
             this.paginationService.changeFinalPosition(articles.articulos.total, 'articles');
             this.totalResults = articles.articulos.total;
-            this.loading = true;
           }
         );
       }
@@ -122,7 +112,6 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
 
     this.searchSubscription = this.articleService.search$.subscribe(
       (search: string) => {
-        this.loading = false;
         this.positionPage = 1;
         this.search = search;
         this.total.palabra = search;
@@ -136,7 +125,6 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
             this.paginationService.changeInitialPosition();
             this.paginationService.changeFinalPosition(articles.articulos.total, 'articles');
             this.totalResults = articles.articulos.total;
-            this.loading = true;
           }
         );
       }
@@ -144,7 +132,6 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
 
     this.fieldSortSubscription = this.articleService.filedSort$.subscribe(
       (fieldSort: FiledSort) => {
-        this.loading = false;
         this.field = fieldSort.field;
         this.reverse = fieldSort.reverse;
 
@@ -157,7 +144,6 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
         ).subscribe(
           (articles: any) => {
             this.articles = articles.articulos.articulos;
-            this.loading = true;
           }
         );
       }
@@ -165,12 +151,18 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
 
     this.articleService
       .getArticlesByCountry(this.search, this.positionPage, false, '', this.filtersChain)
+      .pipe(
+        finalize(
+          () => this.articleService.getCountries().subscribe(
+            (countries: Array<Country>) => this.listCountries = countries
+          )
+        )
+      )
       .subscribe((articles: any) => {
         this.articles = articles.articulos.articulos;
         this.total.total = articles.articulos.total;
         this.filterService.changeFilters(articles.filtros);
         this.totalResults = articles.articulos.total;
-        this.loading = true;
     });
   }
 

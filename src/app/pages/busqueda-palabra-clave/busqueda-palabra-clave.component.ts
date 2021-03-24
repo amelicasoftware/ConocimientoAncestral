@@ -1,14 +1,14 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ArticleService } from '../../services/article.service';
-import { FilterService } from '../../services/filter.service';
-import { PaginationService } from '../../services/pagination.service';
-import { ActivatedRoute } from '@angular/router';
-import { Total } from '../../models/total';
 import { Article } from '../../models/article';
+import { ArticleService } from '../../services/article.service';
+import { FiledSort } from '../../models/filedSort';
 import { Filtro } from '../../models/Filtro';
 import { FilterChain } from '../../models/FilterChain';
-import { FiledSort } from '../../models/filedSort';
+import { FilterService } from '../../services/filter.service';
+import { PaginationService } from '../../services/pagination.service';
+import { Total } from '../../models/total';
 
 @Component({
   selector: 'app-busqueda-palabra-clave',
@@ -25,7 +25,6 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
   private subscriptionArray$: Array<Subscription> = [];
 
   total: Total = new Total();
-  loading: boolean;
 
   articles: Array<Article> = new Array<Article>();
   filters: Array<Filtro> = new Array<Filtro>();
@@ -45,16 +44,13 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
     private filterService: FilterService,
     private paginationService: PaginationService,
     private route: ActivatedRoute
-  ) {
-    this.loading = true;
-  }
+  ) { }
 
   ngOnDestroy(): void {
     this.subscriptionArray$.forEach( (subscription: Subscription) => subscription.unsubscribe() );
   }
 
   ngOnInit(): void {
-    this.loading = false;
     this.search = this.route.snapshot.paramMap.get('keyword');
     this.total.palabra = this.search;
 
@@ -69,14 +65,12 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
     this.positionSubscription$ = this.paginationService.position$.subscribe(
       (position: number) => {
         this.positionPage = position;
-        this.loading = false;
 
         this.articleService.getArticlesByKeyword(this.search, position, this.reverse, this.field, this.filtersChain).subscribe(
           (articles: any) => {
             this.articles = articles.articulos.articulos;
             this.total.total = articles.articulos.total;
             this.totalResults = articles.articulos.total;
-            this.loading = true;
           }
         );
       }
@@ -84,7 +78,6 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
 
     this.filtersChainSubscription$ = this.filterService.filtersChain$.subscribe(
       (filtersChain: FilterChain) => {
-        this.loading = false;
         this.filtersChain = filtersChain;
         this.articleService.getArticlesByKeyword(
           this.search,
@@ -101,7 +94,6 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
             this.paginationService.changeInitialPosition();
             this.paginationService.changeFinalPosition(articles.articulos.total, 'articles');
             this.totalResults = articles.articulos.total;
-            this.loading = true;
           }
         );
       }
@@ -109,7 +101,6 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
 
     this.searchSubscription$ = this.articleService.search$.subscribe(
       (search: string) => {
-        this.loading = false;
         this.positionPage = 1;
         this.search = search;
         this.total.palabra = search;
@@ -123,7 +114,6 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
             this.paginationService.changeInitialPosition();
             this.paginationService.changeFinalPosition(articles.articulos.total, 'articles');
             this.totalResults = articles.articulos.total;
-            this.loading = true;
           }
         );
       }
@@ -131,7 +121,6 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
 
     this.fieldSortSubscription$ = this.articleService.filedSort$.subscribe(
       (fieldSort: FiledSort) => {
-        this.loading = false;
         this.field = fieldSort.field;
         this.reverse = fieldSort.reverse;
 
@@ -144,7 +133,6 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
         ).subscribe(
           (articles: any) => {
             this.articles = articles.articulos.articulos;
-            this.loading = true;
           }
         );
       }
@@ -158,7 +146,6 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
         this.total.total = articles.articulos.total;
         this.filterService.changeFilters(articles.filtros);
         this.totalResults = articles.articulos.total;
-        this.loading = true;
     });
 
     this.subscriptionArray$.push(this.positionSubscription$);

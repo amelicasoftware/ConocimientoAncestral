@@ -2,6 +2,10 @@
 <app-header></app-header>
 <!--  termina Header    -->
 
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#ffffff" type="square-loader" [fullScreen]="true">
+    <p class="loading">Cargando resultados de búsqueda...</p>
+</ngx-spinner>
+
 <div class="searcher flex">
     <div class="img-country">
         <img src="assets/img/pais-a.png"> {{articles[0]?.nombrePais}}
@@ -24,21 +28,8 @@
     </div>
 </div>
 
-<!--  loading   -->
-
-<div *ngIf="!loading" style="width: 12%; margin-left: 50%; margin-top: 10%;">
-
-    <img src="assets/img/giphy.gif" alt="">
-    <p>Cargando contenido...</p>
-
-</div>
-
-
-
-
-
 <!--  Filtros menu  -->
-<div *ngIf="total.palabra && total.total >= 1 && loading " class="grid-container">
+<div *ngIf="total.palabra && total.total >= 1" class="grid-container">
 
     <div *ngIf="total.total >= 0" class="item2">
         <!-- <app-filtros></app-filtros> -->

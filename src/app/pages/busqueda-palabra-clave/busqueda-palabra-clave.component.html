@@ -2,6 +2,10 @@
 <app-header></app-header>
 <!--  termina Header    -->
 
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#ffffff" type="square-loader" [fullScreen]="true">
+    <p class="loading">Cargando resultados de búsqueda...</p>
+</ngx-spinner>
+
 <div class="buscador flex"><img src="assets/img/buscador-institucionmdpi.png">Búsqueda por palabra clave
     <input class="busqueda" #search (keyup.enter)="searchArticles(search.value)" type="text" placeholder="Buscar" required />
     <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" (click)="searchArticles(search.value)" name="boton-buscar-articulo" alt="Buscar" required />
@@ -18,21 +22,8 @@
     </div>
 </div>
 
-<!--  loading   -->
-
-<div *ngIf="!loading" style="width: 12%; margin-left: 50%; margin-top: 10%;">
-
-    <img src="assets/img/giphy.gif" alt="">
-    <p>Cargando contenido...</p>
-
-</div>
-
-
-
-
-
 <!--  Filtros menu  -->
-<div *ngIf="total.palabra && total.total >= 1 && loading " class="grid-container">
+<div *ngIf="total.palabra && total.total >= 1" class="grid-container">
 
     <div *ngIf="total.total >= 0" class="item2">
         <!-- <app-filtros></app-filtros> -->

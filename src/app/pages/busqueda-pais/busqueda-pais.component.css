@@ -392,3 +392,8 @@ input[type=text]:focus {
     color: white;
     border-radius: 5px;
 }
+
+.loading {
+    color: white;
+    padding-top: 50px;
+}
