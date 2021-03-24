@@ -27,6 +27,7 @@
     "@types/core-js": "^2.5.3",
     "@types/scriptjs": "0.0.2",
     "core-js": "^3.6.5",
+    "ngx-spinner": "^10.0.1",
     "rxjs": "~6.5.4",
     "scriptjs": "^2.5.9",
     "tslib": "^1.10.0",

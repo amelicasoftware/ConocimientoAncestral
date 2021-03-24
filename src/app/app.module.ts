@@ -1,8 +1,11 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+// Librerias
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 // Route
 import { ROUTES } from './app.routes';
@@ -27,6 +30,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { TableComponent } from './components/table/table.component';
 import { TargetComponent } from './components/target/target.component';
 import { UltimosArticulosComponent } from './components/ultimos-articulos/ultimos-articulos.component';
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 
 
 
@@ -55,9 +59,11 @@ import { UltimosArticulosComponent } from './components/ultimos-articulos/ultimo
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES, { useHash: true}),
+    NgxSpinnerModule,
   ],
-
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
