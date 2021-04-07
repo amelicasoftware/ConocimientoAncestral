@@ -35,7 +35,7 @@
     <!-- Termina Filtros menu   -->
     <div class="item3">
 
-        <div *ngIf=" positionPage !== finalPositionPage" class="texto-resultados">
+        <div *ngIf="positionPage !== finalPositionPage" class="texto-resultados">
             <p class="texto-formato tamaño-resul-pal">Resultados para: {{total.palabra}} en artículos de revista</p>
             <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total"> {{positionPage * 10 - 9}} a {{positionPage * 10}} de {{totalResults}} artículos </p>
         </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Filtro } from '../../models/Filtro';
-import { FilterElement } from '../../models/FilterElement';
+import { Filter } from '../../models/Filter.model';
+import { FilterElement } from '../../models/FilterElement.model';
 import { FilterService } from '../../services/filter.service';
+
 
 @Component({
   selector: 'app-filters',
@@ -12,7 +13,7 @@ import { FilterService } from '../../services/filter.service';
 export class FiltersComponent implements OnInit, OnDestroy {
   filtersSubscription: Subscription;
 
-  @Input() filters: Array<Filtro>;
+  @Input() filters: Array<Filter>;
   filtersSelected: Array<FilterElement> = [];
 
   constructor(
@@ -25,7 +26,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.filtersSubscription = this.filterServive.filters$.subscribe(
-      (filters: Array<Filtro>) => this.filters = filters
+      (filters: Array<Filter>) => this.filters = filters
     );
   }
 
@@ -33,7 +34,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     this.filterServive.applyFilters();
   }
 
-  public showElements(filter: Filtro){
+  public showElements(filter: Filter){
     this.filterServive.showElements(filter);
   }
 
@@ -46,7 +47,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     this.filterServive.addFilter(filterElement, filterName);
   }
 
-  public showButton(filter: Filtro): boolean{
+  public showButton(filter: Filter): boolean{
     const show: boolean = this.filterServive.showButton(filter);
     return show;
   }

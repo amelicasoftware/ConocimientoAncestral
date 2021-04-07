@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GlobalConstants } from '../common/global-constants';
 import { Observable } from 'rxjs';
-import { Total } from '../models/total';
-import { FilterChain } from '../models/FilterChain';
-import { Article } from '../models/article';
+import { Article } from '../models/Article.model';
+import { FilterChain } from '../models/FilterChain.model';
+import { Total } from '../models/total.model';
 
 @Injectable({
   providedIn: 'root'

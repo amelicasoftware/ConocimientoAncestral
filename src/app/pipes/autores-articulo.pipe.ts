@@ -7,7 +7,7 @@ export class AutoresArticuloPipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): string {
     const autores = value.split('<<<');
-    let autores2;
+    let autores2: string;
     for (let i = 0 ; i < autores.length; i++) {
     //  console.log(autores[i]);
      if (i === 0){

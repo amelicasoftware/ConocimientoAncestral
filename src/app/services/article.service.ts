@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Article } from '../models/article';
-import { FilterChain } from '../models/FilterChain';
-import { GlobalConstants } from '../common/global-constants';
 import { Observable, Subject } from 'rxjs';
-import { FiledSort } from '../models/filedSort';
+import { ArticleResult } from '../models/ArticleResult.model';
+import { environment } from '../../environments/environment';
+import { FiledSort } from '../models/filedSort.model';
+import { FilterChain } from '../models/FilterChain.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,8 @@ export class ArticleService {
   private _search$: Subject<string> = new Subject<string>();
   private _filedSort$: Subject<FiledSort> = new Subject<FiledSort>();
 
-  url: string = GlobalConstants.serviciosURL;
-  urlFront: string = GlobalConstants.url;
+  public url: string = environment.baseUrl;
+  private urlProject: string = environment.urlProject;
 
   constructor(
     private http: HttpClient
@@ -39,20 +39,17 @@ export class ArticleService {
   getArticles(
     search: string,
     page: number,
-    reverse: boolean,
+    reverse: number,
     field: string,
     filters: FilterChain,
     all: boolean
-  ): Observable<Article[]>{
+  ): Observable<ArticleResult>{
+    let articles: Observable<ArticleResult>;
+    // Preguntar para ver si habra un parametro para todas las revistas
+    /* const allArticles = all ? `&allArt=${all}` : ''; */
 
-    let articles: Observable<Article[]>;
-    const filtersChain: string = this.getFiltersChainValidate(filters);
-    const fieldSort: string = this.getFieldSortValidate(reverse, field);
-    const allArticles = all ? `&allArt=${all}` : '';
-
-    console.log('Servicio para articulos: ', `${this.url}articulos/general?p=${search}&page=${page}${fieldSort}&${filtersChain}${allArticles}`);
-
-    articles = this.http.get<Article[]>(`${this.url}articulos/general?p=${search}&page=${page}${fieldSort}&${filtersChain}${allArticles}`);
+    console.log('Servicio para articulos: ', `${this.url}articulos/ancestral/${search}/${page}/10/relevancia/0/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
+    articles = this.http.get<ArticleResult>(`${this.url}articulos/ancestral/${search}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
 
     return articles;
   }
@@ -60,63 +57,35 @@ export class ArticleService {
   getArticlesByKeyword(
     search: string,
     page: number,
-    reverse: boolean,
+    reverse: number,
     field: string,
-    filters: FilterChain
-  ): Observable<Article[]>{
-    let articles: Observable<Article[]>;
-    const filtersChain: string = this.getFiltersChainValidate(filters);
-    const fieldSort: string = this.getFieldSortValidate(reverse, field);
+    filters: FilterChain,
+  ): Observable<ArticleResult>{
+    let articles: Observable<ArticleResult>;
 
-    articles = this.http.get<Article[]>(`${this.url}articulos/palClave?p=${search}&page=${page}${fieldSort}&${filtersChain}`);
+    console.log('Servicio para articulos por palabra clave: ', `${this.url}articulos/ancestral/palabras/${search}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
+    articles = this.http.get<ArticleResult>(`${this.url}articulos/ancestral/palabras/${search}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
 
     return articles;
   }
 
   getArticlesByCountry(
-    idCountry: string,
+    countryId: string,
     page: number,
-    reverse: boolean,
+    reverse: number,
     field: string,
     filters: FilterChain
-  ): Observable<Article[]>{
-    let articles: Observable<Article[]>;
-    const filtersChain: string = this.getFiltersChainValidate(filters);
-    const fieldSort: string = this.getFieldSortValidate(reverse, field);
+  ): Observable<ArticleResult>{
+    let articles: Observable<ArticleResult>;
 
-    console.log(`${this.url}articulos/pais?c=${idCountry}&page=${page}${fieldSort}&${filtersChain}`);
-    articles = this.http.get<Article[]>(`${this.url}articulos/pais?c=${idCountry}&page=${page}${fieldSort}&${filtersChain}`);
+    console.log('Servicio para articulos por país: ', `${this.url}articulos/ancestral/pais/${countryId}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
+    articles = this.http.get<ArticleResult>(`${this.url}articulos/ancestral/pais/${countryId}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
 
     return articles;
   }
 
   getCountries(){
-    return this.http.get(`${this.urlFront}assets/js/json/paises.json`);
-  }
-
-  getFiltersChainValidate(filters: FilterChain): string{
-    let filtersChain: string;
-    (
-      filters.countryChain
-      || filters.disciplineChain
-      || filters.fontChain
-      || filters.languageChain
-      || filters.yearChain
-    )
-    ? filtersChain = `f=${filters.yearChain},${filters.disciplineChain},${filters.countryChain},${filters.languageChain},${filters.fontChain},`
-    : filtersChain = 'f=,,,,,';
-
-    return filtersChain;
-  }
-
-  getFieldSortValidate(reverse: boolean, field: string): string{
-    let fieldSort: string;
-
-    field
-    ? fieldSort = `&r=${reverse}&palOrd=${field}`
-    : fieldSort = '';
-
-    return fieldSort;
+    return this.http.get(`${this.urlProject}assets/js/json/paises.json`);
   }
 
   allArticles(search: string): boolean{

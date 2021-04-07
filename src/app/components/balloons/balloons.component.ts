@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FilterElement } from '../../models/FilterElement';
-import { FilterService } from '../../services/filter.service';
 import { Subscription } from 'rxjs';
+import { FilterElement } from '../../models/FilterElement.model';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   selector: 'app-balloons',

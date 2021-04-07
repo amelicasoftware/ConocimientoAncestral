@@ -2,15 +2,16 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { Article } from '../../models/article';
+import { Article } from '../../models/Article.model';
+import { ArticleResult } from '../../models/ArticleResult.model';
 import { ArticleService } from '../../services/article.service';
-import { Country } from 'src/app/models/country';
-import { FiledSort } from '../../models/filedSort';
-import { Filtro } from '../../models/Filtro';
-import { FilterChain } from '../../models/FilterChain';
+import { Country } from 'src/app/models/country.model';
+import { FiledSort } from '../../models/filedSort.model';
+import { Filter } from '../../models/Filter.model';
+import { FilterChain } from '../../models/FilterChain.model';
 import { FilterService } from '../../services/filter.service';
 import { PaginationService } from '../../services/pagination.service';
-import { Total } from '../../models/total';
+import { Total } from '../../models/total.model';
 
 @Component({
   selector: 'app-busqueda-pais',
@@ -28,8 +29,15 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
   total: Total = new Total();
 
   articles: Array<Article> = new Array<Article>();
-  filters: Array<Filtro> = new Array<Filtro>();
-  filtersChain: FilterChain = new FilterChain();
+  filters: Array<Filter> = new Array<Filter>();
+  filtersChain: FilterChain = {
+    yearChain: '',
+    disciplineChain: '',
+    countryChain: '',
+    languageChain: '',
+    fontChain: ''
+  };
+
   listCountries: Array<Country> = new Array<Country>();
   search: string;
   finalPositionPage: number;
@@ -38,8 +46,8 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
   view = true;
   imgList = 'assets/img/lista.png';
   imgTable = 'assets/img/tarjetas-act.png';
-  reverse = false;
-  field = '';
+  reverse = 0;
+  field = 'relevancia';
 
   constructor(
     private articleService: ArticleService,
@@ -66,7 +74,7 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.filtersSubscription = this.filterService.filters$.subscribe(
-      (filters: Array<Filtro>) => this.filters = filters
+      (filters: Array<Filter>) => this.filters = filters
     );
 
     this.finalPositionSubscription = this.paginationService.finalPosition$.subscribe(
@@ -78,10 +86,10 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
         this.positionPage = position;
 
         this.articleService.getArticlesByCountry(this.search, position, this.reverse, this.field, this.filtersChain).subscribe(
-          (articles: any) => {
-            this.articles = articles.articulos.articulos;
-            this.total.total = articles.articulos.total;
-            this.totalResults = articles.articulos.total;
+          (articles: ArticleResult) => {
+            this.articles = articles.resultados;
+            this.total.total = articles.totalResultados;
+            this.totalResults = articles.totalResultados;
           }
         );
       }
@@ -97,14 +105,14 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
           this.field,
           this.filtersChain
         ).subscribe(
-          (articles: any) => {
+          (articles: ArticleResult) => {
             this.positionPage = 1;
-            this.articles = articles.articulos.articulos;
-            this.total.total = articles.articulos.total;
+            this.articles = articles.resultados;
+            this.total.total = articles.totalResultados;
             this.filterService.changeFilters(articles.filtros);
             this.paginationService.changeInitialPosition();
-            this.paginationService.changeFinalPosition(articles.articulos.total, 'articles');
-            this.totalResults = articles.articulos.total;
+            this.paginationService.changeFinalPosition(articles.totalResultados, 'articles');
+            this.totalResults = articles.totalResultados;
           }
         );
       }
@@ -115,16 +123,22 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
         this.positionPage = 1;
         this.search = search;
         this.total.palabra = search;
-        this.filtersChain = new FilterChain();
+        this.filtersChain = {
+          yearChain: '',
+          disciplineChain: '',
+          countryChain: '',
+          languageChain: '',
+          fontChain: ''
+        };
 
-        this.articleService.getArticlesByCountry(search, 1, false, '', this.filtersChain).subscribe(
-          (articles: any) => {
-            this.articles = articles.articulos.articulos;
-            this.total.total = articles.articulos.total;
+        this.articleService.getArticlesByCountry(search, 1,  0, 'relevancia', this.filtersChain).subscribe(
+          (articles: ArticleResult) => {
+            this.articles = articles.resultados;
+            this.total.total = articles.totalResultados;
             this.filterService.changeFilters(articles.filtros);
             this.paginationService.changeInitialPosition();
-            this.paginationService.changeFinalPosition(articles.articulos.total, 'articles');
-            this.totalResults = articles.articulos.total;
+            this.paginationService.changeFinalPosition(articles.totalResultados, 'articles');
+            this.totalResults = articles.totalResultados;
           }
         );
       }
@@ -142,15 +156,15 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
           fieldSort.field,
           this.filtersChain
         ).subscribe(
-          (articles: any) => {
-            this.articles = articles.articulos.articulos;
+          (articles: ArticleResult) => {
+            this.articles = articles.resultados;
           }
         );
       }
     );
 
     this.articleService
-      .getArticlesByCountry(this.search, this.positionPage, false, '', this.filtersChain)
+      .getArticlesByCountry(this.search, this.positionPage,  0, 'relevancia', this.filtersChain)
       .pipe(
         finalize(
           () => this.articleService.getCountries().subscribe(
@@ -158,11 +172,11 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
           )
         )
       )
-      .subscribe((articles: any) => {
-        this.articles = articles.articulos.articulos;
-        this.total.total = articles.articulos.total;
+      .subscribe((articles: ArticleResult) => {
+        this.articles = articles.resultados;
+        this.total.total = articles.totalResultados;
         this.filterService.changeFilters(articles.filtros);
-        this.totalResults = articles.articulos.total;
+        this.totalResults = articles.totalResultados;
     });
   }
 

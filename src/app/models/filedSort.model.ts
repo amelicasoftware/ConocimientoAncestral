@@ -1,4 +1,4 @@
 export class FiledSort{
-    reverse: boolean;
+    reverse: number;
     field: string;
 }

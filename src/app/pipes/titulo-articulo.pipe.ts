@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { indexOf } from '@amcharts/amcharts4/.internal/core/utils/Array';
 
 @Pipe({
   name: 'tituloArticulo'

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Filtro } from '../models/Filtro';
-import { FilterElement } from '../models/FilterElement';
-import { FilterChain } from '../models/FilterChain';
 import { Subject, Observable } from 'rxjs';
+import { Filter } from '../models/Filter.model';
+import { FilterChain } from '../models/FilterChain.model';
+import { FilterElement } from '../models/FilterElement.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
-  private _filters$: Subject<Array<Filtro>> = new Subject<Array<Filtro>>();
+  private _filters$: Subject<Array<Filter>> = new Subject<Array<Filter>>();
   private _filtersChain$: Subject<FilterChain> = new Subject<FilterChain>();
   private _filtersSelected$: Subject<Array<FilterElement>> = new Subject<Array<FilterElement>>();
 
@@ -17,7 +17,7 @@ export class FilterService {
 
   constructor() { }
 
-  get filters$(): Observable<Array<Filtro>> {
+  get filters$(): Observable<Array<Filter>> {
     return this._filters$;
   }
 
@@ -29,7 +29,7 @@ export class FilterService {
     return this._filtersSelected$;
   }
 
-  public changeFilters(filters: Array<Filtro>): void {
+  public changeFilters(filters: Array<Filter>): void {
     console.log('change filters');
     this._filters$.next(filters);
   }
@@ -102,7 +102,7 @@ export class FilterService {
     }
   }
 
-  public showButton(filter: Filtro): boolean {
+  public showButton(filter: Filter): boolean {
     if (filter.elementos.length > 5){
       return false;
     }else{
@@ -110,7 +110,7 @@ export class FilterService {
     }
   }
 
-  public showElements(filter: Filtro): void {
+  public showElements(filter: Filter): void {
     if (!filter.hasOwnProperty('state')) {
       Object.defineProperty(filter, 'state', {
         value: false,

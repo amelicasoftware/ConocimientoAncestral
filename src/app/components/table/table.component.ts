@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Article } from '../../models/article';
+import { Article } from '../../models/Article.model';
 import { ArticleService } from '../../services/article.service';
-import { FiledSort } from '../../models/filedSort';
+import { FiledSort } from '../../models/filedSort.model';
 
 @Component({
   selector: 'app-table',
@@ -14,14 +14,14 @@ export class TableComponent implements OnInit {
   imagenR = 'assets/img/des.png';
   imagenN = 'assets/img/des.png';
   reverseR = true;
-  reverseN = true;
+  reverseN = 1;
 
   constructor( private articleService: ArticleService ) { }
 
   ngOnInit(): void {
   }
 
-  reverse(field: string, reverse: boolean){
+  reverse(field: string, reverse: number){
     const fieldSort: FiledSort = new FiledSort();
     fieldSort.field = field;
     fieldSort.reverse = reverse;
@@ -29,7 +29,7 @@ export class TableComponent implements OnInit {
     this.changeIcon(field, reverse);
   }
 
-  changeIcon(field: string, reverse: boolean){
+  changeIcon(field: string, reverse: number){
     if (reverse && field === 'nombreRevista'){
       this.imagenR = 'assets/img/as.png';
       this.reverseR = false;
@@ -40,10 +40,10 @@ export class TableComponent implements OnInit {
 
     if (reverse && field === 'anio'){
       this.imagenN = 'assets/img/as.png';
-      this.reverseN = false;
+      this.reverseN = 0;
     } else {
       this.imagenN = 'assets/img/des.png';
-      this.reverseN = true;
+      this.reverseN = 1;
     }
   }
 
