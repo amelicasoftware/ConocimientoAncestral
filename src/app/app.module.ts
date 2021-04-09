@@ -33,6 +33,7 @@ import { TargetComponent } from './components/target/target.component';
 import { UltimosArticulosComponent } from './components/ultimos-articulos/ultimos-articulos.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
+import { BannerSearchesComponent } from './components/banner-searches/banner-searches.component';
 
 
 
@@ -56,6 +57,7 @@ import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.compon
     TituloArticuloPipe,
     UltimosArticulosComponent,
     MenuMobileComponent,
+    BannerSearchesComponent,
   ],
   imports: [
     BrowserAnimationsModule,

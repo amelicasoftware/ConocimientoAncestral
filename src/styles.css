@@ -894,3 +894,10 @@ iframe {
 .e-menu-wrapper .e-ul .e-menu-item.e-selected span {
     color: black;
 }
+
+/* FONDO COVID */
+
+#searches {
+    background-image: url(/assets/img/fondo-buscador-conocimiento-ancestral.jpg);
+    height: 115px;
+}

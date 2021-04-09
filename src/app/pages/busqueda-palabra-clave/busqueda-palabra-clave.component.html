@@ -5,7 +5,9 @@
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#ffffff" type="square-loader" [fullScreen]="true">
     <p class="loading">Cargando resultados de búsqueda...</p>
 </ngx-spinner>
-
+<section id="searches">
+    <app-banner-searches [sectionKey]=true></app-banner-searches>
+</section>
 <div class="buscador flex"><img src="assets/img/buscador-institucionmdpi.png">Búsqueda por palabra clave
     <input class="busqueda" #search (keyup.enter)="searchArticles(search.value)" type="text" placeholder="Buscar" required />
     <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" (click)="searchArticles(search.value)" name="boton-buscar-articulo" alt="Buscar" required />
