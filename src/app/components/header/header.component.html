@@ -1,4 +1,4 @@
-<div id="" class="header">
+<!-- <div id="" class="header">
     <div style="color: #fff !important; display: flex; ">
         <div id="logo-CA" style="width: 50%;">
             <a href="#"><img src="assets/img/conocimiento-ancestral.png" alt=""></a>
@@ -19,4 +19,40 @@
         </div>
     </div>
 
+</div> -->
+
+
+<!-- Nuevo Header desde Epidemics -->
+<app-menu-mobile></app-menu-mobile>
+<div class="header">
+    <div class="navigation">
+        <div class="logo-redalyc">
+            <a href="https://www.redalyc.org/" target="_blank">
+                <img class="to-home" id="to-home" src="assets/img/header/logo-redalyc-fondo-oscuro.png">
+            </a>
+        </div>
+        <div class="links-home">
+            <ejs-menu [items]='menuItems'>
+                <ng-template #template let-menuItems="">
+                    <a target='_blank' href="{{menuItems.url}}" class="item-search">{{menuItems.text}}</a>
+                </ng-template>
+            </ejs-menu>
+        </div>
+        
+        <div class="languages-social-netwoks">
+            <div id="menu-mobile" (click)="openNav()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <!-- <span>ESP</span>
+            <span>ENG</span> -->
+            <a href="https://www.instagram.com/redalyc_oficial" target="_blank"><img class="instragram" src="assets/img/header/ig.png"></a>
+            <a href="https://twitter.com/Redalyc" target="_blank"><img class="twitter" src="assets/img/header/tw.png"></a>
+            <a href="https://www.facebook.com/Redalyc/" target="_blank"><img class="facebook" src="assets/img/header/face.png"></a>
+
+        </div>
+    </div>
+
+    <div class="current-section">
+        <span><a href="https://www.redalyc.org/" target="_blank">Redalyc</a> > <a [routerLink]="['/home']">Base de conocimiento en epidemias y COVID-19</a> {{ currentSection }}</span>
+    </div>
 </div>

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 // Librerias
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MenuModule } from '@syncfusion/ej2-angular-navigations';
 
 // Route
 import { ROUTES } from './app.routes';
@@ -31,6 +32,7 @@ import { TableComponent } from './components/table/table.component';
 import { TargetComponent } from './components/target/target.component';
 import { UltimosArticulosComponent } from './components/ultimos-articulos/ultimos-articulos.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 
 
 
@@ -53,11 +55,13 @@ import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
     TargetComponent,
     TituloArticuloPipe,
     UltimosArticulosComponent,
+    MenuMobileComponent,
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
+    MenuModule,
     RouterModule.forRoot(ROUTES, { useHash: true}),
     NgxSpinnerModule,
   ],
