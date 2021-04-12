@@ -5,7 +5,9 @@
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#ffffff" type="square-loader" [fullScreen]="true">
     <p class="loading">Cargando resultados de búsqueda...</p>
 </ngx-spinner>
-
+<section id="searches">
+    <app-banner-searches [sectionCountry]=true></app-banner-searches>
+</section>
 <div class="searcher flex">
     <div class="img-country">
         <img src="assets/img/pais-a.png"> {{articles[0]?.nombrePais}}

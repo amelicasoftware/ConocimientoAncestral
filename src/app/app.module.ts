@@ -10,6 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Librerias
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MenuModule } from '@syncfusion/ej2-angular-navigations';
 
 // Route
 import { ROUTES } from './app.routes';
@@ -35,6 +36,8 @@ import { TableComponent } from './components/table/table.component';
 import { TargetComponent } from './components/target/target.component';
 import { UltimosArticulosComponent } from './components/ultimos-articulos/ultimos-articulos.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
+import { BannerSearchesComponent } from './components/banner-searches/banner-searches.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -59,11 +62,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     TargetComponent,
     TituloArticuloPipe,
     UltimosArticulosComponent,
+    MenuMobileComponent,
+    BannerSearchesComponent,
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
+    MenuModule,
     RouterModule.forRoot(ROUTES, { useHash: true}),
     NgxSpinnerModule,
     TranslateModule.forRoot({

@@ -263,24 +263,24 @@ div.outerBorder {
     padding-bottom: 50px;
 }
 
-#footer {
+/* #footer {
     width: 100%;
-    background-image: url(../../../assets/img/maiz-footer.jpg);
+    background-image: url(../../../assets/img/maiz-footer.jpg); */
     /* background-image: url(../../../assets/img/maiz-footer.webp); */
-    background-color: #f2f2f2;
+    /* background-color: #f2f2f2;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
+} */
+/* 
 #footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
+} */
 
 
 /*barra iconos*/

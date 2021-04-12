@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
 @font-face {
     font-family: Barlow-Bold;
     src: url('./assets/fonts/Barlow-Bold.ttf');
@@ -866,4 +867,37 @@ iframe {
 
 .color-idioma {
     color: #4762b2;
+}
+
+/* Estilos modificados de la libreria ej2-angular-navigations con respecto al diseño enviado por la empresa */
+
+.e-menu-wrapper ul .e-menu-item {
+    padding: 0 5px;
+}
+
+.e-menu-wrapper ul .e-menu-item.e-selected {
+    background-color: #37464E;
+    color: white;
+}
+
+.e-menu-wrapper ul .e-menu-item .e-caret,
+.e-menu-wrapper ul .e-menu-item.e-selected .e-caret,
+.e-menu-wrapper ul .e-menu-item .e-menu-url {
+    color: white;
+}
+
+.e-menu-wrapper .e-ul .e-menu-item a,
+.e-menu-wrapper .e-ul .e-menu-item span {
+    color: black;
+}
+
+.e-menu-wrapper .e-ul .e-menu-item.e-selected span {
+    color: black;
+}
+
+/* FONDO COVID */
+
+#searches {
+    background-image: url(/assets/img/fondo-buscador-conocimiento-ancestral.jpg);
+    height: 115px;
 }
