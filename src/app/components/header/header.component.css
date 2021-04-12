@@ -1,138 +1,146 @@
 .header {
-  background-color: #37464E;
+    background-color: #37464E;
 }
 
 .navigation {
-  width: 100%;
-  display: flex;
-  color: white;
-  align-items: center;
-  height: 90px;
-  justify-content: center;
+    width: 100%;
+    display: flex;
+    color: white;
+    align-items: center;
+    height: 90px;
+    justify-content: center;
 }
 
 .to-home {
-  width: 200px;
-  cursor: pointer;
-  margin: 10px 12px 10px 20px;
+    width: 200px;
+    cursor: pointer;
+    margin: 10px 12px 10px 20px;
 }
 
 .links-home ul {
-  font-size: 12px;
-  background-color: #37464E;
-  color: white;
-  white-space: normal;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+    font-size: 12px;
+    background-color: #37464E;
+    color: white;
+    white-space: normal;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .links-home li:hover {
-  background-color: #37464E;
-  color: white;
+    background-color: #37464E;
+    color: white;
 }
 
 .languages-social-netwoks {
-  font-size: 12px;
-  display: inline-flex;
-  align-items: center;
-  margin-left: 15px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 15px;
 }
 
 .languages-social-netwoks span,
 a {
-  padding: 0px 3px;
+    padding: 0px 3px;
 }
 
 .languages-social-netwoks a img {
-  width: 20px;
-  height: 20px;
+    width: 20px;
+    height: 20px;
 }
 
 .current-section {
-  color: #6C858E;
-  font-size: 12px;
-  padding: 0px 40px 20px 80px;
+    color: #6C858E;
+    font-size: 12px;
+    padding: 0px 40px 20px 80px;
 }
 
 .current-section a {
-  text-decoration: none;
-  color: #6C858E;
+    text-decoration: none;
+    color: #6C858E;
 }
 
 .item-search {
-  color: white;
-  text-decoration: none;
-  display: inline-block;
-  width: 100%;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
 }
 
 #menuitem_1 a,
 #menuitem_4 a,
 #menuitem_5 a {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 #menu-mobile {
-  display: none;
+    display: none;
 }
+
+.lang {
+    cursor: pointer;
+}
+
 
 /* Extra small devices (phones, 600px and down) */
+
 @media only screen and (max-width: 600px) {
-  .links-home{
-      display: none;
-  }
-  .current-section{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0px;
-  }
-  #menu-mobile {
-      display: block;
-      margin: 0px 10px;
-      cursor: pointer;
-      font-size: 15pt;
-  }
+    .links-home {
+        display: none;
+    }
+    .current-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0px;
+    }
+    #menu-mobile {
+        display: block;
+        margin: 0px 10px;
+        cursor: pointer;
+        font-size: 15pt;
+    }
 }
+
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
+
 @media (min-width: 600px) and (max-width: 992px) {
-  .links-home{
-      display: none;
-  }
-  .current-section{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0px;
-  }
-  .navigation {
-      height: 65px;
-      justify-content: space-between;
-  }
-  #menu-mobile {
-      display: block;
-      margin: 0px 10px;
-      cursor: pointer;
-      font-size: 15pt;
-  }
-  .navigation div{
-      margin: 0px 30px;
-  }
+    .links-home {
+        display: none;
+    }
+    .current-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0px;
+    }
+    .navigation {
+        height: 65px;
+        justify-content: space-between;
+    }
+    #menu-mobile {
+        display: block;
+        margin: 0px 10px;
+        cursor: pointer;
+        font-size: 15pt;
+    }
+    .navigation div {
+        margin: 0px 30px;
+    }
 }
+
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
 
-}
+@media only screen and (min-width: 768px) {}
+
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
 
-}
+@media only screen and (min-width: 992px) {}
+
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
 
-}
+@media only screen and (min-width: 1200px) {}

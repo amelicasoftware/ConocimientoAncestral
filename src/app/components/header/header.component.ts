@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MenuItemModel } from '@syncfusion/ej2-angular-navigations';
 import { MenuMobileComponent } from '../menu-mobile/menu-mobile.component';
+import { TranslationService } from '../../services/translation.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,7 +9,7 @@ import { MenuMobileComponent } from '../menu-mobile/menu-mobile.component';
 })
 export class HeaderComponent implements OnInit {
   @Input() currentSection: string;
-   @ViewChild(MenuMobileComponent) menu: MenuMobileComponent;
+  @ViewChild(MenuMobileComponent) menu: MenuMobileComponent;
 
   public menuItems: MenuItemModel[] = [
     {
@@ -128,13 +129,19 @@ export class HeaderComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(
+    private translationService: TranslationService
+  ) { }
 
   ngOnInit(): void {
   }
 
   openNav(): void {
     this.menu.openNav();
+  }
+
+  changeLanguage(lang: string): void {
+    this.translationService.changeLanguage(lang);
   }
 
 }

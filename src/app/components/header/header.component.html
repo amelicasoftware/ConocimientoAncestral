@@ -1,28 +1,3 @@
-<!-- <div id="" class="header">
-    <div style="color: #fff !important; display: flex; ">
-        <div id="logo-CA" style="width: 50%;">
-            <a href="#"><img src="assets/img/conocimiento-ancestral.png" alt=""></a>
-            <a href="https://www.redalyc.org/"><img src="assets/img/redalyc.png" alt=""></a>
-        </div>
-        <div id="menu">
-            <div id="contenedor-menu">
-                <a href="https://www.redalyc.org/redalyc/acerca-de/mision.html" class="option-menu">Acerca de
-                    Redalyc</a>
-                <a [routerLink]="['/acerca-de']" class=" option-menu">Proyecto Conocimiento Ancestral</a>
-            </div>
-            <div id="logos " style="width: 25%; ">
-                <a href="# "><img class="logos" src="assets/img/ic-home.png " alt=" "> </a>
-                <a href="https://www.facebook.com/Redalyc/"><img class="logos" src="assets/img/ic-facebook.png " alt=" "></a>
-                <a href="https://twitter.com/Redalyc"><img class="logos" src="assets/img/ic-twitter.png " alt=" "></a>
-            </div>
-
-        </div>
-    </div>
-
-</div> -->
-
-
-<!-- Nuevo Header desde Epidemics -->
 <app-menu-mobile></app-menu-mobile>
 <div class="header">
     <div class="navigation">
@@ -38,13 +13,13 @@
                 </ng-template>
             </ejs-menu>
         </div>
-        
+
         <div class="languages-social-netwoks">
             <div id="menu-mobile" (click)="openNav()">
                 <i class="fa fa-bars"></i>
             </div>
-            <!-- <span>ESP</span>
-            <span>ENG</span> -->
+            <span class="lang" (click)="changeLanguage('es')">ESP</span>
+            <span class="lang" (click)="changeLanguage('en')">ENG</span>
             <a href="https://www.instagram.com/redalyc_oficial" target="_blank"><img class="instragram" src="assets/img/header/ig.png"></a>
             <a href="https://twitter.com/Redalyc" target="_blank"><img class="twitter" src="assets/img/header/tw.png"></a>
             <a href="https://www.facebook.com/Redalyc/" target="_blank"><img class="facebook" src="assets/img/header/face.png"></a>

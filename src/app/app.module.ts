@@ -19,10 +19,14 @@ import { ROUTES } from './app.routes';
 import { AutoresArticuloPipe } from './pipes/autores-articulo.pipe';
 import { TituloArticuloPipe } from './pipes/titulo-articulo.pipe';
 
+// Interceptores
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+
 // Components
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AppComponent } from './app.component';
 import { BalloonsComponent } from './components/balloons/balloons.component';
+import { BannerSearchesComponent } from './components/banner-searches/banner-searches.component';
 import { BusquedaGeneralComponent } from './pages/busqueda-general/busqueda-general.component';
 import { BusquedaPaisComponent } from './pages/busqueda-pais/busqueda-pais.component';
 import { BusquedaPalabraClaveComponent } from './pages/busqueda-palabra-clave/busqueda-palabra-clave.component';
@@ -31,13 +35,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MapaComponent } from './components/mapa/mapa.component';
+import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { TableComponent } from './components/table/table.component';
 import { TargetComponent } from './components/target/target.component';
 import { UltimosArticulosComponent } from './components/ultimos-articulos/ultimos-articulos.component';
-import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
-import { MenuMobileComponent } from './components/menu-mobile/menu-mobile.component';
-import { BannerSearchesComponent } from './components/banner-searches/banner-searches.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -49,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     AutoresArticuloPipe,
     BalloonsComponent,
+    BannerSearchesComponent,
     BusquedaGeneralComponent,
     BusquedaPaisComponent,
     BusquedaPalabraClaveComponent,
@@ -57,13 +60,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     HomeComponent,
     MapaComponent,
+    MenuMobileComponent,
     PaginationComponent,
     TableComponent,
     TargetComponent,
     TituloArticuloPipe,
     UltimosArticulosComponent,
-    MenuMobileComponent,
-    BannerSearchesComponent,
   ],
   imports: [
     BrowserAnimationsModule,
