@@ -1,0 +1,106 @@
+{
+    "header": {
+        "acerca.redalyc": "About Redalyc",
+        "mision": "Mision",
+        "consejo": "Advisory Board",
+        "directorio": "Directory",
+        "cronologia": "Chronology",
+        "reconocimientos": "International Awards",
+        "oai": "OAI-PMH",
+        "sitio": "Redalyc on your website",
+        "uso": "Legal use",
+        "publicaciones": "Publications",
+        "acceso": "Diamond Open Access",
+        "valores": "Principles and Values",
+        "jats": "Digital Publication Technology (XML JATS)",
+        "marcalyc": "Marcalyc Markup System (XML JATS)",
+        "ojs": "OJS integration",
+        "capacitacion": "XML JATS Capacitation",
+        "generacion": "ePUB, PDF HTML Automatic Generation",
+        "visor": "Article viewer",
+        "movil": "Mobile article viewer",
+        "indexacion": "Journal indexing",
+        "consolidadas.redalyc": "Redalycs' consolidated journal index",
+        "consolidadas.amelica": "AmeliCA s' in consolidation journal index",
+        "evaluacion": "Evaluation Criteria",
+        "postulacion": "Postulation Process",
+        "servicios": "Services",
+        "redalyc": "Redalyc",
+        "acerca.genero": "About",
+        "pais": "Search by country"
+    },
+    "navegacion": {
+        "total": "More than {{ articles }} articles extracted from {{ journals }} journals in {{ countries }} counttries",
+        "buscador": "Browser",
+        "clave": "Articles by keyword",
+        "conocimiento": "Knowledge representation",
+        "pais": "Articles by country",
+        "sparql": "Knowledge base in SPARQL",
+        "recientes": "More recent"
+    },
+    "home": {
+        "mensaje": "For a non-for-profit publishing model to keep the academic and open nature of the scientific communication.",
+        "recientes": "Recent publications",
+        "mas": "Display more articles",
+        "cargando": "Loading Articles...",
+        "sparql": "SPARQL access point with the available data to access the results for better analysis: {{ value }}"
+    },
+    "busqueda": {
+        "banner": {
+            "pais": "Select country:",
+            "palabras": "Search by keyword",
+            "general": "General search",
+            "buscar": "Search"
+        },
+        "secciones": {
+            "principal": "Journal articles",
+            "modo": "Mode of results visualization",
+            "tabla": "table",
+            "lista": "list",
+            "resultados": "Results for: {{ text }} in journal articles",
+            "resultados.pais": "Articles published in journals from: {{ value }}",
+            "total": "{{ value1 }} from {{ value2 }} to {{ value3 }} articles"
+        },
+        "filtros": {
+            "titulo": "Search filters",
+            "AÃ±o": "Year",
+            "Idioma": "Language",
+            "Disciplina": "Discipline",
+            "PaÃ?s": "Country",
+            "mas": "Show more",
+            "menos": "Show less",
+            "aplicar": "Apply filters"
+        },
+        "tabla": {
+            "titulo": "Title",
+            "autor": "Authors",
+            "revista": "Journal",
+            "numero": "Number",
+            "texto": "Full text",
+            "ordenar": "Arrange results by {{value}}"
+        },
+        "tarjeta": {
+            "fuente": "Source:"
+        }
+    },
+    "estatica": {
+        "proyecto": "Project",
+        "ancestral": "Ancestral Knowledge",
+        "objetivo": "Its objective is to integrate the scientific content published on the Open Access journals that Redalyc indexes corresponding to themes like: Indigenous Knowledge, tribes and native cultures, native tongues, ancestral agriculture, among others.",
+        "parrafo1": "The Ancestral Knowledge Collection (AKC) was built from the Redalyc.org database, system that indexes non-commercial Open Access journals of certified quality. The AKC is composed of thousands of art icles that came from applying a series of algorithms that perform an automatic content curation based on a thesaurus of terms. The resulting data set is transformed though a process that extracts the meaning of the different data that comprises a scientific article and is later stored in the form of triples in a knowledge base linked to Linked Open Data.",
+        "parrafo2": "This project was developed thanks to the support obtained  from the Shuttleworth Foundation through a Flash Grantee granted in December 2019 to Dr. Arianna Becerril García as well as to REdalyc staff from the Autonomous University of the State of Mexico.",
+        "parrafo3": "The AKC has for objective to integrate the scientific content published in the Open Access journals that REdalyc indexes corresponding to themes like: Indigenous Knowledge, tribes and native cultures, native tongues, ancestral agriculture, among others.",
+        "parrafo4": "This portal shows the collection through search engines, a visual representation of the knowledge obtained that operates at the same time as a themed article browser, as well as making the data set available for consultation and download through a SPARQL endpoint."
+    },
+    "general": {
+        "spinner": "Loading search results...",
+        "resultados.nulo": "No results were found",
+        "resultados.nulo2": "Make another search."
+    },
+    "footer": {
+        "copyright": "Scientific Information System Redalyc Â®",
+        "copyright2": "Network of non-commercial academy-owned Open Access Scholarly and Scientific Journals.",
+        "version": "Redalyc 2021 Version 5.0 | 2020",
+        "correo": "redalyc@redalyc.org"
+    }
+}

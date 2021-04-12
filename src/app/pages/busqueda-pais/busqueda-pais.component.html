@@ -11,7 +11,7 @@
         <img src="assets/img/pais-a.png"> {{articles[0]?.nombrePais}}
     </div>
 
-    <p class="sel-country">Seleccionar el país:</p>
+    <p class="sel-country">{{ 'busqueda.banner.pais' | translate }}</p>
     <select id="list-countries" #country (change)="searchArticlesByCountry(country.value)">
         <option *ngFor="let country of listCountries" value="{{country.clave}}" #country.name>{{country.name}}</option>
     </select>

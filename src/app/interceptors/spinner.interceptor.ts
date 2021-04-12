@@ -8,13 +8,19 @@ import { SpinnerService } from '../services/spinner.service';
   providedIn: 'root'
 })
 export class SpinnerInterceptor implements HttpInterceptor {
+  timer: any;
 
   constructor( private spinnerService: SpinnerService ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.spinnerService.showSpinner();
-    return next.handle(req).pipe(
-      finalize( () => this.spinnerService.hideSpinner())
-    );
+
+    if (req.url === './assets/i18n/en.json' || req.url === './assets/i18n/es.json') {
+      return next.handle(req);
+    } else {
+      this.spinnerService.showSpinner();
+      return next.handle(req).pipe(
+        finalize( () => this.spinnerService.hideSpinner())
+      );
+    }
   }
 }

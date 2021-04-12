@@ -1,0 +1,106 @@
+{
+    "header": {
+        "acerca.redalyc": "Acerca de Redalyc",
+        "mision": "Misión",
+        "consejo": "Consejo asesor",
+        "directorio": "Directorio",
+        "cronologia": "Cronología",
+        "reconocimientos": "Reconocimientos internacionales",
+        "oai": "OAI-PMH",
+        "sitio": "Redalyc en tu sitio web",
+        "uso": "Uso legal",
+        "publicaciones": "Publicaciones",
+        "acceso": "Accesso Abierto Diamante",
+        "valores": "Principios y Valores",
+        "jats": "Tecnología de Publicación Digital (XML JATS)",
+        "marcalyc": "Marcalyc Sistema de Marcación (XML JATS)",
+        "ojs": "Integración OJS",
+        "capacitacion": "Capacitación XML JATS",
+        "generacion": "Generación Automática de ePUB, PDF HTML",
+        "visor": "Visor de artículos",
+        "movil": "Visor móvil de articulos",
+        "indexacion": "Indexación de Revistas",
+        "consolidadas.redalyc": "Índice de Revistas Consolidadas Redalyc",
+        "consolidadas.amelica": "Índice de Revistas en consolidación AmeliCA",
+        "evaluacion": "Criterios de evaluación",
+        "postulacion": "Proceso de postulación",
+        "servicios": "Servicios",
+        "redalyc": "Redalyc",
+        "acerca.genero": "Acerca de",
+        "pais": "Búsqueda País"
+    },
+    "navegacion": {
+        "total": "Más de {{ articles }} artículos extraidos de {{ journals }} revistas en {{ countries }} países",
+        "buscador": "Buscador",
+        "clave": "Artículos por palabra clave",
+        "conocimiento": "Representación del conocimiento",
+        "pais": "Artículos por país",
+        "sparql": "Base de conocimiento en SPARQL",
+        "recientes": "Más recientes"
+    },
+    "home": {
+        "mensaje": "Por un modelo de publicación sin fines de lucro para conservar la naturaleza académica y abierta de la comunicación cientifíca.",
+        "recientes": "Publicaciones recientes",
+        "mas": "Ver más artículos",
+        "cargando": "Cargando Artículos...",
+        "sparql": "Punto de acceso SPARQL con los datos disponibles para acceder a los resultados para mayores análisis: {{ value }}"
+    },
+    "busqueda": {
+        "banner": {
+            "pais": "Seleccionar el país:",
+            "palabras": "Búsqueda por palabra clave",
+            "general": "Búsqueda General",
+            "buscar": "buscar"
+        },
+        "secciones": {
+            "principal": "Articulos de revista",
+            "modo": "Modo de visualizar resultados",
+            "tabla": "tabla",
+            "lista": "lista",
+            "resultados": "Resultados para: {{ text }} en artículos de revista",
+            "resultados.pais": "Artículos publicados en revistas de: {{ value }}",
+            "total": "{{ value1 }} a {{ value2 }} de {{ value3 }} artículos"
+        },
+        "filtros": {
+            "titulo": "Filtros de Búsqueda",
+            "Año": "Año",
+            "Idioma": "Idioma",
+            "Disciplina": "Disciplina",
+            "País": "País",
+            "mas": "Ver más",
+            "menos": "Ver menos",
+            "aplicar": "Aplicar Filtros"
+        },
+        "tabla": {
+            "titulo": "Título",
+            "autor": "Autores",
+            "revista": "Revista",
+            "numero": "Número",
+            "texto": "Texto Completo",
+            "ordenar": "Ordenar resultados por {{value}}"
+        },
+        "tarjeta": {
+            "fuente": "Fuente:"
+        }
+    },
+    "estatica": {
+        "proyecto": "Proyecto",
+        "ancestral": "Conocimiento Ancestral",
+        "objetivo": "Tiene por objetivo integrar los contenidos científicos publicados en las revistas de Acceso Abierto que indexa Redalyc correspondientes a temáticas como: conocimiento indígena, pueblos y culturas indígenas, lenguas nativas, agricultura ancestral, entre otros.",
+        "parrafo1": "La Colección de Conocimiento Ancestral (CCA) fue construida a partir de la base de datos de Redalyc.org, sistema que indiza revistas de Acceso Abierto no comercial de calidad certificada. La CCA está compuesta por miles de artículos resultantes de aplicar una serie de algoritmos que realizan una curaduría de los contenidos de forma automatizada con base en un tesauro de términos. El conjunto de datos resultante es transformado a través de un proceso para extraer el significado de los diferentes datos que componen un artículo científico y posteriormente es almacenado en forma de tripletas en una base de conocimiento articulada a Linked Open Data.",
+        "parrafo2": "Este proyecto fue realizado gracias al apoyo obtenido de la fundación Shuttleworth a través de un Flash Grantee otorgado en diciembre de 2019 a la Dra. Arianna Becerril García así como por personal de Redalyc de la Universidad Autónoma del Estado de México.",
+        "parrafo3": "La CCA tiene por objetivo integrar los contenidos científicos publicados en las revistas de Acceso Abierto que indexa Redalyc correspondientes a temáticas como: conocimiento indígena, pueblos y culturas indígenas, lenguas nativas, agricultura ancestral, entre otros.",
+        "parrafo4": "El portal muestra la colección a través de motores de búsqueda, una visualización de la representación del conocimiento obtenido que a su vez es un navegador de artículos por tema, así como también pone a disposición para consulta y descarga el dataset a través de un endpoint SPARQL."
+    },
+    "general": {
+        "spinner": "Cargando resultados de búsqueda...",
+        "resultados.nulo": "No se han encontrado resultados",
+        "resultados.nulo2": "Realice una nueva búsqueda."
+    },
+    "footer": {
+        "copyright": "Sistema de Información Científica Redalyc ®",
+        "copyright2": "Red de revistas científicas de Acceso Abierto no comercial propiedad de la academia.",
+        "version": "Redalyc 2021 Versión 5.0 | 2020",
+        "correo": "redalyc@redalyc.org"
+    }
+}

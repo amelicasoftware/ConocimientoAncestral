@@ -156,7 +156,6 @@ export class BusquedaPalabraClaveComponent implements OnInit, OnDestroy {
       }
     );
 
-
     this.articleService
       .getArticlesByKeyword(this.search, this.positionPage, 0, 'relevancia', this.filtersChain)
       .subscribe((articles: ArticleResult) => {
