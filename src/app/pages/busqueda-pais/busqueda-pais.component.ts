@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { finalize } from 'rxjs/operators';
+import { delay, finalize } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { Article } from '../../models/Article.model';
 import { ArticleResult } from '../../models/ArticleResult.model';
@@ -72,12 +72,13 @@ export class BusquedaPaisComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
     this.filtersSubscription = this.filterService.filters$.subscribe(
       (filters: Array<Filter>) => this.filters = filters
     );
 
-    this.finalPositionSubscription = this.paginationService.finalPosition$.subscribe(
+    this.finalPositionSubscription = this.paginationService.finalPosition$.pipe(
+      delay(0)
+    ).subscribe(
       (finalPosition: number) => this.finalPositionPage = finalPosition
     );
 

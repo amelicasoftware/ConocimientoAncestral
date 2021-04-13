@@ -10,6 +10,7 @@ import { FilterChain } from '../../models/FilterChain.model';
 import { FilterService } from '../../services/filter.service';
 import { PaginationService } from '../../services/pagination.service';
 import { Total } from '../../models/total.model';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-busqueda-general',
@@ -68,7 +69,6 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log(this.all);
     this.total.palabra = this.search;
 
     this.searchSubscription = this.articleService.search$.subscribe(
@@ -111,7 +111,9 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.finalPositionSubscription = this.paginationService.finalPosition$.subscribe(
+    this.finalPositionSubscription = this.paginationService.finalPosition$.pipe(
+      delay(0)
+    ).subscribe(
       (finalPosition: number) => this.finalPositionPage = finalPosition
     );
 

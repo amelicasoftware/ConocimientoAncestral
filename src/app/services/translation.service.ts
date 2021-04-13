@@ -12,6 +12,7 @@ export class TranslationService {
 
   public changeLanguage(lang: string): void {
     this.translate.use(lang);
+    localStorage.setItem('language', lang);
   }
 
 }

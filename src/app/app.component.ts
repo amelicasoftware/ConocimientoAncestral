@@ -16,7 +16,14 @@ export class AppComponent {
 
   setAppLanguage(): void {
     this.translateService.addLangs(['es', 'en']);
-    this.translateService.setDefaultLang('es');
-    this.translateService.use(this.translateService.getBrowserLang());
+
+    if (localStorage.getItem('language')){
+      this.translateService.setDefaultLang(localStorage.getItem('language'));
+      this.translateService.use(localStorage.getItem('language'));
+    } else {
+      this.translateService.setDefaultLang('es');
+      this.translateService.use('es');
+      localStorage.setItem('language', 'es');
+    }
   }
 }
