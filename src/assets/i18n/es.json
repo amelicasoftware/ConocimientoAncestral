@@ -36,7 +36,8 @@
         "conocimiento": "Representación del conocimiento",
         "pais": "Artículos por país",
         "sparql": "Base de conocimiento en SPARQL",
-        "recientes": "Más recientes"
+        "recientes": "Más recientes",
+        "articulos": "Más de {{ articles }} artículos"
     },
     "home": {
         "mensaje": "Por un modelo de publicación sin fines de lucro para conservar la naturaleza académica y abierta de la comunicación cientifíca.",

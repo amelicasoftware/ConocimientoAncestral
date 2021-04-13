@@ -21,7 +21,7 @@
         "movil": "Mobile article viewer",
         "indexacion": "Journal indexing",
         "consolidadas.redalyc": "Redalycs' consolidated journal index",
-        "consolidadas.amelica": "AmeliCA s' in consolidation journal index",
+        "consolidadas.amelica": "AmeliCAs' in consolidation journal index",
         "evaluacion": "Evaluation Criteria",
         "postulacion": "Postulation Process",
         "servicios": "Services",
@@ -30,13 +30,14 @@
         "pais": "Search by country"
     },
     "navegacion": {
-        "total": "More than {{ articles }} articles extracted from {{ journals }} journals in {{ countries }} counttries",
+        "total": "More than {{ articles }} articles extracted from {{ journals }} journals in {{ countries }} countries",
         "buscador": "Browser",
         "clave": "Articles by keyword",
         "conocimiento": "Knowledge representation",
         "pais": "Articles by country",
         "sparql": "Knowledge base in SPARQL",
-        "recientes": "More recent"
+        "recientes": "More recent",
+        "articulos": "More than {{ articles }} articles"
     },
     "home": {
         "mensaje": "For a non-for-profit publishing model to keep the academic and open nature of the scientific communication.",
@@ -63,10 +64,10 @@
         },
         "filtros": {
             "titulo": "Search filters",
-            "AÃ±o": "Year",
+            "Año": "Year",
             "Idioma": "Language",
             "Disciplina": "Discipline",
-            "PaÃ?s": "Country",
+            "País": "Country",
             "mas": "Show more",
             "menos": "Show less",
             "aplicar": "Apply filters"
@@ -98,7 +99,7 @@
         "resultados.nulo2": "Make another search."
     },
     "footer": {
-        "copyright": "Scientific Information System Redalyc Â®",
+        "copyright": "Scientific Information System Redalyc ®",
         "copyright2": "Network of non-commercial academy-owned Open Access Scholarly and Scientific Journals.",
         "version": "Redalyc 2021 Version 5.0 | 2020",
         "correo": "redalyc@redalyc.org"

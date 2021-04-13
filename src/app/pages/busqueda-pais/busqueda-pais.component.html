@@ -1,13 +1,15 @@
 <!-- Inicia Header  -->
-<app-header></app-header>
+<app-header [currentSection]="'header.pais'"></app-header>
 <!--  termina Header    -->
 
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#ffffff" type="square-loader" [fullScreen]="true">
-    <p class="loading">Cargando resultados de búsqueda...</p>
-</ngx-spinner>
 <section id="searches">
     <app-banner-searches [sectionCountry]=true></app-banner-searches>
 </section>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#ffffff" type="square-loader" [fullScreen]="true">
+    <p class="loading">{{ 'general.spinner' | translate }}</p>
+</ngx-spinner>
+
 <div class="searcher flex">
     <div class="img-country">
         <img src="assets/img/pais-a.png"> {{articles[0]?.nombrePais}}
@@ -21,12 +23,12 @@
 
 <div *ngIf="total.palabra && total.palabra != 'allArt' " class="grid-containerh2">
     <div class="item11">
-        <div class="filtros"><img src="assets/img/filtro.png">Filtros de Búsqueda</div>
+        <div class="filtros"><img src="assets/img/filtro.png">{{ 'busqueda.filtros.titulo' | translate }}</div>
         <!--       <div class="cursor" [routerLink]="['/busquedarev',total.palabra]" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div> -->
-        <div class="seleccionado alinear"><img src="assets/img/articulos-act.png">Articulos de revista</div>
-        <div class="alimodo">Modo de visualizar resultados </div>
-        <div (click)="changeView(false)" [ngClass]="{'activate': !view, 'selected': !view, 'cursor': view}"><img [src]="imgList">Tabla</div>
-        <div (click)="changeView(true)" [ngClass]="{'activate': view, 'selected': view, 'cursor': !view}"><img [src]="imgTable">Lista</div>
+        <div class="seleccionado alinear"><img src="assets/img/articulos-act.png">{{ 'busqueda.secciones.principal' | translate }}</div>
+        <div class="alimodo">{{ 'busqueda.secciones.modo' | translate }}</div>
+        <div (click)="changeView(false)" [ngClass]="{'activate': !view, 'selected': !view, 'cursor': view}"><img [src]="imgList">{{ 'busqueda.secciones.tabla' | translate }}</div>
+        <div (click)="changeView(true)" [ngClass]="{'activate': view, 'selected': view, 'cursor': !view}"><img [src]="imgTable">{{ 'busqueda.secciones.lista' | translate }}</div>
     </div>
 </div>
 
@@ -44,20 +46,20 @@
     <div class="item3">
 
         <div *ngIf=" positionPage !== finalPositionPage" class="texto-resultados">
-            <p class="texto-formato tamaño-resul-pal">Artículos publicados en revistas de: {{articles[0]?.nombrePais}}</p>
-            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total"> {{positionPage * 10 - 9}} a {{positionPage * 10}} de {{totalResults}} artículos </p>
+            <p class="texto-formato tamaño-resul-pal">{{ 'busqueda.secciones.resultados.pais' | translate: { value: (articles[0]?.nombrePais || '') } }}</p>
+            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total">{{ 'busqueda.secciones.total' | translate: { value1: (positionPage * 10 - 9), value2: (positionPage * 10), value3: (totalResults) } }}</p>
         </div>
 
         <div *ngIf="positionPage === finalPositionPage" class="texto-resultados">
-            <p class="texto-formato tamaño-resul-pal">Artículos publicados en revistas de: {{articles[0]?.nombrePais}}</p>
-            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total"> {{positionPage * 10 - 9}} a {{totalResults}} de {{totalResults}} artículos </p>
+            <p class="texto-formato tamaño-resul-pal">{{ 'busqueda.secciones.resultados.pais' | translate: { value: (articles[0]?.nombrePais || '') } }}</p>
+            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total">{{ 'busqueda.secciones.total' | translate: { value1: (positionPage * 10 - 9), value2: (totalResults), value3: (totalResults) } }}</p>
         </div>
 
         <!-- <app-globitos></app-globitos> -->
         <app-balloons></app-balloons>
 
         <div *ngIf="total.total < 1" class="no-resultados">
-            no hay resultados.
+            {{ 'general.resultados.nulo' | translate}}
         </div>
 
         <div *ngIf="totalResults >= 1">
@@ -76,8 +78,8 @@
 </div>
 
 <div *ngIf="total.total <= 0 && total.palabra && total.palabra != 'allArt' " class="resultados">
-    <p>No se han encontrado resultados </p>
-    <p>Realice una nueva búsqueda.</p>
+    <p>{{ 'general.resultados.nulo' | translate}} </p>
+    <p>{{ 'general.resultados.nulo2' | translate}}</p>
 </div>
 
 <div *ngIf="!total.palabra && total.total <= 0" class="resultados">
