@@ -57,22 +57,22 @@
         <div style="background: white; display: none;" id="menu2">
             <div class="menu-secciones">
                 <div class="op-menu-secciones btn-tema" id="btn-tema">
-                    <img src="assets/img/tab/nube-des.png"><span>ARTÍCULOS POR PALABRA CLAVE</span>
+                    <img src="assets/img/tab/nube-des.png"><span>{{ 'navegacion.clave' | translate}}</span>
                 </div>
                 <div class="op-menu-secciones btn-representacion" id="btn-representacion">
-                    <img src="assets/img/tab/nodos-des.png"><span>REPRESENTACIÓN DEL CONOCIMIENTO</span>
+                    <img src="assets/img/tab/nodos-des.png"><span>{{ 'navegacion.conocimiento' | translate}}</span>
                 </div>
                 <div class="op-menu-secciones btn-pais" id="btn-pais">
-                    <img src="assets/img/tab/pais-des.png"><span>ARTÍCULOS POR PAÍS</span>
+                    <img src="assets/img/tab/pais-des.png"><span>{{ 'navegacion.pais' | translate}}</span>
                 </div>
                 <div class="op-menu-secciones btn-recientes" id="btn-recientes">
-                    <img src="assets/img/tab/recientes-des.png"><span>PUBLICACIONES RECIENTES</span>
+                    <img src="assets/img/tab/recientes-des.png"><span>{{ 'home.recientes' | translate}}</span>
                 </div>
                 <!-- <div class="op-menu-secciones btn-blog" id="btn-blog">
                     <img src="assets/img/tab/blog-des.png"><span>BLOG</span>
                 </div> -->
                 <div class="op-menu-secciones btn-sparql" id="btn-sparql">
-                    <img src="assets/img/tab/SPARQL-des.png"><span>BASE DEL CONOCIMIENTO EN SPARQL</span>
+                    <img src="assets/img/tab/SPARQL-des.png"><span>{{ 'navegacion.sparql' | translate}}</span>
                 </div>
             </div>
         </div>
@@ -82,19 +82,19 @@
         <div id="banner">
             <div style="width: 100%;">
                 <div id="contenedor-buscador">
-                    <div id="titulo-buscador"><span>Buscador</span></div>
+                    <div id="titulo-buscador"><span>{{ 'navegacion.buscador' | translate }}</span></div>
                     <div id="buscador">
-                        <input #palabra (keyup.enter)="buscarTexto(palabra.value)" id="input-buscar" type="text" name="input-articulo" value="" placeholder="Buscar" />
+                        <input #palabra (keyup.enter)="buscarTexto(palabra.value)" id="input-buscar" type="text" name="input-articulo" value="" [placeholder]="'busqueda.banner.buscar' | translate" />
                         <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" (click)="buscarTexto(palabra.value)" name="boton-buscar-articulo" alt="Buscar" />
                     </div>
                 </div>
                 <div id="contenedor-numeralias">
                     <div>
-                        <p>Más de <span>{{numArticulos}} artículos</span> extraidos de <span>{{numRevistas}} revistas</span> en <span>{{numPaises}} países</span></p>
+                        <p class="" [innerHTML]="'navegacion.total' | translate: { articles: (numArticulos), journals: (numRevistas), countries: (numPaises)}"></p>
                     </div>
                 </div>
                 <div id="contenedor-resumen">
-                    Por un modelo de publicación sin fines de lucro para conservar la naturaleza académica y abierta de la comunicación cientifíca.
+                    {{ 'home.mensaje' | translate }}
                 </div>
                 <div id="contenedor-logos">
                     <!--<div>
@@ -115,29 +115,29 @@
 
         <div class="menu-secciones" id="menu1">
             <div class="op-menu-secciones btn-tema" id="btn-tema">
-                <img src="assets/img/tab/nube-des.png"><span>ARTÍCULOS POR PALABRA CLAVE</span>
+                <img src="assets/img/tab/nube-des.png"><span>{{ 'navegacion.clave' | translate}}</span>
             </div>
             <div class="op-menu-secciones btn-representacion" id="btn-representacion">
-                <img src="assets/img/tab/nodos-des.png"><span>REPRESENTACIÓN DEL CONOCIMIENTO</span>
+                <img src="assets/img/tab/nodos-des.png"><span>{{ 'navegacion.conocimiento' | translate}}</span>
             </div>
             <div class="op-menu-secciones btn-pais" id="btn-pais">
-                <img src="assets/img/tab/pais-des.png"><span>ARTÍCULOS POR PAÍS</span>
+                <img src="assets/img/tab/pais-des.png"><span>{{ 'navegacion.pais' | translate}}</span>
             </div>
             <div class="op-menu-secciones btn-recientes" id="btn-recientes">
-                <img src="assets/img/tab/recientes-des.png"><span>PUBLICACIONES RECIENTES</span>
+                <img src="assets/img/tab/recientes-des.png"><span>{{ 'navegacion.recientes' | translate}}</span>
             </div>
             <!-- <div class="op-menu-secciones btn-blog" id="btn-blog">
                 <img src="assets/img/tab/blog-des.png"><span>BLOG</span>
             </div> -->
             <div class="op-menu-secciones btn-sparql" id="btn-sparql">
-                <img src="assets/img/tab/SPARQL-des.png"><span>BASE DEL CONOCIMIENTO EN SPARQL</span>
+                <img src="assets/img/tab/SPARQL-des.png"><span>{{ 'navegacion.sparql' | translate}}</span>
             </div>
         </div>
     </section>
 
     <section id="nube-palabras" ng-init="nube()">
         <div id="contenedor-nube">
-            <div id="titulo-nube">Artículos por palabra clave</div>
+            <div id="titulo-nube">{{ 'navegacion.clave' | translate }}</div>
             <div id="nube">
                 <div id="wordCloud" charset="utf-8"></div>
             </div>
@@ -146,7 +146,7 @@
     <section id="red-conceptos" style="min-height: 82vh;">
         <div class="contenedor-red" style="display: flex;">
             <div style="width: 70%;">
-                <div id="titulo-red">Representación del conocimiento</div>
+                <div id="titulo-red">{{ 'navegacion.conocimiento' | translate }}</div>
                 <div id="mynetwork">
                 </div>
                 <div id="loadingBar">
@@ -171,10 +171,10 @@
         </div>
     </section>
     <section id="mapa-paises">
-        <div id="contenedor-mapa">
-            <div id="titulo-pais">Artículos por país</div>
-            <app-mapa id="mapa"></app-mapa>
-        </div>
+        <!-- <div id="contenedor-mapa"> -->
+            <div id="titulo-pais">{{ 'navegacion.pais' | translate }}</div>
+            <app-map id="mapa"></app-map>
+        <!-- </div> -->
     </section>
     <section id="contenedor-ultimos-documentos">
         <div id="contenedor-ultimos-documentos2">
@@ -187,9 +187,9 @@
     <section id="sparql">
         <div id="contenedor-sparql">
             <div id="descripcion-sparql">
-                <p id="titulo-sparql">Base de Conocimiento en SPARQL</p>
+                <p id="titulo-sparql">{{ 'navegacion.sparql' | translate }}</p>
                 <br>
-                <p>Punto de acceso SPARQL con los datos disponibles para acceder a los resultados para mayores análisis: <a style="color: #4762b2;" href="http://sparql.amelica.org/knowledgebase/ancestral/datastore">http://sparql.amelica.org/</a></p>
+                <p>{{ 'home.sparql' | translate }}<a style="color: #4762b2;" href="http://sparql.amelica.org/knowledgebase/ancestral/datastore">http://sparql.amelica.org/</a></p>
             </div>
             <div id="contenedor-iframe">
                 <iframe src="http://sparql.amelica.org/knowledgebase/ancestral/datastore" width="100%" height="100%"></iframe>

@@ -40,6 +40,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { TableComponent } from './components/table/table.component';
 import { TargetComponent } from './components/target/target.component';
 import { UltimosArticulosComponent } from './components/ultimos-articulos/ultimos-articulos.component';
+import { MapComponent } from './components/map/map.component';
+import { NetworkComponent } from './components/network/network.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -66,6 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TargetComponent,
     TituloArticuloPipe,
     UltimosArticulosComponent,
+    MapComponent,
+    NetworkComponent,
   ],
   imports: [
     BrowserAnimationsModule,

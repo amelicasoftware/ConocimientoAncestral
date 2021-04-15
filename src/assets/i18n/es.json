@@ -30,7 +30,7 @@
         "pais": "Búsqueda País"
     },
     "navegacion": {
-        "total": "Más de {{ articles }} artículos extraidos de {{ journals }} revistas en {{ countries }} países",
+        "total": "Más de <b>{{ articles }}</b> artículos extraidos de <b>{{ journals }}</b> revistas en <b>{{ countries }}</b> países",
         "buscador": "Buscador",
         "clave": "Artículos por palabra clave",
         "conocimiento": "Representación del conocimiento",
@@ -44,7 +44,7 @@
         "recientes": "Publicaciones recientes",
         "mas": "Ver más artículos",
         "cargando": "Cargando Artículos...",
-        "sparql": "Punto de acceso SPARQL con los datos disponibles para acceder a los resultados para mayores análisis: {{ value }}"
+        "sparql": "Punto de acceso SPARQL con los datos disponibles para acceder a los resultados para mayores análisis: "
     },
     "busqueda": {
         "banner": {

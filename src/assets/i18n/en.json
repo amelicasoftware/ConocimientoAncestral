@@ -30,7 +30,7 @@
         "pais": "Search by country"
     },
     "navegacion": {
-        "total": "More than {{ articles }} articles extracted from {{ journals }} journals in {{ countries }} countries",
+        "total": "More than <b>{{ articles }}</b> articles extracted from <b>{{ journals }}</b> journals in <b>{{ countries }}</b> countries",
         "buscador": "Browser",
         "clave": "Articles by keyword",
         "conocimiento": "Knowledge representation",
@@ -44,7 +44,7 @@
         "recientes": "Recent publications",
         "mas": "Display more articles",
         "cargando": "Loading Articles...",
-        "sparql": "SPARQL access point with the available data to access the results for better analysis: {{ value }}"
+        "sparql": "SPARQL access point with the available data to access the results for better analysis: "
     },
     "busqueda": {
         "banner": {

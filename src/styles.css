@@ -204,8 +204,9 @@ body {
 
 #mapa-paises {
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #090a35;
+    padding: 20px 50px;
 }
 
 #titulo-pais {
@@ -213,7 +214,7 @@ body {
     height: 50px;
     font-size: 16pt;
     color: white;
-    margin-top: 60px;
+    /* margin-top: 60px; */
     margin-right: auto;
     margin-bottom: 0px;
     margin-left: auto;
@@ -605,7 +606,7 @@ main {
     }
     #mapa-paises {
         width: 100%;
-        height: 100vh;
+        /* height: 100vh; */
         background-color: #090a35;
     }
     #contenedor-ultimos-documentos {
@@ -898,6 +899,6 @@ iframe {
 /* FONDO COVID */
 
 #searches {
-    background-image: url(/assets/img/fondo-buscador-conocimiento-ancestral.jpg);
+    background-image: url(assets/img/fondo-buscador-conocimiento-ancestral.jpg);
     height: 115px;
 }
