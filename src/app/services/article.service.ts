@@ -20,6 +20,31 @@ export class ArticleService {
     private http: HttpClient
   ) { }
 
+  normalize = ( () => {
+    const from = 'ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç';
+    const to   = 'AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc';
+    const mapping = {};
+
+    for (let i = 0, j = from.length; i < j; i++ ) {
+          mapping[ from.charAt( i ) ] = to.charAt( i );
+    }
+
+    return (str: string) => {
+      str ? str = str.replace(/ñ/gi, 'n-n') : str = '\'\'';
+      const ret = [];
+      for ( let i = 0, j = str.length; i < j; i++ ) {
+        const c = str.charAt( i );
+        if ( mapping.hasOwnProperty( str.charAt( i ) ) ) {
+          ret.push( mapping[ c ] );
+        } else {
+          ret.push( c );
+        }
+      }
+
+      return ret.join( '' );
+    };
+  })();
+
   get search$(): Observable<string> {
     return this._search$;
   }
@@ -47,6 +72,7 @@ export class ArticleService {
     let articles: Observable<ArticleResult>;
     // Preguntar para ver si habra un parametro para todas las revistas
     /* const allArticles = all ? `&allArt=${all}` : ''; */
+    search = this.normalize(search);
 
     console.log('Servicio para articulos: ', `${this.url}articulos/ancestral/${search}/${page}/10/relevancia/0/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
     articles = this.http.get<ArticleResult>(`${this.url}articulos/ancestral/${search}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
@@ -62,6 +88,7 @@ export class ArticleService {
     filters: FilterChain,
   ): Observable<ArticleResult>{
     let articles: Observable<ArticleResult>;
+    search = this.normalize(search);
 
     console.log('Servicio para articulos por palabra clave: ', `${this.url}articulos/ancestral/palabras/${search}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
     articles = this.http.get<ArticleResult>(`${this.url}articulos/ancestral/palabras/${search}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
