@@ -131,6 +131,7 @@
 
 .item3 {
     grid-area: main;
+    width: 1200px;
 }
 
 .grid-container {
@@ -360,6 +361,7 @@ input[type=text]:focus {
     color: white;
     padding-top: 50px;
 }
+<<<<<<< HEAD
 
 
 @media only screen and (max-width: 600px) {
@@ -399,4 +401,44 @@ width: 1000px;
 .item3 {
 width: 1200px;
 }
+=======
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .item3 {
+        width: 400px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .item3 {
+        width: 400px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .item3 {
+        width: 600px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .item3 {
+        width: 800px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .item3 {
+        width: 1000px;
+    }
+}
+@media screen and (min-width: 1400px) {
+    .item3 {
+        width: 1200px;
+    }
+>>>>>>> 1ecfc75a0a3b62ac1b4b6602ad793bd11a76c36b
 }

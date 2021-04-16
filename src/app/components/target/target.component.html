@@ -9,7 +9,7 @@
 
         <div *ngIf="article.origen === 'XML'">
             <a class="title" href="https://www.redalyc.org/jatsRepo/{{article.cveRevista}}/{{article.cveArticulo}}/index.html" target="_blank">
-                {{ article.tituloArticulo }}
+                {{ article.tituloArticulo | tituloArticulo}}
             </a>
         </div>
 
@@ -19,7 +19,7 @@
 
         <p>{{ 'busqueda.tarjeta.fuente' | translate }} {{ article.fuente}} </p>
 
-        <p [innerHTML]='article.contenido'>{{ article.contenido }}</p>
+        <div [innerHTML]='article.contenido'></div>
 
         <br>
 

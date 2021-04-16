@@ -1,4 +1,14 @@
+// const urlProject = 'http://localhost:4200/';
+
+let newscript = document.createElement('script');
+newscript.type = 'text/javascript';
+newscript.async = true;
+newscript.src = 'http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(newscript);
+
 function cargarRed() {
+    urlProject = document.getElementById('txt-url').textContent;
+    console.log('cargo red');
     // initialize global variables.
     var edges;
     var nodes;
@@ -95,7 +105,7 @@ function cargarRed() {
     drawGraph();
 
     network.on("click", function (params) {
-        var cargando = document.getElementById('cargador');
+        var cargando = document.getElementById('charger');
         cargando.style.display = "block";
         console.log('prueba');
         document.getElementById("datosArticulo").innerHTML = "";
@@ -133,7 +143,7 @@ function cargarRed() {
                 cargando.style.display = "none";
                 document.getElementById("contenedorArticulos").style.display = "block";
                 var itemBoton = document.createElement('div');
-                itemBoton.innerHTML = `<a style="text-decoration: none;" href="http://semantic.redalyc.org/conocimientoancestral/#/busqueda-pal-clav/${params.nodes}"> <div id="btn-mas-articulos">Más artículos</div></a>`;
+                itemBoton.innerHTML = `<a style="text-decoration: none;" href="${urlProject}#/busqueda-pal-clav/${params.nodes}"> <div id="btn-mas-articulos">Más artículos</div></a>`;
                 document.getElementById('datosArticulo').appendChild(itemBoton);
             }
         });
@@ -162,3 +172,4 @@ var normalize = (function() {
     }
    
   })();
+  cargarRed();

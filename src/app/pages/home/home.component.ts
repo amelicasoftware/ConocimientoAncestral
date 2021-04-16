@@ -7,6 +7,7 @@ import * as am4core from '@amcharts/amcharts4/core';
 import * as am4plugins_wordCloud from '@amcharts/amcharts4/plugins/wordCloud';
 import { GlobalConstants } from '../../common/global-constants';
 import { ServicioHomeService } from '../../services/servicio-home.service';
+import { ActivatedRoute } from '@angular/router';
 import 'core-js';
 
 am4core.useTheme(am4themes_animated);
@@ -28,18 +29,25 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   numRevistas: number;
   numPaises: number;
   title = 'ConocimientoAncestral';
+  section: string;
 
   constructor(
     private zone: NgZone,
     private service: ServicioHomeService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private route: ActivatedRoute
+  ) { 
+    const section = 'section';
+    this.route.params.subscribe((params) => {
+      this.section = params[section];
+    });
+  }
 
   ngOnInit(): void {
-    get(`${this.url2}assets/js/home.js`, () => {
-    });
-    get(`${this.url2}assets/js/red.js`, () => {
-    });
+    // get(`${this.url2}assets/js/home.js`, () => {
+    // });
+    // get(`${this.url2}assets/js/red.js`, () => {
+    // });
 
     this.service.getNumeros().subscribe( (numeros: any) => {
       this.numerosHome = numeros;
@@ -47,6 +55,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       this.numRevistas = numeros[1].Revistas;
       this.numPaises = numeros[0].Paises;
     });
+
+    if (this.section === 'network'){
+      this.toNetwork();
+    }
   }
 
   ngAfterViewInit() {
@@ -95,6 +107,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   buscarTexto(palabra: string) {
     console.log('seleccionaste:', palabra);
     this.router.navigate( ['/busquedaGeneral', palabra] );
+  }
+
+  toNetwork() {
+    document.getElementById('mynetwork').scrollIntoView({ behavior: 'smooth' });
   }
 
 }
