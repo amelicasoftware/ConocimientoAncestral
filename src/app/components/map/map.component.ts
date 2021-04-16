@@ -67,7 +67,7 @@ export class MapComponent implements OnInit {
     circle.propertyFields.fill = 'color';
     circle.tooltipText = '{name}';
     circle.urlTarget = '_blank';
-    circle.url = this.urlProject + '#/busqueda-pais/{clave}';
+    circle.url = this.urlProject + '#/busquedaPais/{clave}';
 
     imageSeries.dataSource.url = this.urlProject + 'assets/js/json/paises.json';
     // imageSeries.dataSource.data = this.countrys;
