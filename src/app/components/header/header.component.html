@@ -20,14 +20,15 @@
             </div>
             <span class="lang" (click)="changeLanguage('es')">ESP</span>
             <span class="lang" (click)="changeLanguage('en')">ENG</span>
-            <a href="https://www.instagram.com/redalyc_oficial" target="_blank"><img class="instragram" src="assets/img/header/ig.png"></a>
-            <a href="https://twitter.com/Redalyc" target="_blank"><img class="twitter" src="assets/img/header/tw.png"></a>
-            <a href="https://www.facebook.com/Redalyc/" target="_blank"><img class="facebook" src="assets/img/header/face.png"></a>
-
         </div>
     </div>
 
     <div class="current-section">
         <span><a href="https://www.redalyc.org/" target="_blank">{{ 'header.redalyc' | translate}}</a> > <a [routerLink]="['/home']">{{ 'estatica.proyecto' | translate }} {{ 'estatica.ancestral' | translate }}</a> <span *ngIf='currentSection'> > {{ currentSection | translate}}</span></span>
+        <span class="socials-networks">
+            <a href="https://www.instagram.com/redalyc_oficial" target="_blank"><img class="instragram" src="assets/img/icons/ig.png"></a>
+            <a href="https://twitter.com/Redalyc" target="_blank"><img class="twitter" src="assets/img/icons/tw.png"></a>
+            <a href="https://www.facebook.com/Redalyc/" target="_blank"><img class="facebook" src="assets/img/icons/face.png"></a>
+        </span>
     </div>
 </div>
