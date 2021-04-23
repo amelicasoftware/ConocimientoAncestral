@@ -9,6 +9,7 @@ import { GlobalConstants } from '../../common/global-constants';
 import { ServicioHomeService } from '../../services/servicio-home.service';
 import { ActivatedRoute } from '@angular/router';
 import 'core-js';
+import { environment } from '../../../environments/environment';
 
 am4core.useTheme(am4themes_animated);
 
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   articulosF: any[] = [];
 
-  url: string = GlobalConstants.serviciosURL;
+  url: string = environment.urlProject;
   url2: string = GlobalConstants.url;
   numerosHome: any;
   numArticulos: number;
@@ -44,8 +45,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-    // get(`${this.url2}assets/js/home.js`, () => {
-    // });
+    get(`${this.url2}assets/js/home.js`, () => {
+    });
     // get(`${this.url2}assets/js/red.js`, () => {
     // });
 
@@ -81,7 +82,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         dataField: 'value'
       });
 
-      series.labels.template.url = `${this.url2}#/busqueda-pal-clav/{word}`;
+      series.labels.template.url = `${this.url}#/busqueda-pal-clav/{word}`;
       series.labels.template.urlTarget = '_self';
       console.log('############' + `${this.url}{word}`);
 

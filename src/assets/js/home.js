@@ -44,7 +44,7 @@ $(function() {
 
 $(document).ready(function() {
 
-    var banderaRed = false;
+    // var banderaRed = false;
     
     
 
@@ -68,16 +68,16 @@ $(document).ready(function() {
 
     $(window).scroll(function() {
 
-        if(!banderaRed){
-            console.log('cargo red');
-            cargarRed();
-            banderaRed = true;
-        }        
+        // if(!banderaRed){
+        //     console.log('cargo red');
+        //     cargarRed();
+        //     banderaRed = true;
+        // }        
 
         var windowHeight = $(window).scrollTop();
 
         var seccionNube = $("#contenedor-nube").offset();
-        var seccionMapa = $("#contenedor-mapa").offset();
+        var seccionMapa = $("#mapa-paises").offset();
         var seccionDocumentos = $("#contenedor-ultimos-documentos2").offset();
         var seccionFooter = $("#footer").offset();
         var menuFlotante = $("#menu-documentos").offset();
@@ -162,7 +162,7 @@ $(document).ready(function() {
 
     $(".btn-pais").click(function() {
         $('html, body').animate({
-            scrollTop: $("#contenedor-mapa").offset().top
+            scrollTop: $("#mapa-paises").offset().top
         });
     });
 

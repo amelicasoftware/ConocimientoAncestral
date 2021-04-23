@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   baseUrl: 'http://portal.amelica.org/ApiReaderIndex/resources/',
-  urlProject: 'http://localhost:4200/'
+  urlProject: 'http://206.189.224.97/pruebas/ConocimientoAncestral/'
 };

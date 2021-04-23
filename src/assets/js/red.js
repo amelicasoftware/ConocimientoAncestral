@@ -8,7 +8,7 @@ newscript.src = 'http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js';
 
 function cargarRed() {
     urlProject = document.getElementById('txt-url').textContent;
-    console.log('cargo red');
+    // console.log('cargo red');
     // initialize global variables.
     var edges;
     var nodes;
