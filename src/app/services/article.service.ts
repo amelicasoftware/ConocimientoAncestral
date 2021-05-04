@@ -73,6 +73,7 @@ export class ArticleService {
     // Preguntar para ver si habra un parametro para todas las revistas
     /* const allArticles = all ? `&allArt=${all}` : ''; */
     search = this.normalize(search);
+    search = "\""+search+"\""
 
     console.log('Servicio para articulos: ', `${this.url}articulos/ancestral/${search}/${page}/10/relevancia/0/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
     articles = this.http.get<ArticleResult>(`${this.url}articulos/ancestral/${search}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
