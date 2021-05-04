@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         dataField: 'value'
       });
 
-      series.labels.template.url = `${this.url}#/busqueda-pal-clav/{word}`;
+      series.labels.template.url = `${this.url}#/busqueda-pal-clav/"{word}"`;
       series.labels.template.urlTarget = '_self';
       console.log('############' + `${this.url}{word}`);
 
