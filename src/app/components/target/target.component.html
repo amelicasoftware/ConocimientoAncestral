@@ -15,7 +15,7 @@
 
         <p>{{ article.autores | autoresArticulo }}</p>
 
-        <p>{{ article.nombreRevista }}, {{ article.anio }}, {{ article.volumen }} ({{ article.numero }}) </p>
+        <p>{{ article.nombreRevista }}, {{ article.anio }}, {{ article.volumen }} <span *ngIf="article.numero.trim()">({{ article.numero }})</span> </p>
 
         <p>{{ 'busqueda.tarjeta.fuente' | translate }} {{ article.fuente}} </p>
 
