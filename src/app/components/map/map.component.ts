@@ -4,7 +4,7 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geofata_wordLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { ArticleService } from 'src/app/services/article.service';
-import { Country } from 'src/app/models/Country.model';
+import { Country } from 'src/app/models/country.model';
 import { environment } from '../../../environments/environment';
 
 @Component({

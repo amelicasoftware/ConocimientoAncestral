@@ -37,7 +37,12 @@
         "pais": "Artículos por país",
         "sparql": "Base de conocimiento en SPARQL",
         "recientes": "Más recientes",
-        "articulos": "Más de {{ articles }} artículos"
+        "articulos": "Más de {{ articles }} artículos",
+        "texto-num-articulo": "Artículos",
+        "texto-num-articulo2": "extraídos de",
+        "texto-num-rev": "revistas",
+        "texto-num-rev2": "indexadas de",
+        "texto-num-paises": "países"
     },
     "home": {
         "mensaje": "Por un modelo de publicación sin fines de lucro para conservar la naturaleza académica y abierta de la comunicación cientifíca.",
@@ -99,9 +104,14 @@
         "resultados.nulo2": "Realice una nueva búsqueda."
     },
     "footer": {
-        "copyright": "Sistema de Información Científica Redalyc ®",
+"copyright": "Sistema de Información Científica Redalyc ®",
         "copyright2": "Red de revistas científicas de Acceso Abierto no comercial propiedad de la academia.",
-        "version": "Redalyc 2021 Versión 5.0 | 2020",
+        "version": "Redalyc Versión 5.0 | 2003 - 2024",
         "correo": "redalyc@redalyc.org"
+    },
+    "mHeader": {
+        "title": "Sistema de Información Científica Redalyc",
+        "desc1": "Red de revistas científicas de Acceso Abierto Diamante",
+        "desc2": "Infraestructura abierta no comercial propiedad de la academia"
     }
 }
