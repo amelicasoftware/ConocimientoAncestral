@@ -3,22 +3,19 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { ArticleResult } from '../models/ArticleResult.model';
 import { environment } from '../../environments/environment';
-import { FiledSort } from '../models/filedSort.model';
 import { FilterChain } from '../models/FilterChain.model';
+import { Country } from '../models/Country.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
   private _search$: Subject<string> = new Subject<string>();
-  private _filedSort$: Subject<FiledSort> = new Subject<FiledSort>();
 
   public url: string = environment.baseUrl;
   private urlProject: string = environment.urlProject;
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor( private http: HttpClient ) { }
 
   normalize = ( () => {
     const from = 'ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç';
@@ -49,16 +46,8 @@ export class ArticleService {
     return this._search$;
   }
 
-  get filedSort$(): Observable<FiledSort> {
-    return this._filedSort$;
-  }
-
-  changeSearch(search: string){
+  changeSearch(search: string): void {
     this._search$.next(search);
-  }
-
-  changeFiledSort(fieldSort: FiledSort) {
-    this._filedSort$.next(fieldSort);
   }
 
   addQuotes(word: string): string {
@@ -79,66 +68,44 @@ export class ArticleService {
   getArticles(
     search: string,
     page: number,
-    reverse: number,
-    field: string,
-    filters: FilterChain,
-    all: boolean
-  ): Observable<ArticleResult>{
-    let articles: Observable<ArticleResult>;
-    // Preguntar para ver si habra un parametro para todas las revistas
-    /* const allArticles = all ? `&allArt=${all}` : ''; */
+    filters: FilterChain
+  ): Observable<ArticleResult> {
     search = this.normalize(search);
     search = this.addQuotes(search);
-
-    console.log('Servicio para articulos: ', `${this.url}articulos/ancestral/${search}/${page}/10/relevancia/0/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
-    articles = this.http.get<ArticleResult>(`${this.url}articulos/ancestral/${search}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
-
-    return articles;
-  }
-
-  getArticlesByKeyword(
-    search: string,
-    page: number,
-    reverse: number,
-    field: string,
-    filters: FilterChain,
-  ): Observable<ArticleResult>{
-    let articles: Observable<ArticleResult>;
-    search = this.normalize(search);
-    search = this.addQuotes(search);
-
-    console.log('Servicio para articulos por palabra clave: ', `${this.url}articulos/ancestral/palabras/${search}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
-    articles = this.http.get<ArticleResult>(`${this.url}articulos/ancestral/palabras/${search}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
-
-    return articles;
+    console.log('Servicio Articulos:', `${this.url}articulos/climatico2/${search}/${page}/10/relevancia/0/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
+    return this.http.get<ArticleResult>(`${this.url}articulos/climatico2/${search}/${page}/10/relevancia/0/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
   }
 
   getArticlesByCountry(
     countryId: string,
     page: number,
-    reverse: number,
-    field: string,
     filters: FilterChain
-  ): Observable<ArticleResult>{
-    let articles: Observable<ArticleResult>;
-
-    console.log('Servicio para articulos por país: ', `${this.url}articulos/ancestral/pais/${countryId}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
-    articles = this.http.get<ArticleResult>(`${this.url}articulos/ancestral/pais/${countryId}/${page}/10/${field}/${reverse}/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
-
-    return articles;
+  ): Observable<ArticleResult> {
+    console.log('Servicio Articulos por Palabra Clave:', `${this.url}articulos/climatico2/pais/${countryId}/${page}/10/relevancia/0/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
+    return this.http.get<ArticleResult>(`${this.url}articulos/climatico2/pais/${countryId}/${page}/10/relevancia/0/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
   }
 
-  getCountries(){
-    return this.http.get(`${this.urlProject}assets/js/json/paises.json`);
+  getArticlesByKey(
+    key: string,
+    page: number,
+    filters: FilterChain
+  ): Observable<ArticleResult> {
+    key = this.normalize(key);
+    key = this.addQuotes(key);
+    console.log('Servicio Articulos por Palabra Clave:', `${this.url}articulos/climatico2/palabras/${key}/${page}/10/relevancia/0/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
+    return this.http.get<ArticleResult>(`${this.url}articulos/climatico2/palabras/${key}/${page}/10/relevancia/0/{"anios":"${filters.yearChain}","idiomas":"${filters.languageChain}", "paises":"${filters.countryChain}","areas":"","disciplinas":"${filters.disciplineChain}","autores":"","instituciones":"","origen":"","funete":"","fb":1}'`);
   }
 
-  allArticles(search: string): boolean{
-    let all: boolean;
+  getCountries(): Observable<Country[]> {
+    return this.http.get<Country[]>(`${this.urlProject}assets/json/paises.json`);
+  }
 
-    (search === 'allArt')
-    ? all = true
-    : all = false;
-
-    return all;
+  articlesExists(articlesLength: number): boolean {
+    let articlesExists: boolean;
+    articlesLength ? articlesExists = true : articlesExists = false;
+    return articlesExists;
+  }
+  getLastArticles(): any {
+    return this.http.get(`${this.url}articulos/ancestral/recientes/20/fechaAltaArticuloM/1`);
   }
 }

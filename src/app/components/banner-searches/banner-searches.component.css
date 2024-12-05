@@ -1,3 +1,8 @@
+#searches {
+    background-image: url(../../../assets/img/home/fondo-buscador-conocimiento-ancestral.jpg);
+    height: 115px;
+}
+
 .title-virus {
     display: flex;
     align-items: center;
@@ -30,5 +35,5 @@
 }
 
 .selected-searcher {
-    background-color: #003B60;
+    background-color:#003B60;
 }

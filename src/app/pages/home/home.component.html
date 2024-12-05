@@ -1,198 +1,182 @@
 <app-header></app-header>
 <div class="social" id="social">
     <div>
-        <div id="menu-buscador" class="btn-menu">
-            <a ng-href="#contenedor-banner" id="btn-buscador" class="fab" title="Buscador"></a>
+        <div (click)="toSearcher()" id="menu-buscador" class="btn-menu">
+            <a ng-href="#contenedor-banner" id="btn-buscador" class="fab"
+                title="{{ 'navegacion.buscador' | translate }}"></a>
         </div>
-        <div id="menu-nube" class="btn-menu">
-            <a ng-href="#contenedor-nube" id="btn-nube" class="fab" title="Artículos por tema"></a>
+        <div (click)="toCould()" id="menu-nube" class="btn-menu">
+            <a ng-href="#contenedor-nube" id="btn-nube" class="fab" title="{{ 'navegacion.clave' | translate}}"></a>
         </div>
-        <div id="menu-red" class="btn-menu">
-            <a ng-href="#red-conceptos" id="btn-red" class="fab" title="Representación del conocimiento"></a>
+        <div (click)="toNetwork()" id="menu-red" class="btn-menu">
+            <a ng-href="#red-conceptos" id="btn-red" class="fab" title="{{ 'navegacion.conocimiento' | translate}}"></a>
         </div>
-        <div id="menu-pais" class="btn-menu">
-            <a ng-href="#contenedor-mapa" id="btn-pais" class="fab" title="Artículos por país"></a>
+        <div (click)="toMap()" id="menu-pais" class="btn-menu">
+            <a ng-href="#contenedor-mapa" id="btn-pais" class="fab" title="{{ 'navegacion.pais' | translate}}"></a>
         </div>
-        <div id="menu-documentos" class="btn-menu">
-            <a ng-href="#contenedor-ultimos-documentos" id="btn-documentos" class="fab" title="Más recientes"></a>
+        <div (click)="toSparql()" id="menu-documentos" class="btn-menu">
+            <a ng-href="#contenedor-ultimos-documentos" id="btn-documentos" class="fab"
+                title="{{ 'navegacion.sparql' | translate}}"></a>
         </div>
-        <div id="menu-sql" class="btn-menu">
-            <a ng-href="#sparql" id="btn-sql" class="fab" title="Base del conocimiento"></a>
+        <div (click)="toAbout()" id="menu-sql" class="btn-menu">
+            <a ng-href="#sparql" id="btn-sql" class="fab" title="{{ 'header.acerca.genero' | translate }}"></a>
         </div>
     </div>
 </div>
-<main id="main" style="-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin: 0px; padding: 0px;">
-    <div id="" style="top: 0px; position: fixed; width: 100%; z-index: 1;">
-        <app-header></app-header>
-        <!-- <div style="color: #fff !important; display: flex; "> -->
-            <!-- <div id="logo-CA" style="width: 50%;">
-                <a href="#"><img src="assets/img/conocimiento-ancestral.png" alt=""></a> -->
-                <!-- <a id="logo-amelica" href="http://amelica.org/"><img src="assets/img/ameliCA.png" alt=""></a> -->
-                <!-- <a id="logo-redalyc" href="https://www.redalyc.org/"><img src="assets/img/redalyc.png" alt=""></a>
-            </div> -->
-            <!-- <div id="menu">
-                <div id="contenedor-menu">
-                    <a href="https://www.redalyc.org/redalyc/acerca-de/mision.html" target="_blank" class="option-menu">Acerca de Redalyc</a>
-                    <a [routerLink]="['/acerca-de']" class="option-menu">Proyecto Conocimiento Ancestral</a>
+<div id="btn-top" (click)="toScrollTop()">
+    <i class="fa fa-chevron-up"></i>
+</div>
+<section id="searcher">
+    <div id="container">
+        <div id="central-container">
+           <!-- <div id="container-title">
+                <div id="container-title-search">
+                    <div class="title-search">{{ 'general.titulo' | translate}}</div>
+                    <div class="subtitle-search">{{ 'general.titulo2' | translate}}</div>
+                    <div class="title-search">{{ 'general.subtitulo' | translate}}</div>
                 </div>
-                <div id="logos" style="width: 25%;">
-                    <a [routerLink]="['/home']"><img src="assets/img/ic-home.png" alt=""> </a>
-                    <a href="https://www.facebook.com/Redalyc/"><img src="assets/img/ic-facebook.png" alt=""></a>
-                    <a href="https://twitter.com/Redalyc"><img src="assets/img/ic-twitter.png" alt=""></a>
+            </div>-->
+            <div id="container-searcher">
+                <div id="text-search"><span>{{ 'navegacion.buscador' | translate }}</span></div>
+                <div id="search">
+                    <input #word (keyup.enter)="searchText(word.value)" id="input-search" type="text"
+                        name="input-articulo" value="" placeholder="{{'home.buscar' | translate}}" />
+                    <input id="button-search" type="image" src="assets/img/home/buscador.png"
+                        (click)="searchText(word.value)" name="boton-buscar-articulo" alt="Buscar" />
                 </div>
-                <a onclick="openNav()">
-                    <div id="menu-colap">
-                        <i class="fa fa-bars"></i>
-                    </div>
-                </a>
-            </div> -->
-        <!-- </div> -->
-        <div style="background: white; display: none;" id="menu2">
-            <div class="menu-secciones">
-                <div class="op-menu-secciones btn-tema" id="btn-tema">
-                    <img src="assets/img/tab/nube-des.png"><span>{{ 'navegacion.clave' | translate}}</span>
-                </div>
-                <div class="op-menu-secciones btn-representacion" id="btn-representacion">
-                    <img src="assets/img/tab/nodos-des.png"><span>{{ 'navegacion.conocimiento' | translate}}</span>
-                </div>
-                <div class="op-menu-secciones btn-pais" id="btn-pais">
-                    <img src="assets/img/tab/pais-des.png"><span>{{ 'navegacion.pais' | translate}}</span>
-                </div>
-                <div class="op-menu-secciones btn-recientes" id="btn-recientes">
-                    <img src="assets/img/tab/recientes-des.png"><span>{{ 'navegacion.recientes' | translate}}</span>
-                </div>
-                <!-- <div class="op-menu-secciones btn-blog" id="btn-blog">
-                    <img src="assets/img/tab/blog-des.png"><span>BLOG</span>
+            </div>
+            <div id="contenedor-numeralias">
+                <!-- <div class="text-description" [innerHTML]="'navegacion.total' | translate: { articles: (numArticulos), journals: (numRevistas), countries: (numPaises)}">
                 </div> -->
-                <div class="op-menu-secciones btn-sparql" id="btn-sparql">
-                    <img src="assets/img/tab/SPARQL-des.png"><span>{{ 'navegacion.sparql' | translate}}</span>
+                <div id="new-number">
+                    <p class="parrafo-number">
+                        {{'navegacion.total.busqueda' | translate}}
+                        <span class="numbers">
+                            {{ numArticulos }}
+                        </span>
+                        {{ 'navegacion.texto-num-articulo' | translate }}
+                        {{ 'navegacion.texto-num-articulo2' | translate }}
+                        <span class="numbers">
+                            {{ numRevistas }}
+                        </span>
+                        {{ 'navegacion.texto-num-rev' | translate }}
+                        {{ 'navegacion.texto-num-rev2' | translate }}
+                        <span class="numbers">
+                            {{ numPaises }}
+                        </span>
+                        {{ 'navegacion.texto-num-paises' | translate }}
+                    </p>
                 </div>
+            </div>
+            <!--<div id="contenedor-resumen" class="text-description">
+                {{'home.mensaje' | translate}}
+            </div>-->
+            <div id="contenedor-resumen" class="text-description">
+                {{'home.mensaje1' | translate}}
             </div>
         </div>
-
-    </div>
-    <section id="contenedor-banner">
-        <div id="banner">
-            <div style="width: 100%;">
-                <div id="contenedor-buscador">
-                    <div id="titulo-buscador"><span>{{ 'navegacion.buscador' | translate }}</span></div>
-                    <div id="buscador">
-                        <input #palabra (keyup.enter)="buscarTexto(palabra.value)" id="input-buscar" type="text" name="input-articulo" value="" [placeholder]="'busqueda.banner.buscar' | translate" />
-                        <input id="boton-buscar" type="image" src="assets/img/buscador-institucionmdpi.png" (click)="buscarTexto(palabra.value)" name="boton-buscar-articulo" alt="Buscar" />
-                    </div>
-                </div>
-                <div id="contenedor-numeralias">
-                    <div>
-                        <p class="" [innerHTML]="'navegacion.total' | translate: { articles: (numArticulos), journals: (numRevistas), countries: (numPaises)}"></p>
-                    </div>
-                </div>
-                <div id="contenedor-resumen">
-                    {{ 'home.mensaje' | translate }}
-                </div>
-                <div id="contenedor-logos">
-                    <!--<div>
-                        <a href="http://amelica.org/"><img src="assets/img/ic-amelica-footer.png" /></a>
-                    </div>
-                    <div>
-                        <a href="https://es.unesco.org/"><img src="assets/img/ic-unesco-footer.png" /></a>
-                    </div>
-                    <div>
-                        <a href="https://www.clacso.org/"><img src="assets/img/ic-clacso-footer.png" /></a>
-                    </div>-->
-                    <div>
-                        <a href="https://www.redalyc.org/"><img src="assets/img/ic-redalyc-footer.png" /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="menu-secciones" id="menu1">
-            <div class="op-menu-secciones btn-tema" id="btn-tema">
-                <img src="assets/img/tab/nube-des.png"><span>{{ 'navegacion.clave' | translate}}</span>
-            </div>
-            <div class="op-menu-secciones btn-representacion" id="btn-representacion">
-                <img src="assets/img/tab/nodos-des.png"><span>{{ 'navegacion.conocimiento' | translate}}</span>
-            </div>
-            <div class="op-menu-secciones btn-pais" id="btn-pais">
-                <img src="assets/img/tab/pais-des.png"><span>{{ 'navegacion.pais' | translate}}</span>
-            </div>
-            <div class="op-menu-secciones btn-recientes" id="btn-recientes">
-                <img src="assets/img/tab/recientes-des.png"><span>{{ 'navegacion.recientes' | translate}}</span>
-            </div>
-            <!-- <div class="op-menu-secciones btn-blog" id="btn-blog">
-                <img src="assets/img/tab/blog-des.png"><span>BLOG</span>
-            </div> -->
-            <div class="op-menu-secciones btn-sparql" id="btn-sparql">
-                <img src="assets/img/tab/SPARQL-des.png"><span>{{ 'navegacion.sparql' | translate}}</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="nube-palabras" ng-init="nube()">
-        <div id="contenedor-nube">
-            <div id="titulo-nube">{{ 'navegacion.clave' | translate }}</div>
-            <div id="nube">
-                <div id="wordCloud" charset="utf-8"></div>
-            </div>
-        </div>
-    </section>
-    <section id="red-conceptos" style="min-height: 82vh;">
-        <div id="titulo-red">{{ 'navegacion.conocimiento' | translate }}</div>
-        <!-- <div class="contenedor-red" style="display: flex;">
-            <div style="width: 70%;">
-                <div id="titulo-red">{{ 'navegacion.conocimiento' | translate }}</div>
-                <div id="mynetwork">
-                </div>
-                <div id="loadingBar">
-                    <div class="outerBorder">
-                        <div id="text">0%</div>
-                        <div id="border">
-                            <div id="bar"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div style="width: 30%; display: flex;">
-                <div id="tituloArticulos"></div>
-                <div id="cargador" style="margin: auto auto; display: none;">
-                    <img src="assets/img/giphy.gif" alt="">
-                    <p>Cargando Artículos...</p>
-                </div>
-                <div id="contenedorArticulos" style="display:none;">
-                    <div id="datosArticulo"></div>
-                </div>
-            </div>
+        <!-- <div class="title"> &nbsp;&nbsp;    
+            <img *ngIf="lang === 'es'" src="assets/img/home/ODS-13-esp.png" alt="">
+            <img *ngIf="lang === 'en'" src="assets/img/home/SDG-13-eng.png" alt="">
         </div> -->
+
+        <!-- <div id="contenedor-numeralias">
+            <div class="text-description" [innerHTML]="'navegacion.total' | translate: { articles: (numArticulos), journals: (numRevistas), countries: (numPaises)}">
+            </div>
+        </div>
+        <div id="contenedor-resumen" class="text-description">
+            {{'home.mensaje' | translate}}
+        </div> -->
+    </div>
+    <div id="menu-section">
+        <!--<div (click)="toSearcher()" [ngClass]="{'selection': selection == 1}" class="op-menu-section btn-search" id="btn-search">
+            <img src="assets/img/home/busqueda.png"><span>{{ 'navegacion.buscador' | translate }}</span>
+        </div> -->
+        <div (click)="toCould()" [ngClass]="{'selection': selection == 2}" class="op-menu-section btn-tema"
+            id="btn-articles">
+            <img src="assets/img/home/palabra_clave.png"><span>{{ 'navegacion.clave' | translate}}</span>
+        </div>
+        <div (click)="toNetwork()" [ngClass]="{'selection': selection == 3}" class="op-menu-section btn-representacion"
+            id="btn-representacion">
+            <img src="assets/img/home/red.png"><span>{{ 'navegacion.conocimiento' | translate}}</span>
+        </div>
+        <div (click)="toMap()" [ngClass]="{'selection': selection == 4}" class="op-menu-section btn-pais" id="btn-pais">
+            <img src="assets/img/home/por_pais.png"><span>{{ 'navegacion.pais' | translate}}</span>
+        </div>
+        <div (click)="toSparql()" [ngClass]="{'selection': selection == 5}" class="op-menu-section btn-sparql"
+            id="btn-sparql">
+            <img src="assets/img/home/sparql.png"><span>{{ 'navegacion.sparql' | translate}}</span>
+        </div>
+        <div (click)="toRecent()" class="op-menu-section" id="btn-recientes" [ngClass]="{'selection': selection == 6}">
+            <img src="assets/img/home/recientes.png">&nbsp;<span>{{ 'navegacion.recientes' | translate}}</span>
+        </div>
+        <div (click)="toAbout()" class="op-menu-section btn-recientes" id="btn-recientes">
+            <img src="assets/img/home/acerca.png"><span>{{ 'header.acerca.genero' | translate }}</span>
+        </div>
+    </div>
+</section>
+<!-- <section id="last-numbers">
+    <div id="container-title">
+        <div class="title-section">Artículos recientes sobre epidemias y COVID-19</div>
+        <div id="buttons-carrusell">
+            <div (click)="leftScroll()" class="button-carrusell"><img src="assets/img/home/anterior.png" alt=""></div>
+            <div (click)="rightScroll()"class="button-carrusell"><img src="assets/img/home/siguiente.png" alt=""></div>
+        </div>
+    </div>
+    <div id="container-last-articles">
+        <app-last-articles></app-last-articles>
+    </div>
+</section> -->
+<section id="could">
+    <div></div>
+    <div id="container-cloud">
+        <div style="font-size: 16pt; font-family: 'Barlow-Regular'; margin-bottom: 30px;">{{'navegacion.clave' |
+            translate}}</div>
+        <app-word-cloud></app-word-cloud>
+    </div>
+</section>
+<section id="network">
+    <div id="title-network">{{'navegacion.conocimiento' | translate}}</div>
+    <div>
         <app-network></app-network>
-    </section>
-    <section id="mapa-paises">
-        <!-- <div id="contenedor-mapa"> -->
-            <div id="titulo-pais">{{ 'navegacion.pais' | translate }}</div>
-            <app-map id="mapa"></app-map>
-        <!-- </div> -->
-    </section>
-    <section id="contenedor-ultimos-documentos">
-        <div id="contenedor-ultimos-documentos2">
-            <div>
-                <app-ultimos-articulos></app-ultimos-articulos>
+    </div>
+</section>
+<section id="map">
+    <div style="width: 90%; font-size: 16pt; font-family: 'Barlow-Regular'; margin: 30px auto; color: white;">
+        {{'navegacion.pais' | translate}}</div>
+    <div>
+        <app-map></app-map>
+    </div>
+</section>
+<section id="last-numbers">
+    <div style="width: 90%; font-size: 16pt; font-family: 'Barlow-Regular'; margin: 30px auto; color: #1A1A1A;">{{'home.recientes' | translate}}</div>
+    <div id="container-title">
+        <div class="title-section"> &nbsp;&nbsp;  {{ 'busqueda.secciones.principal' | translate}}</div>
+        <div id="buttons-carrusell">
+            <div (click)="leftScroll()" class="button-carrusell"><i class="fas fa-angle-left" style="color: #ff660c;"></i></div>
+            <div (click)="rightScroll()"class="button-carrusell"><i class="fas fa-angle-right" style="color: #ff660c;"></i></div>
+        </div>
+    </div>
+    <div id="container-last-articles">
+        <app-last-articles></app-last-articles>
+    </div>
+</section>
+<section id="sparql">
+    <div id="container-content">
+        <div id="descripcion-sparql">
+            <p id="titulo-sparql">{{'navegacion.sparql' | translate}}</p>
+            <br>
+            <p
+                [innerHTML]="'home.sparql' | translate: { value: ('http://sparql.amelica.org/knowledgebase/ancestral/datastore')}">
+            </p>
+        </div>
+        <div id="container-data">
+            <div id="container-id">
+                <iframe src="http://sparql.amelica.org/knowledgebase/ancestral/datastore" frameborder="0"
+                    width="100%" height="100%"></iframe>
             </div>
         </div>
+    </div>
+</section>
 
-    </section>
-    <section id="sparql">
-        <div id="contenedor-sparql">
-            <div id="descripcion-sparql">
-                <p id="titulo-sparql">{{ 'navegacion.sparql' | translate }}</p>
-                <br>
-                <p>{{ 'home.sparql' | translate }}<a style="color: #4762b2;" href="http://sparql.amelica.org/knowledgebase/ancestral/datastore">http://sparql.amelica.org/</a></p>
-            </div>
-            <div id="contenedor-iframe">
-                <iframe src="http://sparql.amelica.org/knowledgebase/ancestral/datastore" width="100%" height="100%"></iframe>
-            </div>
-        </div>
-    </section>
-    <section id="footer">
-        <app-footer></app-footer>
-    </section>
-
-</main>
+<app-footer></app-footer>

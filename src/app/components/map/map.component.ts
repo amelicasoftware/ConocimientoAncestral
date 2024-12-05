@@ -4,7 +4,7 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geofata_wordLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { ArticleService } from 'src/app/services/article.service';
-import { Country } from 'src/app/models/country.model';
+import { Country } from 'src/app/models/Country.model';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -23,7 +23,7 @@ export class MapComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.articlesService.getCountries().subscribe((countrys: any) => {
+    this.articlesService.getCountries().subscribe((countrys) => {
       this.countrys = countrys;
       console.log(countrys);
     });
@@ -45,13 +45,13 @@ export class MapComponent implements OnInit {
     let polygonTemplate = polygonSeries.mapPolygons.template;
     // polygonTemplate.tooltipText = '{name}';
     polygonTemplate.polygon.fillOpacity = 0.6;
-    polygonTemplate.fill = am4core.color('#3376c7');
+    polygonTemplate.fill = am4core.color('#224a8c');
     // let hs = polygonTemplate.states.create('hover');
     // hs.properties.fill = am4core.color('#74X999');
 
     let imageSeries = this.chart.series.push(new am4maps.MapImageSeries());
     imageSeries.dataFields.value = 'value';
-    imageSeries.fill = am4core.color('#74B266');
+    imageSeries.fill = am4core.color('#090a35');
 
     let imageTemplate = imageSeries.mapImages.template;
     imageTemplate.propertyFields.latitude = 'latitude';
@@ -67,9 +67,9 @@ export class MapComponent implements OnInit {
     circle.propertyFields.fill = 'color';
     circle.tooltipText = '{name}';
     circle.urlTarget = '_blank';
-    circle.url = this.urlProject + '#/busquedaPais/{clave}';
+    circle.url = this.urlProject + '#/busqueda-pais/{clave}';
 
-    imageSeries.dataSource.url = this.urlProject + 'assets/js/json/paises.json';
+    imageSeries.dataSource.url = this.urlProject + 'assets/json/paises.json';
     // imageSeries.dataSource.data = this.countrys;
     imageSeries.dataSource.parser = new am4core.JSONParser();
     console.log(imageSeries.dataSource.data);

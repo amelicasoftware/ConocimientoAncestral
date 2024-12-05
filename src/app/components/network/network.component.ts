@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { get } from 'scriptjs';
+import * as $ from 'jquery';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -9,17 +10,16 @@ import { environment } from '../../../environments/environment';
 })
 export class NetworkComponent implements OnInit {
 
-  public urlProject: string = environment.urlProject;
+  private urlProject: string = environment.urlProject;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(`${this.urlProject}assets/js/red.js`);
     get(`${this.urlProject}assets/js/red.js`, () => {
     });
 
-    // cargarRed($);
     document.getElementById('txt-url').textContent = this.urlProject;
+    // cargarRed($);
   }
 
   ngAfterContentInit(){

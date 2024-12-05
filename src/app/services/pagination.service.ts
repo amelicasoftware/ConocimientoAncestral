@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class PaginationService {
   private _position$: Subject<number> = new Subject<number>();
-  private _initialPosition$: Subject<number> =  new Subject<number>();
+  private _initialPosition$: Subject<number> = new Subject<number>();
   private _finalPosition$: Subject<number> = new Subject<number>();
 
-  constructor() {}
+  constructor() { }
 
   get position$(): Observable<number> {
     return this._position$;
@@ -23,17 +23,19 @@ export class PaginationService {
     return this._finalPosition$;
   }
 
-  changePosition(page: number) {
+  changePosition(page: number): void {
     console.log('change position');
     this._position$.next(page);
   }
 
-  changeInitialPosition(){
+  changeInitialPosition(): void {
+    console.log('change initial position');
     this._initialPosition$.next(1);
   }
 
-  changeFinalPosition(totalPages: number, typeSearch: string) {
+  changeFinalPosition(totalPages: number, typeSearch: string): void {
     console.log('change final position');
+    console.log(totalPages);
     let finalPage: number;
 
     typeSearch === 'articles'

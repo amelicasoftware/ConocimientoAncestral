@@ -1,117 +1,131 @@
-import { Component, OnInit, NgZone, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { get } from 'scriptjs';
-import am4themes_animated from '@amcharts/amcharts4/themes/animated';
-import * as am4charts from '@amcharts/amcharts4/charts';
-import * as am4core from '@amcharts/amcharts4/core';
-import * as am4plugins_wordCloud from '@amcharts/amcharts4/plugins/wordCloud';
-import { GlobalConstants } from '../../common/global-constants';
-import { ServicioHomeService } from '../../services/servicio-home.service';
+import * as $ from 'jquery';
+import { HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import 'core-js';
-import { environment } from '../../../environments/environment';
-
-am4core.useTheme(am4themes_animated);
+import { Numeraries } from '../../constants/numerary';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
-  private chart: am4charts.XYChart;
+export class HomeComponent implements OnInit {
 
-  articulosF: any[] = [];
-
-  url: string = environment.urlProject;
-  url2: string = GlobalConstants.url;
-  numerosHome: any;
-  numArticulos: number;
-  numRevistas: number;
-  numPaises: number;
-  title = 'ConocimientoAncestral';
+  // palabra: string;
+  numArticulos: string = Numeraries.numArticles;
+  numRevistas: string = Numeraries.numJournals;
+  numPaises: string = Numeraries.numCountries;
+  selection: number;
   section: string;
+  lang: string = '';
 
   constructor(
-    private zone: NgZone,
-    private service: ServicioHomeService,
     private router: Router,
-    private route: ActivatedRoute
-  ) { 
+    private route: ActivatedRoute,
+    private translationService: TranslationService,
+  ) {
     const section = 'section';
     this.route.params.subscribe((params) => {
       this.section = params[section];
     });
-  }
+   }
 
   ngOnInit(): void {
-    get(`${this.url2}assets/js/home.js`, () => {
-    });
-    // get(`${this.url2}assets/js/red.js`, () => {
-    // });
-
-    this.service.getNumeros().subscribe( (numeros: any) => {
-      this.numerosHome = numeros;
-      this.numArticulos = numeros[2].Articulos;
-      this.numRevistas = numeros[1].Revistas;
-      this.numPaises = numeros[0].Paises;
-    });
-
     if (this.section === 'network'){
       this.toNetwork();
     }
+
+    this.lang = localStorage.getItem('language');
+
+    this.translationService.lang.subscribe( lang => this.lang=lang);
   }
 
-  ngAfterViewInit() {
-    this.zone.runOutsideAngular(() => {
-      const chart2 = am4core.create('wordCloud', am4plugins_wordCloud.WordCloud);
-      chart2.fontFamily = 'Courier New';
-      const series = chart2.series.push(new am4plugins_wordCloud.WordCloudSeries());
-      series.randomness = 0.1;
-      series.rotationThreshold = 0.5;
-      series.dataSource.url = 'assets/js/json/palabrasAncestral.json';
-
-      series.dataFields.word = 'word';
-      series.dataFields.value = 'weight';
-
-      series.heatRules.push({
-        target: series.labels.template,
-        property: 'fill',
-        min: am4core.color('#4d4d4d'),
-        max: am4core.color('#4d4d4d'),
-        dataField: 'value'
-      });
-
-      series.labels.template.url = `${this.url}#/busqueda-pal-clav/"{word}"`;
-      series.labels.template.urlTarget = '_self';
-      console.log('############' + `${this.url}{word}`);
-
-      const subtitle2 = chart2.titles.create();
-      subtitle2.text = '';
-
-      const title2 = chart2.titles.create();
-      title2.text = '';
-      title2.fontSize = 20;
-      title2.fontWeight = '800';
-
-    });
+  searchText(word: string){
+    console.log(word);
+    this.router.navigate(['/busqueda-general', word]);
   }
 
-  ngOnDestroy() {
-    this.zone.runOutsideAngular(() => {
-      if (this.chart) {
-        this.chart.dispose();
-      }
-    });
+  rightScroll() {
+    // console.log('me muevo a la derecha');
+    const posicion = $('#contenedor-fichas').scrollLeft();
+    $('#contenedor-fichas').scrollLeft(posicion + 500);
   }
 
-  buscarTexto(palabra: string) {
-    console.log('seleccionaste:', palabra);
-    this.router.navigate( ['/busquedaGeneral', palabra] );
+  leftScroll() {
+    // console.log('me muevo a la izquierda');
+    const posicion = $('#contenedor-fichas').scrollLeft();
+    $('#contenedor-fichas').scrollLeft(posicion - 500);
   }
 
+  toCould() {
+    document.getElementById('could').scrollIntoView({ behavior: 'smooth' });
+    // this.selection = 2;
+  }
+  toSearcher() {
+    document.getElementById('searcher').scrollIntoView({ behavior: 'smooth' });
+    // this.selection = 1;
+  }
   toNetwork() {
-    document.getElementById('mynetwork').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('network').scrollIntoView({ behavior: 'smooth' });
+    // this.selection = 3;
+  }
+  toMap() {
+    document.getElementById('map').scrollIntoView({ behavior: 'smooth' });
+    // this.selection = 4;
+  }
+  toSparql() {
+    document.getElementById('sparql').scrollIntoView({ behavior: 'smooth' });
+    // this.selection = 5;
+  }
+  toAbout(){
+    this.router.navigate(['/acerca-de']);
+  }
+  toRecent(){
+    document.getElementById('last-numbers').scrollIntoView({ behavior: 'smooth' });
+  }
+  toScrollTop(){
+    const element = document.getElementsByClassName('header');
+    element[0].scrollIntoView({ behavior: 'smooth'});
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll($event) {
+    if ($(window).scrollTop() + 80 >= $('#menu-section').offset().top) {
+      if ($('#menu-section').offset().top < 400) {
+        $('#menu-section').css('position', 'inherit');
+        $('.navigation').css('position', 'inherit');
+      } else {
+        $('#menu-section').css('position', 'fixed');
+        $('#menu-section').css('top', '80px');
+        $('#menu-section').css('width', '100%');
+        $('#menu-section').css('z-index', 2);
+        $('.navigation').css('z-index', 2);
+        $('.navigation').css('position', 'fixed');
+        $('.navigation').css('width', '100%');
+        $('.navigation').css('justify-content', 'center');
+        $('.navigation').css('background-color', '#37464e');
+      }
+    }
+
+    if ($(window).scrollTop() > 0 && $(window).scrollTop() < 500) {
+      this.selection = 1;
+    }
+    if ($(window).scrollTop() > 500 && $(window).scrollTop() < 1200) {
+      this.selection = 2;
+    }
+    if ($(window).scrollTop() > 1201 && $(window).scrollTop() < 2300) {
+      this.selection = 3;
+    }
+    if ($(window).scrollTop() > 2301 && $(window).scrollTop() < 3300) {
+      this.selection = 4;
+    }
+    if ($(window).scrollTop() > 3201 && $(window).scrollTop() < 3600) {
+      this.selection = 6;
+    }
+    if ($(window).scrollTop() > 3601 && $(window).scrollTop() < 4000) {
+      this.selection = 5;
+    }
+  }
 }

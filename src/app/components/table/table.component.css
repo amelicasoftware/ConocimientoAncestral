@@ -1,3 +1,7 @@
+#table {
+    padding: 15px;
+}
+
 table {
     border: #e5e5e5 2px solid;
     font: 400 calc(14px * 0.83)/20px Roboto, "Helvetica Neue", sans-serif;
@@ -7,7 +11,7 @@ table {
 }
 
 thead tr th {
-    color: #4762B2;
+    color: #4762b2;
 }
 
 tbody tr td {
@@ -75,6 +79,11 @@ img {
     grid-row-gap: 20px;
 }
 
+.grid div:last-child {
+    grid-column-start: 1;
+    grid-column-end: 3
+}
+
 .type-format {
     text-decoration: none;
     padding: 10px 20px;
@@ -89,6 +98,42 @@ img {
     padding: 10px 30px;
 }
 
-.tittle {
+.title {
     text-decoration: none;
+    color: #4762b2;
+}
+
+@media only screen and (max-width: 340px) and (min-width: 5px) {
+    #table {
+        overflow-x: auto;
+        width: 290px;
+    }
+}
+
+@media only screen and (max-width: 400px) and (min-width: 341px) {
+    #table {
+        overflow-x: auto;
+        width: 310px;
+    }
+}
+
+@media only screen and (max-width: 450px) and (min-width: 401px) {
+    #table {
+        overflow-x: auto;
+        width: 350px;
+    }
+}
+
+@media only screen and (max-width: 500px) and (min-width: 451px) {
+    #table {
+        overflow-x: auto;
+        width: 410px;
+    }
+}
+
+@media only screen and (max-width: 620px) and (min-width: 501px) {
+    #table {
+        overflow-x: auto;
+        width: 510px;
+    }
 }

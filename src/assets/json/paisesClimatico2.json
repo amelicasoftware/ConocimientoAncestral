@@ -1,0 +1,200 @@
+[
+    {
+        "clave": "9",
+        "color": "#007f3e",
+        "latitude": -34.6118,
+        "name": "Argentina",
+        "id": "AR",
+        "value": "161",
+        "longitude": -63.4173
+    },
+    {
+        "clave": "19",
+        "color": "#007f3e",
+        "latitude": -19.0421,
+        "name": "Estado Plurinacional de Bolivia",
+        "id": "BO",
+        "value": "24",
+        "longitude": -65.2559
+    },
+    {
+        "clave": "21",
+        "color": "#007f3e",
+        "latitude": -15.7801,
+        "name": "Brasil",
+        "id": "BR",
+        "value": "1458",
+        "longitude": -47.9292
+    },
+    {
+        "clave": "26",
+        "color": "#007f3e",
+        "latitude": -33.4691,
+        "name": "Chile",
+        "id": "CL",
+        "value": "255",
+        "longitude": -70.642
+    },
+    {
+        "clave": "30",
+        "color": "#007f3e",
+        "latitude": 4.6473,
+        "name": "Colombia",
+        "id": "CO",
+        "value": "967",
+        "longitude": -74.0962
+    },
+    {
+        "clave": "33",
+        "color": "#007f3e",
+        "latitude": 9.9402,
+        "name": "Costa Rica",
+        "id": "CR",
+        "value": "382",
+        "longitude": -84.1002
+    },
+    {
+        "clave": "35",
+        "color": "#007f3e",
+        "latitude": 23.1333,
+        "name": "Cuba",
+        "id": "CU",
+        "value": "379",
+        "longitude": -82.3667
+    },
+    {
+        "clave": "37",
+        "color": "#007f3e",
+        "latitude": -0.2295,
+        "name": "Ecuador",
+        "id": "EC",
+        "value": "123",
+        "longitude": -78.5243
+    },
+    {
+        "clave": "42",
+        "color": "#007f3e",
+        "latitude": 40.4167,
+        "name": "España",
+        "id": "ES",
+        "value": "411",
+        "longitude": -3.7033
+    },
+    {
+        "clave": "43",
+        "color": "#007f3e",
+        "latitude": 39.7837304,
+        "name": "Estados Unidos de América",
+        "id": "US",
+        "value": "4",
+        "longitude": -100.4458825
+    },
+    {
+        "clave": "67",
+        "color": "#007f3e",
+        "latitude": 42.6384261,
+        "name": "Italia",
+        "id": "IT",
+        "value": "6",
+        "longitude": 12.674297
+    },
+    {
+        "clave": "73",
+        "color": "#007f3e",
+        "latitude": 19.4326009,
+        "name": "México",
+        "id": "MX",
+        "value": "1473",
+        "longitude": -99.1333416
+    },
+    {
+        "clave": "79",
+        "color": "#007f3e",
+        "latitude": 8.9943,
+        "name": "Panamá",
+        "id": "PA",
+        "value": "3",
+        "longitude": -79.5188
+    },
+    {
+        "clave": "81",
+        "color": "#007f3e",
+        "latitude": -12.0931,
+        "name": "Perú",
+        "id": "PE",
+        "value": "115",
+        "longitude": -74.0465
+    },
+    {
+        "clave": "82",
+        "color": "#007f3e",
+        "latitude": 52.2297,
+        "name": "Polonia",
+        "id": "PL",
+        "value": "6",
+        "longitude": 21.0122
+    },
+    {
+        "clave": "83",
+        "color": "#007f3e",
+        "latitude": 40.0332629,
+        "name": "Portugal",
+        "id": "PT",
+        "value": "31",
+        "longitude": -7.8896263
+    },
+    {
+        "clave": "85",
+        "color": "#007f3e",
+        "latitude": 18.479,
+        "name": "República Dominicana",
+        "id": "DO",
+        "value": "7",
+        "longitude": -69.8908
+    },
+    {
+        "clave": "89",
+        "color": "#007f3e",
+        "latitude": 46.948,
+        "name": "Suiza",
+        "id": "CH",
+        "value": "1",
+        "longitude": 7.4481
+    },
+    {
+        "clave": "93",
+        "color": "#007f3e",
+        "latitude": -32.8941,
+        "name": "Uruguay",
+        "id": "UY",
+        "value": "11",
+        "longitude": -56.0675
+    },
+    {
+        "clave": "94",
+        "color": "#007f3e",
+        "latitude": 7.4961,
+        "name": "República Bolivariana de Venezuela",
+        "id": "VE",
+        "value": "328",
+        "longitude": -63.8983
+    },
+    {
+        "clave": "97",
+        "color": "#007f3e",
+        "latitude": 18.45,
+        "name": "Puerto Rico",
+        "id": "PR",
+        "value": "5",
+        "longitude": -66.0667
+    },
+    {
+        "clave": "211",
+        "color": "#007f3e",
+        "latitude": 44.016521,
+        "name": "Serbia",
+        "id": "RS",
+        "value": "12",
+        "longitude": 21.005859
+    }
+]

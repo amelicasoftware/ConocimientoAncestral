@@ -1,4 +1,4 @@
-<div>
+<div id="table">
     <table>
         <thead>
             <tr>
@@ -10,21 +10,26 @@
                     <span class="tooltip-text journal">Ordenar resultados por revista</span> -->
                 </th>
                 <th scope="col">
-                    {{ 'busqueda.tabla.numero' | translate }}<img class="img" (click)="reverse('anio', reverseN)" [src]="imagenN" align="right" />
-                    <span class="tooltip-text number">{{ 'busqueda.tabla.ordenar' | translate: { value: 'busqueda.tabla.numero' | translate } }}</span>
+                    {{ 'busqueda.tabla.numero' | translate }}
+                    <!-- <img class="img" (click)="reverse('anio', reverseN)" [src]="imagenN" align="right" />
+                    <span class="tooltip-text number">Ordenar resultados por número</span> -->
                 </th>
                 <th scope="col">{{ 'busqueda.tabla.texto' | translate }}</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let articulo of articles">
-                <td colspan="3" *ngIf="articulo.origen === 'PDF'"><a class="tittle" href="https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}}" target="_blank">{{ articulo.tituloArticulo | tituloArticulo }}</a></td>
-                <td colspan="3" *ngIf="articulo.origen === 'XML'"><a class="tittle" href="https://redalyc.org/journal/{{articulo.cveRevista}}/{{articulo.cveArticulo}}/html/index.html" target="_blank">{{ articulo.tituloArticulo | tituloArticulo }}</a></td>
-                <td colspan="2">{{ articulo.autores | autoresArticulo }}</td>
+                <td colspan="3" *ngIf="articulo.origen === 'PDF'"><a class="title" href="https://www.redalyc.org/articulo.oa?id={{articulo.cveArticulo}}" target="_blank">{{articulo.tituloArticulo | titleArticle }}</a></td>
+                <td colspan="3" *ngIf="articulo.origen === 'XML'"><a class="title" href="https://redalyc.org/journal/{{articulo.cveRevista}}/{{articulo.cveArticulo}}/" target="_blank">{{articulo.tituloArticulo | titleArticle }}</a></td>
+                <td colspan="3" *ngIf="articulo.origen === 'ameli'"><a class="title" href="https://redalyc.org/journal/{{articulo.cveRevista}}/{{articulo.cveArticulo}}/" target="_blank">{{articulo.tituloArticulo | titleArticle }}</a></td>
+                <td colspan="2">{{ articulo.autores | authors }}</td>
                 <td colspan="2">{{ articulo.nombreRevista }}</td>
                 <td>{{ articulo.anio }}, {{ articulo.volumen }} ({{ articulo.numero }})</td>
-                <td *ngIf="articulo.dominio === 'https://www.redalyc.org' && articulo.origen === 'XML'">
+                <td *ngIf="articulo.origen === 'XML'">
                     <div class="grid">
+                        <div>
+                            <a class="type-format pdf" href="https://redalyc.org/journal/{{articulo.cveRevista}}/{{articulo.cveArticulo}}/" target="_blank"><b>Visor</b></a>
+                        </div>
                         <div>
                             <a class="type-format pdf" href="https://redalyc.org/articulo.oa?id={{articulo.cveArticulo}}" target="_blank"><b>PDF</b></a>
                         </div>
@@ -39,7 +44,7 @@
                         </div>
                     </div>
                 </td>
-                <td *ngIf="articulo.dominio === 'https://www.redalyc.org' && !(articulo.origen === 'XML')">
+                <td *ngIf="!(articulo.origen === 'XML')">
                     <div>
                         <div>
                             <a class="type-format" href="https://redalyc.org/articulo.oa?id={{articulo.cveArticulo}}" target="_blank"><b>PDF</b></a>

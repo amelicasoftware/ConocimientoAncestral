@@ -19,7 +19,7 @@
         "generacion": "ePUB, PDF HTML Automatic Generation",
         "visor": "Article viewer",
         "movil": "Mobile article viewer",
-        "indexacion": "Journal indexing",
+        "indexacion": "Journal Indexings",
         "consolidadas.redalyc": "Redalycs' consolidated journal index",
         "consolidadas.amelica": "AmeliCAs' in consolidation journal index",
         "evaluacion": "Evaluation Criteria",
@@ -30,34 +30,42 @@
         "pais": "Search by country"
     },
     "navegacion": {
-        "total": "More than <b>{{ articles }}</b> articles extracted from <b>{{ journals }}</b> journals in <b>{{ countries }}</b> countries",
-        "buscador": "Browser",
+        "total": "More than <span class='number'>{{ articles }} articles</span> extracted from <span class='number'>{{ journals }} journals</span> in <span class='number'>{{ countries }} countries</span>",
+        "total.busqueda": "More than ",
+        "buscador": "Search for full-text articles",
         "clave": "Articles by keyword",
         "conocimiento": "Knowledge representation",
         "pais": "Articles by country",
-        "sparql": "Knowledge base in SPARQL",
         "recientes": "More recent",
-        "articulos": "More than {{ articles }} articles"
+        "sparql": "Knowledge base in  SPARQL",
+        "texto-num-articulo": "Articles",
+        "texto-num-articulo2": "extracted from",
+        "texto-num-rev": "Indexed",
+        "texto-num-rev2": "Journals from",
+        "texto-num-paises": "Countries"
     },
     "home": {
-        "mensaje": "For a non-for-profit publishing model to keep the academic and open nature of the scientific communication.",
+        "buscar": "Search",
+        "mensaje": "The Diamond Open Access at the service of the Sustainable Development Goals",
+        "mensaje1": "For a non-for-profit publishing model to keep the academic and open nature of the scientific communication",
         "recientes": "Recent publications",
         "mas": "Display more articles",
         "cargando": "Loading Articles...",
-        "sparql": "SPARQL access point with the available data to access the results for better analysis: "
+        "sparql": "SPARQL access point with the available data to access the results for better analysis: <a style='color: #6b956f;' href='http://sparql.amelica.org/knowledgebase/climateaction/datastore'>{{ value }}</a>"
     },
     "busqueda": {
         "banner": {
             "pais": "Select country:",
             "palabras": "Search by keyword",
             "general": "General search",
-            "buscar": "Search"
+            "buscar.general": "Type the search word",
+            "buscar.clave": "Type the keyword to search"
         },
         "secciones": {
             "principal": "Journal articles",
-            "modo": "Mode of results visualization",
-            "tabla": "table",
-            "lista": "list",
+            "modo": "Results visualization mode",
+            "tabla": "Table",
+            "lista": "List",
             "resultados": "Results for: {{ text }} in journal articles",
             "resultados.pais": "Articles published in journals from: {{ value }}",
             "total": "{{ value1 }} from {{ value2 }} to {{ value3 }} articles"
@@ -77,11 +85,7 @@
             "autor": "Authors",
             "revista": "Journal",
             "numero": "Number",
-            "texto": "Full text",
-            "ordenar": "Arrange results by {{value}}"
-        },
-        "tarjeta": {
-            "fuente": "Source:"
+            "texto": "Full text"
         }
     },
     "estatica": {
@@ -95,16 +99,18 @@
     },
     "general": {
         "spinner": "Loading search results...",
-        "resultados.nulo": "No results were found",
-        "resultados.nulo2": "Make another search."
+        "proyecto": "Ancestral Knowledge",
+        "titulo": "Redalyc Semantic Collection",
+        "titulo2": "for the Sustainable Development Goals",
+        "subtitulo": "13 CLIMATE ACTION"
     },
     "footer": {
-        "copyright": "Scientific Information System Redalyc ®",
+        "copyright": "Redalyc's System of Scientific Information ®",
         "copyright2": "Network of non-commercial academy-owned Open Access Scholarly and Scientific Journals.",
-        "version": "Redalyc 2021 Version 5.0 | 2020",
-        "correo": "redalyc@redalyc.org"
+        "version": "Redalyc Version 5.0 | 2003 - 2024",
+        "correo": "comuniacion@redalyc.org"
     },
-    "mHeader":{
+    "mHeader": {
         "title": "Redalyc's System of Scientific Information",
         "desc1": "Network of diamond Open Access scientific journals",
         "desc2": "Academia-owned non-commercial open infrastructure"

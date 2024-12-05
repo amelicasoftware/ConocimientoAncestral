@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-banner-searches',
@@ -10,7 +10,6 @@ export class BannerSearchesComponent implements OnInit {
   @Input() sectionKey: boolean;
   @Input() sectionCountry: boolean;
   @Input() sectionAbout: boolean;
-
   constructor() { }
 
   ngOnInit(): void {

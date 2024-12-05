@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Article } from '../../models/Article.model';
 
 @Component({
@@ -7,6 +7,7 @@ import { Article } from '../../models/Article.model';
   styleUrls: ['./target.component.css']
 })
 export class TargetComponent implements OnInit {
+
   @Input() articles: Array<Article> = new Array<Article>();
 
   constructor() { }

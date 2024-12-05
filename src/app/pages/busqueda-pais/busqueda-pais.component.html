@@ -1,95 +1,98 @@
-<!-- Inicia Header  -->
-<app-header [currentSection]="'header.pais'"></app-header>
-<!--  termina Header    -->
+<section id="general">
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#ffffff" type="square-loader" [fullScreen]="true">
+        <p class="loading">{{ 'general.spinner' | translate }}</p>
+    </ngx-spinner>
 
-<section id="searches">
-    <app-banner-searches [sectionCountry]=true></app-banner-searches>
+    <section id="header">
+        <app-header [currentSection]="'header.pais'"></app-header>
+    </section>
+
+    <section>
+        <app-banner-searches [sectionCountry]=true></app-banner-searches>
+    </section>
+
+    <section id="banner" class="flex">
+        <div class="flex searcher-title">
+            <img src="assets/img/icons/pais-a.png" />
+            <p>{{country}}</p>
+        </div>
+
+        <div class="searcher">
+            <span>{{ 'busqueda.banner.pais' | translate }}</span>
+            <select id="list-countries" #predefined (change)="searchArticlesByCountry(predefined.value)" placeholder="Buscar">
+                <option *ngFor="let c of listCountries" value="{{c.clave}}" [selected]="c.name == country" #c.name>{{c.name}}</option> 
+            </select>
+        </div>
+
+    </section>
+
+    <section id="sections">
+        <div class="filters">
+            <div class="text-filters">
+                <img src="assets/img/icons/filtro.png" />
+                <span>{{ 'busqueda.filtros.titulo' | translate }}</span>
+            </div>
+            <app-filters></app-filters>
+
+        </div>
+
+        <div class="content-general">
+            <div class="container-sections">
+                <div class="selected sections-aling article-icon">
+                    <img src="assets/img/icons/articulos.png" />
+                    <span>{{ 'busqueda.secciones.principal' | translate }}</span>
+                </div>
+                <div class="filters-icon">
+                    <!--  <a><img src="assets/img/icons/filtro.png" /></a> -->
+                    <input id="abrir-cerrar" name="abrir-cerrar" type="checkbox" value="" />
+                    <label for="abrir-cerrar">
+                        <img src="assets/img/icons/filtro.png" />
+                    </label>
+                    <div id="sidebar" class="sidebar">
+                        <ul class="menu">
+                            <input id="abrir-cerrar" name="abrir-cerrar" type="checkbox" value="" />
+                            <label for="abrir-cerrar">
+                                <img class="close-filters" src="assets/img/icons/filtro.png" />
+                            </label>
+                            <app-filters></app-filters>
+                        </ul>
+                    </div>
+                </div>
+                <div class="view-results">
+                    <span>{{ 'busqueda.secciones.modo' | translate }}</span>
+                </div>
+                <div class="sections-aling" (click)="changeView(false)" [ngClass]="{'activate': !view, 'selected': !view, 'select': view}">
+                    <img [src]="imgTable" />
+                    <span class="view-table">{{ 'busqueda.secciones.tabla' | translate }}</span>
+                </div>
+                <div class="sections-aling" (click)="changeView(true)" [ngClass]="{'activate': view, 'selected': view, 'select': !view}">
+                    <img [src]="imgList" />
+                    <span>{{ 'busqueda.secciones.lista' | translate }}</span>
+                </div>
+            </div>
+            <div>
+                <div class="results">
+                    <span>{{ 'busqueda.secciones.resultados.pais' | translate: { value: (country || '') } }}</span>
+                    <span class="total-results" *ngIf="positionPage !== finalPositionPage">{{ 'busqueda.secciones.total' | translate: { value1: (positionPage * 10 - 9), value2: (positionPage * 10), value3: (totalResults || '') } }}</span>
+                    <span class="total-results" *ngIf="positionPage === finalPositionPage">{{ 'busqueda.secciones.total' | translate: { value1: (positionPage * 10 - 9), value2: (totalResults), value3: (totalResults) } }}</span>
+                </div>
+                <div class="balloons-component">
+                    <app-balloons></app-balloons>
+                </div>
+
+                <div class="views-components">
+                    <app-target [articles]="articles" *ngIf="view"></app-target>
+                    <app-table [articles]="articles" *ngIf="!view"></app-table>
+                </div>
+
+                <div class="pagination-component">
+                    <app-pagination (click)="goUp()"></app-pagination>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="footer">
+        <app-footer></app-footer>
+    </section>
 </section>
-
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#ffffff" type="square-loader" [fullScreen]="true">
-    <p class="loading">{{ 'general.spinner' | translate }}</p>
-</ngx-spinner>
-
-<div class="searcher flex">
-    <div class="img-country">
-        <img src="assets/img/pais-a.png"> {{articles[0]?.nombrePais}}
-    </div>
-
-    <p class="sel-country">{{ 'busqueda.banner.pais' | translate }}</p>
-    <select id="list-countries" #country (change)="searchArticlesByCountry(country.value)">
-        <option *ngFor="let country of listCountries" value="{{country.clave}}" #country.name>{{country.name}}</option>
-    </select>
-</div>
-
-<div *ngIf="total.palabra && total.palabra != 'allArt' " class="grid-containerh2">
-    <div class="item11">
-        <div class="filtros"><img src="assets/img/filtro.png">{{ 'busqueda.filtros.titulo' | translate }}</div>
-        <!--       <div class="cursor" [routerLink]="['/busquedarev',total.palabra]" (click)="limpiarDatos()"><img src="assets/img/revista.png">Revistas</div> -->
-        <div class="seleccionado alinear"><img src="assets/img/articulos-act.png">{{ 'busqueda.secciones.principal' | translate }}</div>
-        <div class="alimodo">{{ 'busqueda.secciones.modo' | translate }}</div>
-        <div (click)="changeView(false)" [ngClass]="{'activate': !view, 'selected': !view, 'cursor': view}"><img [src]="imgList">{{ 'busqueda.secciones.tabla' | translate }}</div>
-        <div (click)="changeView(true)" [ngClass]="{'activate': view, 'selected': view, 'cursor': !view}"><img [src]="imgTable">{{ 'busqueda.secciones.lista' | translate }}</div>
-    </div>
-</div>
-
-<!--  Filtros menu  -->
-<div *ngIf="total.palabra && total.total >= 1" class="grid-container">
-
-    <div *ngIf="total.total >= 0" class="item2">
-        <!-- <app-filtros></app-filtros> -->
-        <app-filters [filters]="filters"></app-filters>
-    </div>
-
-
-
-    <!-- Termina Filtros menu   -->
-    <div class="item3">
-
-        <div *ngIf=" positionPage !== finalPositionPage" class="texto-resultados">
-            <p class="texto-formato tamaño-resul-pal">{{ 'busqueda.secciones.resultados.pais' | translate: { value: (articles[0]?.nombrePais || '') } }}</p>
-            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total">{{ 'busqueda.secciones.total' | translate: { value1: (positionPage * 10 - 9), value2: (positionPage * 10), value3: (totalResults) } }}</p>
-        </div>
-
-        <div *ngIf="positionPage === finalPositionPage" class="texto-resultados">
-            <p class="texto-formato tamaño-resul-pal">{{ 'busqueda.secciones.resultados.pais' | translate: { value: (articles[0]?.nombrePais || '') } }}</p>
-            <p class="texto-formato tamaño-resul-busqueda" [attr.colspan]="total.total">{{ 'busqueda.secciones.total' | translate: { value1: (positionPage * 10 - 9), value2: (totalResults), value3: (totalResults) } }}</p>
-        </div>
-
-        <!-- <app-globitos></app-globitos> -->
-        <app-balloons></app-balloons>
-
-        <div *ngIf="total.total < 1" class="no-resultados">
-            {{ 'general.resultados.nulo' | translate}}
-        </div>
-
-        <div *ngIf="totalResults >= 1">
-
-            <app-target [articles]="articles" *ngIf="view"></app-target>
-            <app-table [articles]="articles" *ngIf="!view"></app-table>
-
-
-            <!-- <app-paginador-articulos></app-paginador-articulos> -->
-            <!-- <app-nuevo-paginador [totalResult]="totalResults" (position)="setPosition($event)"></app-nuevo-paginador> -->
-            <app-pagination [totalResult]="totalResults"></app-pagination>
-        </div>
-
-    </div>
-
-</div>
-
-<div *ngIf="total.total <= 0 && total.palabra && total.palabra != 'allArt' " class="resultados">
-    <p>{{ 'general.resultados.nulo' | translate}} </p>
-    <p>{{ 'general.resultados.nulo2' | translate}}</p>
-</div>
-
-<div *ngIf="!total.palabra && total.total <= 0" class="resultados">
-
-    <p></p>
-</div>
-
-<div *ngIf="total.palabra == 'allArt'" class="resultados">
-
-    <p></p>
-</div>
-
-<app-footer></app-footer>

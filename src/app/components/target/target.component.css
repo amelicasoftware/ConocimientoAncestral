@@ -5,12 +5,12 @@
 
 .article {
     border: 1px;
-    padding: 10px;
+    padding: 20px;
     box-shadow: 0px 1px 2px 1px #bfbfbf;
     font-family: 'Barlow-Regular';
     font-size: 10pt;
     width: 90%;
-    margin: 10px;
+    margin: 10px 20px;
     line-height: 15px;
 }
 
@@ -20,21 +20,37 @@
     color: #4762b2;
 }
 
+.titleJournal {
+    text-decoration: none;
+    color: black;
+}
+
+.titleJournal:hover {
+    font-family: 'Barlow-Bold';
+    text-decoration: none;
+    color: #003B60;
+}
+
 .visualizations {
     display: inline;
 }
 
 .text-complete {
     display: inline;
+    color: #4762b2;
 }
 
 .button-visualizations {
     background-color: white;
-    color: #4762b2;
     font-family: Barlow-Regular;
     margin: 3px;
     margin-left: 10px;
     padding: 3px 20px;
+    border: 1px solid #4762b2;
+}
+
+.button-visualizations a {
+    color: #4762b2;
 }
 
 .type-format {
@@ -44,4 +60,10 @@
 .social-networks {
     display: inline;
     float: right;
+}
+
+.social-networks img {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
 }

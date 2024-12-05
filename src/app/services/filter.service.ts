@@ -30,30 +30,7 @@ export class FilterService {
   }
 
   public changeFilters(filters: Array<Filter>): void {
-    console.log('change filters');
     this._filters$.next(filters);
-  }
-
-  public addFilter(filterElement: FilterElement, filterName: string): void {
-    const deleteFilterActive: boolean = this.findFilterActive(filterElement.nombre, filterElement.clave);
-    const element = {
-      clave: filterElement.clave,
-      nombre: filterElement.nombre,
-      filtro: filterName,
-      state: false
-    };
-
-    console.log(element);
-    if (!deleteFilterActive){
-      if (this.findFilterSelected(element.nombre, false)) {
-        const index: number = this.getIndexFilterSelected(element.clave);
-        this.filtersSelected.splice(index, 1);
-      } else {
-        this.filtersSelected.push(element);
-      }
-    }
-
-    console.log(this.filtersSelected);
   }
 
   public applyFilters(): void {
@@ -94,22 +71,6 @@ export class FilterService {
     return filtersChain;
   }
 
-  public activateFilters(element: FilterElement): boolean {
-    if (this.filtersSelected.find((filterSelected: FilterElement) => filterSelected.nombre === element.nombre)) {
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-  public showButton(filter: Filter): boolean {
-    if (filter.elementos.length > 5){
-      return false;
-    }else{
-      return true;
-    }
-  }
-
   public showElements(filter: Filter): void {
     if (!filter.hasOwnProperty('state')) {
       Object.defineProperty(filter, 'state', {
@@ -123,13 +84,43 @@ export class FilterService {
     : Object.defineProperty(filter, 'state', { value: true });
   }
 
-  public changeStatefiltersSelected(filtersSelected: Array<FilterElement>): Array<FilterElement> {
-    filtersSelected.forEach(
-      (filterSelected: FilterElement) => {
-        filterSelected.state = true;
+  public activateFilters(element: FilterElement): boolean {
+    if (this.filtersSelected.find((filterSelected: FilterElement) => filterSelected.nombre === element.nombre)) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  public addFilter(filterElement: FilterElement, filterName: string): void {
+    const deleteFilterActive: boolean = this.findFilterActive(filterElement.nombre, filterElement.clave);
+    console.log(deleteFilterActive);
+    const element: FilterElement = {
+      clave: filterElement.clave,
+      nombre: filterElement.nombre,
+      filtro: filterName,
+      state: false
+    };
+
+    console.log(element);
+    if (!deleteFilterActive){
+      if (this.findFilterSelected(element.nombre, false)) {
+        const index: number = this.getIndexFilterSelected(element.clave);
+        this.filtersSelected.splice(index, 1);
+      } else {
+        this.filtersSelected.push(element);
       }
-    );
-    return filtersSelected;
+    }
+
+    console.log(this.filtersSelected);
+  }
+
+  public showButton(filter: Filter): boolean {
+    if (filter.elementos.length > 5){
+      return false;
+    }else{
+      return true;
+    }
   }
 
   public findFilterActive(filterName: string, key: string): boolean {
@@ -155,9 +146,17 @@ export class FilterService {
     return this.filtersSelected.findIndex((filterIndexSelected: FilterElement) => filterIndexSelected.clave === key);
   }
 
+  public changeStatefiltersSelected(filtersSelected: Array<FilterElement>): Array<FilterElement> {
+    filtersSelected.forEach(
+      (filterSelected: FilterElement) => {
+        filterSelected.state = true;
+      }
+    );
+    return filtersSelected;
+  }
+
   public cleanFiltersSelected(): void {
     this.filtersSelected = [];
     this._filtersSelected$.next(this.filtersSelected);
   }
-
 }

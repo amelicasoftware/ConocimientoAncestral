@@ -30,14 +30,14 @@
         "pais": "Búsqueda País"
     },
     "navegacion": {
-        "total": "Más de <b>{{ articles }}</b> artículos extraidos de <b>{{ journals }}</b> revistas en <b>{{ countries }}</b> países",
-        "buscador": "Buscador",
+        "total": "<span class='number'>{{ articles }} </span> artículos extraídos de <span class='number'>{{ journals }}</span> revistas indexadas de <span class='number'>{{ countries }}</span> países",
+        "total.busqueda": "Más de ",
+        "buscador": "Búsqueda de artículos a texto completo",
         "clave": "Artículos por palabra clave",
         "conocimiento": "Representación del conocimiento",
         "pais": "Artículos por país",
         "sparql": "Base de conocimiento en SPARQL",
         "recientes": "Más recientes",
-        "articulos": "Más de {{ articles }} artículos",
         "texto-num-articulo": "Artículos",
         "texto-num-articulo2": "extraídos de",
         "texto-num-rev": "revistas",
@@ -45,18 +45,21 @@
         "texto-num-paises": "países"
     },
     "home": {
-        "mensaje": "Por un modelo de publicación sin fines de lucro para conservar la naturaleza académica y abierta de la comunicación cientifíca.",
+        "buscar": "Buscar",
+        "mensaje": "El Acceso Abierto Diamante al servicio de los Objetivos de Desarrollo Sostenible",
+        "mensaje1": "Por un modelo de publicación sin fines de lucro para conservar la naturaleza académica y abierta de la comunicación científica.",
         "recientes": "Publicaciones recientes",
         "mas": "Ver más artículos",
         "cargando": "Cargando Artículos...",
-        "sparql": "Punto de acceso SPARQL con los datos disponibles para acceder a los resultados para mayores análisis: "
+        "sparql": "Punto de acceso SPARQL con los datos disponibles para acceder a los resultados para mayores análisis: <a style='color: #6b956f;' href='http://sparql.amelica.org/knowledgebase/climateaction/datastore'>{{ value }}</a>"
     },
     "busqueda": {
         "banner": {
             "pais": "Seleccionar el país:",
             "palabras": "Búsqueda por palabra clave",
             "general": "Búsqueda General",
-            "buscar": "buscar"
+            "buscar.general": "Ingrese palabra de búsqueda",
+            "buscar.clave": "Ingrese la palabra clave a buscar"
         },
         "secciones": {
             "principal": "Articulos de revista",
@@ -82,11 +85,7 @@
             "autor": "Autores",
             "revista": "Revista",
             "numero": "Número",
-            "texto": "Texto Completo",
-            "ordenar": "Ordenar resultados por {{value}}"
-        },
-        "tarjeta": {
-            "fuente": "Fuente:"
+            "texto": "Texto Completo"
         }
     },
     "estatica": {
@@ -100,14 +99,16 @@
     },
     "general": {
         "spinner": "Cargando resultados de búsqueda...",
-        "resultados.nulo": "No se han encontrado resultados",
-        "resultados.nulo2": "Realice una nueva búsqueda."
+        "proyecto": "Conocimiento Ancestral",
+        "titulo": "Colección Semántica Redalyc",
+        "titulo2": "para los Objetivos del Desarrollo Sostenible",
+        "subtitulo": "13 ACCIÓN POR EL CLIMA"
     },
     "footer": {
-"copyright": "Sistema de Información Científica Redalyc ®",
+        "copyright": "Sistema de Información Científica Redalyc ®",
         "copyright2": "Red de revistas científicas de Acceso Abierto no comercial propiedad de la academia.",
         "version": "Redalyc Versión 5.0 | 2003 - 2024",
-        "correo": "redalyc@redalyc.org"
+        "correo": "comuniacion@redalyc.org"
     },
     "mHeader": {
         "title": "Sistema de Información Científica Redalyc",

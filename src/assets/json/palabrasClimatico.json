@@ -1,0 +1,402 @@
+[
+    {
+        "weight": 940,
+        "word": "cambio climático"
+    },
+    {
+        "weight": 808,
+        "word": "medio ambiente"
+    },
+    {
+        "weight": 756,
+        "word": "desarrollo sostenible"
+    },
+    {
+        "weight": 660,
+        "word": "contaminación"
+    },
+    {
+        "weight": 479,
+        "word": "ambiente"
+    },
+    {
+        "weight": 409,
+        "word": "ecología"
+    },
+    {
+        "weight": 314,
+        "word": "justicia social"
+    },
+    {
+        "weight": 279,
+        "word": "gestión ambiental"
+    },
+    {
+        "weight": 261,
+        "word": "desarrollo sustentable"
+    },
+    {
+        "weight": 194,
+        "word": "educación ambiental"
+    },
+    {
+        "weight": 141,
+        "word": "deforestación"
+    },
+    {
+        "weight": 136,
+        "word": "medioambiente"
+    },
+    {
+        "weight": 135,
+        "word": "sostenibilidad"
+    },
+    {
+        "weight": 114,
+        "word": "política ambiental"
+    },
+    {
+        "weight": 111,
+        "word": "educación"
+    },
+    {
+        "weight": 103,
+        "word": "sustentabilidad"
+    },
+    {
+        "weight": 100,
+        "word": "turismo"
+    },
+    {
+        "weight": 96,
+        "word": "méxico"
+    },
+    {
+        "weight": 87,
+        "word": "colombia"
+    },
+    {
+        "weight": 85,
+        "word": "calentamiento global"
+    },
+    {
+        "weight": 80,
+        "word": "adaptación"
+    },
+    {
+        "weight": 78,
+        "word": "entorno"
+    },
+    {
+        "weight": 77,
+        "word": "conservación"
+    },
+    {
+        "weight": 73,
+        "word": "bioética"
+    },
+    {
+        "weight": 73,
+        "word": "historia natural"
+    },
+    {
+        "weight": 73,
+        "word": "ecosistemas"
+    },
+    {
+        "weight": 72,
+        "word": "desarrollo"
+    },
+    {
+        "weight": 72,
+        "word": "salud"
+    },
+    {
+        "weight": 71,
+        "word": "calidad ambiental"
+    },
+    {
+        "weight": 71,
+        "word": "vulnerabilidad"
+    },
+    {
+        "weight": 69,
+        "word": "metales pesados"
+    },
+    {
+        "weight": 66,
+        "word": "biodiversidad"
+    },
+    {
+        "weight": 62,
+        "word": "agua"
+    },
+    {
+        "weight": 61,
+        "word": "riesgo"
+    },
+    {
+        "weight": 60,
+        "word": "políticas públicas"
+    },
+    {
+        "weight": 58,
+        "word": "impacto ambiental"
+    },
+    {
+        "weight": 58,
+        "word": "justicia ambiental"
+    },
+    {
+        "weight": 56,
+        "word": "indicadores ambientales"
+    },
+    {
+        "weight": 56,
+        "word": "derecho ambiental"
+    },
+    {
+        "weight": 56,
+        "word": "américa latina"
+    },
+    {
+        "weight": 55,
+        "word": "minería"
+    },
+    {
+        "weight": 55,
+        "word": "ética"
+    },
+    {
+        "weight": 55,
+        "word": "derechos humanos"
+    },
+    {
+        "weight": 52,
+        "word": "cultura"
+    },
+    {
+        "weight": 52,
+        "word": "agricultura"
+    },
+    {
+        "weight": 48,
+        "word": "salud pública"
+    },
+    {
+        "weight": 48,
+        "word": "naturaleza"
+    },
+    {
+        "weight": 47,
+        "word": "mitigación"
+    },
+    {
+        "weight": 46,
+        "word": "recursos naturales"
+    },
+    {
+        "weight": 46,
+        "word": "argentina"
+    },
+    {
+        "weight": 45,
+        "word": "sociedad"
+    },
+    {
+        "weight": 43,
+        "word": "conservación ambiental"
+    },
+    {
+        "weight": 43,
+        "word": "calidad de vida"
+    },
+    {
+        "weight": 40,
+        "word": "deterioro ambiental"
+    },
+    {
+        "weight": 40,
+        "word": "globalización"
+    },
+    {
+        "weight": 39,
+        "word": "pobreza"
+    },
+    {
+        "weight": 39,
+        "word": "responsabilidad social"
+    },
+    {
+        "weight": 38,
+        "word": "tecnología"
+    },
+    {
+        "weight": 38,
+        "word": "economía ambiental"
+    },
+    {
+        "weight": 38,
+        "word": "agroecología"
+    },
+    {
+        "weight": 37,
+        "word": "costa rica"
+    },
+    {
+        "weight": 36,
+        "word": "comunidad"
+    },
+    {
+        "weight": 35,
+        "word": "gobernanza"
+    },
+    {
+        "weight": 35,
+        "word": "protección ambiental"
+    },
+    {
+        "weight": 35,
+        "word": "territorio"
+    },
+    {
+        "weight": 34,
+        "word": "climatología"
+    },
+    {
+        "weight": 34,
+        "word": "ecoturismo"
+    },
+    {
+        "weight": 34,
+        "word": "participación"
+    },
+    {
+        "weight": 34,
+        "word": "percepción"
+    },
+    {
+        "weight": 33,
+        "word": "política"
+    },
+    {
+        "weight": 33,
+        "word": "gestión"
+    },
+    {
+        "weight": 32,
+        "word": "economía"
+    },
+    {
+        "weight": 31,
+        "word": "desarrollo humano"
+    },
+    {
+        "weight": 31,
+        "word": "diversidad"
+    },
+    {
+        "weight": 30,
+        "word": "ecosistema"
+    },
+    {
+        "weight": 30,
+        "word": "ciencia"
+    },
+    {
+        "weight": 29,
+        "word": "crecimiento económico"
+    },
+    {
+        "weight": 29,
+        "word": "política pública"
+    },
+    {
+        "weight": 29,
+        "word": "comunicación"
+    },
+    {
+        "weight": 29,
+        "word": "indicadores"
+    },
+    {
+        "weight": 28,
+        "word": "complejidad"
+    },
+    {
+        "weight": 28,
+        "word": "invasiones biológicas"
+    },
+    {
+        "weight": 28,
+        "word": "chile"
+    },
+    {
+        "weight": 28,
+        "word": "residuos"
+    },
+    {
+        "weight": 28,
+        "word": "educación superior"
+    },
+    {
+        "weight": 27,
+        "word": "representaciones sociales"
+    },
+    {
+        "weight": 27,
+        "word": "historia"
+    },
+    {
+        "weight": 27,
+        "word": "energía"
+    },
+    {
+        "weight": 27,
+        "word": "sig"
+    },
+    {
+        "weight": 27,
+        "word": "españa"
+    },
+    {
+        "weight": 26,
+        "word": "reciclaje"
+    },
+    {
+        "weight": 26,
+        "word": "polución"
+    },
+    {
+        "weight": 26,
+        "word": "evaluación de impacto ambiental"
+    },
+    {
+        "weight": 26,
+        "word": "especies amenazadas"
+    },
+    {
+        "weight": 26,
+        "word": "enfermería"
+    },
+    {
+        "weight": 25,
+        "word": "cuba"
+    },
+    {
+        "weight": 25,
+        "word": "paisaje"
+    },
+    {
+        "weight": 25,
+        "word": "recursos hídricos"
+    },
+    {
+        "weight": 25,
+        "word": "ciudad"
+    },
+    {
+        "weight": 25,
+        "word": "planificación"
+    }
+]

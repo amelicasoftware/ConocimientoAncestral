@@ -1,5 +1,11 @@
 .font-filters {
     font-family: Barlow-Regular;
+    margin: 0px 50px;
+    padding-top: 10px;
+}
+
+.font-filters>div {
+    margin-top: 10px;
 }
 
 .tittle-filter {
@@ -35,13 +41,17 @@
     text-align: center;
 }
 
-#btn-filters {
-    background-color: #090a35;
+.btn-filters {
+    border-radius: 7px;
+    float: left;
+    font-size: 10pt;
+    background-color: #4762b2;
     color: white;
-    border-radius: 5px;
-    border: 1px solid #090a35;
-    padding: 5px;
+    text-align: center;
+    padding: 6px 0px;
     cursor: pointer;
+    width: 50% !important;
+    margin: 5px 20px;
 }
 
 #btn-filters :hover {

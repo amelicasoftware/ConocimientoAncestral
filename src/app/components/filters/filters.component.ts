@@ -1,9 +1,7 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Filter } from '../../models/Filter.model';
-import { FilterElement } from '../../models/FilterElement.model';
 import { FilterService } from '../../services/filter.service';
-
 
 @Component({
   selector: 'app-filters',
@@ -11,44 +9,43 @@ import { FilterService } from '../../services/filter.service';
   styleUrls: ['./filters.component.css']
 })
 export class FiltersComponent implements OnInit, OnDestroy {
-  filtersSubscription: Subscription;
 
-  @Input() filters: Array<Filter>;
-  filtersSelected: Array<FilterElement> = [];
+  private filtersSubscription$: Subscription;
+  filters: Array<Filter> = new Array<Filter>();
 
-  constructor(
-    private filterServive: FilterService
-  ) { }
-
-  ngOnDestroy(): void {
-    this.filtersSubscription.unsubscribe();
-  }
+  constructor( private filterService: FilterService ) { }
 
   ngOnInit(): void {
-    this.filtersSubscription = this.filterServive.filters$.subscribe(
+    console.log('componente filtros');
+    this.filtersSubscription$ = this.filterService.filters$.subscribe(
       (filters: Array<Filter>) => this.filters = filters
     );
   }
 
-  public applyFilters(){
-    this.filterServive.applyFilters();
+  ngOnDestroy(): void {
+    console.log('Destroy component Filters');
+    this.filtersSubscription$.unsubscribe();
   }
 
-  public showElements(filter: Filter){
-    this.filterServive.showElements(filter);
+  public applyFilters(): void {
+    this.filterService.applyFilters();
   }
 
-  public activateFilters(element: FilterElement): boolean{
-    const activate: boolean = this.filterServive.activateFilters(element);
+  public showElements(filter: any): void {
+    this.filterService.showElements(filter);
+  }
+
+  public activateFilters(element: any): boolean {
+    const activate: boolean = this.filterService.activateFilters(element);
     return activate;
   }
 
-  public addFilter(filterElement: FilterElement, filterName: string){
-    this.filterServive.addFilter(filterElement, filterName);
+  public addFilter(filterElement: any, filterName: string): void {
+    this.filterService.addFilter(filterElement, filterName);
   }
 
-  public showButton(filter: Filter): boolean{
-    const show: boolean = this.filterServive.showButton(filter);
+  public showButton(filter: Filter): boolean {
+    const show: boolean = this.filterService.showButton(filter);
     return show;
   }
 

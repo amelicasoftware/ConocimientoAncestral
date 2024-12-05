@@ -1,16 +1,13 @@
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { Article } from '../../models/Article.model';
 import { ArticleResult } from '../../models/ArticleResult.model';
 import { ArticleService } from '../../services/article.service';
-import { FiledSort } from '../../models/filedSort.model';
-import { Filter } from '../../models/Filter.model';
-import { FilterChain } from '../../models/FilterChain.model';
 import { FilterService } from '../../services/filter.service';
 import { PaginationService } from '../../services/pagination.service';
-import { Total } from '../../models/total.model';
-import { delay } from 'rxjs/operators';
+import { FilterChain } from '../../models/FilterChain.model';
+import { Subscription } from 'rxjs';
+import { ErrorService } from '../../services/error.service';
 
 @Component({
   selector: 'app-busqueda-general',
@@ -18,18 +15,13 @@ import { delay } from 'rxjs/operators';
   styleUrls: ['./busqueda-general.component.css']
 })
 export class BusquedaGeneralComponent implements OnInit, OnDestroy {
-
-  positionSubscription: Subscription;
-  finalPositionSubscription: Subscription;
-  filtersSubscription: Subscription;
-  filtersChainSubscription: Subscription;
-  searchSubscription: Subscription;
-  fieldSortSubscription: Subscription;
-
-  total: Total = new Total();
+  private finalPositionSubscription$: Subscription;
+  private positionSubscription$: Subscription;
+  private searchSubscription$: Subscription;
+  private filtersChainSubscription$: Subscription;
+  private subscriptionArray: Array<Subscription> = [];
 
   articles: Array<Article> = new Array<Article>();
-  filters: Array<Filter> = new Array<Filter>();
   filtersChain: FilterChain = {
     yearChain: '',
     disciplineChain: '',
@@ -39,43 +31,48 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
   };
 
   search: string;
+  searchCopy: string;
   finalPositionPage: number;
   totalResults: number;
   positionPage = 1;
   view = true;
-  imgList = 'assets/img/lista.png';
-  imgTable = 'assets/img/tarjetas-act.png';
-  reverse = 0;
-  field = 'relevancia';
-  all = false;
+  results = true;
+  imgTable = 'assets/img/icons/tabla-desactivada.png';
+  imgList = 'assets/img/icons/lista-activada.png';
 
   constructor(
     private articleService: ArticleService,
+    private errorService: ErrorService,
     private filterService: FilterService,
     private paginationService: PaginationService,
-    private route: ActivatedRoute
+    private routeService: ActivatedRoute
   ) {
-    this.search = this.route.snapshot.paramMap.get('palabra');
-    this.all = this.articleService.allArticles(this.route.snapshot.paramMap.get('palabra'));
-  }
-
-  ngOnDestroy(): void {
-    this.positionSubscription.unsubscribe();
-    this.finalPositionSubscription.unsubscribe();
-    this.filtersSubscription.unsubscribe();
-    this.filtersChainSubscription.unsubscribe();
-    this.searchSubscription.unsubscribe();
-    this.fieldSortSubscription.unsubscribe();
+    this.search = this.routeService.snapshot.paramMap.get('search');
   }
 
   ngOnInit(): void {
-    this.total.palabra = this.search;
+    this.finalPositionSubscription$ = this.paginationService.finalPosition$.subscribe(
+      (finalPosition: number) => this.finalPositionPage = finalPosition
+    );
 
-    this.searchSubscription = this.articleService.search$.subscribe(
+    this.positionSubscription$ = this.paginationService.position$.subscribe(
+      (position: number) => {
+        this.positionPage = position;
+
+        this.articleService.getArticles(this.search, position, this.filtersChain).subscribe(
+          (articles: ArticleResult) => {
+            this.articles = articles.resultados;
+            this.paginationService.changeFinalPosition(articles.totalResultados, 'articles');
+          }
+        );
+      }
+    );
+
+    this.searchSubscription$ = this.articleService.search$.subscribe(
       (search: string) => {
         this.positionPage = 1;
+        this.searchCopy = this.search;
         this.search = search;
-        this.total.palabra = search;
         this.filtersChain = {
           yearChain: '',
           disciplineChain: '',
@@ -84,113 +81,105 @@ export class BusquedaGeneralComponent implements OnInit, OnDestroy {
           fontChain: ''
         };
 
-        this.articleService.getArticles(search, 1, 0, 'relevancia', this.filtersChain, this.all).subscribe(
+        this.articleService.getArticles(search, 1, this.filtersChain).subscribe(
           (articles: ArticleResult) => {
-            this.articles = articles.resultados;
-            this.total.total = articles.totalResultados;
-            this.filterService.changeFilters(articles.filtros);
-            this.paginationService.changeInitialPosition();
-            this.paginationService.changeFinalPosition(articles.totalResultados, 'articles');
-            this.totalResults = articles.totalResultados;
+            if (this.articleService.articlesExists(articles.resultados.length)){
+              this.articles = articles.resultados;
+              this.totalResults = articles.totalResultados;
+              this.results = this.articleService.articlesExists(articles.resultados.length);
+              this.filterService.changeFilters(articles.filtros);
+              this.paginationService.changeInitialPosition();
+              this.paginationService.changeFinalPosition(articles.totalResultados, 'articles');
+            } else {
+              this.errorService.showErrorSearchs(`No existen resultados para ${search}. Sugerencias: Prueba con una búsqueda nueva`);
+              this.search = this.searchCopy;
+            }
           }
         );
       }
     );
 
-    this.positionSubscription = this.paginationService.position$.subscribe(
-      (position: number) => {
-        this.positionPage = position;
-
-        this.articleService.getArticles(this.search, position, this.reverse, this.field, this.filtersChain, this.all).subscribe(
-          (articles: ArticleResult) => {
-            this.articles = articles.resultados;
-            this.total.total = articles.totalResultados;
-            this.totalResults = articles.totalResultados;
-          }
-        );
-      }
-    );
-
-    this.finalPositionSubscription = this.paginationService.finalPosition$.pipe(
-      delay(0)
-    ).subscribe(
-      (finalPosition: number) => this.finalPositionPage = finalPosition
-    );
-
-    this.filtersSubscription = this.filterService.filters$.subscribe(
-      (filters: Array<Filter>) => this.filters = filters
-    );
-
-    this.filtersChainSubscription = this.filterService.filtersChain$.subscribe(
+    this.filtersChainSubscription$ = this.filterService.filtersChain$.subscribe(
       (filtersChain: FilterChain) => {
         this.filtersChain = filtersChain;
         this.articleService.getArticles(
           this.search,
           1,
-          this.reverse,
-          this.field,
-          this.filtersChain,
-          this.all
+          this.filtersChain
         ).subscribe(
           (articles: ArticleResult) => {
-            this.positionPage = 1;
-            this.articles = articles.resultados;
-            this.total.total = articles.totalResultados;
-            this.filterService.changeFilters(articles.filtros);
-            this.paginationService.changeInitialPosition();
-            this.paginationService.changeFinalPosition(articles.totalResultados, 'articles');
-            this.totalResults = articles.totalResultados;
+            if (this.articleService.articlesExists(articles.resultados.length)){
+              this.positionPage = 1;
+              this.articles = articles.resultados;
+              this.totalResults = articles.totalResultados;
+              this.filterService.changeFilters(articles.filtros);
+              this.paginationService.changeInitialPosition();
+              this.paginationService.changeFinalPosition(articles.totalResultados, 'articles');
+            } else {
+              this.errorService.showErrorSearchs('No existen resultados para la combinación de filtros');
+              this.searchArticles(this.search);
+            }
           }
         );
       }
     );
 
-    this.fieldSortSubscription = this.articleService.filedSort$.subscribe(
-      (fieldSort: FiledSort) => {
-        this.field = fieldSort.field;
-        this.reverse = fieldSort.reverse;
+    if (!this.search){
+      this.results = false;
+    } else {
+      this.getArticles();
+    }
 
-        this.articleService.getArticles(
-          this.search,
-          this.positionPage,
-          fieldSort.reverse,
-          fieldSort.field,
-          this.filtersChain,
-          this.all
-        ).subscribe(
-          (articles: ArticleResult) => {
-            this.articles = articles.resultados;
-          }
-        );
-      }
-    );
-
-    this.articleService
-      .getArticles(this.search, this.positionPage, 0, 'relevancia', this.filtersChain, this.all)
-      .subscribe((articles: ArticleResult) => {
-        this.articles = articles.resultados;
-        this.total.total = articles.totalResultados;
-        this.filterService.changeFilters(articles.filtros);
-        this.totalResults = articles.totalResultados;
-    });
-
+    this.subscriptionArray.push(this.finalPositionSubscription$);
+    this.subscriptionArray.push(this.positionSubscription$);
+    this.subscriptionArray.push(this.searchSubscription$);
+    this.subscriptionArray.push(this.filtersChainSubscription$);
   }
 
-  public searchArticles(search: string): void {
-    this.all = false;
+  ngOnDestroy(): void {
+    console.log('Destroy page busqueda general');
     this.filterService.cleanFiltersSelected();
-    this.articleService.changeSearch(search);
+    this.subscriptionArray.forEach((subscription: Subscription) => subscription.unsubscribe());
   }
 
-  public changeView(state: boolean): void {
+  getArticles(): void {
+    this.articleService.getArticles(this.search, 1, this.filtersChain).subscribe(
+      (articles: ArticleResult) => {
+        this.articles = articles.resultados;
+        this.totalResults = articles.totalResultados;
+        this.results = this.articleService.articlesExists(articles.resultados.length);
+        this.filterService.changeFilters(articles.filtros);
+        this.paginationService.changeFinalPosition(articles.totalResultados, 'articles');
+      }
+    );
+  }
+
+  searchArticles(search: string): void {
+    if (search){
+      this.filterService.cleanFiltersSelected();
+      this.articleService.changeSearch(search);
+    }else{
+      this.errorService.showErrorSearchs('Ingrese una palabra');
+    }
+  }
+
+  changeView(state: boolean): void {
     this.view = state;
     if (state) {
-      this.imgList = 'assets/img/lista.png';
-      this.imgTable = 'assets/img/tarjetas-act.png';
+      this.imgTable = 'assets/img/icons/tabla-desactivada.png';
+      this.imgList = 'assets/img/icons/lista-activada.png';
     } else {
-      this.imgTable = 'assets/img/tarjetas.png';
-      this.imgList = 'assets/img/lista-act.png';
+      this.imgTable = 'assets/img/icons/tabla-activada.png';
+      this.imgList = 'assets/img/icons/lista-desactivada.png';
     }
+  }
+
+  goUp(): void {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PaginationService } from '../../services/pagination.service';
 
@@ -11,14 +11,12 @@ export class PaginationComponent implements OnInit, OnDestroy {
   private finalPageSubscription$: Subscription;
   private initialPageSubscription$: Subscription;
 
-  @Input() totalResult: number;
   final: number;
   actualPage = 1;
 
   constructor( private paginationService: PaginationService ) { }
 
   ngOnInit(): void {
-
     this.initialPageSubscription$ = this.paginationService.initialPosition$.subscribe(
       (initialPage: number) => this.actualPage = initialPage
     );
@@ -26,8 +24,6 @@ export class PaginationComponent implements OnInit, OnDestroy {
     this.finalPageSubscription$ = this.paginationService.finalPosition$.subscribe(
       (finalPage: number) => this.final = finalPage
     );
-
-    this.paginationService.changeFinalPosition(this.totalResult, 'articles');
   }
 
   ngOnDestroy(): void {
@@ -36,27 +32,27 @@ export class PaginationComponent implements OnInit, OnDestroy {
     this.initialPageSubscription$.unsubscribe();
   }
 
-  public initialPage(){
+  public initialPage(): void {
     this.actualPage = 1;
     this.paginationService.changePosition(this.actualPage);
   }
 
-  public leftArrow(){
+  public leftArrow(): void {
     this.actualPage = this.actualPage - 1;
     this.paginationService.changePosition(this.actualPage);
   }
 
-  public nextOrpreviousPage(page: number){
+  public nextOrpreviousPage(page: number): void {
     this.actualPage = page;
     this.paginationService.changePosition(this.actualPage);
   }
 
-  public rightArrowPage() {
+  public rightArrowPage(): void {
     this.actualPage = this.actualPage + 1;
     this.paginationService.changePosition(this.actualPage);
   }
 
-  public finalPage(){
+  public finalPage(): void {
     this.actualPage = this.final;
     this.paginationService.changePosition(this.actualPage);
   }

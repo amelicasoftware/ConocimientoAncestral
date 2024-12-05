@@ -1,0 +1,402 @@
+[
+    {
+        "weight": 940,
+        "word": "cambio climático"
+    },
+    {
+        "weight": 660,
+        "word": "contaminación"
+    },
+    {
+        "weight": 320,
+        "word": "geografía"
+    },
+    {
+        "weight": 216,
+        "word": "precipitación"
+    },
+    {
+        "weight": 208,
+        "word": "clima"
+    },
+    {
+        "weight": 185,
+        "word": "sequía"
+    },
+    {
+        "weight": 141,
+        "word": "deforestación"
+    },
+    {
+        "weight": 124,
+        "word": "gestión de riesgos"
+    },
+    {
+        "weight": 116,
+        "word": "humedad"
+    },
+    {
+        "weight": 107,
+        "word": "contaminación atmosférica"
+    },
+    {
+        "weight": 100,
+        "word": "metano"
+    },
+    {
+        "weight": 93,
+        "word": "temperatura"
+    },
+    {
+        "weight": 89,
+        "word": "calentamiento global"
+    },
+    {
+        "weight": 88,
+        "word": "vulnerabilidad"
+    },
+    {
+        "weight": 83,
+        "word": "adaptación"
+    },
+    {
+        "weight": 83,
+        "word": "gestión del riesgo"
+    },
+    {
+        "weight": 80,
+        "word": "contaminación del aire"
+    },
+    {
+        "weight": 77,
+        "word": "méxico"
+    },
+    {
+        "weight": 76,
+        "word": "medio ambiente"
+    },
+    {
+        "weight": 73,
+        "word": "radiación solar"
+    },
+    {
+        "weight": 72,
+        "word": "uso de la tierra"
+    },
+    {
+        "weight": 71,
+        "word": "metales pesados"
+    },
+    {
+        "weight": 71,
+        "word": "calidad ambiental"
+    },
+    {
+        "weight": 65,
+        "word": "uso del suelo"
+    },
+    {
+        "weight": 63,
+        "word": "agua"
+    },
+    {
+        "weight": 62,
+        "word": "bosques"
+    },
+    {
+        "weight": 58,
+        "word": "dióxido de carbono"
+    },
+    {
+        "weight": 56,
+        "word": "indicadores ambientales"
+    },
+    {
+        "weight": 53,
+        "word": "riesgo"
+    },
+    {
+        "weight": 48,
+        "word": "mitigación"
+    },
+    {
+        "weight": 47,
+        "word": "ambiente"
+    },
+    {
+        "weight": 47,
+        "word": "colombia"
+    },
+    {
+        "weight": 44,
+        "word": "desarrollo sostenible"
+    },
+    {
+        "weight": 43,
+        "word": "educación ambiental"
+    },
+    {
+        "weight": 43,
+        "word": "turismo"
+    },
+    {
+        "weight": 43,
+        "word": "conservación ambiental"
+    },
+    {
+        "weight": 42,
+        "word": "agricultura"
+    },
+    {
+        "weight": 41,
+        "word": "suelo"
+    },
+    {
+        "weight": 41,
+        "word": "uso de suelo"
+    },
+    {
+        "weight": 40,
+        "word": "deterioro ambiental"
+    },
+    {
+        "weight": 40,
+        "word": "sostenibilidad"
+    },
+    {
+        "weight": 39,
+        "word": "gestión de riesgo"
+    },
+    {
+        "weight": 38,
+        "word": "conservación"
+    },
+    {
+        "weight": 36,
+        "word": "viento"
+    },
+    {
+        "weight": 36,
+        "word": "captura de carbono"
+    },
+    {
+        "weight": 36,
+        "word": "biodiversidad"
+    },
+    {
+        "weight": 36,
+        "word": "historia"
+    },
+    {
+        "weight": 35,
+        "word": "protección ambiental"
+    },
+    {
+        "weight": 35,
+        "word": "efecto invernadero"
+    },
+    {
+        "weight": 35,
+        "word": "variabilidad climática"
+    },
+    {
+        "weight": 34,
+        "word": "calidad del aire"
+    },
+    {
+        "weight": 34,
+        "word": "costa rica"
+    },
+    {
+        "weight": 34,
+        "word": "sig"
+    },
+    {
+        "weight": 34,
+        "word": "climatología"
+    },
+    {
+        "weight": 34,
+        "word": "paisaje"
+    },
+    {
+        "weight": 31,
+        "word": "meteorología"
+    },
+    {
+        "weight": 30,
+        "word": "educación"
+    },
+    {
+        "weight": 29,
+        "word": "salud"
+    },
+    {
+        "weight": 29,
+        "word": "resiliencia"
+    },
+    {
+        "weight": 29,
+        "word": "sustentabilidad"
+    },
+    {
+        "weight": 27,
+        "word": "impacto ambiental"
+    },
+    {
+        "weight": 27,
+        "word": "percepción"
+    },
+    {
+        "weight": 27,
+        "word": "biomasa"
+    },
+    {
+        "weight": 27,
+        "word": "políticas públicas"
+    },
+    {
+        "weight": 27,
+        "word": "desarrollo sustentable"
+    },
+    {
+        "weight": 26,
+        "word": "material particulado"
+    },
+    {
+        "weight": 26,
+        "word": "minería"
+    },
+    {
+        "weight": 26,
+        "word": "energía"
+    },
+    {
+        "weight": 26,
+        "word": "venezuela"
+    },
+    {
+        "weight": 26,
+        "word": "salud pública"
+    },
+    {
+        "weight": 25,
+        "word": "polución"
+    },
+    {
+        "weight": 25,
+        "word": "territorio"
+    },
+    {
+        "weight": 25,
+        "word": "gestión ambiental"
+    },
+    {
+        "weight": 25,
+        "word": "cartografía"
+    },
+    {
+        "weight": 25,
+        "word": "américa latina"
+    },
+    {
+        "weight": 25,
+        "word": "chile"
+    },
+    {
+        "weight": 24,
+        "word": "degradación ambiental"
+    },
+    {
+        "weight": 24,
+        "word": "enseñanza"
+    },
+    {
+        "weight": 23,
+        "word": "rendimiento"
+    },
+    {
+        "weight": 23,
+        "word": "inundaciones"
+    },
+    {
+        "weight": 23,
+        "word": "gases de efecto invernadero"
+    },
+    {
+        "weight": 23,
+        "word": "lluvia"
+    },
+    {
+        "weight": 22,
+        "word": "ordenamiento territorial"
+    },
+    {
+        "weight": 22,
+        "word": "indicadores"
+    },
+    {
+        "weight": 22,
+        "word": "degradación de suelos"
+    },
+    {
+        "weight": 22,
+        "word": "seguridad del paciente"
+    },
+    {
+        "weight": 22,
+        "word": "argentina"
+    },
+    {
+        "weight": 22,
+        "word": "planificación urbana"
+    },
+    {
+        "weight": 21,
+        "word": "calidad del agua"
+    },
+    {
+        "weight": 21,
+        "word": "evaluación de impacto ambiental"
+    },
+    {
+        "weight": 21,
+        "word": "degradación"
+    },
+    {
+        "weight": 20,
+        "word": "emisiones"
+    },
+    {
+        "weight": 20,
+        "word": "aguas residuales"
+    },
+    {
+        "weight": 20,
+        "word": "crecimiento"
+    },
+    {
+        "weight": 20,
+        "word": "recursos hídricos"
+    },
+    {
+        "weight": 20,
+        "word": "usos del suelo"
+    },
+    {
+        "weight": 19,
+        "word": "desastres"
+    },
+    {
+        "weight": 19,
+        "word": "diversidad"
+    },
+    {
+        "weight": 19,
+        "word": "desarrollo"
+    },
+    {
+        "weight": 19,
+        "word": "ecología"
+    }
+]
